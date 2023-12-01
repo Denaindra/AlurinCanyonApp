@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUIMobileStarterKit.Screens.MainPage"
+             BackgroundColor="AliceBlue"
+             Title="MainPage">
+    <VerticalStackLayout>
+        <Label 
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+             <Button Text="Start" Clicked="Button_Clicked_1" />
+        <Entry Text="hellow words" BackgroundColor="Green" WidthRequest="200" />
+    </VerticalStackLayout>
+</ContentPage>
