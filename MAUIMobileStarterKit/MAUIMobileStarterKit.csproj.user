@@ -6,4 +6,9 @@
     <ActiveDebugFramework>net7.0-android</ActiveDebugFramework>
     <SelectedPlatformGroup>PhysicalDevice</SelectedPlatformGroup>
   </PropertyGroup>
+  <ItemGroup>
+    <MauiXaml Update="Screens\DashBoardScreen.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+  </ItemGroup>
 </Project>

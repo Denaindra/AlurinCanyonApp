@@ -34,10 +34,14 @@ public static class MauiProgram
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-			});
+                fonts.AddFont("Cabin-Bold.ttf", "CabinBold");
+                fonts.AddFont("Cabin-Regular.ttf", "CabinRegular");
+                fonts.AddFont("VinaSans-Regular.ttf", "VinaSansRegular");
+            });
 
         //Views
         builder.Services.AddTransient<MainPage>();
+        builder.Services.AddTransient<DashBoardScreen>();
 
         //ViewModels
         builder.Services.AddTransient<MainPageViewModels>();
