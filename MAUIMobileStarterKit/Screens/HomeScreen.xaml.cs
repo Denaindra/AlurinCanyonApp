@@ -3,10 +3,10 @@ using MAUIMobileStarterKit.ViewModels;
 
 namespace MAUIMobileStarterKit.Screens;
 
-public partial class MainPage : ContentPage
+public partial class HomeScreen : ContentPage
 {
 
-    public MainPage()
+    public HomeScreen()
     {
         InitializeComponent();
     }

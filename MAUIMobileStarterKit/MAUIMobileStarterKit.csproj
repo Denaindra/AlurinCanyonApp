@@ -88,6 +88,11 @@
 	  <Folder Include="Utilities\" />
 	</ItemGroup>
 	<ItemGroup>
+	  <Compile Update="Screens\HomeScreen.xaml.cs">
+	    <DependentUpon>HomeScreen.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+	<ItemGroup>
 	  <MauiXaml Update="Screens\DashBoardScreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
