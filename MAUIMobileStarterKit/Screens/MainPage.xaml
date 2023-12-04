@@ -4,12 +4,28 @@
              x:Class="MAUIMobileStarterKit.Screens.MainPage"
              BackgroundColor="AliceBlue"
              Title="MainPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-             <Button Text="Start" Clicked="Button_Clicked_1" />
-        <Entry Text="hellow words" BackgroundColor="Green" WidthRequest="200" />
-    </VerticalStackLayout>
+
+    <AbsoluteLayout>
+        <StackLayout BackgroundColor="Brown" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="SizeProportional" />
+
+    <!--<Image Source="settings.png" Aspect="AspectFill" 
+AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1" HeightRequest="100" AbsoluteLayout.LayoutFlags="PositionProportional"/>-->
+
+    <!--<Label Text="Settings" HorizontalTextAlignment="Center" VerticalTextAlignment="End" 
+AbsoluteLayout.LayoutBounds="0.5, 0.99, -1,-1" AbsoluteLayout.LayoutFlags="PositionProportional" 
+FontFamily="VinaSansRegular" FontSize="25" />-->
+
+        <Frame BorderColor="Transparent" CornerRadius="20" BackgroundColor="#1C3132" Padding="10,15,10,15" AbsoluteLayout.LayoutBounds="0.5, 0.99, 250,-1" AbsoluteLayout.LayoutFlags="PositionProportional" >
+            <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Spacing="50" >
+                <Image Source="loupe.png" Aspect="AspectFill" HeightRequest="20"/>
+                <Image Source="address.png" Aspect="AspectFill" HeightRequest="20"/>
+                <Image Source="clock.png" Aspect="AspectFill" HeightRequest="20"/>
+            </HorizontalStackLayout>
+        </Frame>
+
+    </AbsoluteLayout>
+    
+    
+
+
 </ContentPage>

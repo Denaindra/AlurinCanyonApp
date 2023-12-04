@@ -61,6 +61,7 @@
 	  <None Remove="Resources\Fonts\Cabin-Bold.ttf" />
 	  <None Remove="Resources\Fonts\Cabin-Regular.ttf" />
 	  <None Remove="Resources\Fonts\VinaSans-Regular.ttf" />
+	  <None Remove="Resources\Images\address.png" />
 	  <None Remove="Resources\Images\backgroundvector1.png" />
 	  <None Remove="Resources\Images\backgroundvector2.png" />
 	  <None Remove="Resources\Images\backgroundvector3.png" />
@@ -68,10 +69,12 @@
 	  <None Remove="Resources\Images\backgroundvector5.png" />
 	  <None Remove="Resources\Images\backgroundvector6.png" />
 	  <None Remove="Resources\Images\backgroundvector7.png" />
+	  <None Remove="Resources\Images\clock.png" />
 	  <None Remove="Resources\Images\contactmail.png" />
 	  <None Remove="Resources\Images\home.png" />
 	  <None Remove="Resources\Images\info.png" />
 	  <None Remove="Resources\Images\logout.png" />
+	  <None Remove="Resources\Images\loupe.png" />
 	  <None Remove="Resources\Images\security.png" />
 	  <None Remove="Resources\Images\settings.png" />
 	  <None Remove="Screens\" />
