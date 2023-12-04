@@ -7,14 +7,6 @@
 
     <AbsoluteLayout>
         <StackLayout BackgroundColor="Brown" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="SizeProportional" />
-
-    <!--<Image Source="settings.png" Aspect="AspectFill" 
-AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1" HeightRequest="100" AbsoluteLayout.LayoutFlags="PositionProportional"/>-->
-
-    <!--<Label Text="Settings" HorizontalTextAlignment="Center" VerticalTextAlignment="End" 
-AbsoluteLayout.LayoutBounds="0.5, 0.99, -1,-1" AbsoluteLayout.LayoutFlags="PositionProportional" 
-FontFamily="VinaSansRegular" FontSize="25" />-->
-
         <Frame BorderColor="Transparent" CornerRadius="20" BackgroundColor="#1C3132" Padding="10,15,10,15" AbsoluteLayout.LayoutBounds="0.5, 0.99, 250,-1" AbsoluteLayout.LayoutFlags="PositionProportional" >
             <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Spacing="50" >
                 <Image Source="loupe.png" Aspect="AspectFill" HeightRequest="20"/>

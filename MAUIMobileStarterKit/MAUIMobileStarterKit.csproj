@@ -86,10 +86,18 @@
 	  <Folder Include="Platforms\Android\Renders\" />
 	  <Folder Include="Platforms\iOS\Renders\" />
 	  <Folder Include="Utilities\" />
-	  <Folder Include="ViewModels\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="Screens\DashBoardScreen.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Screens\HomePageScreens\CanyonModificationScreen.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Screens\HomePageScreens\GoogleMapScreen.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Screens\HomePageScreens\SearchCanyonScreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

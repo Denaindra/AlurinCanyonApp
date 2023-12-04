@@ -45,6 +45,8 @@ public static class MauiProgram
 
         //ViewModels
         builder.Services.AddTransient<MainPageViewModels>();
+        builder.Services.AddTransient<DashBoardViewModel>();
+        builder.Services.AddTransient<HomePageViewModel>();
 
         //Services
         builder.Services.AddSingleton<ILoading, Loading>();
