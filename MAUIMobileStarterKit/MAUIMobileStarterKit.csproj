@@ -50,6 +50,20 @@
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
+	<ItemGroup>
+	  <AndroidResource Remove="Platforms\Android\Renders\**" />
+	  <AndroidResource Remove="Platforms\iOS\Renders\**" />
+	  <Compile Remove="Platforms\Android\Renders\**" />
+	  <Compile Remove="Platforms\iOS\Renders\**" />
+	  <EmbeddedResource Remove="Platforms\Android\Renders\**" />
+	  <EmbeddedResource Remove="Platforms\iOS\Renders\**" />
+	  <MauiCss Remove="Platforms\Android\Renders\**" />
+	  <MauiCss Remove="Platforms\iOS\Renders\**" />
+	  <MauiXaml Remove="Platforms\Android\Renders\**" />
+	  <MauiXaml Remove="Platforms\iOS\Renders\**" />
+	  <None Remove="Platforms\Android\Renders\**" />
+	  <None Remove="Platforms\iOS\Renders\**" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
@@ -83,8 +97,6 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Interface\" />
-	  <Folder Include="Platforms\Android\Renders\" />
-	  <Folder Include="Platforms\iOS\Renders\" />
 	  <Folder Include="Utilities\" />
 	</ItemGroup>
 	<ItemGroup>

@@ -13,6 +13,25 @@ namespace MAUIMobileStarterKit.ViewModels
 		{
 		}
 
+        public async void PushModalAsync(Page page)
+        {
+            await navigation.PushModalAsync(page);
+        }
+
+        public async void PushAsyncPage(Page page)
+        {
+            await navigation.PushAsync(page);
+        }
+        public async void PopAsyncy()
+        {
+            await navigation.PopAsync();
+        }
+
+        public async void PopModalAsyncy()
+        {
+            await navigation.PopModalAsync();
+        }
+
         public void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             if (PropertyChanged != null)

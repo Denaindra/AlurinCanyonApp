@@ -4,10 +4,10 @@ namespace MAUIMobileStarterKit;
 
 public partial class App : Application
 {
-    public App(MainPage mainPage)
+    public App(DashBoardScreen dashBoardScreen)
     {
         InitializeComponent();
-        MainPage = mainPage;
+        MainPage = new NavigationPage(dashBoardScreen);
         InititateAllCutomUICmsponets();
 
     }
