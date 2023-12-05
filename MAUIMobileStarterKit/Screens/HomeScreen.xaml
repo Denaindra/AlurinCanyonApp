@@ -7,18 +7,29 @@
              Title="MainPage">
 
     <AbsoluteLayout>
-        <StackLayout BackgroundColor="Brown" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="SizeProportional" />
+        <StackLayout x:Name="childLayout" BackgroundColor="Green" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="SizeProportional" />
         <Frame BorderColor="Transparent" CornerRadius="20" BackgroundColor="#1C3132" Padding="10,15,10,15" AbsoluteLayout.LayoutBounds="0.5, 0.99, 250,-1" AbsoluteLayout.LayoutFlags="PositionProportional" >
             <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Spacing="50" >
-                <Image Source="loupe.png" Aspect="AspectFill" HeightRequest="20"/>
-                <Image Source="address.png" Aspect="AspectFill" HeightRequest="20"/>
-                <Image Source="clock.png" Aspect="AspectFill" HeightRequest="20"/>
+                <Image Source="loupe.png" Aspect="AspectFill" HeightRequest="20">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnTapGestureRecognizerTapped" CommandParameter="0" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image Source="address.png" Aspect="AspectFill" HeightRequest="20">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnTapGestureRecognizerTapped" CommandParameter="1" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image Source="clock.png" Aspect="AspectFill" HeightRequest="20">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnTapGestureRecognizerTapped" CommandParameter="2" />
+                    </Image.GestureRecognizers>
+                </Image>
             </HorizontalStackLayout>
         </Frame>
-
     </AbsoluteLayout>
-    
-    
+
+
 
 
 </ContentPage>

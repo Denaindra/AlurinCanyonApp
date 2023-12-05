@@ -6,4 +6,9 @@ public partial class SearchCanyonScreen : ContentView
 	{
 		InitializeComponent();
 	}
+
+    private void SearchButtonPressed(object sender, EventArgs e)
+    {
+
+    }
 }
