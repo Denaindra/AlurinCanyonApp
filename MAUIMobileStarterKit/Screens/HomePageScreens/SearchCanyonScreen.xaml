@@ -2,12 +2,18 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Padding="10"
+             xmlns:local="clr-namespace:MAUIMobileStarterKit.CustomViews"
              x:Class="MAUIMobileStarterKit.Screens.HomePageScreens.SearchCanyonScreen">
-    <VerticalStackLayout VerticalOptions="CenterAndExpand">
+    <VerticalStackLayout VerticalOptions="CenterAndExpand" Spacing="10">
         <SearchBar Placeholder="Search Canyon by Name" PlaceholderColor="#D7A367" FontFamily="CabinRegular" HorizontalOptions="CenterAndExpand"
                    CancelButtonColor="#D7A367" SearchButtonPressed="SearchButtonPressed"/>
-        <Frame BackgroundColor="#335A5C" BorderColor="Transparent" CornerRadius="5" VerticalOptions="FillAndExpand" HeightRequest="300" >
-            
+        <Frame Padding="0" BackgroundColor="#4D335A5C"  BorderColor="Transparent" CornerRadius="5" VerticalOptions="FillAndExpand">
+            <VerticalStackLayout Spacing="20" Padding="10,20,10,10">
+                <local:FlatingLabel Title="Country" />
+                <local:FlatingLabel Title="Region" />
+                <local:FlatingLabel Title="State" />
+                <Button Text="Search" BackgroundColor="#D7A367" CornerRadius="20" TextColor="White" FontSize="15"/>
+            </VerticalStackLayout>
         </Frame>
     </VerticalStackLayout>
 </ContentView>

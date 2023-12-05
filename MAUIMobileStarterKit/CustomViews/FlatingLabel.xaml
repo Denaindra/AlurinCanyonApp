@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Name="this"
+               xmlns:local="clr-namespace:MAUIMobileStarterKit.CustomViews.Controls"
+             x:Class="MAUIMobileStarterKit.CustomViews.FlatingLabel">
+    <ContentView.Content>
+        <Grid >
+            <VerticalStackLayout>
+                <local:NoUnderlineEntry
+                   x:Name="EntryField" 
+                   FontFamily="CabinRegular"
+                   Completed="Handle_Completed" 
+                   Text="{Binding Text, Source={x:Reference this}}" 
+                   ReturnType="{Binding ReturnType, Source={x:Reference this}}"
+                   IsPassword="{Binding IsPassword, Source={x:Reference this}}"
+                   Keyboard="{Binding Keyboard, Source={x:Reference this}}"
+                   MaxLength="{Binding MaxLength,Source={x:Reference this}}"
+                   Unfocused="Handle_Unfocused" 
+                   TextColor="White"
+                   Focused="Handle_Focused">
+                </local:NoUnderlineEntry>
+                <BoxView HeightRequest=".5" BackgroundColor="#D7A367" Opacity=".2" HorizontalOptions="FillAndExpand" />
+
+            </VerticalStackLayout>
+            <Label x:Name="LabelTitle"  FontFamily="CabinBold"
+                   Text="{Binding Title, Source={x:Reference this}}"  TextColor="White" Opacity=".5" VerticalOptions="Center"/>
+
+        </Grid>
+    </ContentView.Content>
+</ContentView>
