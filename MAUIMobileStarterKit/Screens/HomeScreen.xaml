@@ -3,12 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUIMobileStarterKit.Screens.HomeScreen"
              NavigationPage.HasNavigationBar="False"
-             BackgroundColor="AliceBlue"
+             BackgroundColor="#1C3132"
              Title="MainPage">
-
     <AbsoluteLayout>
-        <StackLayout x:Name="childLayout" BackgroundColor="Green" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="SizeProportional" />
-        <Frame BorderColor="Transparent" CornerRadius="20" BackgroundColor="#1C3132" Padding="10,15,10,15" AbsoluteLayout.LayoutBounds="0.5, 0.99, 250,-1" AbsoluteLayout.LayoutFlags="PositionProportional" >
+        <Image Opacity=".1"
+  Source="backgroundvector2.png"
+  Aspect="AspectFill"
+  AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="SizeProportional"
+  HorizontalOptions="StartAndExpand"/>
+
+        <StackLayout x:Name="childLayout"   AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="SizeProportional" />
+        <Frame BorderColor="Transparent" CornerRadius="20" BackgroundColor="#D7A367" Padding="10,15,10,15" AbsoluteLayout.LayoutBounds="0.5, 0.99, 250,-1" AbsoluteLayout.LayoutFlags="PositionProportional" >
             <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Spacing="50" >
                 <Image Source="loupe.png" Aspect="AspectFill" HeightRequest="20">
                     <Image.GestureRecognizers>
@@ -28,8 +33,5 @@
             </HorizontalStackLayout>
         </Frame>
     </AbsoluteLayout>
-
-
-
 
 </ContentPage>
