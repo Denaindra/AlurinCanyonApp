@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MAUIMobileStarterKit.CustomViews"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="MAUIMobileStarterKit.Screens.ContactUsPage"
+             Title="ContactUsPage">
+    <AbsoluteLayout>
+        <Image Opacity=".3" 
+Source="backgroundvector1.png"
+Aspect="AspectFill"
+AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="SizeProportional"
+HorizontalOptions="StartAndExpand"/>
+
+        <StackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="SizeProportional" Padding="10,10,10,30" >
+            <Label Text="Contact Us" HorizontalTextAlignment="Start" FontFamily="VinaSansRegular" FontSize="35" />
+
+            <VerticalStackLayout Spacing="50" VerticalOptions="Start" Margin="0,60,0,0"> 
+            <local:FlatingLabel Title="Name" />
+                <local:FlatingLabel Title="Phone" Keyboard="Numeric"/>
+            <local:FlatingLabel Title="Email" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout VerticalOptions="EndAndExpand" Spacing="40">
+                <local:FlatingLabel Title="Message" />
+                <Button Margin="10,0" Text="Create Canyon" BackgroundColor="#D7A367" CornerRadius="20" TextColor="White" FontSize="15"/>
+            </VerticalStackLayout>
+        </StackLayout>
+
+    </AbsoluteLayout>
+</ContentPage>

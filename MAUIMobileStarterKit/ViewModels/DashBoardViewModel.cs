@@ -12,9 +12,11 @@ namespace MAUIMobileStarterKit.ViewModels
     public class DashBoardViewModel:BaseViewModel
     {
         private readonly HomeScreen homeScreen;
-        public DashBoardViewModel(HomeScreen homeScreen)
+        private readonly ContactUsPage contactUsPage;
+        public DashBoardViewModel(HomeScreen homeScreen, ContactUsPage contactUsPage)
         {
             this.homeScreen = homeScreen;
+            this.contactUsPage = contactUsPage;
         }
 
         public async Task<PermissionStatus> CheckAndRequestLocationPermission()
@@ -51,7 +53,7 @@ namespace MAUIMobileStarterKit.ViewModels
                    
                     break;
                 case 3:
-                    
+                    PushAsyncPage(contactUsPage);
                     break;
                 default:
                     

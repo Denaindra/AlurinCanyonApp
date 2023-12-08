@@ -10,6 +10,9 @@
     <MauiXaml Update="CustomViews\FlatingLabel.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="Screens\ContactUsPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="Screens\DashBoardScreen.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>

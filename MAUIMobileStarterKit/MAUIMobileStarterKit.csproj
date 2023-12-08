@@ -109,6 +109,9 @@
 	  <MauiXaml Update="CustomViews\FlatingLabel.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Screens\ContactUsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Screens\DashBoardScreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
