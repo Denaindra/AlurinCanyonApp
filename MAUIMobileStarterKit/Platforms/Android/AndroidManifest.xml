@@ -1,20 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.companyname.canyonproject">
-	<application android:allowBackup="true" android:icon="@mipmap/appicon" android:supportsRtl="true" android:label="Canyon Project"></application>
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-	<uses-permission android:name="android.permission.INTERNET" />
-	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
-	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-	<uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
-	<uses-permission android:name="android.permission.CAMERA" />
-	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
-	<uses-permission android:name="android.permission.GET_ACCOUNTS_PRIVILEGED" />
-	<uses-permission android:name="android.permission.INTERNAL_SYSTEM_WINDOW" />
-	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-	<uses-permission android:name="android.permission.SET_ORIENTATION" />
-	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<application android:allowBackup="true" android:icon="@mipmap/appicon" android:supportsRtl="true" android:label="Canyon Project">
+    <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyDV6Nn8IW-GcSxApE_K5e1aUqY_E9GakqY" />
+  </application>
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 	<uses-sdk android:minSdkVersion="21" />
 </manifest>

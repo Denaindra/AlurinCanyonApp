@@ -11,4 +11,9 @@ public partial class SearchCanyonScreen : ContentView
     {
 
     }
+
+    private void Map_MapClicked(object sender, Maui.GoogleMaps.MapClickedEventArgs e)
+    {
+
+    }
 }
