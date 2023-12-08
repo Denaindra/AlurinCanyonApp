@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:MAUIMobileStarterKit.CustomViews"
              x:Class="MAUIMobileStarterKit.Screens.HomePageScreens.SearchCanyonScreen">
     <VerticalStackLayout VerticalOptions="FillAndExpand">
-        <ScrollView Grid.Row="0" VerticalOptions="FillAndExpand" x:Name="scrollView" Padding="0,0,0,10">
+        <ScrollView VerticalOptions="FillAndExpand" x:Name="scrollView" Padding="0,0,0,10">
             <VerticalStackLayout  Spacing="10" >
             <SearchBar Placeholder="Search Canyon by Name" PlaceholderColor="#D7A367" FontFamily="CabinRegular" HorizontalOptions="CenterAndExpand"
                    CancelButtonColor="#D7A367" SearchButtonPressed="SearchButtonPressed"/>
@@ -24,6 +24,6 @@
             </Frame>
         </VerticalStackLayout>
         </ScrollView>
-        <maps:Map MyLocationEnabled="True"  VerticalOptions="FillAndExpand" x:Name="mapView" Grid.Row="1" />
+        <maps:Map MyLocationEnabled="True"  VerticalOptions="FillAndExpand" x:Name="mapView"/>
     </VerticalStackLayout>
 </ContentView>

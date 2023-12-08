@@ -15,7 +15,6 @@ public partial class SearchCanyonScreen : ContentView
         mapView.HeightRequest = Constans.DeviceHeight * 0.25;
         scrollView.HeightRequest = Constans.DeviceHeight * 0.75;
         mapView.UiSettings.MyLocationButtonEnabled = true;
-        
     }
 
     private void SearchButtonPressed(object sender, EventArgs e)

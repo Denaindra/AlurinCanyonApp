@@ -4,7 +4,7 @@
              x:Class="MAUIMobileStarterKit.Screens.HomePageScreens.CanyonModificationScreen">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="Cannyon modification screen"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
     </VerticalStackLayout>
