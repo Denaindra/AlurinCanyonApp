@@ -4,12 +4,11 @@ namespace MAUIMobileStarterKit;
 
 public partial class App : Application
 {
-    public App(HomeScreen dashBoardScreen)
+    public App(DashBoardScreen dashBoardScreen)
     {
         InitializeComponent();
         MainPage = new NavigationPage(dashBoardScreen);
         InititateAllCutomUICmsponets();
-
     }
 
     private void InititateAllCutomUICmsponets()
@@ -24,7 +23,7 @@ public partial class App : Application
 #endif
 
 #if IOS
-                        handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
+               handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
 #endif
         });
     }

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:MAUIMobileStarterKit.CustomViews"
              x:Class="MAUIMobileStarterKit.Screens.HomePageScreens.SearchCanyonScreen">
     <VerticalStackLayout VerticalOptions="FillAndExpand">
-        <ScrollView Grid.Row="0" VerticalOptions="FillAndExpand" HeightRequest="579.46" Padding="0,0,0,10">
+        <ScrollView Grid.Row="0" VerticalOptions="FillAndExpand" x:Name="scrollView" Padding="0,0,0,10">
             <VerticalStackLayout  Spacing="10" >
             <SearchBar Placeholder="Search Canyon by Name" PlaceholderColor="#D7A367" FontFamily="CabinRegular" HorizontalOptions="CenterAndExpand"
                    CancelButtonColor="#D7A367" SearchButtonPressed="SearchButtonPressed"/>
@@ -14,8 +14,8 @@
                 <VerticalStackLayout Spacing="20" Padding="10,20,10,10">
                     <local:FlatingLabel Title="Country" />
                     <local:FlatingLabel Title="Region" />
-                    <local:FlatingLabel Title="State" />
-                    <Button Text="Search" BackgroundColor="#D7A367" CornerRadius="20" TextColor="White" FontSize="15"/>
+                        <local:FlatingLabel Title="State" />
+                        <Button Text="Search" BackgroundColor="#D7A367" CornerRadius="20" TextColor="White" FontSize="15"/>
                 </VerticalStackLayout>
             </Frame>
             <Button Margin="10,0" Text="Create Canyon" BackgroundColor="#D7A367" CornerRadius="20" TextColor="White" FontSize="15"/>
@@ -24,6 +24,6 @@
             </Frame>
         </VerticalStackLayout>
         </ScrollView>
-        <maps:Map  VerticalOptions="FillAndExpand"  Grid.Row="1" HeightRequest="193.16" MapClicked="Map_MapClicked"/>
+        <maps:Map MyLocationEnabled="True"  VerticalOptions="FillAndExpand" x:Name="mapView" Grid.Row="1" />
     </VerticalStackLayout>
 </ContentView>
