@@ -6,7 +6,7 @@
              BackgroundColor="#1C3132"
              Title="MainPage">
     <AbsoluteLayout>
-        <Image Opacity=".1"
+        <Image Opacity=".1" x:Name="backgroundInmage"
   Source="backgroundvector2.png"
   Aspect="AspectFill"
   AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="SizeProportional"

@@ -36,6 +36,7 @@ public partial class HomeScreen : ContentPage
         switch (parameter)
         {
             case 0:
+                backgroundInmage.Source = ImageSource.FromFile("backgroundvector2.png");
                 childLayout.Children.Add(new SearchCanyonScreen());
                 break;
             case 1:
@@ -43,6 +44,7 @@ public partial class HomeScreen : ContentPage
                 break;
             case 2:
                 childLayout.Children.Add(new CanyonModificationScreen());
+                backgroundInmage.Source = ImageSource.FromFile("backgroundvector7.png");
                 break;
         }
     }
