@@ -3,8 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MAUIMobileStarterKit.CustomViews"
              BackgroundColor="#1C3132"
-             x:Class="MAUIMobileStarterKit.Screens.ContactUsPage"
-             Title="ContactUsPage">
+             x:Class="MAUIMobileStarterKit.Screens.ContactUsPage">
+    <NavigationPage.TitleView>
+        <StackLayout VerticalOptions="Center">
+            <Label VerticalTextAlignment="Center" Text="Contact us" TextColor="White" FontSize="Title" FontFamily="CabinBold"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
     <AbsoluteLayout>
         <Image Opacity=".3" 
 Source="backgroundvector1.png"

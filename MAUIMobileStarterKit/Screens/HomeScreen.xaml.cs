@@ -18,11 +18,12 @@ public partial class HomeScreen : ContentPage
         childLayout.Children.Add(new SearchCanyonScreen());
         search.HeightRequest = 30;
     }
-    protected override void OnSizeAllocated(double pageWidth, double pageHeight)
+    protected override bool OnBackButtonPressed()
     {
-        //base.OnSizeAllocated(pageWidth, pageHeight);
-        //const double aspectRatio = 1600 / 1441.0; // Aspect ratio of the original image
-        //backgroundImage.WidthRequest = Math.Max(pageHeight * aspectRatio, pageWidth);
+        RemoveChildView();
+        ResetView();
+        return base.OnBackButtonPressed();
+
     }
     private void OnTapGestureRecognizerTapped(object sender, TappedEventArgs e)
     {
