@@ -24,10 +24,18 @@ public partial class DashBoardScreen : ContentPage
         Constans.DeviceHeight = height;
         base.OnSizeAllocated(width, height);
     }
-    private void DashBoardItemTapped(object sender, TappedEventArgs e)
+    private async void DashBoardItemTapped(object sender, TappedEventArgs e)
     {
         var tappedParameter = (TappedEventArgs)e;
         var parameter = Convert.ToInt32(tappedParameter.Parameter);
-		viewModel.PageNavigationSteup(parameter);
+        if(parameter == 5)
+        {
+            bool answer = await DisplayAlert("Logout", "Would you like to Logout from the App ?", "Yes", "No");
+        }
+        else
+        {
+            viewModel.PageNavigationSteup(parameter);
+        }
+
     }
 }
