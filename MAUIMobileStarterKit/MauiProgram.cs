@@ -49,6 +49,7 @@ public static class MauiProgram
         builder.Services.AddTransient<DashBoardScreen>();
         builder.Services.AddTransient<ContactUsPage>();
         builder.Services.AddTransient<InfoPage>();
+        builder.Services.AddTransient<SecurityScreen>();
 
         //ViewModels
         builder.Services.AddTransient<MainPageViewModels>();

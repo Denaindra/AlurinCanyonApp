@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUIMobileStarterKit.Screens.SecurityScreen"
+             Title="SecurityScreen">
+    <NavigationPage.TitleView>
+        <StackLayout VerticalOptions="Center">
+            <Label VerticalTextAlignment="Center" Text="Security" TextColor="White" FontSize="Title" FontFamily="CabinBold"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <AbsoluteLayout>
+        <Image Opacity=".5"
+         Source="backgroundvector2.png"
+         Aspect="AspectFill"
+         AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="SizeProportional"
+         HorizontalOptions="StartAndExpand"/>
+        <StackLayout Padding="10" Spacing="10" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="SizeProportional" >
+            <Label Text="Security" HorizontalTextAlignment="Start" FontFamily="VinaSansRegular" FontSize="35" />
+            <Frame CornerRadius="5" BorderColor="#D7A367" Padding="20" Margin="0" BackgroundColor="Transparent">
+                <VerticalStackLayout Spacing="10">
+                    <Image Source="warning.png" Aspect="AspectFill" HeightRequest="50" HorizontalOptions="CenterAndExpand"/>
+                    <Label FontFamily="CabinRegular" Text="Canyoning is a dangerous activity and cannot be improvised. The writing paths in the application may contain errors or be out of date. Do not enter a canyon without knowledge of the specific technic to this sport and suitable equipment. Do not hesitate to vary your sources of information, to consult the weather forecast and the various user comments. For more information on security, go to the dedicated tab of the application." />
+                </VerticalStackLayout>
+            </Frame>
+            <Label Text="Some useful link" FontFamily="CabinBold" FontAttributes="Italic" TextColor="LightGray"/>
+            <VerticalStackLayout Spacing="20">
+                <Label LineBreakMode="WordWrap"  FontFamily="CabinBold" FontAttributes="Italic" TextColor="#D7A367">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="https://www.ffme.fr/wp-content/uploads/2019/12/canyonisme-securite.pdf"  FontFamily="CabinRegular" TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="0" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label LineBreakMode="WordWrap"  FontFamily="CabinBold" FontAttributes="Italic" TextColor="#D7A367">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="https://www.canyoneeringusa.com/techtips"  FontFamily="CabinRegular" TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="0" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label LineBreakMode="WordWrap"  FontFamily="CabinBold" FontAttributes="Italic" TextColor="#D7A367">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="https://montanasegura.com/barranquismo-con-seguridad/"  FontFamily="CabinRegular" TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="0" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label LineBreakMode="WordWrap"  FontFamily="CabinBold" FontAttributes="Italic" TextColor="#D7A367">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="https://deescalada.com/prevencion-y-seguridad-en-barranquismo"  FontFamily="CabinRegular" TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="0" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </VerticalStackLayout>
+        </StackLayout>
+    </AbsoluteLayout>
+</ContentPage>

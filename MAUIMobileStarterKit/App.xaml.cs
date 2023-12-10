@@ -4,7 +4,7 @@ namespace MAUIMobileStarterKit;
 
 public partial class App : Application
 {
-    public App(DashBoardScreen dashBoardScreen)
+    public App(SecurityScreen dashBoardScreen)
     {
         InitializeComponent();
         MainPage = new NavigationPage(dashBoardScreen);
