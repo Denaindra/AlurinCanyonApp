@@ -25,5 +25,8 @@
     <MauiXaml Update="Screens\HomePageScreens\SearchCanyonScreen.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="Screens\InfoPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
   </ItemGroup>
 </Project>

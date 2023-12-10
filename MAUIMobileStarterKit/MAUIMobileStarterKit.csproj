@@ -84,12 +84,18 @@
 	  <None Remove="Resources\Images\backgroundvector5.png" />
 	  <None Remove="Resources\Images\backgroundvector6.png" />
 	  <None Remove="Resources\Images\backgroundvector7.png" />
+	  <None Remove="Resources\Images\beautifulcanyonvert.png" />
+	  <None Remove="Resources\Images\CanyonBleu.png" />
+	  <None Remove="Resources\Images\CanyonBrun.png" />
+	  <None Remove="Resources\Images\CanyonJaune.png" />
+	  <None Remove="Resources\Images\CanyonNull.png" />
 	  <None Remove="Resources\Images\clock.png" />
 	  <None Remove="Resources\Images\contactmail.png" />
 	  <None Remove="Resources\Images\home.png" />
 	  <None Remove="Resources\Images\info.png" />
 	  <None Remove="Resources\Images\logout.png" />
 	  <None Remove="Resources\Images\loupe.png" />
+	  <None Remove="Resources\Images\paypal.png" />
 	  <None Remove="Resources\Images\security.png" />
 	  <None Remove="Resources\Images\settings.png" />
 	  <None Remove="Screens\" />
@@ -122,6 +128,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Screens\HomePageScreens\SearchCanyonScreen.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Screens\InfoPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
