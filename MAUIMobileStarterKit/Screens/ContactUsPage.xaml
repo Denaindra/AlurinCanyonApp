@@ -11,7 +11,7 @@
     </NavigationPage.TitleView>
     <AbsoluteLayout>
         <Image Opacity=".3" 
-Source="backgroundvector1.png"
+Source="backgroundvector3.png"
 Aspect="AspectFill"
 AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="SizeProportional"
 HorizontalOptions="StartAndExpand"/>
