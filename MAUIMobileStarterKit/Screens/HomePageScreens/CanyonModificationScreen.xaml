@@ -3,21 +3,138 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
               Padding="10"
              x:Class="MAUIMobileStarterKit.Screens.HomePageScreens.CanyonModificationScreen">
-    <StackLayout>
+    <StackLayout Spacing="20">
         <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Spacing="10">
             <Label Text="Comments from last:" FontSize="20" FontFamily="CabinRegular"/>
-            <Label Text="0" FontSize="20" FontAttributes="Bold" FontFamily="CabinBold" />
+            <VerticalStackLayout HorizontalOptions="FillAndExpand" >
+                <Label x:Name="commentsDays" Text="0" FontSize="20" FontAttributes="Bold" FontFamily="CabinBold" />
+                <BoxView HeightRequest=".5" BackgroundColor="White"/>
+            </VerticalStackLayout>
             <Label Text="Days" FontSize="20" FontFamily="CabinRegular"/>
+            <HorizontalStackLayout.GestureRecognizers>
+                <TapGestureRecognizer
+                Tapped="DataFileterTapped"
+                CommandParameter="0" />
+            </HorizontalStackLayout.GestureRecognizers>
         </HorizontalStackLayout>
+
+        <Frame Padding="5,0" BackgroundColor="#4D335A5C"  BorderColor="#4DD7A367" CornerRadius="5" VerticalOptions="FillAndExpand" HeightRequest="200">
+            <ListView ItemsSource="{Binding Comments}" HasUnevenRows="True" SelectionMode="None" SeparatorVisibility="None" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="0,5">
+                                <Frame Padding="0" BackgroundColor="#3b5d5e" BorderColor="Transparent" CornerRadius="5" HasShadow="False"  >
+                                    <Grid Padding="4"  RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,*" ColumnSpacing="10" >
+                                        <Label HorizontalTextAlignment="Start" TextColor="#D7A367" FontFamily="CabinRegular" FontAttributes="Italic" FontSize="15" VerticalOptions="CenterAndExpand" Text="Date -" Grid.Row="0" Grid.Column="0" />
+                                        <Label HorizontalTextAlignment="Start" TextColor="#D7A367" FontFamily="CabinBold" FontSize="15" VerticalOptions="CenterAndExpand" Text="{Binding Date}" Grid.Row="0" Grid.Column="1" />
+                                        <Label HorizontalTextAlignment="Start" TextColor="#D7A367" FontFamily="CabinRegular" FontAttributes="Italic"  FontSize="15" VerticalOptions="CenterAndExpand" Text="Name -" Grid.Row="1" Grid.Column="0" />
+                                        <Label HorizontalTextAlignment="Start" TextColor="#D7A367" FontFamily="CabinBold" FontSize="15" VerticalOptions="CenterAndExpand" Text="{Binding Name}" Grid.Row="1" Grid.Column="1" />
+                                        <Label HorizontalTextAlignment="Start" TextColor="#D7A367" FontFamily="CabinRegular" FontAttributes="Italic" FontSize="15" VerticalOptions="CenterAndExpand" Text="Water Flow -" Grid.Row="2" Grid.Column="0" />
+                                        <HorizontalStackLayout Grid.Row="2" Grid.Column="1" Spacing="5">
+                                            <Image Source="dropwater.png" Aspect="AspectFit" HeightRequest="20"/>
+                                            <Label HorizontalTextAlignment="Start" TextColor="#D7A367" FontFamily="CabinBold" FontSize="15" VerticalOptions="CenterAndExpand" Text="{Binding WaterFlow}" />
+                                        </HorizontalStackLayout>
+                                        <Label HorizontalTextAlignment="Start" TextColor="#D7A367" FontFamily="CabinRegular" FontAttributes="Italic"  FontSize="15" VerticalOptions="CenterAndExpand" Text="Writtern By -" Grid.Row="3" Grid.Column="0" />
+                                        <Label HorizontalTextAlignment="Start" TextColor="#D7A367" FontFamily="CabinBold" FontSize="15" VerticalOptions="CenterAndExpand" Text="{Binding WroitternBy}" Grid.Row="3" Grid.Column="1" />
+                                    </Grid>
+                                </Frame>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Frame>
+
         <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Spacing="10">
             <Label Text="Topography from last:" FontSize="20" FontFamily="CabinRegular"/>
-            <Label Text="0" FontSize="20" FontAttributes="Bold" FontFamily="CabinBold" />
+            <VerticalStackLayout HorizontalOptions="FillAndExpand">
+                <Label x:Name="topographyDays" Text="0" FontSize="20" FontAttributes="Bold" FontFamily="CabinBold" />
+                <BoxView HeightRequest=".5" BackgroundColor="White"/>
+            </VerticalStackLayout>
             <Label Text="Days" FontSize="20" FontFamily="CabinRegular"/>
+            <HorizontalStackLayout.GestureRecognizers>
+                <TapGestureRecognizer
+        Tapped="DataFileterTapped"
+        CommandParameter="1" />
+            </HorizontalStackLayout.GestureRecognizers>
         </HorizontalStackLayout>
+
+        <Frame Padding="5,0" BackgroundColor="#4D335A5C"  BorderColor="#4DD7A367" CornerRadius="5" VerticalOptions="FillAndExpand" HeightRequest="200">
+            <ListView ItemsSource="{Binding TophoroGraphyList}" HasUnevenRows="True" SelectionMode="None" SeparatorVisibility="None" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="0,5">
+                                <Frame Padding="0" BackgroundColor="#3b5d5e" BorderColor="Transparent" CornerRadius="5"  HasShadow="False"  >
+                                    <Grid Padding="4"  RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,*" ColumnSpacing="10" >
+                                        <Label HorizontalTextAlignment="Start" TextColor="#D7A367" FontFamily="CabinRegular" FontSize="15" FontAttributes="Italic" VerticalOptions="CenterAndExpand" Text="Date -" Grid.Row="0" Grid.Column="0" />
+                                        <Label HorizontalTextAlignment="Start" TextColor="#D7A367" FontFamily="CabinBold" FontSize="15" VerticalOptions="CenterAndExpand" Text="{Binding Date}" Grid.Row="0" Grid.Column="1" />
+                                        <Label HorizontalTextAlignment="Start" TextColor="#D7A367" FontFamily="CabinRegular" FontSize="15" FontAttributes="Italic" VerticalOptions="CenterAndExpand" Text="Name -" Grid.Row="1" Grid.Column="0" />
+                                        <Label HorizontalTextAlignment="Start" TextColor="#D7A367" FontFamily="CabinBold" FontSize="15" VerticalOptions="CenterAndExpand" Text="{Binding Name}" Grid.Row="1" Grid.Column="1" />
+                                        <Label HorizontalTextAlignment="Start" TextColor="#D7A367" FontFamily="CabinRegular" FontSize="15" FontAttributes="Italic" VerticalOptions="CenterAndExpand" Text="Type -" Grid.Row="2" Grid.Column="0" />
+                                        <Label Grid.Row="2" Grid.Column="1"  HorizontalTextAlignment="Start" TextColor="#D7A367" FontFamily="CabinBold" FontSize="15" VerticalOptions="CenterAndExpand" Text="{Binding Type}" />
+                                        <Label HorizontalTextAlignment="Start" TextColor="#D7A367" FontFamily="CabinRegular" FontSize="15" FontAttributes="Italic" VerticalOptions="CenterAndExpand" Text="Created By -" Grid.Row="3" Grid.Column="0" />
+                                        <Label HorizontalTextAlignment="Start" TextColor="#D7A367" FontFamily="CabinBold" FontSize="15" VerticalOptions="CenterAndExpand" Text="{Binding CreatedBy}" Grid.Row="3" Grid.Column="1" />
+
+
+                                    </Grid>
+                                </Frame>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Frame>
         <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Spacing="10">
             <Label Text="New or Modify Canyons from last:" FontSize="20" FontFamily="CabinRegular"/>
-            <Label Text="0" FontSize="20" FontAttributes="Bold" FontFamily="CabinBold" />
+            <VerticalStackLayout HorizontalOptions="FillAndExpand">
+                <Label x:Name="modifyCannyonDays" Text="0" FontSize="20" FontAttributes="Bold" FontFamily="CabinBold" />
+                <BoxView HeightRequest=".5" BackgroundColor="White"/>
+            </VerticalStackLayout>
             <Label Text="Days" FontSize="20" FontFamily="CabinRegular"/>
+            <HorizontalStackLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="DataFileterTapped" CommandParameter="2" />
+            </HorizontalStackLayout.GestureRecognizers>
         </HorizontalStackLayout>
+        <Picker x:Name="picker" Opacity="0" SelectedIndexChanged="DatePickerSelectedIndexChanged"
+        Title="Select a days">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:Int32}">
+                    <x:Int32>1</x:Int32>
+                    <x:Int32>2</x:Int32>
+                    <x:Int32>3</x:Int32>
+                    <x:Int32>4</x:Int32>
+                    <x:Int32>5</x:Int32>
+                    <x:Int32>6</x:Int32>
+                    <x:Int32>7</x:Int32>
+                    <x:Int32>8</x:Int32>
+                    <x:Int32>9</x:Int32>
+                    <x:Int32>10</x:Int32>
+                    <x:Int32>11</x:Int32>
+                    <x:Int32>12</x:Int32>
+                    <x:Int32>13</x:Int32>
+                    <x:Int32>14</x:Int32>
+                    <x:Int32>15</x:Int32>
+                    <x:Int32>16</x:Int32>
+                    <x:Int32>17</x:Int32>
+                    <x:Int32>18</x:Int32>
+                    <x:Int32>19</x:Int32>
+                    <x:Int32>20</x:Int32>
+                    <x:Int32>21</x:Int32>
+                    <x:Int32>22</x:Int32>
+                    <x:Int32>23</x:Int32>
+                    <x:Int32>24</x:Int32>
+                    <x:Int32>25</x:Int32>
+                    <x:Int32>26</x:Int32>
+                    <x:Int32>27</x:Int32>
+                    <x:Int32>28</x:Int32>
+                    <x:Int32>29</x:Int32>
+                    <x:Int32>30</x:Int32>
+                    <x:Int32>31</x:Int32>
+                    <x:Int32>32</x:Int32>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
     </StackLayout>
 </ContentView>

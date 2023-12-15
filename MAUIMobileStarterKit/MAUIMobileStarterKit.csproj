@@ -95,6 +95,7 @@
 	  <None Remove="Resources\Images\corde.png" />
 	  <None Remove="Resources\Images\cotation.png" />
 	  <None Remove="Resources\Images\descenteActif.png" />
+	  <None Remove="Resources\Images\dropwater.png" />
 	  <None Remove="Resources\Images\home.png" />
 	  <None Remove="Resources\Images\info.png" />
 	  <None Remove="Resources\Images\logout.png" />
