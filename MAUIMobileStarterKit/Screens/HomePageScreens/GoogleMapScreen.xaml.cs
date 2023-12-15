@@ -4,7 +4,7 @@ namespace MAUIMobileStarterKit.Screens.HomePageScreens;
 
 public partial class GoogleMapScreen : ContentView
 {
-	public GoogleMapScreen()
+	public GoogleMapScreen(ViewModels.HomePageViewModel viewModel)
 	{
 		InitializeComponent();
 		InitiateMapView();

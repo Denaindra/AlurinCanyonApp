@@ -89,15 +89,21 @@
 	  <None Remove="Resources\Images\CanyonBrun.png" />
 	  <None Remove="Resources\Images\CanyonJaune.png" />
 	  <None Remove="Resources\Images\CanyonNull.png" />
+	  <None Remove="Resources\Images\cascade.png" />
 	  <None Remove="Resources\Images\clock.png" />
 	  <None Remove="Resources\Images\contactmail.png" />
+	  <None Remove="Resources\Images\corde.png" />
+	  <None Remove="Resources\Images\cotation.png" />
+	  <None Remove="Resources\Images\descenteActif.png" />
 	  <None Remove="Resources\Images\home.png" />
 	  <None Remove="Resources\Images\info.png" />
 	  <None Remove="Resources\Images\logout.png" />
 	  <None Remove="Resources\Images\loupe.png" />
+	  <None Remove="Resources\Images\Marche.png" />
 	  <None Remove="Resources\Images\paypal.png" />
 	  <None Remove="Resources\Images\security.png" />
 	  <None Remove="Resources\Images\settings.png" />
+	  <None Remove="Resources\Images\starblue.png" />
 	  <None Remove="Resources\Images\warning.png" />
 	  <None Remove="Screens\" />
 	  <None Remove="Utilities\" />
@@ -105,6 +111,7 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Interface\" />
+	  <Folder Include="Models\Service\" />
 	  <Folder Include="Utilities\" />
 	</ItemGroup>
 	<ItemGroup>

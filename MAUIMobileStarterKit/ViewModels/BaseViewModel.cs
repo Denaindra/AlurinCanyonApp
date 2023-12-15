@@ -15,7 +15,7 @@ namespace MAUIMobileStarterKit.ViewModels
 
         public async void PushModalAsync(Page page)
         {
-            await navigation.PushModalAsync(page);
+            await navigation.PushModalAsync(page);  
         }
 
         public async void PushAsyncPage(Page page)

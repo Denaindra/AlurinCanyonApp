@@ -1,13 +1,16 @@
 using MAUIMobileStarterKit.Constant;
+using MAUIMobileStarterKit.ViewModels;
 
 namespace MAUIMobileStarterKit.Screens.HomePageScreens;
 
 public partial class SearchCanyonScreen : ContentView
 {
-	public SearchCanyonScreen()
+	public SearchCanyonScreen(HomePageViewModel viewModel)
 	{
 		InitializeComponent();
 		SetupUI();
+        BindingContext = viewModel;
+        viewModel.LoadCannoynDetails();
     }
 
 	private void SetupUI()

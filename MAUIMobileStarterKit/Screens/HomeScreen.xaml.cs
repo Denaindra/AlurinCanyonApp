@@ -6,16 +6,18 @@ namespace MAUIMobileStarterKit.Screens;
 
 public partial class HomeScreen : ContentPage
 {
-    
-    public HomeScreen()
+    private HomePageViewModel viewModel;
+    public HomeScreen(HomePageViewModel viewModel)
     {
         InitializeComponent();
+        this.viewModel = viewModel;
+        BindingContext = viewModel;
     }
   
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        childLayout.Children.Add(new SearchCanyonScreen());
+        childLayout.Children.Add(new SearchCanyonScreen(viewModel));
         search.HeightRequest = 30;
     }
     protected override bool OnBackButtonPressed()
@@ -38,13 +40,13 @@ public partial class HomeScreen : ContentPage
         {
             case 0:
                 backgroundInmage.Source = ImageSource.FromFile("backgroundvector2.png");
-                childLayout.Children.Add(new SearchCanyonScreen());
+                childLayout.Children.Add(new SearchCanyonScreen(viewModel));
                 break;
             case 1:
-                childLayout.Children.Add(new GoogleMapScreen());
+                childLayout.Children.Add(new GoogleMapScreen(viewModel));
                 break;
             case 2:
-                childLayout.Children.Add(new CanyonModificationScreen());
+                childLayout.Children.Add(new CanyonModificationScreen(viewModel));
                 backgroundInmage.Source = ImageSource.FromFile("backgroundvector7.png");
                 break;
         }
