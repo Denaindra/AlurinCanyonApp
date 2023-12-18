@@ -94,10 +94,12 @@
 	  <None Remove="Resources\Images\contactmail.png" />
 	  <None Remove="Resources\Images\corde.png" />
 	  <None Remove="Resources\Images\cotation.png" />
+	  <None Remove="Resources\Images\createcannyon.png" />
 	  <None Remove="Resources\Images\descenteActif.png" />
 	  <None Remove="Resources\Images\dropwater.png" />
 	  <None Remove="Resources\Images\home.png" />
 	  <None Remove="Resources\Images\info.png" />
+	  <None Remove="Resources\Images\language.png" />
 	  <None Remove="Resources\Images\logout.png" />
 	  <None Remove="Resources\Images\loupe.png" />
 	  <None Remove="Resources\Images\Marche.png" />
@@ -143,6 +145,12 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Screens\SecurityScreen.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Screens\SettingsScreen\CreateCannyonScreen.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Screens\SettingsScreen\MainSettingScreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

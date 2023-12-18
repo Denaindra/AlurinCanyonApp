@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUIMobileStarterKit.Screens.SettingsScreen.MainSettingScreen"
+             BackgroundColor="#1C3132">
+    <NavigationPage.TitleView>
+        <StackLayout VerticalOptions="Center">
+            <Label VerticalTextAlignment="Center" Text="Settings" TextColor="White" FontSize="Title" FontFamily="CabinBold"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <Grid>
+        <Image
+  x:Name="backgroundImage" Opacity=".2"
+  Source="backgroundvector4.png"
+  Aspect="AspectFill"
+  HorizontalOptions="Start"/>
+        <VerticalStackLayout Spacing="10" VerticalOptions="CenterAndExpand">
+            <Frame Padding="0" BorderColor="#D7A367" HasShadow="False" BackgroundColor="Transparent" HeightRequest="60" WidthRequest="200">
+                <Grid Padding="20,0,0,0"  RowDefinitions="*" ColumnDefinitions="Auto,*" HorizontalOptions="FillAndExpand" ColumnSpacing="10">
+                    <Image Grid.Row="0"  Grid.Column="0" Aspect="AspectFit" Source="language.png" HeightRequest="30"/>
+                    <Label Grid.Row="0"  Grid.Column="1" Text="Lanugae" FontSize="20" FontFamily="CabinBold" VerticalTextAlignment="Center"/>
+                </Grid>
+            </Frame>
+
+            <Frame Padding="0" BorderColor="#D7A367" HasShadow="False" BackgroundColor="Transparent" HeightRequest="60" WidthRequest="200">
+                <Grid Padding="20,0,0,0" RowDefinitions="*" ColumnDefinitions="Auto,*"  HorizontalOptions="FillAndExpand" ColumnSpacing="10">
+                    <Image Grid.Row="0"  Grid.Column="0" Aspect="AspectFit" Source="createcannyon.png" HeightRequest="30"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="Create Canyon" FontSize="20" FontFamily="CabinBold" VerticalTextAlignment="Center"/>
+                </Grid>
+            </Frame>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

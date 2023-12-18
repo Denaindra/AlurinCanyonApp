@@ -2,6 +2,7 @@
 using Maui.GoogleMaps.Hosting;
 using MAUIMobileStarterKit.Interface;
 using MAUIMobileStarterKit.Screens;
+using MAUIMobileStarterKit.Screens.SettingsScreen;
 using MAUIMobileStarterKit.Utilities;
 using MAUIMobileStarterKit.ViewModels;
 using Microsoft.Extensions.Logging;
@@ -50,6 +51,7 @@ public static class MauiProgram
         builder.Services.AddTransient<ContactUsPage>();
         builder.Services.AddTransient<InfoPage>();
         builder.Services.AddTransient<SecurityScreen>();
+        builder.Services.AddTransient<MainSettingScreen>();
 
         //ViewModels
         builder.Services.AddTransient<MainPageViewModels>();

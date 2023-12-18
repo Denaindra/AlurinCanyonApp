@@ -1,4 +1,5 @@
 ﻿using MAUIMobileStarterKit.Screens;
+using MAUIMobileStarterKit.Screens.SettingsScreen;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,12 +16,14 @@ namespace MAUIMobileStarterKit.ViewModels
         private readonly ContactUsPage contactUsPage;
         private readonly InfoPage infoPage;
         private readonly SecurityScreen securityScreen;
-        public DashBoardViewModel(HomeScreen homeScreen, ContactUsPage contactUsPage, InfoPage infoPage, SecurityScreen securityScreen)
+        private readonly MainSettingScreen mainSettingScreen;
+        public DashBoardViewModel(MainSettingScreen mainSettingScreen,HomeScreen homeScreen, ContactUsPage contactUsPage, InfoPage infoPage, SecurityScreen securityScreen)
         {
             this.homeScreen = homeScreen;
             this.contactUsPage = contactUsPage;
             this.infoPage = infoPage;
             this.securityScreen = securityScreen;
+            this.mainSettingScreen = mainSettingScreen;
         }
 
         public async Task<PermissionStatus> CheckAndRequestLocationPermission()
@@ -52,6 +55,9 @@ namespace MAUIMobileStarterKit.ViewModels
             {
                 case 0:
                     PushAsyncPage(homeScreen);
+                    break;
+                case 1:
+                    PushAsyncPage(mainSettingScreen);
                     break;
                 case 2:
                     PushAsyncPage(securityScreen);
