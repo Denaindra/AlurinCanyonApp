@@ -13,4 +13,17 @@ public partial class MainSettingScreen : ContentPage
         const double aspectRatio = 1600 / 1441.0; // Aspect ratio of the original image
         backgroundImage.WidthRequest = Math.Max(pageHeight * aspectRatio, pageWidth);
     }
+
+    private void LanugaeSelectedIndexChanged(object sender, EventArgs e)
+    {
+   
+    }
+
+    private void LanuageTapped(object sender, TappedEventArgs e)
+    {
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            picker.Focus();
+        });
+    }
 }
