@@ -1,10 +1,15 @@
+using MAUIMobileStarterKit.ViewModels;
+
 namespace MAUIMobileStarterKit.Screens.SettingsScreen;
 
 public partial class MainSettingScreen : ContentPage
 {
-	public MainSettingScreen()
+    private readonly SettingsViewModel viewModel;
+    public MainSettingScreen(SettingsViewModel viewModel)
 	{
 		InitializeComponent();
+        viewModel.navigation = Navigation;
+        this.viewModel = viewModel;
 	}
 
     protected override void OnSizeAllocated(double pageWidth, double pageHeight)
@@ -19,11 +24,21 @@ public partial class MainSettingScreen : ContentPage
    
     }
 
-    private void LanuageTapped(object sender, TappedEventArgs e)
+    private void SettingItemtapped(object sender, TappedEventArgs e)
     {
-        MainThread.BeginInvokeOnMainThread(() =>
+        var tappedParameter = (TappedEventArgs)e;
+        var parameter = Convert.ToInt32(tappedParameter.Parameter);
+
+        if (parameter == 0)
         {
-            picker.Focus();
-        });
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                picker.Focus();
+            });
+        }
+        else
+        {
+            viewModel.NavigationCannyonCreatePage();
+        }
     }
 }

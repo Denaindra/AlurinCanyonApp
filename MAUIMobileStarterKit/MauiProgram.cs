@@ -52,11 +52,12 @@ public static class MauiProgram
         builder.Services.AddTransient<InfoPage>();
         builder.Services.AddTransient<SecurityScreen>();
         builder.Services.AddTransient<MainSettingScreen>();
-
+        builder.Services.AddTransient<CreateCannyonScreen>();
         //ViewModels
         builder.Services.AddTransient<MainPageViewModels>();
         builder.Services.AddTransient<DashBoardViewModel>();
         builder.Services.AddTransient<HomePageViewModel>();
+        builder.Services.AddTransient<SettingsViewModel>();
 
         //Services
         builder.Services.AddSingleton<ILoading, Loading>();

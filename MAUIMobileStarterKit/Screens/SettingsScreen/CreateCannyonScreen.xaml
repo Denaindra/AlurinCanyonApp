@@ -2,11 +2,56 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUIMobileStarterKit.Screens.SettingsScreen.CreateCannyonScreen"
-             Title="CreateCannyonScreen">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+                xmlns:local="clr-namespace:MAUIMobileStarterKit.CustomViews">
+    <NavigationPage.TitleView>
+        <StackLayout VerticalOptions="Center">
+            <Label VerticalTextAlignment="Center" Text="Create Cannyon" TextColor="White" FontSize="Title" FontFamily="CabinBold"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <Grid>
+        <Image
+  x:Name="backgroundImage" Opacity=".2"
+  Source="backgroundvector4.png"
+  Aspect="AspectFill"
+  HorizontalOptions="Start"/>
+        <ScrollView Padding="10"> 
+    <VerticalStackLayout Spacing="20">
+        <local:FlatingLabel Title="Name" />
+        <local:FlatingLabel Title="Country" />
+        <local:FlatingLabel Title="Region" />
+        <local:FlatingLabel Title="State" />
+        <local:FlatingLabel Title="Mountain" />
+        <local:FlatingLabel Title="Basin" />
+        <local:FlatingLabel Title="City" />
+        <local:FlatingLabel Title="River" />
+        <local:FlatingLabel Title="Rating" Keyboard="Numeric" Text="/4"/>
+        <local:FlatingLabel Title="Start Altitude" Keyboard="Numeric" Text="m*" />
+        <local:FlatingLabel Title="Elevation" Keyboard="Numeric" Text="m"/>
+        <local:FlatingLabel Title="Canyon Length" Keyboard="Numeric" Text="m*"/>
+        <local:FlatingLabel Title="Max Waterfall" Keyboard="Numeric" Text="m*"/>
+        <local:FlatingLabel Title="Difficulty Scale" />
+        <local:FlatingLabel Title="Rope" Keyboard="Numeric" Text="*" />
+            <local:FlatingLabel Title="Approach" Text="*"/>
+            <local:FlatingLabel Title="Descent" Text="*"/>
+            <local:FlatingLabel Title="Return Trip" Text="*"/>
+            <local:FlatingLabel Title="Shuttle" Keyboard="Numeric" Text="km"/>
+        <local:FlatingLabel Title="Source" />
+            <local:FlatingLabel Title="Creator" Text="*"/>
+                <Button Text="Add Coordinate" FontFamily="CabinBold" BackgroundColor="#D7A367" CornerRadius="20" TextColor="White" FontSize="15"/>
+        <Frame>
+            <StackLayout>
+                
+            </StackLayout>
+        </Frame>
+                <Button Text="Add Description" FontFamily="CabinBold" BackgroundColor="#D7A367" CornerRadius="20" TextColor="White" FontSize="15" />
+        <Frame>
+            <StackLayout>
+                
+            </StackLayout>
+        </Frame>
+                <Button Text="Save Canyon" FontFamily="CabinBold" BackgroundColor="#D7A367" CornerRadius="20" TextColor="White" FontSize="15"/>
     </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
 </ContentPage>

@@ -21,8 +21,7 @@
                     <Label Grid.Row="0"  Grid.Column="1" Text="Lanugae" FontSize="20" FontFamily="CabinBold" VerticalTextAlignment="Center"/>
                 </Grid>
                 <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="LanuageTapped"
-                              NumberOfTapsRequired="1" />
+                    <TapGestureRecognizer Tapped="SettingItemtapped" CommandParameter="0" />
                 </Frame.GestureRecognizers>
             </Frame>
 
@@ -31,18 +30,22 @@
                     <Image Grid.Row="0"  Grid.Column="0" Aspect="AspectFit" Source="createcannyon.png" HeightRequest="30"/>
                     <Label Grid.Row="0" Grid.Column="1" Text="Create Canyon" FontSize="20" FontFamily="CabinBold" VerticalTextAlignment="Center"/>
                 </Grid>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="SettingItemtapped" CommandParameter="1" />
+                </Frame.GestureRecognizers>
             </Frame>
-        </VerticalStackLayout>
-        <Picker x:Name="picker" Opacity="0" SelectedIndexChanged="LanugaeSelectedIndexChanged"
+            <Picker x:Name="picker" Opacity="0" SelectedIndexChanged="LanugaeSelectedIndexChanged"
   Title="Select a Lanuage">
-            <Picker.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>English (en)</x:String>
-                    <x:String>French (fr)</x:String>
-                    <x:String>Italian (It)</x:String>
-                    <x:String>Spanish (es)</x:String>
-                </x:Array>
-            </Picker.ItemsSource>
-        </Picker>
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>English (en)</x:String>
+                        <x:String>French (fr)</x:String>
+                        <x:String>Italian (It)</x:String>
+                        <x:String>Spanish (es)</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+        </VerticalStackLayout>
+
     </Grid>
 </ContentPage>
