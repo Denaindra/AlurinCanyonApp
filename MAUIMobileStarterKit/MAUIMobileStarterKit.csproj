@@ -35,7 +35,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.png" BaseSize="128,128" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
@@ -73,10 +73,12 @@
 
 	<ItemGroup>
 	  <None Remove="Interface\" />
+	  <None Remove="Resources\AppIcon\appIcon.png" />
 	  <None Remove="Resources\Fonts\Cabin-Bold.ttf" />
 	  <None Remove="Resources\Fonts\Cabin-Regular.ttf" />
 	  <None Remove="Resources\Fonts\VinaSans-Regular.ttf" />
 	  <None Remove="Resources\Images\address.png" />
+	  <None Remove="Resources\Images\appIconimg.png" />
 	  <None Remove="Resources\Images\backgroundvector1.png" />
 	  <None Remove="Resources\Images\backgroundvector2.png" />
 	  <None Remove="Resources\Images\backgroundvector3.png" />
@@ -118,6 +120,9 @@
 	  <Folder Include="Utilities\" />
 	</ItemGroup>
 	<ItemGroup>
+	  <MauiIcon Include="Resources\AppIcon\appIcon.png" />
+	</ItemGroup>
+	<ItemGroup>
 	  <Compile Update="Screens\HomeScreen.xaml.cs">
 	    <DependentUpon>HomeScreen.xaml</DependentUpon>
 	  </Compile>
@@ -130,6 +135,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Screens\DashBoardScreen.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Screens\FlyoutPanelScreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Screens\HomePageScreens\CanyonModificationScreen.xaml">

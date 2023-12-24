@@ -53,6 +53,8 @@ public static class MauiProgram
         builder.Services.AddTransient<SecurityScreen>();
         builder.Services.AddTransient<MainSettingScreen>();
         builder.Services.AddTransient<CreateCannyonScreen>();
+        builder.Services.AddSingleton<FlyoutPanelScreen>();
+
         //ViewModels
         builder.Services.AddTransient<MainPageViewModels>();
         builder.Services.AddTransient<DashBoardViewModel>();
