@@ -13,9 +13,6 @@
     <MauiXaml Update="Screens\ContactUsPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="Screens\DashBoardScreen.xaml">
-      <SubType>Designer</SubType>
-    </MauiXaml>
     <MauiXaml Update="Screens\FlyoutPanelScreen.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>

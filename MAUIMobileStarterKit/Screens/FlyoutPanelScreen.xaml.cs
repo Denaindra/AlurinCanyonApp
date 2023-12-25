@@ -4,38 +4,40 @@ using MAUIMobileStarterKit.ViewModels;
 
 namespace MAUIMobileStarterKit.Screens;
 
-public partial class DashBoardScreen : ContentPage
+public partial class FlyoutPanelScreen : FlyoutPage
 {
-	private DashBoardViewModel viewModel;
-	public DashBoardScreen(DashBoardViewModel viewModel)
+    private DashBoardViewModel dashBoard;
+    private HomeScreen homescreen;
+	public FlyoutPanelScreen(DashBoardViewModel dashBoard, HomeScreen homescreen)
 	{
 		InitializeComponent();
-		viewModel.navigation = Navigation;
-		this.viewModel = viewModel;
-	}
+        this.dashBoard = dashBoard;
+        this.homescreen = homescreen;
+        LoadInitialPage();
+    }
 
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        var results = await viewModel.CheckAndRequestLocationPermission();
-    }
-    protected override void OnSizeAllocated(double width, double height)
-    {
-        Constans.DeviceHeight = height;
-        base.OnSizeAllocated(width, height);
+        var results = await dashBoard.CheckAndRequestLocationPermission();
     }
     private async void DashBoardItemTapped(object sender, TappedEventArgs e)
     {
         var tappedParameter = (TappedEventArgs)e;
         var parameter = Convert.ToInt32(tappedParameter.Parameter);
-        if(parameter == 5)
+        if (parameter == 5)
         {
             bool answer = await DisplayAlert("Logout", "Would you like to Logout from the App ?", "Yes", "No");
         }
         else
         {
-            viewModel.PageNavigationSteup(parameter);
+            dashBoard.PageNavigationSteup(parameter);
         }
 
+    }
+    private void LoadInitialPage()
+    {
+        Detail = homescreen;
+        IsPresented = false;
     }
 }

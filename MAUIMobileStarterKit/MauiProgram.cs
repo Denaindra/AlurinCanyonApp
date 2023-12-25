@@ -2,6 +2,7 @@
 using Maui.GoogleMaps.Hosting;
 using MAUIMobileStarterKit.Interface;
 using MAUIMobileStarterKit.Screens;
+using MAUIMobileStarterKit.Screens.HomePageScreens;
 using MAUIMobileStarterKit.Screens.SettingsScreen;
 using MAUIMobileStarterKit.Utilities;
 using MAUIMobileStarterKit.ViewModels;
@@ -46,14 +47,13 @@ public static class MauiProgram
             });
 
         //Views
-        builder.Services.AddTransient<HomeScreen>();
-        builder.Services.AddTransient<DashBoardScreen>();
         builder.Services.AddTransient<ContactUsPage>();
         builder.Services.AddTransient<InfoPage>();
         builder.Services.AddTransient<SecurityScreen>();
         builder.Services.AddTransient<MainSettingScreen>();
         builder.Services.AddTransient<CreateCannyonScreen>();
         builder.Services.AddSingleton<FlyoutPanelScreen>();
+        builder.Services.AddTransient<HomeScreen>();
 
         //ViewModels
         builder.Services.AddTransient<MainPageViewModels>();

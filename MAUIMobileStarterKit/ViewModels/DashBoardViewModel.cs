@@ -12,14 +12,14 @@ namespace MAUIMobileStarterKit.ViewModels
 
     public class DashBoardViewModel:BaseViewModel
     {
-        private readonly HomeScreen homeScreen;
+  
         private readonly ContactUsPage contactUsPage;
         private readonly InfoPage infoPage;
         private readonly SecurityScreen securityScreen;
         private readonly MainSettingScreen mainSettingScreen;
-        public DashBoardViewModel(MainSettingScreen mainSettingScreen,HomeScreen homeScreen, ContactUsPage contactUsPage, InfoPage infoPage, SecurityScreen securityScreen)
+        public DashBoardViewModel(MainSettingScreen mainSettingScreen, ContactUsPage contactUsPage, InfoPage infoPage, SecurityScreen securityScreen)
         {
-            this.homeScreen = homeScreen;
+        
             this.contactUsPage = contactUsPage;
             this.infoPage = infoPage;
             this.securityScreen = securityScreen;
@@ -54,7 +54,7 @@ namespace MAUIMobileStarterKit.ViewModels
             switch (index)
             {
                 case 0:
-                    PushAsyncPage(homeScreen);
+                   // PushAsyncPage(homeScreen);
                     break;
                 case 1:
                     PushAsyncPage(mainSettingScreen);

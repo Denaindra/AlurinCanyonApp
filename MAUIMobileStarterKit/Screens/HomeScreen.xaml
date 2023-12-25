@@ -2,38 +2,44 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUIMobileStarterKit.Screens.HomeScreen"
-             BackgroundColor="#1C3132">
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#CAF0F8">
     <NavigationPage.TitleView>
         <StackLayout VerticalOptions="Center">
             <Label VerticalTextAlignment="Center" Text="Home" TextColor="White" FontSize="Title" FontFamily="CabinBold"/>
         </StackLayout>
     </NavigationPage.TitleView>
     <AbsoluteLayout>
-        <Image Opacity=".1" x:Name="backgroundInmage"
-  Source="backgroundvector1.png"
-  Aspect="AspectFill"
-  AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="SizeProportional"
-  HorizontalOptions="StartAndExpand"/>
 
-        <StackLayout x:Name="childLayout"   AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="SizeProportional" />
-        <Frame WidthRequest="250" HeightRequest="70" BorderColor="Transparent" CornerRadius="20" BackgroundColor="#D7A367" Padding="10,15,10,15" AbsoluteLayout.LayoutBounds="0.5, 0.99, -1,-1" AbsoluteLayout.LayoutFlags="PositionProportional" >
-            <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Spacing="50" >
-                <Image x:Name="search" Source="loupe.png" Aspect="AspectFit" HeightRequest="20">
-                    <Image.GestureRecognizers>
+        <StackLayout x:Name="childLayout"  AbsoluteLayout.LayoutBounds="0,70,1,1" AbsoluteLayout.LayoutFlags="SizeProportional" />
+        <Frame Padding="0"  HeightRequest="70" BorderColor="Transparent" CornerRadius="5" 
+               BackgroundColor="#0077B6"  AbsoluteLayout.LayoutBounds="0.5, 0.275, .98,-1" 
+               AbsoluteLayout.LayoutFlags="All" >
+            <Grid RowDefinitions="*" ColumnDefinitions="*,*,*" HorizontalOptions="FillAndExpand"  >
+                <VerticalStackLayout VerticalOptions="Center" Grid.Row="0" Grid.Column="0" Spacing="0">
+                    <Image x:Name="search" Source="loupe.png" Aspect="AspectFit" HeightRequest="20" />
+                    <Label x:Name="searchLabel" Text="Search" FontFamily="CabinRegular" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="10"/>
+                    <VerticalStackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnTapGestureRecognizerTapped" CommandParameter="0" />
-                    </Image.GestureRecognizers>
-                </Image>
-                <Image x:Name="map"  Source="address.png" Aspect="AspectFit" HeightRequest="20">
-                    <Image.GestureRecognizers>
+                    </VerticalStackLayout.GestureRecognizers>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Row="0" Grid.Column="1" VerticalOptions="CenterAndExpand">
+                    <Image x:Name="map"  Source="address.png" Aspect="AspectFit" HeightRequest="20" />
+                    <Label x:Name="mapLabel" Text="Map" FontFamily="CabinRegular" FontSize="10" HorizontalTextAlignment="Center"/>
+                    <VerticalStackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnTapGestureRecognizerTapped" CommandParameter="1" />
-                    </Image.GestureRecognizers>
-                </Image>
-                <Image x:Name="clock"  Source="clock.png" Aspect="AspectFit" HeightRequest="20">
-                    <Image.GestureRecognizers>
+                    </VerticalStackLayout.GestureRecognizers>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Row="0" Grid.Column="2" VerticalOptions="CenterAndExpand">
+                    <Image x:Name="clock"  Source="clock.png" Aspect="AspectFit" HeightRequest="20" />
+                    <Label x:Name="clockLabel" Text="Modify" FontFamily="CabinRegular" FontSize="10" HorizontalTextAlignment="Center"/>
+                    <VerticalStackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnTapGestureRecognizerTapped" CommandParameter="2" />
-                    </Image.GestureRecognizers>
-                </Image>
-            </HorizontalStackLayout>
+                    </VerticalStackLayout.GestureRecognizers>
+                </VerticalStackLayout>
+            </Grid>
         </Frame>
     </AbsoluteLayout>
 

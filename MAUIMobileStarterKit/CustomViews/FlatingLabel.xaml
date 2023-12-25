@@ -17,14 +17,14 @@
                    Keyboard="{Binding Keyboard, Source={x:Reference this}}"
                    MaxLength="{Binding MaxLength,Source={x:Reference this}}"
                    Unfocused="Handle_Unfocused" 
-                   TextColor="White"
+                   TextColor="#03045E"
                    Focused="Handle_Focused">
                 </local:NoUnderlineEntry>
-                <BoxView HeightRequest=".5" BackgroundColor="#D7A367" Opacity=".2" HorizontalOptions="FillAndExpand" />
+                <BoxView HeightRequest=".5" BackgroundColor="#0077B6"  HorizontalOptions="FillAndExpand" />
 
             </VerticalStackLayout>
             <Label x:Name="LabelTitle"  FontFamily="CabinBold"
-                   Text="{Binding Title, Source={x:Reference this}}"  TextColor="White" Opacity=".5" VerticalOptions="Center"/>
+                   Text="{Binding Title, Source={x:Reference this}}"  TextColor="#03045E"  VerticalOptions="Center"/>
 
         </Grid>
     </ContentView.Content>

@@ -45,7 +45,6 @@ namespace MAUIMobileStarterKit.ViewModels
                 NotifyPropertyChanged(nameof(TophoroGraphyList));
             }
         }
-
         public ObservableCollection<CommentModel> Comments
         {
             get
@@ -84,7 +83,6 @@ namespace MAUIMobileStarterKit.ViewModels
                 loading.EndIndiCator();
             }
         }
-
         public void LoadCommentDetails()
         {
             try
@@ -121,6 +119,10 @@ namespace MAUIMobileStarterKit.ViewModels
             }
         }
 
+        public ILoading GetLoading()
+        {
+            return loading;
+        }
         public void TopographyDetails()
         {
             try
