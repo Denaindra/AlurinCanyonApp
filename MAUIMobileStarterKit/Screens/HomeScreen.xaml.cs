@@ -46,19 +46,19 @@ public partial class HomeScreen : ContentPage
                 search.HeightRequest = 30;
                 searchLabel.FontSize = 17;
                 searchLabel.FontAttributes = FontAttributes.Bold;
-                //childLayout.Children.Add(new SearchCanyonScreen(viewModel));
+                childLayout.Children.Add(new SearchCanyonScreen(viewModel));
                 break;
             case 1:
                 map.HeightRequest = 30;
                 mapLabel.FontSize = 17;
                 mapLabel.FontAttributes = FontAttributes.Bold;
-               // childLayout.Children.Add(new GoogleMapScreen(viewModel));
+                childLayout.Children.Add(new GoogleMapScreen(viewModel));
                 break;
             case 2:
                 clock.HeightRequest = 30;
                 clockLabel.FontAttributes = FontAttributes.Bold;
                 clockLabel.FontSize = 17;
-               // childLayout.Children.Add(new CanyonModificationScreen(viewModel));
+                childLayout.Children.Add(new CanyonModificationScreen(viewModel));
 
                 break;
         }
