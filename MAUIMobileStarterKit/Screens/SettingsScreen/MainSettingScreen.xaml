@@ -2,50 +2,44 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUIMobileStarterKit.Screens.SettingsScreen.MainSettingScreen"
-             BackgroundColor="#1C3132">
-    <NavigationPage.TitleView>
-        <StackLayout VerticalOptions="Center">
-            <Label VerticalTextAlignment="Center" Text="Settings" TextColor="White" FontSize="Title" FontFamily="CabinBold"/>
-        </StackLayout>
-    </NavigationPage.TitleView>
-    <Grid>
-        <Image
-  x:Name="backgroundImage" Opacity=".2"
-  Source="backgroundvector4.png"
-  Aspect="AspectFill"
-  HorizontalOptions="Start"/>
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#CAF0F8">
+    <StackLayout>
+        <HorizontalStackLayout Padding="10,10,0,0" Spacing="40" AbsoluteLayout.LayoutBounds="0, 0, 70,70"  AbsoluteLayout.LayoutFlags="PositionProportional" >
+            <ImageButton Source="burgerbar.png" Aspect="AspectFit" HeightRequest="30" VerticalOptions="Center" Clicked="MenueClicked" />
+        </HorizontalStackLayout>
         <VerticalStackLayout Spacing="10" VerticalOptions="CenterAndExpand">
-            <Frame Padding="0" BorderColor="#D7A367" HasShadow="False" BackgroundColor="Transparent" HeightRequest="60" WidthRequest="200">
-                <Grid Padding="20,0,0,0"  RowDefinitions="*" ColumnDefinitions="Auto,*" HorizontalOptions="FillAndExpand" ColumnSpacing="10">
-                    <Image Grid.Row="0"  Grid.Column="0" Aspect="AspectFit" Source="language.png" HeightRequest="30"/>
-                    <Label Grid.Row="0"  Grid.Column="1" Text="Lanugae" FontSize="20" FontFamily="CabinBold" VerticalTextAlignment="Center"/>
-                </Grid>
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="SettingItemtapped" CommandParameter="0" />
-                </Frame.GestureRecognizers>
-            </Frame>
 
-            <Frame Padding="0" BorderColor="#D7A367" HasShadow="False" BackgroundColor="Transparent" HeightRequest="60" WidthRequest="200">
-                <Grid Padding="20,0,0,0" RowDefinitions="*" ColumnDefinitions="Auto,*"  HorizontalOptions="FillAndExpand" ColumnSpacing="10">
-                    <Image Grid.Row="0"  Grid.Column="0" Aspect="AspectFit" Source="createcannyon.png" HeightRequest="30"/>
-                    <Label Grid.Row="0" Grid.Column="1" Text="Create Canyon" FontSize="20" FontFamily="CabinBold" VerticalTextAlignment="Center"/>
-                </Grid>
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="SettingItemtapped" CommandParameter="1" />
-                </Frame.GestureRecognizers>
-            </Frame>
-            <Picker x:Name="picker" Opacity="0" SelectedIndexChanged="LanugaeSelectedIndexChanged"
+            <Frame Padding="0" BorderColor="#CAF0F8" HasShadow="False" BackgroundColor="#00B4D8" HeightRequest="60" WidthRequest="200">
+            <Grid Padding="20,0,0,0"  RowDefinitions="*" ColumnDefinitions="Auto,*" HorizontalOptions="FillAndExpand" ColumnSpacing="10">
+                <Image Grid.Row="0"  Grid.Column="0" Aspect="AspectFit" Source="language.png" HeightRequest="30"/>
+                <Label Grid.Row="0"  Grid.Column="1" Text="Lanugae" FontSize="20" FontFamily="CabinBold" VerticalTextAlignment="Center"/>
+            </Grid>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="SettingItemtapped" CommandParameter="0" />
+            </Frame.GestureRecognizers>
+        </Frame>
+
+            <Frame Padding="0" BorderColor="#CAF0F8" HasShadow="False" BackgroundColor="#00B4D8" HeightRequest="60" WidthRequest="200">
+            <Grid Padding="20,0,0,0" RowDefinitions="*" ColumnDefinitions="Auto,*"  HorizontalOptions="FillAndExpand" ColumnSpacing="10">
+                <Image Grid.Row="0"  Grid.Column="0" Aspect="AspectFit" Source="createcannyon.png" HeightRequest="30"/>
+                <Label Grid.Row="0" Grid.Column="1" Text="Create Canyon" FontSize="20" FontFamily="CabinBold" VerticalTextAlignment="Center"/>
+            </Grid>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="SettingItemtapped" CommandParameter="1" />
+            </Frame.GestureRecognizers>
+        </Frame>
+        <Picker x:Name="picker" Opacity="0" SelectedIndexChanged="LanugaeSelectedIndexChanged"
   Title="Select a Lanuage">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>English (en)</x:String>
-                        <x:String>French (fr)</x:String>
-                        <x:String>Italian (It)</x:String>
-                        <x:String>Spanish (es)</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
-        </VerticalStackLayout>
-
-    </Grid>
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>English (en)</x:String>
+                    <x:String>French (fr)</x:String>
+                    <x:String>Italian (It)</x:String>
+                    <x:String>Spanish (es)</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+    </VerticalStackLayout>
+    </StackLayout>
 </ContentPage>

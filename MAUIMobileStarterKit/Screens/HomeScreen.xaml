@@ -2,18 +2,16 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUIMobileStarterKit.Screens.HomeScreen"
+             Title="Home page"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="#CAF0F8">
-    <NavigationPage.TitleView>
-        <StackLayout VerticalOptions="Center">
-            <Label VerticalTextAlignment="Center" Text="Home" TextColor="White" FontSize="Title" FontFamily="CabinBold"/>
-        </StackLayout>
-    </NavigationPage.TitleView>
     <AbsoluteLayout>
-
-        <StackLayout x:Name="childLayout"  AbsoluteLayout.LayoutBounds="0,70,1,1" AbsoluteLayout.LayoutFlags="SizeProportional" />
+        <StackLayout x:Name="childLayout"  AbsoluteLayout.LayoutBounds="0,125,1,1" AbsoluteLayout.LayoutFlags="SizeProportional" />
+        <HorizontalStackLayout Padding="10,0,0,0" Spacing="40" AbsoluteLayout.LayoutBounds="0, 0, 70,70"  AbsoluteLayout.LayoutFlags="PositionProportional" >
+            <ImageButton Source="burgerbar.png" Aspect="AspectFit" HeightRequest="30" VerticalOptions="Center" Clicked="ImageButton_Clicked" />
+        </HorizontalStackLayout>
         <Frame Padding="0"  HeightRequest="70" BorderColor="Transparent" CornerRadius="5" 
-               BackgroundColor="#0077B6"  AbsoluteLayout.LayoutBounds="0.5, 0.275, .98,-1" 
+               BackgroundColor="#0077B6"  AbsoluteLayout.LayoutBounds="0.5, 0.31, .98,-1" 
                AbsoluteLayout.LayoutFlags="All" >
             <Grid RowDefinitions="*" ColumnDefinitions="*,*,*" HorizontalOptions="FillAndExpand"  >
                 <VerticalStackLayout VerticalOptions="Center" Grid.Row="0" Grid.Column="0" Spacing="0">

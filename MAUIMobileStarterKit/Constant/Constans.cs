@@ -10,5 +10,6 @@ namespace MAUIMobileStarterKit.Constant
     {
         public static double DeviceHeight;
         public static double DeviceWidth;
+        public static FlyoutPage flyoutPage;
     }
 }

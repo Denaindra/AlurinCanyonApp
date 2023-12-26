@@ -76,8 +76,6 @@
                                         <Label Grid.Row="2" Grid.Column="1"  HorizontalTextAlignment="Start" TextColor="#03045E" FontFamily="CabinBold" FontSize="15" VerticalOptions="CenterAndExpand" Text="{Binding Type}" />
                                         <Label HorizontalTextAlignment="Start" TextColor="#03045E" FontFamily="CabinRegular" FontSize="15" FontAttributes="Italic" VerticalOptions="CenterAndExpand" Text="Created By -" Grid.Row="3" Grid.Column="0" />
                                         <Label HorizontalTextAlignment="Start" TextColor="#03045E" FontFamily="CabinBold" FontSize="15" VerticalOptions="CenterAndExpand" Text="{Binding CreatedBy}" Grid.Row="3" Grid.Column="1" />
-
-
                                     </Grid>
                                 </Frame>
                             </StackLayout>

@@ -17,13 +17,14 @@ namespace MAUIMobileStarterKit.ViewModels
         private readonly InfoPage infoPage;
         private readonly SecurityScreen securityScreen;
         private readonly MainSettingScreen mainSettingScreen;
-        public DashBoardViewModel(MainSettingScreen mainSettingScreen, ContactUsPage contactUsPage, InfoPage infoPage, SecurityScreen securityScreen)
+        private readonly HomeScreen homeScreen;
+        public DashBoardViewModel(HomeScreen homeScreen,MainSettingScreen mainSettingScreen, ContactUsPage contactUsPage, InfoPage infoPage, SecurityScreen securityScreen)
         {
-        
             this.contactUsPage = contactUsPage;
             this.infoPage = infoPage;
             this.securityScreen = securityScreen;
             this.mainSettingScreen = mainSettingScreen;
+            this.homeScreen = homeScreen;
         }
 
         public async Task<PermissionStatus> CheckAndRequestLocationPermission()
@@ -49,30 +50,29 @@ namespace MAUIMobileStarterKit.ViewModels
 
             return status;
         }
-        public void PageNavigationSteup(int index)
+        public Page PageNavigationSteup(int index)
         {
-            switch (index)
+            if(index == 0)
             {
-                case 0:
-                   // PushAsyncPage(homeScreen);
-                    break;
-                case 1:
-                    PushAsyncPage(mainSettingScreen);
-                    break;
-                case 2:
-                    PushAsyncPage(securityScreen);
-                    break;
-                case 3:
-                    PushAsyncPage(contactUsPage);
-                    break;
-                case 4:
-                    PushAsyncPage(infoPage);
-                    break;
-                default:
-                    
-                    break;
+                return homeScreen;
             }
-
+            else if(index == 1)
+            {
+                return mainSettingScreen;
+            }
+            else if (index == 2)
+            {
+                return securityScreen;
+            }
+            else if (index == 3) 
+            {
+                return contactUsPage;
+            }
+            else if(index==4)
+            {
+                return infoPage;
+            }
+            return homeScreen;
         }
     }
 }

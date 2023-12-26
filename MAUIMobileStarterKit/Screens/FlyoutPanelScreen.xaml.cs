@@ -7,12 +7,14 @@ namespace MAUIMobileStarterKit.Screens;
 public partial class FlyoutPanelScreen : FlyoutPage
 {
     private DashBoardViewModel dashBoard;
-    private HomeScreen homescreen;
-	public FlyoutPanelScreen(DashBoardViewModel dashBoard, HomeScreen homescreen)
+    private Page homescreen;
+	public FlyoutPanelScreen(DashBoardViewModel dashBoard)
 	{
 		InitializeComponent();
         this.dashBoard = dashBoard;
-        this.homescreen = homescreen;
+        this.homescreen = dashBoard.PageNavigationSteup(0);
+        dashBoard.navigation = Navigation;
+        Constans.flyoutPage = this;
         LoadInitialPage();
     }
 
@@ -31,7 +33,7 @@ public partial class FlyoutPanelScreen : FlyoutPage
         }
         else
         {
-            dashBoard.PageNavigationSteup(parameter);
+            Detail = new NavigationPage(dashBoard.PageNavigationSteup(parameter));
         }
 
     }
