@@ -2,41 +2,37 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUIMobileStarterKit.Screens.InfoPage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#CAF0F8"
              Title="InfoPage">
-    <NavigationPage.TitleView>
-        <StackLayout VerticalOptions="Center">
-            <Label VerticalTextAlignment="Center" Text="Info" TextColor="White" FontSize="Title" FontFamily="CabinBold"/>
-        </StackLayout>
-    </NavigationPage.TitleView>
     <AbsoluteLayout>
-        <Image Opacity=".5"
-            Source="backgroundvector5.png"
-            Aspect="AspectFill"
-            AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="SizeProportional"
-            HorizontalOptions="StartAndExpand"/>
         <StackLayout Padding="10" Spacing="10" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="SizeProportional" >
-            <Label Text="Legend of the Canyons Map" HorizontalTextAlignment="Start" FontFamily="VinaSansRegular" FontSize="35" />
+            <StackLayout VerticalOptions="Center" HorizontalOptions="StartAndExpand"  Orientation="Horizontal">
+                <ImageButton Source="burgerbar.png" Aspect="AspectFit" HeightRequest="30" VerticalOptions="Center" />
+                <Label Text="Legend of the Canyons Map"  FontFamily="VinaSansRegular" FontSize="35" WidthRequest="300" />
+            </StackLayout>
+
             <Grid RowDefinitions="*,*,*,*,*" ColumnDefinitions="*,Auto" RowSpacing="10" Margin="0,50,0,0">
-                <Label  Text="Very beautiful Canyon" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="0" />
+                <Label TextColor="#0077B6" Text="Very beautiful Canyon" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="0" />
                 <Image Source="canyonbleu.png" HorizontalOptions="Start" Aspect="AspectFill" HeightRequest="50" Grid.Row="0" Grid.Column="1"/>
 
-                <Label Text="Beautiful Canyon" VerticalTextAlignment="Center"  HorizontalTextAlignment="Start" Grid.Row="1" Grid.Column="0" />
+                <Label TextColor="#0077B6" Text="Beautiful Canyon" VerticalTextAlignment="Center"  HorizontalTextAlignment="Start" Grid.Row="1" Grid.Column="0" />
                 <Image Source="beautifulcanyonvert.png" Aspect="AspectFill" HeightRequest="50" Grid.Row="1" Grid.Column="1"/>
 
-                <Label Text="Normal Canyon" VerticalTextAlignment="Center"  HorizontalTextAlignment="Start" Grid.Row="2" Grid.Column="0" />
+                <Label TextColor="#0077B6" Text="Normal Canyon" VerticalTextAlignment="Center"  HorizontalTextAlignment="Start" Grid.Row="2" Grid.Column="0" />
                 <Image Source="canyonjaune.png" Aspect="AspectFill" HeightRequest="50" Grid.Row="2" Grid.Column="1"/>
 
-                <Label Text="Not Very Cool Canyon" VerticalTextAlignment="Center"  HorizontalTextAlignment="Start" Grid.Row="3" Grid.Column="0" />
+                <Label TextColor="#0077B6" Text="Not Very Cool Canyon" VerticalTextAlignment="Center"  HorizontalTextAlignment="Start" Grid.Row="3" Grid.Column="0" />
                 <Image Source="canyonbrun.png" Aspect="AspectFill" HeightRequest="50" Grid.Row="3" Grid.Column="1"/>
 
-                <Label Text="Close or No information" VerticalTextAlignment="Center"  HorizontalTextAlignment="Start" Grid.Row="4" Grid.Column="0" />
+                <Label TextColor="#0077B6" Text="Close or No information" VerticalTextAlignment="Center"  HorizontalTextAlignment="Start" Grid.Row="4" Grid.Column="0" />
                 <Image Source="canyonnull.png" Aspect="AspectFill" HeightRequest="50" Grid.Row="4" Grid.Column="1"/>
             </Grid>
-            <Label FontSize="Default" Text="Most of Data of this App come from https://www.descente-canyon.com/, don't hesitate to visit this website, check comments and buy some books." HorizontalTextAlignment="Center" FontFamily="CabinBold"  />
-            <Label FontSize="20" Text="This App is Free.... Thanks for your support" HorizontalTextAlignment="Center" FontFamily="CabinRegular"  />
+            <Label TextColor="#0077B6" FontSize="Default" Text="Most of Data of this App come from https://www.descente-canyon.com/, don't hesitate to visit this website, check comments and buy some books." HorizontalTextAlignment="Center" FontFamily="CabinBold"  />
+            <Label TextColor="#03045E" FontSize="20" Text="This App is Free.... Thanks for your support" HorizontalTextAlignment="Center" FontFamily="CabinRegular"  />
             <VerticalStackLayout Spacing="-10">
                 <ImageButton ToolTipProperties.Text="Play with paypal"  Source="paypal.png" Aspect="AspectFill"  HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"/>
-                <Label FontSize="20" Text="Make a gift with Paypal" HorizontalTextAlignment="Center" FontFamily="CabinRegular"  />
+                <Label TextColor="#03045E" FontSize="20" Text="Make a gift with Paypal" HorizontalTextAlignment="Center" FontFamily="CabinRegular"  />
             </VerticalStackLayout>
         </StackLayout>
     </AbsoluteLayout>

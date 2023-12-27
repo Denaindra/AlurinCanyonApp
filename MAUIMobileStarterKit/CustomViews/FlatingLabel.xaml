@@ -20,7 +20,7 @@
                    TextColor="#03045E"
                    Focused="Handle_Focused">
                 </local:NoUnderlineEntry>
-                <BoxView HeightRequest=".5" BackgroundColor="#0077B6"  HorizontalOptions="FillAndExpand" />
+                <BoxView HeightRequest=".5" Color="#0077B6"  HorizontalOptions="FillAndExpand" />
 
             </VerticalStackLayout>
             <Label x:Name="LabelTitle"  FontFamily="CabinBold"

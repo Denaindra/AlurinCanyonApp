@@ -5,8 +5,10 @@
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="#CAF0F8">
     <StackLayout>
-        <HorizontalStackLayout Padding="10,10,0,0" Spacing="40" AbsoluteLayout.LayoutBounds="0, 0, 70,70"  AbsoluteLayout.LayoutFlags="PositionProportional" >
+        <HorizontalStackLayout Padding="10,10,0,0"  AbsoluteLayout.LayoutBounds="0, 0, 70,70"  AbsoluteLayout.LayoutFlags="PositionProportional" >
             <ImageButton Source="burgerbar.png" Aspect="AspectFit" HeightRequest="30" VerticalOptions="Center" Clicked="MenueClicked" />
+            <Label Text="Settings" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontFamily="VinaSansRegular" FontSize="35" />
+
         </HorizontalStackLayout>
         <VerticalStackLayout Spacing="10" VerticalOptions="CenterAndExpand">
 

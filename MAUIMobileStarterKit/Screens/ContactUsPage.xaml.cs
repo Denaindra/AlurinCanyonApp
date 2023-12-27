@@ -6,4 +6,9 @@ public partial class ContactUsPage : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private void SlideNavigationClicked(object sender, EventArgs e)
+    {
+
+    }
 }

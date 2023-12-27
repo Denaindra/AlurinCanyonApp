@@ -2,22 +2,15 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MAUIMobileStarterKit.CustomViews"
-             BackgroundColor="#1C3132"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#CAF0F8"
              x:Class="MAUIMobileStarterKit.Screens.ContactUsPage">
-    <NavigationPage.TitleView>
-        <StackLayout VerticalOptions="Center">
-            <Label VerticalTextAlignment="Center" Text="Contact us" TextColor="White" FontSize="Title" FontFamily="CabinBold"/>
-        </StackLayout>
-    </NavigationPage.TitleView>
     <AbsoluteLayout>
-        <Image Opacity=".3" 
-Source="backgroundvector3.png"
-Aspect="AspectFill"
-AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="SizeProportional"
-HorizontalOptions="StartAndExpand"/>
-
         <StackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="SizeProportional" Padding="10,10,10,30" >
-            <Label Text="Contact Us" HorizontalTextAlignment="Start" FontFamily="VinaSansRegular" FontSize="35" />
+            <HorizontalStackLayout VerticalOptions="Center" >
+                <ImageButton Source="burgerbar.png" Aspect="AspectFit" HeightRequest="30" VerticalOptions="Center" Clicked="SlideNavigationClicked" />
+                <Label Text="Contact Us" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontFamily="VinaSansRegular" FontSize="35" />
+            </HorizontalStackLayout>
 
             <VerticalStackLayout Spacing="50" VerticalOptions="Start" Margin="0,60,0,0"> 
             <local:FlatingLabel Title="Name" />
@@ -27,7 +20,7 @@ HorizontalOptions="StartAndExpand"/>
 
             <VerticalStackLayout VerticalOptions="EndAndExpand" Spacing="40">
                 <local:FlatingLabel Title="Message" />
-                <Button Margin="10,0" Text="Create Canyon" FontFamily="CabinBold" BackgroundColor="#D7A367" CornerRadius="20" TextColor="White" FontSize="15"/>
+                <Button Margin="10,0" Text="Create Canyon" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15"/>
             </VerticalStackLayout>
         </StackLayout>
 

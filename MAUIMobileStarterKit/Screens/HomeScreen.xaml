@@ -7,8 +7,10 @@
              BackgroundColor="#CAF0F8">
     <AbsoluteLayout>
         <StackLayout x:Name="childLayout"  AbsoluteLayout.LayoutBounds="0,125,1,1" AbsoluteLayout.LayoutFlags="SizeProportional" />
-        <HorizontalStackLayout Padding="10,0,0,0" Spacing="40" AbsoluteLayout.LayoutBounds="0, 0, 70,70"  AbsoluteLayout.LayoutFlags="PositionProportional" >
+        <HorizontalStackLayout Padding="10,0,0,0"  AbsoluteLayout.LayoutBounds="0, 0, 70,70"  AbsoluteLayout.LayoutFlags="PositionProportional" >
             <ImageButton Source="burgerbar.png" Aspect="AspectFit" HeightRequest="30" VerticalOptions="Center" Clicked="ImageButton_Clicked" />
+            <Label Text="Home" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontFamily="VinaSansRegular" FontSize="35" />
+
         </HorizontalStackLayout>
         <Frame Padding="0"  HeightRequest="70" BorderColor="Transparent" CornerRadius="5" 
                BackgroundColor="#0077B6"  AbsoluteLayout.LayoutBounds="0.5, 0.31, .98,-1" 
