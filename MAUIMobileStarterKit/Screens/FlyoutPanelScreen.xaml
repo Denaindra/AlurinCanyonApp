@@ -5,86 +5,88 @@
     <FlyoutPage.Flyout>
         <ContentPage Title="menu" >
             <Grid RowDefinitions="Auto,*" ColumnDefinitions="*" BackgroundColor="#90E0EF">
-                <HorizontalStackLayout Padding="0,20" Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                    <Frame CornerRadius="50" BorderColor="#00B4D8" Padding="0" HeightRequest="100" WidthRequest="100" HorizontalOptions="CenterAndExpand">
-                        <Image Aspect="AspectFit" 
-                                Source="appiconimg.png"
-                                HeightRequest="200"/>
-                    </Frame>
-                    <Label WidthRequest="150" TextColor="WhiteSmoke" Padding="5" HorizontalTextAlignment="Center" VerticalOptions="Center"  Text="My Canyon Project" FontSize="35" FontFamily="VinaSansRegular" />
-                </HorizontalStackLayout>
-                <ScrollView Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand">
-                    <Grid ColumnSpacing="10"  BackgroundColor="#90E0EF" Padding="30,30,30,0" RowSpacing="20"  
-                          RowDefinitions="Auto,Auto,Auto,*"
-                          ColumnDefinitions="*,*">
-                        <Frame BorderColor="#CAF0F8" BackgroundColor="Transparent" HeightRequest="110" WidthRequest="110" HorizontalOptions="CenterAndExpand"  Grid.Row="0" Grid.Column="0">
-                            <VerticalStackLayout  x:Name="dashboard" Spacing="0" HorizontalOptions="CenterAndExpand" >
-                                <Image Aspect="AspectFit" HeightRequest="45"  Source="home.png" />
-                                <Label Text="Home" TextColor="WhiteSmoke" FontFamily="CabinBold" FontSize="18" FontAttributes="Bold"/>
-                                <VerticalStackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="DashBoardItemTapped" CommandParameter="0"/>
-                                </VerticalStackLayout.GestureRecognizers>
-                            </VerticalStackLayout>
-                        </Frame>
-                        <Frame Grid.Row="0" Grid.Column="1" BorderColor="#CAF0F8" BackgroundColor="Transparent"
-                               HeightRequest="110" WidthRequest="110" HorizontalOptions="CenterAndExpand"  >
-                            <VerticalStackLayout x:Name="activityReport" Spacing="0" HorizontalOptions="CenterAndExpand" >
-                                <Image Aspect="AspectFit" HeightRequest="45"  Source="settings.png" />
-                                <Label Text="Settings" TextColor="WhiteSmoke" FontFamily="CabinBold" FontSize="18" FontAttributes="Bold"/>
-                                <VerticalStackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer  Tapped="DashBoardItemTapped" CommandParameter="1" />
-                                </VerticalStackLayout.GestureRecognizers>
-                            </VerticalStackLayout>
+                <VerticalStackLayout  Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Grid> 
+                    <Image Aspect="AspectFit" 
+                                Source="backgroundvector2.png"
+                               />
 
-                        </Frame>
-                        <Frame Grid.Row="1" Grid.Column="0"  HeightRequest="110" WidthRequest="110" BorderColor="#CAF0F8" 
-                               BackgroundColor="Transparent"
-                               HorizontalOptions="CenterAndExpand" >
-                            <VerticalStackLayout  Spacing="0" HorizontalOptions="CenterAndExpand" >
-                                <Image Aspect="AspectFit" HeightRequest="45" Source="logout.png" />
-                                <Label Text="Log Out" TextColor="WhiteSmoke" FontFamily="CabinBold" FontSize="18" FontAttributes="Bold"/>
-                                <VerticalStackLayout.GestureRecognizers>
+                    <Label TextColor="WhiteSmoke" Padding="5" HorizontalTextAlignment="Center" VerticalOptions="EndAndExpand"  Text="My Canyon Project" FontSize="35" FontFamily="VinaSansRegular" />
+                    </Grid>
+                    <BoxView HeightRequest="5" Color="White" HorizontalOptions="FillAndExpand"/>
+                </VerticalStackLayout>
+                <ScrollView Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand">
+                    <StackLayout Spacing="20"  BackgroundColor="#0077B6" Padding="30,30,30,0" >
+                        <VerticalStackLayout  x:Name="dashboard" Spacing="5" HorizontalOptions="StartAndExpand" >
+                            <HorizontalStackLayout Spacing="20">
+                                <Image Aspect="AspectFit" HeightRequest="35"  Source="home.png" />
+                                <Label VerticalTextAlignment="Center" Text="Home" TextColor="WhiteSmoke" FontFamily="CabinBold" FontSize="20" FontAttributes="Bold"/>
+                                <HorizontalStackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="DashBoardItemTapped" CommandParameter="0"/>
+                                </HorizontalStackLayout.GestureRecognizers>
+                            </HorizontalStackLayout>
+                            <BoxView HeightRequest="1" Color="White" HorizontalOptions="FillAndExpand"/>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout  Spacing="5" HorizontalOptions="StartAndExpand" >
+                            <HorizontalStackLayout HorizontalOptions="StartAndExpand" Spacing="20">
+                                <Image Aspect="AspectFit" HeightRequest="35" Source="settings.png" />
+                                <Label Text="Settings" TextColor="WhiteSmoke" FontFamily="CabinBold" FontSize="20" FontAttributes="Bold"/>
+                                <HorizontalStackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer  Tapped="DashBoardItemTapped" CommandParameter="1" />
+                                </HorizontalStackLayout.GestureRecognizers>
+                            </HorizontalStackLayout>
+                            <BoxView HeightRequest="1" Color="White" HorizontalOptions="FillAndExpand"/>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Spacing="5" HorizontalOptions="StartAndExpand" >
+                            <HorizontalStackLayout HorizontalOptions="StartAndExpand" Spacing="20">
+                                <Image Aspect="AspectFit" HeightRequest="35" Source="logout.png" />
+                                <Label Text="Log Out" TextColor="WhiteSmoke" FontFamily="CabinBold" FontSize="20" FontAttributes="Bold"/>
+                                <HorizontalStackLayout.GestureRecognizers>
                                     <TapGestureRecognizer  Tapped="DashBoardItemTapped" CommandParameter="2" />
-                                </VerticalStackLayout.GestureRecognizers>
-                            </VerticalStackLayout>
-                        </Frame>
-                        <Frame Grid.Row="1" Grid.Column="1" HeightRequest="110" WidthRequest="110" BorderColor="#CAF0F8" 
-                               BackgroundColor="Transparent"
-                               HorizontalOptions="CenterAndExpand" >
-                            <VerticalStackLayout Spacing="0" HorizontalOptions="CenterAndExpand">
-                                <Image Aspect="AspectFit" HeightRequest="45" Source="security.png" />
-                                <Label Text="Security" TextColor="WhiteSmoke" FontFamily="CabinBold" FontSize="18" FontAttributes="Bold"/>
-                                <VerticalStackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer  Tapped="DashBoardItemTapped" CommandParameter="3"  />
-                                </VerticalStackLayout.GestureRecognizers>
-                            </VerticalStackLayout>
-                        </Frame>
-                        <Frame Grid.Row="2" Grid.Column="0" HeightRequest="110" WidthRequest="110" BorderColor="#CAF0F8" 
-                               BackgroundColor="Transparent"
-                               HorizontalOptions="CenterAndExpand"  >
-                            <VerticalStackLayout Padding="10,0,0,0" Spacing="0" HorizontalOptions="CenterAndExpand">
-                                <Image Aspect="AspectFit" HeightRequest="45" Source="info.png" />
-                                <Label Text="Infos" TextColor="WhiteSmoke" FontFamily="CabinBold" FontSize="18" FontAttributes="Bold"/>
-                                <VerticalStackLayout.GestureRecognizers>
+                                </HorizontalStackLayout.GestureRecognizers>
+                            </HorizontalStackLayout>
+                            <BoxView HeightRequest="1" Color="White" HorizontalOptions="FillAndExpand"/>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Spacing="5" HorizontalOptions="StartAndExpand" >
+                            <HorizontalStackLayout HorizontalOptions="StartAndExpand" Spacing="20">
+                                <Image Aspect="AspectFit" HeightRequest="35" Source="security.png" />
+                                <Label Text="Security" TextColor="WhiteSmoke" FontFamily="CabinBold" FontSize="20" FontAttributes="Bold"/>
+                                <HorizontalStackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer  Tapped="DashBoardItemTapped" CommandParameter="3" />
+                                </HorizontalStackLayout.GestureRecognizers>
+                            </HorizontalStackLayout>
+                            <BoxView HeightRequest="1" Color="White" HorizontalOptions="FillAndExpand"/>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Spacing="5" HorizontalOptions="StartAndExpand" >
+                            <HorizontalStackLayout HorizontalOptions="StartAndExpand" Spacing="20">
+                                <Image Aspect="AspectFit" HeightRequest="35" Source="info.png" />
+                                <Label Text="Info" TextColor="WhiteSmoke" FontFamily="CabinBold" FontSize="20" FontAttributes="Bold"/>
+                                <HorizontalStackLayout.GestureRecognizers>
                                     <TapGestureRecognizer  Tapped="DashBoardItemTapped" CommandParameter="4" />
-                                </VerticalStackLayout.GestureRecognizers>
-                            </VerticalStackLayout>
-                        </Frame>
-                        <Frame Grid.Row="2" Grid.Column="1" HeightRequest="110" WidthRequest="110" BorderColor="#CAF0F8" 
-                               BackgroundColor="Transparent"
-                               HorizontalOptions="CenterAndExpand" >
-                            <VerticalStackLayout HorizontalOptions="CenterAndExpand" Spacing="0">
-                                <Image Aspect="AspectFit" HeightRequest="45" Source="contactmail.png" />
-                                <Label Text="Contact" TextColor="WhiteSmoke" FontFamily="CabinBold" FontSize="18" FontAttributes="Bold"/>
-                                <VerticalStackLayout.GestureRecognizers>
+                                </HorizontalStackLayout.GestureRecognizers>
+                            </HorizontalStackLayout>
+                            <BoxView HeightRequest="1" Color="White" HorizontalOptions="FillAndExpand"/>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Spacing="5" HorizontalOptions="StartAndExpand" >
+                            <HorizontalStackLayout HorizontalOptions="StartAndExpand" Spacing="20">
+                                <Image Aspect="AspectFit" HeightRequest="35" Source="contactmail.png" />
+                                <Label Text="Contact" TextColor="WhiteSmoke" FontFamily="CabinBold" FontSize="20" FontAttributes="Bold"/>
+                                <HorizontalStackLayout.GestureRecognizers>
                                     <TapGestureRecognizer  Tapped="DashBoardItemTapped" CommandParameter="5" />
-                                </VerticalStackLayout.GestureRecognizers>
-                            </VerticalStackLayout>
-                        </Frame>
+                                </HorizontalStackLayout.GestureRecognizers>
+                            </HorizontalStackLayout>
+                            <BoxView HeightRequest="1" Color="White" HorizontalOptions="FillAndExpand"/>
+                        </VerticalStackLayout>
+
                         <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand">
                             <ImageButton Aspect="AspectFit" HeightRequest="100" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Source="paypal.png" />
                         </StackLayout>
-                    </Grid>
+                    </StackLayout>
                 </ScrollView>
             </Grid>
         </ContentPage>
