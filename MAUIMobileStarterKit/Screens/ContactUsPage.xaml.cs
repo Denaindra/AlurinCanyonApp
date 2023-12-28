@@ -1,3 +1,5 @@
+using MAUIMobileStarterKit.Constant;
+
 namespace MAUIMobileStarterKit.Screens;
 
 public partial class ContactUsPage : ContentPage
@@ -7,8 +9,11 @@ public partial class ContactUsPage : ContentPage
 		InitializeComponent();
 	}
 
-    private void SlideNavigationClicked(object sender, EventArgs e)
+    private void MenuBtnClicked(object sender, EventArgs e)
     {
-
+        if (!Constans.flyoutPage.IsPresented)
+        {
+            Constans.flyoutPage.IsPresented = true;
+        }
     }
 }
