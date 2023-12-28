@@ -149,6 +149,12 @@
 	  <MauiXaml Update="Screens\SecurityScreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Screens\SettingsScreen\CreateCannyonModals\AddCoordinatorModal.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Screens\SettingsScreen\CreateCannyonModals\AddDescriptionModal.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Screens\SettingsScreen\CreateCannyonScreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

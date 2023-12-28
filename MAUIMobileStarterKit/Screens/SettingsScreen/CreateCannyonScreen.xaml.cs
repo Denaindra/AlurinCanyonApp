@@ -1,17 +1,29 @@
+using MAUIMobileStarterKit.ViewModels;
+
 namespace MAUIMobileStarterKit.Screens.SettingsScreen;
 
 public partial class CreateCannyonScreen : ContentPage
 {
-	public CreateCannyonScreen()
+    private readonly CreateCoordinateViewModel viewModel;
+    public CreateCannyonScreen(CreateCoordinateViewModel viewModel)
 	{
 		InitializeComponent();
+        this.viewModel = viewModel;
+        this.viewModel.navigation = Navigation;
 	}
 
-    protected override void OnSizeAllocated(double pageWidth, double pageHeight)
+    private void SaveCannyoonClicked(object sender, EventArgs e)
     {
-        base.OnSizeAllocated(pageWidth, pageHeight);
-        const double aspectRatio = 1600 / 1441.0; // Aspect ratio of the original image
-        backgroundImage.WidthRequest = Math.Max(pageHeight * aspectRatio, pageWidth);
+
     }
 
+    private void AddDescriptionClicked(object sender, EventArgs e)
+    {
+        viewModel.PushModalAsync(viewModel.GetAddDescriptionModal());
+    }
+
+    private void AddCorrdinateClicked(object sender, EventArgs e)
+    {
+        viewModel.PushModalAsync(viewModel.GetAddCoordinatorModal());
+    }
 }

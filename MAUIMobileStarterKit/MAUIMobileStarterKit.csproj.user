@@ -31,6 +31,12 @@
     <MauiXaml Update="Screens\SecurityScreen.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="Screens\SettingsScreen\CreateCannyonModals\AddCoordinatorModal.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="Screens\SettingsScreen\CreateCannyonModals\AddDescriptionModal.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="Screens\SettingsScreen\CreateCannyonScreen.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>

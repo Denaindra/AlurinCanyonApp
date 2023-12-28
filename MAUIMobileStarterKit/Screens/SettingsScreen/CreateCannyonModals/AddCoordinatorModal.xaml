@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="clr-namespace:Maui.GoogleMaps;assembly=Maui.GoogleMaps"
+             BackgroundColor="#CAF0F8"
+             x:Class="MAUIMobileStarterKit.Screens.SettingsScreen.CreateCannyonModals.AddCoordinatorModal"
+             xmlns:local="clr-namespace:MAUIMobileStarterKit.CustomViews">
+    <StackLayout Padding="10" VerticalOptions="FillAndExpand" Spacing="10" >
+        <ImageButton Clicked="BackBtnClicked" Source="backarrow.png" Aspect="AspectFit" HeightRequest="25" HorizontalOptions="Start" Margin="0,10"/>
+        <Frame Padding="0">
+            <VerticalStackLayout Spacing="10"> 
+            <local:FlatingLabel Title="Point Type*" />
+            <local:FlatingLabel Title="Longitude*" />
+            <local:FlatingLabel Title="Latitude*" />
+            </VerticalStackLayout>
+        </Frame>
+        <Button Text="Save Coordinate" Margin="0,20,0,0" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" Clicked="SaveCoordinate"/>
+        <maps:Map MyLocationEnabled="True"  VerticalOptions="FillAndExpand" x:Name="mapView" HeightRequest="400"/>
+
+        <Button Text="Get Coordinate" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" Clicked="SaveCoordinate"/>
+
+    </StackLayout>
+</ContentPage>

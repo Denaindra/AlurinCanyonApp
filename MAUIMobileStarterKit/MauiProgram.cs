@@ -4,6 +4,7 @@ using MAUIMobileStarterKit.Interface;
 using MAUIMobileStarterKit.Screens;
 using MAUIMobileStarterKit.Screens.HomePageScreens;
 using MAUIMobileStarterKit.Screens.SettingsScreen;
+using MAUIMobileStarterKit.Screens.SettingsScreen.CreateCannyonModals;
 using MAUIMobileStarterKit.Utilities;
 using MAUIMobileStarterKit.ViewModels;
 using Microsoft.Extensions.Logging;
@@ -54,12 +55,15 @@ public static class MauiProgram
         builder.Services.AddTransient<CreateCannyonScreen>();
         builder.Services.AddSingleton<FlyoutPanelScreen>();
         builder.Services.AddTransient<HomeScreen>();
+        builder.Services.AddTransient<AddCoordinatorModal>();
+        builder.Services.AddTransient<AddDescriptionModal>();
 
         //ViewModels
         builder.Services.AddTransient<MainPageViewModels>();
         builder.Services.AddTransient<DashBoardViewModel>();
         builder.Services.AddTransient<HomePageViewModel>();
         builder.Services.AddTransient<SettingsViewModel>();
+        builder.Services.AddTransient<CreateCoordinateViewModel>();
 
         //Services
         builder.Services.AddSingleton<ILoading, Loading>();
