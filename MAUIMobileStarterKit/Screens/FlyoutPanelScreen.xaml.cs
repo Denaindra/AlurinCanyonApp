@@ -17,12 +17,6 @@ public partial class FlyoutPanelScreen : FlyoutPage
         Constans.flyoutPage = this;
         LoadInitialPage();
     }
-
-    protected override async void OnAppearing()
-    {
-        base.OnAppearing();
-        var results = await dashBoard.CheckAndRequestLocationPermission();
-    }
     private async void DashBoardItemTapped(object sender, TappedEventArgs e)
     {
         var tappedParameter = (TappedEventArgs)e;

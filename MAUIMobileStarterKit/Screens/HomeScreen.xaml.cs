@@ -15,16 +15,20 @@ public partial class HomeScreen : ContentPage
         BindingContext = viewModel;
     }
 
-    protected override void OnAppearing()
+    protected override async void OnAppearing()
     {
         base.OnAppearing();
+        var results = await viewModel.CheckAndRequestLocationPermission();
+        if (results)
+        {
+            childLayout.Children.Add(new SearchCanyonScreen(viewModel));
+            search.HeightRequest = 30;
+        }
     }
     protected override void OnSizeAllocated(double width, double height)
     {
         Constans.DeviceHeight = height;
         base.OnSizeAllocated(width, height);
-        childLayout.Children.Add(new SearchCanyonScreen(viewModel));
-        search.HeightRequest = 30;
     }
     protected override bool OnBackButtonPressed()
     {
