@@ -42,7 +42,6 @@ public partial class HomeScreen : ContentPage
         var parameter = Convert.ToInt32(tappedParameter.Parameter);
         SteupPage(parameter);
     }
-
     private void SteupPage(int parameter)
     {
         switch (parameter)
@@ -68,7 +67,6 @@ public partial class HomeScreen : ContentPage
                 break;
         }
     }
-
     private void ResetView()
     {
         search.HeightRequest = 20;
