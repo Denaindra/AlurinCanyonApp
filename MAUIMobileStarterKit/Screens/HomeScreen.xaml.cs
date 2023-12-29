@@ -1,5 +1,4 @@
-﻿using Controls.UserDialogs.Maui;
-using MAUIMobileStarterKit.Constant;
+﻿using MAUIMobileStarterKit.Constant;
 using MAUIMobileStarterKit.Screens.HomePageScreens;
 using MAUIMobileStarterKit.ViewModels;
 
@@ -14,21 +13,19 @@ public partial class HomeScreen : ContentPage
         this.viewModel = viewModel;
         BindingContext = viewModel;
     }
-
-    protected override async void OnAppearing()
+    protected override void OnAppearing()
     {
         base.OnAppearing();
-        var results = await viewModel.CheckAndRequestLocationPermission();
-        if (results)
-        {
-            childLayout.Children.Add(new SearchCanyonScreen(viewModel));
-            search.HeightRequest = 30;
-        }
     }
-    protected override void OnSizeAllocated(double width, double height)
+    protected override async void OnSizeAllocated(double width, double height)
     {
         Constans.DeviceHeight = height;
         base.OnSizeAllocated(width, height);
+        var results = await viewModel.CheckAndRequestLocationPermission();
+        if (results)
+        {
+            SteupPage(0);
+        }
     }
     protected override bool OnBackButtonPressed()
     {
@@ -43,7 +40,11 @@ public partial class HomeScreen : ContentPage
         RemoveChildView();
         var tappedParameter = (TappedEventArgs)e;
         var parameter = Convert.ToInt32(tappedParameter.Parameter);
+        SteupPage(parameter);
+    }
 
+    private void SteupPage(int parameter)
+    {
         switch (parameter)
         {
             case 0:
