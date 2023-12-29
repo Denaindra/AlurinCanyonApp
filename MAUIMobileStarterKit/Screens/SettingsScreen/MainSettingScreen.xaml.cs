@@ -17,17 +17,20 @@ public partial class MainSettingScreen : ContentPage
    
     }
 
-    private void SettingItemtapped(object sender, TappedEventArgs e)
+    private async void SettingItemtapped(object sender, TappedEventArgs e)
     {
         var tappedParameter = (TappedEventArgs)e;
         var parameter = Convert.ToInt32(tappedParameter.Parameter);
 
         if (parameter == 0)
         {
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                picker.Focus();
-            });
+            //MainThread.BeginInvokeOnMainThread(() =>
+            //{
+            //    //picker.IsVisible = true;
+            //    picker.Focus();
+            //});Lanugaes
+            string action = await DisplayActionSheet("Select a Lanuage", "Cancel", null,"English (en)","French (fr)","Italian (It)","Spanish (es)");
+
         }
         else
         {

@@ -6,4 +6,15 @@ public partial class AddDescriptionModal : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private void SaveDescription(object sender, EventArgs e)
+    {
+
+    }
+
+    private void BackBtnClicked(object sender, EventArgs e)
+    {
+        Navigation.PopModalAsync();
+    }
+
 }

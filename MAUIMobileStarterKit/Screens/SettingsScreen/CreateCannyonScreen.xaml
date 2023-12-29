@@ -9,42 +9,42 @@
             <Label VerticalTextAlignment="Center" Text="Create Cannyon" TextColor="White" FontSize="Title" FontFamily="CabinBold"/>
         </StackLayout>
     </NavigationPage.TitleView>
-    <ScrollView Padding="10">
-        <VerticalStackLayout Spacing="20">
-            <local:FlatingLabel Title="Name*" />
-            <local:FlatingLabel Title="Country*" />
-            <local:FlatingLabel Title="Region*" />
-            <local:FlatingLabel Title="State" />
-            <local:FlatingLabel Title="Mountain" />
-            <local:FlatingLabel Title="Basin" />
-            <local:FlatingLabel Title="City" />
-            <local:FlatingLabel Title="River" />
-            <local:FlatingLabel Title="Rating ( /4*)" Keyboard="Numeric"/>
-            <local:FlatingLabel Title="Start Altitude (m*)" Keyboard="Numeric"/>
-            <local:FlatingLabel Title="Elevation (m*)" Keyboard="Numeric" Text="m"/>
-            <local:FlatingLabel Title="Canyon Length (m*)" Keyboard="Numeric" Text="m*"/>
-            <local:FlatingLabel Title="Max Waterfall (m*)" Keyboard="Numeric" Text="m*"/>
-            <local:FlatingLabel Title="Difficulty Scale *" />
-            <local:FlatingLabel Title="Rope (m*)" Keyboard="Numeric"/>
-            <local:FlatingLabel Title="Approach*" Text="*"/>
-            <local:FlatingLabel Title="Descent*" Text="*"/>
-            <local:FlatingLabel Title="Return Trip" Text="*"/>
-            <local:FlatingLabel Title="Shuttle" Keyboard="Numeric" Text="km"/>
-            <local:FlatingLabel Title="Source" />
-            <local:FlatingLabel Title="Creator" Text="*"/>
-            <Button Text="Add Coordinate *" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" Clicked="AddCorrdinateClicked"/>
-            <Frame>
-                <StackLayout>
+    <ScrollView>
+    <VerticalStackLayout Spacing="20" Padding="10,20,10,0">
+        <local:FlatingLabel Title="Name*" />
+        <local:FlatingLabel Title="Country*" />
+        <local:FlatingLabel Title="Region*" />
+        <local:FlatingLabel Title="State" />
+        <local:FlatingLabel Title="Mountain" />
+        <local:FlatingLabel Title="Basin" />
+        <local:FlatingLabel Title="City" />
+        <local:FlatingLabel Title="River" />
+        <local:FlatingLabel Title="Rating ( /4*)" Keyboard="Numeric"/>
+        <local:FlatingLabel Title="Start Altitude (m*)" Keyboard="Numeric"/>
+        <local:FlatingLabel Title="Elevation (m*)" Keyboard="Numeric" Text="m"/>
+        <local:FlatingLabel Title="Canyon Length (m*)" Keyboard="Numeric" Text="m*"/>
+        <local:FlatingLabel Title="Max Waterfall (m*)" Keyboard="Numeric" Text="m*"/>
+        <local:FlatingLabel Title="Difficulty Scale *" />
+        <local:FlatingLabel Title="Rope (m*)" Keyboard="Numeric"/>
+        <local:FlatingLabel Title="Approach*" Text="*"/>
+        <local:FlatingLabel Title="Descent*" Text="*"/>
+        <local:FlatingLabel Title="Return Trip" Text="*"/>
+        <local:FlatingLabel Title="Shuttle" Keyboard="Numeric" Text="km"/>
+        <local:FlatingLabel Title="Source" />
+        <local:FlatingLabel Title="Creator" Text="*"/>
+        <Button Text="Add Coordinate *" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" Clicked="AddCorrdinateClicked"/>
+        <Frame>
+            <StackLayout>
 
-                </StackLayout>
-            </Frame>
-            <Button Text="Add Description *" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" Clicked="AddDescriptionClicked" />
-            <Frame>
-                <StackLayout>
+            </StackLayout>
+        </Frame>
+        <Button Text="Add Description *" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" Clicked="AddDescriptionClicked" />
+        <Frame>
+            <StackLayout>
 
-                </StackLayout>
-            </Frame>
-            <Button Text="Save Canyon" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" Clicked="SaveCannyoonClicked"/>
-        </VerticalStackLayout>
+            </StackLayout>
+        </Frame>
+        <Button Text="Save Canyon" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" Clicked="SaveCannyoonClicked"/>
+    </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

@@ -23,16 +23,17 @@
         </Frame>
 
             <Frame Padding="0" BorderColor="#CAF0F8" HasShadow="False" BackgroundColor="#00B4D8" HeightRequest="60" WidthRequest="200">
-            <Grid Padding="20,0,0,0" RowDefinitions="*" ColumnDefinitions="Auto,*"  HorizontalOptions="FillAndExpand" ColumnSpacing="10">
-                <Image Grid.Row="0"  Grid.Column="0" Aspect="AspectFit" Source="createcannyon.png" HeightRequest="30"/>
-                <Label Grid.Row="0" Grid.Column="1" Text="Create Canyon" FontSize="20" FontFamily="CabinBold" VerticalTextAlignment="Center"/>
-            </Grid>
-            <Frame.GestureRecognizers>
-                <TapGestureRecognizer Tapped="SettingItemtapped" CommandParameter="1" />
-            </Frame.GestureRecognizers>
-        </Frame>
-        <Picker x:Name="picker" Opacity="0" SelectedIndexChanged="LanugaeSelectedIndexChanged"
-  Title="Select a Lanuage">
+                <Grid Padding="20,0,0,0" RowDefinitions="*" ColumnDefinitions="Auto,*"  HorizontalOptions="FillAndExpand" ColumnSpacing="10">
+                    <Image Grid.Row="0"  Grid.Column="0" Aspect="AspectFit" Source="createcannyon.png" HeightRequest="30"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="Create Canyon" FontSize="20" FontFamily="CabinBold" VerticalTextAlignment="Center"/>
+                </Grid>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="SettingItemtapped" CommandParameter="1" />
+                </Frame.GestureRecognizers>
+            </Frame>
+        </VerticalStackLayout>
+        <!--<Picker x:Name="picker" IsVisible="false" SelectedIndexChanged="LanugaeSelectedIndexChanged"
+Title="Select a Lanuage">
             <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                     <x:String>English (en)</x:String>
@@ -41,7 +42,6 @@
                     <x:String>Spanish (es)</x:String>
                 </x:Array>
             </Picker.ItemsSource>
-        </Picker>
-    </VerticalStackLayout>
+        </Picker>-->
     </StackLayout>
 </ContentPage>
