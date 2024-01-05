@@ -57,6 +57,7 @@ public static class MauiProgram
         builder.Services.AddTransient<HomeScreen>();
         builder.Services.AddTransient<AddCoordinatorModal>();
         builder.Services.AddTransient<AddDescriptionModal>();
+        builder.Services.AddTransient<CanyonBaseScreen>();
 
         //ViewModels
         builder.Services.AddTransient<MainPageViewModels>();

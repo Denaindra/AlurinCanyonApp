@@ -6,4 +6,14 @@ public partial class CanyonBaseScreen : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private void MenuBtnClicked(object sender, EventArgs e)
+    {
+
+    }
+
+    private void OnMenuTapGestureRecognizerTapped(object sender, TappedEventArgs e)
+    {
+
+    }
 }

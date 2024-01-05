@@ -2,11 +2,75 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUIMobileStarterKit.Screens.CanyonBaseScreen"
-             Title="CanyonBaseScreen">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="CanyonBaseScreen"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#CAF0F8">
+    <AbsoluteLayout>
+        <StackLayout x:Name="childLayout"  AbsoluteLayout.LayoutBounds="0,125,1,1" AbsoluteLayout.LayoutFlags="SizeProportional" />
+        <HorizontalStackLayout Padding="10,0,0,0"  AbsoluteLayout.LayoutBounds="0, 0, 70,70"  AbsoluteLayout.LayoutFlags="PositionProportional" >
+            <ImageButton Source="burgerbar.png" Aspect="AspectFit" HeightRequest="30" VerticalOptions="Center" Clicked="MenuBtnClicked" />
+            <Label Text="Home" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontFamily="VinaSansRegular" FontSize="35" />
+
+        </HorizontalStackLayout>
+        <Frame Padding="0"  HeightRequest="70" BorderColor="Transparent" CornerRadius="5" 
+            BackgroundColor="#0077B6"  AbsoluteLayout.LayoutBounds="0.5, 0.31, .98,-1" 
+            AbsoluteLayout.LayoutFlags="All" >
+            <Grid RowDefinitions="*" ColumnDefinitions="*,*,*,*,*,*,*" HorizontalOptions="FillAndExpand"  >
+                <VerticalStackLayout VerticalOptions="Center" Grid.Row="0" Grid.Column="0" Spacing="0">
+                    <Image x:Name="recannyon" Source="resume_canyon.png" Aspect="AspectFit" HeightRequest="20" />
+                    <Label x:Name="recannyonLabel" Text="Resume Canyon" FontFamily="CabinRegular" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="10"/>
+                    <VerticalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnMenuTapGestureRecognizerTapped" CommandParameter="0" />
+                    </VerticalStackLayout.GestureRecognizers>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Row="0" Grid.Column="1" VerticalOptions="CenterAndExpand">
+                    <Image x:Name="map"  Source="address.png" Aspect="AspectFit" HeightRequest="20" />
+                    <Label x:Name="mapLabel" Text="Canyon Map" FontFamily="CabinRegular" FontSize="10" HorizontalTextAlignment="Center"/>
+                    <VerticalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnMenuTapGestureRecognizerTapped" CommandParameter="1" />
+                    </VerticalStackLayout.GestureRecognizers>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Row="0" Grid.Column="2" VerticalOptions="CenterAndExpand">
+                    <Image x:Name="tcannyon"  Source="topo_canyon.png" Aspect="AspectFit" HeightRequest="20" />
+                    <Label  x:Name="tcannyonLabel" Text="Topo Canyon" FontFamily="CabinRegular" FontSize="10" HorizontalTextAlignment="Center"/>
+                    <VerticalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnMenuTapGestureRecognizerTapped" CommandParameter="2" />
+                    </VerticalStackLayout.GestureRecognizers>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Row="0" Grid.Column="3" VerticalOptions="CenterAndExpand">
+                    <Image x:Name="reglement"  Source="law.png" Aspect="AspectFit" HeightRequest="20" />
+                    <Label x:Name="reglementLabel"  Text="Reglementation Canyon" FontFamily="CabinRegular" FontSize="10" HorizontalTextAlignment="Center"/>
+                    <VerticalStackLayout.GestureRecognizers>
+           <TapGestureRecognizer Tapped="OnMenuTapGestureRecognizerTapped" CommandParameter="3" />
+       </VerticalStackLayout.GestureRecognizers>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Row="0" Grid.Column="4" VerticalOptions="CenterAndExpand">
+                    <Image x:Name="chat"   Source="chat.png" Aspect="AspectFit" HeightRequest="20" />
+                    <Label x:Name="chatLabel"   Text="Comment Canyon" FontFamily="CabinRegular" FontSize="10" HorizontalTextAlignment="Center"/>
+                    <VerticalStackLayout.GestureRecognizers>
+           <TapGestureRecognizer Tapped="OnMenuTapGestureRecognizerTapped" CommandParameter="4" />
+       </VerticalStackLayout.GestureRecognizers>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Row="0" Grid.Column="5" VerticalOptions="CenterAndExpand">
+                    <Image x:Name="Image"  Source="image.png" Aspect="AspectFit" HeightRequest="20" />
+                    <Label x:Name="ImageLabel"  Text="Tabbed Pictures Canyon" FontFamily="CabinRegular" FontSize="10" HorizontalTextAlignment="Center"/>
+                    <VerticalStackLayout.GestureRecognizers>
+           <TapGestureRecognizer Tapped="OnMenuTapGestureRecognizerTapped" CommandParameter="5" />
+       </VerticalStackLayout.GestureRecognizers>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Row="0" Grid.Column="6" VerticalOptions="CenterAndExpand">
+                    <Label x:Name="proLabel"  Text="Pro" FontFamily="CabinRegular" FontSize="15" HorizontalTextAlignment="Center"/>
+                    <VerticalStackLayout.GestureRecognizers>
+           <TapGestureRecognizer Tapped="OnMenuTapGestureRecognizerTapped" CommandParameter="6" />
+       </VerticalStackLayout.GestureRecognizers>
+                </VerticalStackLayout>
+            </Grid>
+        </Frame>
+    </AbsoluteLayout>
 </ContentPage>

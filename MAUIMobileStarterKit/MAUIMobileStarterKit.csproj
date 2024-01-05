@@ -94,6 +94,7 @@
 	  <None Remove="Resources\Images\CanyonJaune.png" />
 	  <None Remove="Resources\Images\CanyonNull.png" />
 	  <None Remove="Resources\Images\cascade.png" />
+	  <None Remove="Resources\Images\chat.png" />
 	  <None Remove="Resources\Images\clock.png" />
 	  <None Remove="Resources\Images\contactmail.png" />
 	  <None Remove="Resources\Images\corde.png" />
@@ -102,15 +103,19 @@
 	  <None Remove="Resources\Images\descenteActif.png" />
 	  <None Remove="Resources\Images\dropwater.png" />
 	  <None Remove="Resources\Images\home.png" />
+	  <None Remove="Resources\Images\image.png" />
 	  <None Remove="Resources\Images\info.png" />
 	  <None Remove="Resources\Images\language.png" />
+	  <None Remove="Resources\Images\law.png" />
 	  <None Remove="Resources\Images\logout.png" />
 	  <None Remove="Resources\Images\loupe.png" />
 	  <None Remove="Resources\Images\Marche.png" />
 	  <None Remove="Resources\Images\paypal.png" />
+	  <None Remove="Resources\Images\resume_canyon.png" />
 	  <None Remove="Resources\Images\security.png" />
 	  <None Remove="Resources\Images\settings.png" />
 	  <None Remove="Resources\Images\starblue.png" />
+	  <None Remove="Resources\Images\topo_canyon.png" />
 	  <None Remove="Resources\Images\warning.png" />
 	  <None Remove="Screens\" />
 	  <None Remove="Utilities\" />

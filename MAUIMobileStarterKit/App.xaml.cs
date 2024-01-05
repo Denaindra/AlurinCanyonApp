@@ -4,7 +4,7 @@ namespace MAUIMobileStarterKit;
 
 public partial class App : Application
 {
-    public App(FlyoutPanelScreen dashBoardScreen)
+    public App(CanyonBaseScreen dashBoardScreen)
     {
         InitializeComponent();
         MainPage = new NavigationPage(dashBoardScreen);
