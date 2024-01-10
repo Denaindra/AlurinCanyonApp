@@ -85,7 +85,6 @@ public partial class HomeScreen : ContentPage
     {
         childLayout.Children.Clear();
     }
-
     private void ImageButton_Clicked(object sender, EventArgs e)
     {
         if (!Constans.flyoutPage.IsPresented)
