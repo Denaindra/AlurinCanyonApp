@@ -1,12 +1,16 @@
+using MAUIMobileStarterKit.Screens.CanyoningPageScreens;
+using MAUIMobileStarterKit.ViewModels;
 using System;
 
 namespace MAUIMobileStarterKit.Screens;
 
 public partial class CanyonBaseScreen : ContentPage
 {
-	public CanyonBaseScreen()
+    private readonly CannyonBasedViewModel viewModel;
+    public CanyonBaseScreen(CannyonBasedViewModel viewModel)
 	{
 		InitializeComponent();
+        this.viewModel = viewModel;
 	}
 
     private void MenuBtnClicked(object sender, EventArgs e)
@@ -30,37 +34,37 @@ public partial class CanyonBaseScreen : ContentPage
             case 0:
                 recannyonLabel.FontSize = 12;
                 recannyonLabel.FontAttributes = FontAttributes.Bold;
-               // childLayout.Children.Add(new SearchCanyonScreen(viewModel));
+                childLayout.Children.Add(new ResumeCanyonScreen());
                 break;
             case 1:
                 mapLabel.FontSize = 12;
                 mapLabel.FontAttributes = FontAttributes.Bold;
-               // childLayout.Children.Add(new GoogleMapScreen(viewModel));
+                childLayout.Children.Add(new CanyonMapScreen());
                 break;
             case 2:
                 tcannyonLabel.FontAttributes = FontAttributes.Bold;
                 tcannyonLabel.FontSize = 12;
-                //childLayout.Children.Add(new CanyonModificationScreen(viewModel));
+                childLayout.Children.Add(new TopoCanyonScreen());
                 break;
             case 3:
                 reglementLabel.FontAttributes = FontAttributes.Bold;
                 reglementLabel.FontSize = 12;
-                //childLayout.Children.Add(new CanyonModificationScreen(viewModel));
+                childLayout.Children.Add(new ReglementationCanyonScreen());
                 break;
             case 4:
                 chatLabel.FontAttributes = FontAttributes.Bold;
                 chatLabel.FontSize = 12;
-                //childLayout.Children.Add(new CanyonModificationScreen(viewModel));
+                childLayout.Children.Add(new CommentCanyonScreen());
                 break;
             case 5:
                 ImageLabel.FontAttributes = FontAttributes.Bold;
                 ImageLabel.FontSize = 12;
-                //childLayout.Children.Add(new CanyonModificationScreen(viewModel));
+                childLayout.Children.Add(new TabbedPicturesCanyonScreen());
                 break;
             case 6:
                 proLabel.FontAttributes = FontAttributes.Bold;
-                proLabel.FontSize = 12;
-                //childLayout.Children.Add(new CanyonModificationScreen(viewModel));
+                proLabel.FontSize = 17;
+                childLayout.Children.Add(new ProCanyonScreen());
                 break;
         }
     }
@@ -79,6 +83,7 @@ public partial class CanyonBaseScreen : ContentPage
         tcannyonLabel.FontSize = 10;
         mapLabel.FontSize = 10;
         recannyonLabel.FontSize = 10;
+        proLabel.FontSize= 15;
     }
     private void RemoveChildView()
     {

@@ -4,7 +4,7 @@
              x:Class="MAUIMobileStarterKit.Screens.CanyoningPageScreens.ReglementationCanyonScreen">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="Reglememtation screenn"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
     </VerticalStackLayout>

@@ -4,7 +4,7 @@
              x:Class="MAUIMobileStarterKit.Screens.CanyoningPageScreens.ProCanyonScreen">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="Procanyoon screen"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
     </VerticalStackLayout>

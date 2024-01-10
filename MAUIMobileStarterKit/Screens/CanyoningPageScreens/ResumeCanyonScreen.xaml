@@ -4,7 +4,7 @@
              x:Class="MAUIMobileStarterKit.Screens.CanyoningPageScreens.ResumeCanyonScreen">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="Resume screen"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
     </VerticalStackLayout>

@@ -65,6 +65,8 @@ public static class MauiProgram
         builder.Services.AddTransient<HomePageViewModel>();
         builder.Services.AddTransient<SettingsViewModel>();
         builder.Services.AddTransient<CreateCoordinateViewModel>();
+        builder.Services.AddTransient<CannyonBasedViewModel>();
+
 
         //Services
         builder.Services.AddSingleton<ILoading, Loading>();
