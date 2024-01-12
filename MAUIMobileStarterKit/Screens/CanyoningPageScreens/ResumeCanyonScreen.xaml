@@ -32,6 +32,15 @@
 
                 </Grid>
             </VerticalStackLayout>
+
+            <Frame Padding="10" BorderColor="Red" Margin="0,30,0,0"  BackgroundColor="Transparent" WidthRequest="200">
+                <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+                    <Image Aspect="AspectFit" Source="desescalade.png" />
+                    <Label VerticalOptions="Center" Text="Warning" FontSize="15" FontAttributes="Italic" TextColor="#00B4D8" FontFamily="CabinBold"/>
+                </HorizontalStackLayout>
+            </Frame>
+
+                
         </StackLayout>
     </ScrollView>
 </ContentView>

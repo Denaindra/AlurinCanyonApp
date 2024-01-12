@@ -101,6 +101,7 @@
 	  <None Remove="Resources\Images\cotation.png" />
 	  <None Remove="Resources\Images\createcannyon.png" />
 	  <None Remove="Resources\Images\descenteActif.png" />
+	  <None Remove="Resources\Images\Desescalade.png" />
 	  <None Remove="Resources\Images\dropwater.png" />
 	  <None Remove="Resources\Images\home.png" />
 	  <None Remove="Resources\Images\image.png" />
