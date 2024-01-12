@@ -13,6 +13,11 @@ public partial class CanyonBaseScreen : ContentPage
         this.viewModel = viewModel;
 	}
 
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        SteupPage(0);
+    }
     private void MenuBtnClicked(object sender, EventArgs e)
     {
 
