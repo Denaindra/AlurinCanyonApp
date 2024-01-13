@@ -39,7 +39,7 @@ public partial class CanyonBaseScreen : ContentPage
             case 0:
                 recannyonLabel.FontSize = 12;
                 recannyonLabel.FontAttributes = FontAttributes.Bold;
-                childLayout.Children.Add(new ResumeCanyonScreen());
+                childLayout.Children.Add(new ResumeCanyonScreen(viewModel));
                 break;
             case 1:
                 mapLabel.FontSize = 12;
