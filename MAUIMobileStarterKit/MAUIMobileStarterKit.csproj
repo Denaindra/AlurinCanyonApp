@@ -100,6 +100,7 @@
 	  <None Remove="Resources\Images\corde.png" />
 	  <None Remove="Resources\Images\cotation.png" />
 	  <None Remove="Resources\Images\createcannyon.png" />
+	  <None Remove="Resources\Images\Denivele.png" />
 	  <None Remove="Resources\Images\descenteActif.png" />
 	  <None Remove="Resources\Images\Desescalade.png" />
 	  <None Remove="Resources\Images\dropwater.png" />
@@ -111,12 +112,17 @@
 	  <None Remove="Resources\Images\logout.png" />
 	  <None Remove="Resources\Images\loupe.png" />
 	  <None Remove="Resources\Images\Marche.png" />
+	  <None Remove="Resources\Images\Metre.png" />
+	  <None Remove="Resources\Images\Montagne.png" />
+	  <None Remove="Resources\Images\obstacles.png" />
 	  <None Remove="Resources\Images\paypal.png" />
 	  <None Remove="Resources\Images\resume_canyon.png" />
+	  <None Remove="Resources\Images\Retour.png" />
 	  <None Remove="Resources\Images\security.png" />
 	  <None Remove="Resources\Images\settings.png" />
 	  <None Remove="Resources\Images\starblue.png" />
 	  <None Remove="Resources\Images\topo_canyon.png" />
+	  <None Remove="Resources\Images\Voiture.png" />
 	  <None Remove="Resources\Images\warning.png" />
 	  <None Remove="Screens\" />
 	  <None Remove="Utilities\" />
