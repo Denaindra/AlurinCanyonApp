@@ -49,7 +49,7 @@ public partial class CanyonBaseScreen : ContentPage
             case 2:
                 tcannyonLabel.FontAttributes = FontAttributes.Bold;
                 tcannyonLabel.FontSize = 12;
-                childLayout.Children.Add(new TopoCanyonScreen());
+                childLayout.Children.Add(new TopoCanyonScreen(viewModel));
                 break;
             case 3:
                 reglementLabel.FontAttributes = FontAttributes.Bold;

@@ -16,7 +16,7 @@ public partial class ResumeCanyonScreen : ContentView
 
     private void SetupUI()
     {
-        //scrollView.HeightRequest = 18000;//Constans.DeviceHeight;
+        scrollView.HeightRequest = Constans.DeviceHeight-122;
         viewModel.LoadCannoynDetails();
         viewModel.LoadUserCreators();
     }

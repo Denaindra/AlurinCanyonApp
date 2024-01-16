@@ -2,7 +2,7 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUIMobileStarterKit.Screens.CanyoningPageScreens.ResumeCanyonScreen">
-    <ScrollView x:Name="scrollView"  HeightRequest="650">
+    <ScrollView x:Name="scrollView" HeightRequest="650">
         <StackLayout Margin="0,20,0,0" Padding="10" >
             <VerticalStackLayout Spacing="10">
                 <Button x:Name="ButtonAskForChange" Text="Update Canyon" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" FontFamily="CabinBold"/>

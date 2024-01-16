@@ -12,12 +12,24 @@ namespace MAUIMobileStarterKit.ViewModels
     {
         private ObservableCollection<CanyonCommentList> canyonCommentList;
         private ObservableCollection<UserCreator> userCreatorList;
-
+        private ObservableCollection<TopographiesModal> topographiesList;
         public CannyonBasedViewModel()
         {
             
         }
 
+        public ObservableCollection<TopographiesModal> TopographiesList
+        {
+            get
+            {
+                return topographiesList;
+            }
+            set
+            {
+                topographiesList = value;
+                NotifyPropertyChanged(nameof(TopographiesList));
+            }
+        }
         public ObservableCollection<UserCreator> UserCreatorList
         {
             get
@@ -84,6 +96,31 @@ namespace MAUIMobileStarterKit.ViewModels
                     {
                        UserCreatorName = "Abdre",
                        Source = "Text We image"
+                    });
+                }
+                // loading.EndIndiCator();
+            }
+            catch (Exception ex)
+            {
+                //  loading.EndIndiCator();
+            }
+        }
+
+        public void LoadTopographies()
+        {
+            try
+            {
+                // loading.StartIndicator();
+                TopographiesList = new ObservableCollection<TopographiesModal>();
+                for (int i = 0; i < 4; i++)
+                {
+                    TopographiesList.Add(new TopographiesModal()
+                    {
+                        PositionPoint = "89.003434",
+                        TailleObstacle = "sample TailleObstacle",
+                        TopoComment= "sample topocomment",
+                        TypeDanger = "sample typedanger",
+                        TypeObstacle = "sample typo obstavle"
                     });
                 }
                 // loading.EndIndiCator();

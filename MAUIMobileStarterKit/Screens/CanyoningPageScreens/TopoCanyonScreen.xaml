@@ -2,10 +2,59 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUIMobileStarterKit.Screens.CanyoningPageScreens.TopoCanyonScreen">
-    <VerticalStackLayout>
-        <Label 
-            Text="Topo Sctreen"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ScrollView x:Name="scrollView">
+        <StackLayout Orientation="Vertical" Padding="10">
+
+            <Label x:Name="EmptyTopography" HorizontalTextAlignment="Center" Text="There is no topopography profile for this canyon, please add precise informations, they will be validated by administrator." FontFamily="CabinRegular"  TextColor="#03045E" FontSize="15" TextDecorations="Underline"/>
+            <StackLayout VerticalOptions="Center"  Orientation="Horizontal">
+                <ListView x:Name="TopoListView" HeightRequest="350" RowHeight="300"  SeparatorVisibility="None" ItemsSource="{Binding TopographiesList}" HasUnevenRows="false" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout  Margin="0,5" >
+                                    <Frame Padding="0,0,5,0" BorderColor="Transparent" CornerRadius="5"  HasShadow="False" BackgroundColor="#90E0EF" >
+                                        <Grid RowDefinitions="Auto" ColumnDefinitions="Auto,*" ColumnSpacing="10" >
+                                            <Image  WidthRequest="180" BackgroundColor="Purple" Aspect="AspectFill" Grid.Row="0" Grid.Column="0"/>
+                                            <VerticalStackLayout  Grid.Row="0" Grid.Column="1" Padding="0,5">
+                                                <VerticalStackLayout>
+                                                    <Image HeightRequest="100" BackgroundColor="Yellow" Aspect="AspectFill"  />
+                                                    <Label Text="{Binding TypeObstacle}" FontFamily="CabinBold" TextColor="Black" FontSize="12" FontAttributes="Bold"/>
+                                                </VerticalStackLayout>
+                                                <VerticalStackLayout>
+                                                    <Label Text="Obstacle Size:" FontFamily="CabinBold"  TextColor="#03045E" FontSize="10"/>
+                                                    <Label Text="{Binding TailleObstacle}" TextColor="Black" FontSize="12" />
+                                                </VerticalStackLayout>
+                                                <VerticalStackLayout>
+                                                    <Label Text="Position point:" TextColor="#03045E" FontSize="10" FontFamily="CabinBold" />
+                                                    <Label Text="{Binding PositionPoint}" TextColor="#03045E" FontFamily="CabinRegular"  FontSize="12" />
+                                                </VerticalStackLayout>
+
+                                                <VerticalStackLayout>
+                                                    <Label Text="Danger type:" TextColor="#03045E" FontSize="10" FontFamily="CabinBold"/>
+                                                    <Label Text="{Binding TypeDanger}" TextColor="#03045E" FontFamily="CabinRegular" FontSize="12" />
+                                                </VerticalStackLayout>
+                                                <VerticalStackLayout>
+                                                    <Label Text="Topography comment:" TextColor="#03045E" FontSize="10" FontFamily="CabinBold" />
+                                                    <Label Text="{Binding TopoComment}" TextColor="#03045E" FontFamily="CabinRegular" FontSize="12" />
+                                                </VerticalStackLayout>
+                                                <HorizontalStackLayout  VerticalOptions="CenterAndExpand">
+                                                    <Label VerticalTextAlignment="Center" Text="Is validated" TextColor="#03045E" FontSize="10" FontFamily="CabinBold" />
+                                                    <CheckBox Color="#03045E" VerticalOptions="Start" />
+                                                </HorizontalStackLayout>
+                                            </VerticalStackLayout>
+                                        </Grid>
+                                    </Frame>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+
+            <VerticalStackLayout HorizontalOptions="FillAndExpand" Spacing="10" Margin="0,10,0,0">
+                <Button Text="Add Obstacle" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15"/>
+                <Button x:Name="saveButton" Text="Save" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15"/>
+            </VerticalStackLayout>
+        </StackLayout>
+    </ScrollView>
 </ContentView>
