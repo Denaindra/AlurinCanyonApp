@@ -50,6 +50,7 @@ public partial class HomeScreen : ContentPage
                 search.HeightRequest = 30;
                 searchLabel.FontSize = 17;
                 searchLabel.FontAttributes = FontAttributes.Bold;
+                viewModel.navigation = Navigation;
                 childLayout.Children.Add(new SearchCanyonScreen(viewModel));
                 break;
             case 1:

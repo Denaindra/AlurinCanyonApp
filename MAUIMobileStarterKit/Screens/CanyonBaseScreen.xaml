@@ -8,8 +8,8 @@
     <AbsoluteLayout>
         <StackLayout x:Name="childLayout"  AbsoluteLayout.LayoutBounds="0,125,1,1" AbsoluteLayout.LayoutFlags="SizeProportional" />
         <HorizontalStackLayout Padding="10,0,0,0"  AbsoluteLayout.LayoutBounds="0, 0, 70,70"  AbsoluteLayout.LayoutFlags="PositionProportional" >
-            <ImageButton Source="burgerbar.png" Aspect="AspectFit" HeightRequest="30" VerticalOptions="Center" Clicked="MenuBtnClicked" />
-            <Label Text="Home" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontFamily="VinaSansRegular" FontSize="35" />
+            <!--<ImageButton Source="burgerbar.png" Aspect="AspectFit" HeightRequest="30" VerticalOptions="Center" Clicked="MenuBtnClicked" />
+            <Label Text="Home" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontFamily="VinaSansRegular" FontSize="35" />-->
 
         </HorizontalStackLayout>
         <Frame Padding="0"  HeightRequest="70" BorderColor="Transparent" CornerRadius="5" 

@@ -1,5 +1,6 @@
 ﻿using MAUIMobileStarterKit.Interface;
 using MAUIMobileStarterKit.Models.UI;
+using MAUIMobileStarterKit.Screens;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,26 +12,29 @@ namespace MAUIMobileStarterKit.ViewModels
 {
     public class HomePageViewModel:BaseViewModel
     {
-        private ObservableCollection<CanyonSearchResultModel> livingExpenses;
+        private ObservableCollection<CanyonSearchResultModel> cannyonDetails;
         private ObservableCollection<CommentModel> comments;
         private ObservableCollection<TophoroGraphyModel> tophoroGraphyList;
 
         private readonly ILoading loading;
-        public HomePageViewModel(ILoading loading)
+
+        private readonly CanyonBaseScreen canyonBaseScreen;
+        public HomePageViewModel(ILoading loading,CanyonBaseScreen canyonBaseScreen)
         {
             this.loading = loading;
+            this.canyonBaseScreen = canyonBaseScreen;
         }
 
-        public ObservableCollection<CanyonSearchResultModel> LivingExpenses
+        public ObservableCollection<CanyonSearchResultModel> CannyonDetails
         {
             get
             {
-                return livingExpenses;
+                return cannyonDetails;
             }
             set
             {
-                livingExpenses = value;
-                NotifyPropertyChanged(nameof(LivingExpenses));
+                cannyonDetails = value;
+                NotifyPropertyChanged(nameof(CannyonDetails));
             }
         }
         public ObservableCollection<TophoroGraphyModel> TophoroGraphyList
@@ -62,10 +66,10 @@ namespace MAUIMobileStarterKit.ViewModels
             try
             {
                 loading.StartIndicator();
-                LivingExpenses = new ObservableCollection<CanyonSearchResultModel>();
+                CannyonDetails = new ObservableCollection<CanyonSearchResultModel>();
                 for (int i = 0; i < 4; i++)
                 {
-                    LivingExpenses.Add(new CanyonSearchResultModel()
+                    CannyonDetails.Add(new CanyonSearchResultModel()
                     {
                         CanyonName = "Bkitokifaitha",
                         CascadeHeight = i*2,
@@ -157,6 +161,11 @@ namespace MAUIMobileStarterKit.ViewModels
             {
                 loading.EndIndiCator();
             }
+        }
+
+        public void NavigateToCannyonBasePage()
+        {
+            PushModalAsync(canyonBaseScreen);
         }
     }
 }

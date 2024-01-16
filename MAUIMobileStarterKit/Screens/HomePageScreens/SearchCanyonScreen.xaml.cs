@@ -5,10 +5,13 @@ namespace MAUIMobileStarterKit.Screens.HomePageScreens;
 
 public partial class SearchCanyonScreen : ContentView
 {
-	public SearchCanyonScreen(HomePageViewModel viewModel)
+    private readonly HomePageViewModel viewModel;
+
+    public SearchCanyonScreen(HomePageViewModel viewModel)
 	{
 		InitializeComponent();
 		SetupUI();
+        this.viewModel = viewModel;
         BindingContext = viewModel;
         viewModel.LoadCannoynDetails();
     }
@@ -26,4 +29,8 @@ public partial class SearchCanyonScreen : ContentView
 
     }
 
+    private void CannyonItemTapped(object sender, ItemTappedEventArgs e)
+    {
+        viewModel.NavigateToCannyonBasePage();
+    }
 }
