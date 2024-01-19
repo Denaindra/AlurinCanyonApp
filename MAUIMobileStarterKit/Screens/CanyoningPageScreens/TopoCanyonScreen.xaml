@@ -5,7 +5,7 @@
     <ScrollView x:Name="scrollView">
         <StackLayout Orientation="Vertical" Padding="10">
 
-            <Label x:Name="EmptyTopography" HorizontalTextAlignment="Center" Text="There is no topopography profile for this canyon, please add precise informations, they will be validated by administrator." FontFamily="CabinRegular"  TextColor="#03045E" FontSize="15" TextDecorations="Underline"/>
+            <Label x:Name="EmptyTopography" HorizontalTextAlignment="Center" Text="There is no topopography profile for this canyon, please add precise informations, they will be validated by administrator." FontFamily="CabinBold"  TextColor="#03045E" FontSize="15" TextDecorations="Underline"/>
             <StackLayout VerticalOptions="Center"  Orientation="Horizontal">
                 <ListView x:Name="TopoListView" HeightRequest="350" RowHeight="300"  SeparatorVisibility="None" ItemsSource="{Binding TopographiesList}" HasUnevenRows="false" >
                     <ListView.ItemTemplate>
@@ -14,31 +14,31 @@
                                 <StackLayout  Margin="0,5" >
                                     <Frame Padding="0,0,5,0" BorderColor="Transparent" CornerRadius="5"  HasShadow="False" BackgroundColor="#90E0EF" >
                                         <Grid RowDefinitions="Auto" ColumnDefinitions="Auto,*" ColumnSpacing="10" >
-                                            <Image  WidthRequest="180" BackgroundColor="Purple" Aspect="AspectFill" Grid.Row="0" Grid.Column="0"/>
+                                            <Image  WidthRequest="180" BackgroundColor="LightGrey" Aspect="AspectFill" Grid.Row="0" Grid.Column="0"/>
                                             <VerticalStackLayout  Grid.Row="0" Grid.Column="1" Padding="0,5">
                                                 <VerticalStackLayout>
-                                                    <Image HeightRequest="100" BackgroundColor="Yellow" Aspect="AspectFill"  />
-                                                    <Label Text="{Binding TypeObstacle}" FontFamily="CabinBold" TextColor="Black" FontSize="12" FontAttributes="Bold"/>
+                                                    <Image HeightRequest="100" BackgroundColor="LightGrey" Aspect="AspectFill"  />
+                                                    <Label Text="{Binding TypeObstacle}" FontFamily="CabinBold" TextColor="#03045E" FontSize="12" FontAttributes="Bold"/>
                                                 </VerticalStackLayout>
                                                 <VerticalStackLayout>
-                                                    <Label Text="Obstacle Size:" FontFamily="CabinBold"  TextColor="#03045E" FontSize="10"/>
-                                                    <Label Text="{Binding TailleObstacle}" TextColor="Black" FontSize="12" />
+                                                    <Label Text="Obstacle Size:" FontFamily="CabinBold"  TextColor="#03045E" FontSize="10" TextDecorations="Underline" />
+                                                    <Label Text="{Binding TailleObstacle}" TextColor="#03045E" FontFamily="CabinRegular"  FontSize="12" />
                                                 </VerticalStackLayout>
                                                 <VerticalStackLayout>
-                                                    <Label Text="Position point:" TextColor="#03045E" FontSize="10" FontFamily="CabinBold" />
+                                                    <Label Text="Position point:" TextColor="#03045E" FontSize="10" FontFamily="CabinBold" TextDecorations="Underline"/>
                                                     <Label Text="{Binding PositionPoint}" TextColor="#03045E" FontFamily="CabinRegular"  FontSize="12" />
                                                 </VerticalStackLayout>
 
                                                 <VerticalStackLayout>
-                                                    <Label Text="Danger type:" TextColor="#03045E" FontSize="10" FontFamily="CabinBold"/>
+                                                    <Label Text="Danger type:" TextColor="#03045E" FontSize="10" FontFamily="CabinBold" TextDecorations="Underline"/>
                                                     <Label Text="{Binding TypeDanger}" TextColor="#03045E" FontFamily="CabinRegular" FontSize="12" />
                                                 </VerticalStackLayout>
                                                 <VerticalStackLayout>
-                                                    <Label Text="Topography comment:" TextColor="#03045E" FontSize="10" FontFamily="CabinBold" />
+                                                    <Label Text="Topography comment:" TextColor="#03045E" FontSize="10" FontFamily="CabinBold" TextDecorations="Underline"/>
                                                     <Label Text="{Binding TopoComment}" TextColor="#03045E" FontFamily="CabinRegular" FontSize="12" />
                                                 </VerticalStackLayout>
                                                 <HorizontalStackLayout  VerticalOptions="CenterAndExpand">
-                                                    <Label VerticalTextAlignment="Center" Text="Is validated" TextColor="#03045E" FontSize="10" FontFamily="CabinBold" />
+                                                    <Label VerticalTextAlignment="Center" Text="Is validated" TextColor="#03045E" FontSize="10" FontFamily="CabinBold" TextDecorations="Underline"/>
                                                     <CheckBox Color="#03045E" VerticalOptions="Start" />
                                                 </HorizontalStackLayout>
                                             </VerticalStackLayout>

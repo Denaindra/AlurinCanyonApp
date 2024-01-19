@@ -2,10 +2,55 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUIMobileStarterKit.Screens.CanyoningPageScreens.ReglementationCanyonScreen">
-    <VerticalStackLayout>
-        <Label 
-            Text="Reglememtation screenn"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ScrollView Padding="10" x:Name="stackLayout">
+        <StackLayout Spacing="10"> 
+        <VerticalStackLayout>
+            <Label Text="Sorry, in this section there is no translation in your language." HorizontalTextAlignment="Center" FontFamily="CabinBold"  TextColor="#03045E" FontSize="15" />
+            <Label Text="Currently, it seems there is no specific reglementation on this canyon. Check on other website if it's still true, if you find information please add a reglementation it will be check by administrator." HorizontalTextAlignment="Center" FontFamily="CabinBold"  TextColor="#03045E" FontSize="15" />
+            <VerticalStackLayout >
+                <Image Margin="10,15,5,15" Aspect="AspectFit" Source="Desescalade.png"/>
+            <ListView RowHeight="100"   SeparatorColor="Gray" SelectionMode="None" ItemsSource="{Binding ReglementationsList}"
+             HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout  Margin="0,5" >
+                                    <Frame Padding="0,0,5,0" BorderColor="Transparent" CornerRadius="5"  HasShadow="False" BackgroundColor="#90E0EF" >
+                                        <Grid Padding="5" RowDefinitions="*,*,*" ColumnDefinitions="*,*">
+                                        <VerticalStackLayout Grid.Row="0" Grid.Column="0">
+                                            <Label Text="Status" FontFamily="CabinBold"  TextColor="#03045E" FontSize="10" TextDecorations="Underline"/>
+                                        <Label Text="{Binding Status}" FontFamily="CabinRegular"  TextColor="#03045E" FontSize="12"/>
+                                        </VerticalStackLayout>
+
+                                        <VerticalStackLayout Grid.Row="1" Grid.Column="0">
+                                            <Label Text="Action" FontFamily="CabinBold"  TextColor="#03045E" FontSize="10" TextDecorations="Underline"/>
+                                        <Label Text="{Binding Action}" FontFamily="CabinRegular"  TextColor="#03045E" FontSize="12" />
+                                        </VerticalStackLayout>
+
+                                        <VerticalStackLayout Grid.Row="2" Grid.Column="0">
+                                            <Label Text="Law text name" FontFamily="CabinBold"  TextColor="#03045E" FontSize="10" TextDecorations="Underline"/>
+                                            <Label Text="{Binding LawTextName}" FontFamily="CabinRegular"  TextColor="#03045E" FontSize="12"/>
+                                        </VerticalStackLayout>
+
+                                        <VerticalStackLayout Grid.Row="0" Grid.Column="1">
+                                            <Label Text="Date of implementation" FontFamily="CabinBold"  TextColor="#03045E" FontSize="10" TextDecorations="Underline"/>
+                                        <Label Text="{Binding SetupDate}" FontFamily="CabinRegular"  TextColor="#03045E" FontSize="12" />
+                                        </VerticalStackLayout>
+
+                                        <VerticalStackLayout Grid.Row="1" Grid.Column="1">
+                                            <Label Text="Abstract" FontFamily="CabinBold"  TextColor="#03045E" FontSize="10" TextDecorations="Underline"/>
+                                        <Label Text="{Binding Abstract}" FontFamily="CabinRegular"  TextColor="#03045E" FontSize="12" />
+                                        </VerticalStackLayout>
+                                        </Grid>
+                                    </Frame>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+        <Button Text="Add reglementation" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15"/>
+        </StackLayout>
+    </ScrollView>
 </ContentView>

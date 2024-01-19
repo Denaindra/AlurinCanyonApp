@@ -13,9 +13,24 @@ namespace MAUIMobileStarterKit.ViewModels
         private ObservableCollection<CanyonCommentList> canyonCommentList;
         private ObservableCollection<UserCreator> userCreatorList;
         private ObservableCollection<TopographiesModal> topographiesList;
+        private ObservableCollection<ReglementationsModal> reglementationsList;
+
         public CannyonBasedViewModel()
         {
             
+        }
+
+        public ObservableCollection<ReglementationsModal> ReglementationsList
+        {
+            get
+            {
+                return reglementationsList;
+            }
+            set
+            {
+                reglementationsList = value;
+                NotifyPropertyChanged(nameof(ReglementationsList));
+            }
         }
 
         public ObservableCollection<TopographiesModal> TopographiesList
@@ -121,6 +136,31 @@ namespace MAUIMobileStarterKit.ViewModels
                         TopoComment= "sample topocomment",
                         TypeDanger = "sample typedanger",
                         TypeObstacle = "sample typo obstavle"
+                    });
+                }
+                // loading.EndIndiCator();
+            }
+            catch (Exception ex)
+            {
+                //  loading.EndIndiCator();
+            }
+        }
+
+        public void LoadReglementation()
+        {
+            try
+            {
+                // loading.StartIndicator();
+                ReglementationsList = new ObservableCollection<ReglementationsModal>();
+                for (int i = 0; i < 4; i++)
+                {
+                    ReglementationsList.Add(new ReglementationsModal()
+                    {
+                        Abstract="Sample Abstract",
+                        Action="Sample action",
+                        LawTextName="sample law text name",
+                        SetupDate="2023/08/23",
+                        Status="sample status"
                     });
                 }
                 // loading.EndIndiCator();

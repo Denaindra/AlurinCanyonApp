@@ -54,7 +54,7 @@ public partial class CanyonBaseScreen : ContentPage
             case 3:
                 reglementLabel.FontAttributes = FontAttributes.Bold;
                 reglementLabel.FontSize = 12;
-                childLayout.Children.Add(new ReglementationCanyonScreen());
+                childLayout.Children.Add(new ReglementationCanyonScreen(viewModel));
                 break;
             case 4:
                 chatLabel.FontAttributes = FontAttributes.Bold;
