@@ -9,7 +9,7 @@
             <Label Text="Currently, it seems there is no specific reglementation on this canyon. Check on other website if it's still true, if you find information please add a reglementation it will be check by administrator." HorizontalTextAlignment="Center" FontFamily="CabinBold"  TextColor="#03045E" FontSize="15" />
             <VerticalStackLayout >
                 <Image Margin="10,15,5,15" Aspect="AspectFit" Source="Desescalade.png"/>
-            <ListView RowHeight="100"   SeparatorColor="Gray" SelectionMode="None" ItemsSource="{Binding ReglementationsList}"
+            <ListView RowHeight="100" SelectionMode="None" ItemsSource="{Binding ReglementationsList}"
              HasUnevenRows="True">
                     <ListView.ItemTemplate>
                         <DataTemplate>

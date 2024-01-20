@@ -18,6 +18,7 @@ public partial class TopoCanyonScreen : ContentView
 	private void SteupUI()
 	{
         scrollView.HeightRequest = Constans.DeviceHeight-122;
+        TopoListView.HeightRequest = Constans.DeviceHeight - 100;
         viewModel.LoadTopographies();
 
     }
