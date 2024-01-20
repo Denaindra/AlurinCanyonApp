@@ -2,10 +2,65 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUIMobileStarterKit.Screens.CanyoningPageScreens.CommentCanyonScreen">
-    <VerticalStackLayout>
-        <Label 
-            Text="Comment cannyon Screen"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ScrollView  x:Name="stackLayout" Padding="10">
+        <StackLayout Spacing="10">
+            <Label x:Name="EmptyListComment" Text="No comment, if you did this canyon feel free to add a comment for other canyoneer !!!" HorizontalTextAlignment="Center" FontFamily="CabinBold"  TextColor="#03045E" FontSize="15" TextDecorations="Underline"/>
+            <ListView x:Name="CommentListView" VerticalOptions="CenterAndExpand" SelectionMode="None" SeparatorColor="Gray" ItemsSource="{Binding CommentList}" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout  Margin="0,5" >
+                                <Frame Padding="0,0,5,0" BorderColor="Transparent" CornerRadius="5"  HasShadow="False" BackgroundColor="#90E0EF" >
+                                    <Grid Padding="5" RowSpacing="10" RowDefinitions="*,*,*,*,Auto" ColumnDefinitions="*,*"  >
+                                        <VerticalStackLayout Grid.Row="0" Grid.Column="0">
+                                            <Label Text="CreationDate"  FontFamily="CabinBold"  TextColor="#03045E" FontSize="15" TextDecorations="Underline"/>
+                                            <Label Text="{Binding CreationDate, StringFormat='{0:dddd, d MMMM, yyyy}'}" FontFamily="CabinRegular"  TextColor="#03045E" FontSize="15"/>
+                                        </VerticalStackLayout>
+                                        <VerticalStackLayout Grid.Row="0" Grid.Column="1">
+                                            <Label Text="User Name"  FontFamily="CabinBold"  TextColor="#03045E" FontSize="15" TextDecorations="Underline"/>
+                                            <Label Text="{Binding UserName}" FontFamily="CabinRegular"  TextColor="#03045E" FontSize="15" />
+                                        </VerticalStackLayout>
+                                        <VerticalStackLayout Grid.Row="1" Grid.Column="0">
+                                            <Label Text="Done or view"  FontFamily="CabinBold"  TextColor="#03045E" FontSize="15" TextDecorations="Underline"/>
+                                            <Label Text="{Binding DoneOrView}" FontFamily="CabinRegular"  TextColor="#03045E" FontSize="15"/>
+                                        </VerticalStackLayout>
+                                        <VerticalStackLayout Grid.Row="1" Grid.Column="1">
+                                            <HorizontalStackLayout Spacing="10">
+                                                <Label Text="Debit"  FontFamily="CabinBold"  TextColor="#03045E" FontSize="15" TextDecorations="Underline"/>
+                                                <Image  HeightRequest="25" WidthRequest="25" Source="dropwater.png"/>
+                                            </HorizontalStackLayout>
+                                            <Label Text="{Binding Debit}" FontFamily="CabinRegular"  TextColor="#03045E" FontSize="15"/>
+                                        </VerticalStackLayout>
+                                        <VerticalStackLayout Grid.Row="2" Grid.Column="0">
+                                            <HorizontalStackLayout Spacing="10">
+                                                <Label Text="Water Feeling"  FontFamily="CabinBold"  TextColor="#03045E" FontSize="15" TextDecorations="Underline"/>
+                                                <Image  HeightRequest="25" WidthRequest="25" Source="watertemperature.png"/>
+                                            </HorizontalStackLayout>
+                                            <Label Text="{Binding WaterFeeling}" FontFamily="CabinRegular"  TextColor="#03045E" FontSize="15"/>
+                                        </VerticalStackLayout>
+
+                                        <VerticalStackLayout Grid.Row="2" Grid.Column="1">
+                                            <HorizontalStackLayout Spacing="10">
+                                                <Label Text="Air Feeling"  FontFamily="CabinBold"  TextColor="#03045E" FontSize="15" TextDecorations="Underline"/>
+                                                <Image  HeightRequest="25" WidthRequest="25" Source="thermometer.png"/>
+                                            </HorizontalStackLayout>
+                                            <Label Text="{Binding AirFeeling}" FontFamily="CabinRegular"  TextColor="#03045E" FontSize="15"/>
+                                        </VerticalStackLayout>
+
+                                        <VerticalStackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand"   >
+                                            <Label Text="User Comment"  FontFamily="CabinBold"  TextColor="#03045E" FontSize="15" TextDecorations="Underline"/>
+                                            <Button HorizontalOptions="End"  Text="Signal" TextColor="#03045E" FontSize="15" BackgroundColor="Transparent" Padding="10"  FontAttributes="Italic"
+                                                 CommandParameter="{Binding Id}" />
+                                        </VerticalStackLayout>
+                                        <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding UserComment}" HorizontalTextAlignment="Center" FontFamily="CabinBold"  TextColor="#03045E" FontSize="15"/>
+                                    </Grid>
+                                </Frame>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button VerticalOptions= "EndAndExpand" Text="Add comment"  FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15"/>
+        </StackLayout>
+    </ScrollView>
 </ContentView>

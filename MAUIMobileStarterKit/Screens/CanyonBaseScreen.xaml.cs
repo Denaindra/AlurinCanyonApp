@@ -59,7 +59,7 @@ public partial class CanyonBaseScreen : ContentPage
             case 4:
                 chatLabel.FontAttributes = FontAttributes.Bold;
                 chatLabel.FontSize = 12;
-                childLayout.Children.Add(new CommentCanyonScreen());
+                childLayout.Children.Add(new CommentCanyonScreen(viewModel));
                 break;
             case 5:
                 ImageLabel.FontAttributes = FontAttributes.Bold;

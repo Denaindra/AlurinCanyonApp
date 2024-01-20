@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MAUIMobileStarterKit.Models.UI
 {
-   public class CanyonCommentList
+   public class ResumeCanyonCommentList
     {
         public string Acces { get; set; }
         public string Approche { get; set; }

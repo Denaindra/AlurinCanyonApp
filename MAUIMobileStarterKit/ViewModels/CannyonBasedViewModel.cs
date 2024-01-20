@@ -10,14 +10,27 @@ namespace MAUIMobileStarterKit.ViewModels
 {
     public class CannyonBasedViewModel:BaseViewModel
     {
-        private ObservableCollection<CanyonCommentList> canyonCommentList;
+        private ObservableCollection<ResumeCanyonCommentList> canyonCommentList;
         private ObservableCollection<UserCreator> userCreatorList;
         private ObservableCollection<TopographiesModal> topographiesList;
         private ObservableCollection<ReglementationsModal> reglementationsList;
-
+        private ObservableCollection<CommentListModal> commentList;
         public CannyonBasedViewModel()
         {
             
+        }
+
+        public ObservableCollection<CommentListModal> CommentList
+        {
+            get
+            {
+                return commentList;
+            }
+            set
+            {
+                commentList = value;
+                NotifyPropertyChanged(nameof(CommentList));
+            }
         }
 
         public ObservableCollection<ReglementationsModal> ReglementationsList
@@ -57,7 +70,7 @@ namespace MAUIMobileStarterKit.ViewModels
                 NotifyPropertyChanged(nameof(UserCreatorList));
             }
         }
-        public ObservableCollection<CanyonCommentList> CanyonCommentList
+        public ObservableCollection<ResumeCanyonCommentList> CanyonCommentList
         {
             get
             {
@@ -75,10 +88,10 @@ namespace MAUIMobileStarterKit.ViewModels
             try
             {
                // loading.StartIndicator();
-                CanyonCommentList = new ObservableCollection<CanyonCommentList>();
+                CanyonCommentList = new ObservableCollection<ResumeCanyonCommentList>();
                 for (int i = 0; i < 4; i++)
                 {
-                    CanyonCommentList.Add(new CanyonCommentList()
+                    CanyonCommentList.Add(new ResumeCanyonCommentList()
                     {
                         Acces = "Access",
                         Approche = "Approche",
@@ -161,6 +174,34 @@ namespace MAUIMobileStarterKit.ViewModels
                         LawTextName="sample law text name",
                         SetupDate="2023/08/23",
                         Status="sample status"
+                    });
+                }
+                // loading.EndIndiCator();
+            }
+            catch (Exception ex)
+            {
+                //  loading.EndIndiCator();
+            }
+        }
+
+        public void LoadCommentList()
+        {
+            try
+            {
+                // loading.StartIndicator();
+                CommentList = new ObservableCollection<CommentListModal>();
+                for (int i = 0; i < 4; i++)
+                {
+                    CommentList.Add(new CommentListModal()
+                    {
+                        AirFeeling = "sample aire feeling",
+                        CreationDate = "2023/3/23",
+                        Debit = "Sample debit",
+                        DoneOrView = "Done",
+                        Id = "12",
+                        UserComment = "test comment",
+                        UserName = "abc123",
+                        WaterFeeling = "Good"
                     });
                 }
                 // loading.EndIndiCator();

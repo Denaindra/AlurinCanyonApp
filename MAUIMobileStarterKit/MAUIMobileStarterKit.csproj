@@ -121,9 +121,11 @@
 	  <None Remove="Resources\Images\security.png" />
 	  <None Remove="Resources\Images\settings.png" />
 	  <None Remove="Resources\Images\starblue.png" />
+	  <None Remove="Resources\Images\thermometer.png" />
 	  <None Remove="Resources\Images\topo_canyon.png" />
 	  <None Remove="Resources\Images\Voiture.png" />
 	  <None Remove="Resources\Images\warning.png" />
+	  <None Remove="Resources\Images\watertemperature.png" />
 	  <None Remove="Screens\" />
 	  <None Remove="Utilities\" />
 	  <None Remove="ViewModels\" />
