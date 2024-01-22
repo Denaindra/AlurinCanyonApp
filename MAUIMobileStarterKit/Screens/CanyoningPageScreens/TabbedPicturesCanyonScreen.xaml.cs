@@ -6,4 +6,9 @@ public partial class TabbedPicturesCanyonScreen : ContentView
 	{
 		InitializeComponent();
 	}
+
+    private void CameraBtnClicked(object sender, EventArgs e)
+    {
+
+    }
 }
