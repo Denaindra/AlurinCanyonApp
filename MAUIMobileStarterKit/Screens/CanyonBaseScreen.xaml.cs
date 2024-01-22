@@ -64,7 +64,7 @@ public partial class CanyonBaseScreen : ContentPage
             case 5:
                 ImageLabel.FontAttributes = FontAttributes.Bold;
                 ImageLabel.FontSize = 12;
-                childLayout.Children.Add(new TabbedPicturesCanyonScreen());
+                childLayout.Children.Add(new TabbedPicturesCanyonScreen(viewModel));
                 break;
             case 6:
                 proLabel.FontAttributes = FontAttributes.Bold;

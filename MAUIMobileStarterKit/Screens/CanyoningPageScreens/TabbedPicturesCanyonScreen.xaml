@@ -4,7 +4,7 @@
              x:Class="MAUIMobileStarterKit.Screens.CanyoningPageScreens.TabbedPicturesCanyonScreen">
     <StackLayout Padding="10" Spacing="10">
         <Label x:Name="NotAvailable" IsVisible="True" Text="Sorry, this fonctionnality will be available in the next version of the app." HorizontalTextAlignment="Center" FontFamily="CabinBold"  TextColor="#03045E" FontSize="15" TextDecorations="Underline"/>
-        <Image x:Name="Takephotoimage" HeightRequest="400" BackgroundColor="LightGray" />
+        <Image x:Name="Takephotoimage" HeightRequest="400"  Source="{Binding PhotoPath}" Aspect="AspectFill" />
         <Button Text="Add picture" Clicked="CameraBtnClicked" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" FontFamily="CabinBold"/>
     </StackLayout>
 </ContentView>

@@ -20,6 +20,19 @@ namespace MAUIMobileStarterKit.ViewModels
             
         }
 
+        private string photoPath;
+
+        public string PhotoPath
+        {
+            get { 
+                return photoPath; 
+            }
+            set { 
+                photoPath = value;
+                NotifyPropertyChanged(nameof(PhotoPath));
+            }
+        }
+
         public ObservableCollection<CommentListModal> CommentList
         {
             get
@@ -32,7 +45,6 @@ namespace MAUIMobileStarterKit.ViewModels
                 NotifyPropertyChanged(nameof(CommentList));
             }
         }
-
         public ObservableCollection<ReglementationsModal> ReglementationsList
         {
             get
@@ -45,7 +57,6 @@ namespace MAUIMobileStarterKit.ViewModels
                 NotifyPropertyChanged(nameof(ReglementationsList));
             }
         }
-
         public ObservableCollection<TopographiesModal> TopographiesList
         {
             get
@@ -82,7 +93,6 @@ namespace MAUIMobileStarterKit.ViewModels
                 NotifyPropertyChanged(nameof(CanyonCommentList));
             }
         }
-
         public void LoadCannoynDetails()
         {
             try
@@ -111,7 +121,6 @@ namespace MAUIMobileStarterKit.ViewModels
               //  loading.EndIndiCator();
             }
         }
-
         public void LoadUserCreators()
         {
             try
@@ -133,7 +142,6 @@ namespace MAUIMobileStarterKit.ViewModels
                 //  loading.EndIndiCator();
             }
         }
-
         public void LoadTopographies()
         {
             try
@@ -158,7 +166,6 @@ namespace MAUIMobileStarterKit.ViewModels
                 //  loading.EndIndiCator();
             }
         }
-
         public void LoadReglementation()
         {
             try
@@ -183,7 +190,6 @@ namespace MAUIMobileStarterKit.ViewModels
                 //  loading.EndIndiCator();
             }
         }
-
         public void LoadCommentList()
         {
             try
@@ -209,6 +215,27 @@ namespace MAUIMobileStarterKit.ViewModels
             catch (Exception ex)
             {
                 //  loading.EndIndiCator();
+            }
+        }
+        public async void TakePhoto()
+        {
+            if (MediaPicker.Default.IsCaptureSupported)
+            {
+                FileResult photo = await MediaPicker.Default.CapturePhotoAsync();
+
+                if (photo != null)
+                {
+                    // save the file into local storage
+                    string localFilePath = Path.Combine(FileSystem.CacheDirectory, photo.FileName);
+
+                    using (var stream = await photo.OpenReadAsync())
+                    using (var newStream = File.OpenWrite(localFilePath))
+                    {
+                        await stream.CopyToAsync(newStream);
+                    }
+
+                    PhotoPath = localFilePath;
+                }
             }
         }
     }
