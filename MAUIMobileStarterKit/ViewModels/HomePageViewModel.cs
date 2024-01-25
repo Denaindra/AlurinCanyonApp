@@ -165,6 +165,7 @@ namespace MAUIMobileStarterKit.ViewModels
 
         public void NavigateToCannyonBasePage()
         {
+            loading.StartIndicator();
             PushModalAsync(canyonBaseScreen);
         }
     }

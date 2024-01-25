@@ -1,4 +1,5 @@
-﻿using MAUIMobileStarterKit.Models.UI;
+﻿using MAUIMobileStarterKit.Interface;
+using MAUIMobileStarterKit.Models.UI;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,9 +17,11 @@ namespace MAUIMobileStarterKit.ViewModels
         private ObservableCollection<ReglementationsModal> reglementationsList;
         private ObservableCollection<CommentListModal> commentList;
         private ObservableCollection<ProCanyonModal> professioanlList;
-        public CannyonBasedViewModel()
+
+        private readonly ILoading loading;
+        public CannyonBasedViewModel(ILoading loading)
         {
-            
+            this.loading = loading;
         }
 
         private string photoPath;
@@ -279,6 +282,21 @@ namespace MAUIMobileStarterKit.ViewModels
             {
                 //  loading.EndIndiCator();
             }
+        }
+
+        public void StartIndicator()
+        {
+            loading.StartIndicator();
+        }
+        public void EndIndiCator()
+        {
+            loading.EndIndiCator();
+        }
+
+        public async Task WatteForBackGroundSteup()
+        {
+            await Task.Delay(5000);
+            EndIndiCator();
         }
     }
 }
