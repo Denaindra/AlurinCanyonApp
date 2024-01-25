@@ -11,6 +11,7 @@ public partial class CanyonBaseScreen : ContentPage
 	{
 		InitializeComponent();
         this.viewModel = viewModel;
+        viewModel.navigation = Navigation;
 	}
 
     protected override void OnAppearing()
@@ -93,5 +94,10 @@ public partial class CanyonBaseScreen : ContentPage
     private void RemoveChildView()
     {
         childLayout.Children.Clear();
+    }
+
+    private void ClickBtnTapped(object sender, TappedEventArgs e)
+    {
+        viewModel.navigation.PopModalAsync();
     }
 }

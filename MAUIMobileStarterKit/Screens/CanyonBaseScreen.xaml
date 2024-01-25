@@ -72,5 +72,14 @@
                 </VerticalStackLayout>
             </Grid>
         </Frame>
+        <HorizontalStackLayout HeightRequest="50" VerticalOptions="CenterAndExpand"  WidthRequest="100" AbsoluteLayout.LayoutBounds="0, 0, -1,-1" 
+            AbsoluteLayout.LayoutFlags="PositionProportional">
+            <Image Source="backarrow.png" HeightRequest="30" Aspect="AspectFit" />
+            <Label VerticalOptions="CenterAndExpand" Text="Back" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontFamily="VinaSansRegular" FontSize="35" />
+            <HorizontalStackLayout.GestureRecognizers>
+                <TapGestureRecognizer
+                Tapped="ClickBtnTapped"/>
+            </HorizontalStackLayout.GestureRecognizers>
+        </HorizontalStackLayout>
     </AbsoluteLayout>
 </ContentPage>
