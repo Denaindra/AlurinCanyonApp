@@ -18,28 +18,28 @@
                                     <Frame Padding="0,0,5,0" BorderColor="Transparent" CornerRadius="5"  HasShadow="False" BackgroundColor="#90E0EF" >
                                         <Grid Padding="5" RowDefinitions="*,*,*" ColumnDefinitions="*,*">
                                         <VerticalStackLayout Grid.Row="0" Grid.Column="0">
-                                            <Label Text="Status" FontFamily="CabinBold"  TextColor="#03045E" FontSize="10" TextDecorations="Underline"/>
-                                        <Label Text="{Binding Status}" FontFamily="CabinRegular"  TextColor="#03045E" FontSize="12"/>
+                                            <Label Text="Status" FontFamily="CabinBold"  TextColor="#03045E" FontSize="15"  TextDecorations="Underline"/>
+                                        <Label Text="{Binding Status}" FontFamily="CabinRegular"  TextColor="#03045E" FontSize="15" />
                                         </VerticalStackLayout>
 
                                         <VerticalStackLayout Grid.Row="1" Grid.Column="0">
-                                            <Label Text="Action" FontFamily="CabinBold"  TextColor="#03045E" FontSize="10" TextDecorations="Underline"/>
-                                        <Label Text="{Binding Action}" FontFamily="CabinRegular"  TextColor="#03045E" FontSize="12" />
+                                            <Label Text="Action" FontFamily="CabinBold"  TextColor="#03045E" FontSize="15"  TextDecorations="Underline"/>
+                                        <Label Text="{Binding Action}" FontFamily="CabinRegular"  TextColor="#03045E" FontSize="15"  />
                                         </VerticalStackLayout>
 
                                         <VerticalStackLayout Grid.Row="2" Grid.Column="0">
-                                            <Label Text="Law text name" FontFamily="CabinBold"  TextColor="#03045E" FontSize="10" TextDecorations="Underline"/>
-                                            <Label Text="{Binding LawTextName}" FontFamily="CabinRegular"  TextColor="#03045E" FontSize="12"/>
+                                            <Label Text="Law text name" FontFamily="CabinBold"  TextColor="#03045E" FontSize="15"  TextDecorations="Underline"/>
+                                            <Label Text="{Binding LawTextName}" FontFamily="CabinRegular"  TextColor="#03045E" FontSize="15" />
                                         </VerticalStackLayout>
 
                                         <VerticalStackLayout Grid.Row="0" Grid.Column="1">
-                                            <Label Text="Date of implementation" FontFamily="CabinBold"  TextColor="#03045E" FontSize="10" TextDecorations="Underline"/>
-                                        <Label Text="{Binding SetupDate}" FontFamily="CabinRegular"  TextColor="#03045E" FontSize="12" />
+                                            <Label Text="Date of implementation" FontFamily="CabinBold"  TextColor="#03045E" FontSize="15"  TextDecorations="Underline"/>
+                                        <Label Text="{Binding SetupDate}" FontFamily="CabinRegular"  TextColor="#03045E" FontSize="15"  />
                                         </VerticalStackLayout>
 
                                         <VerticalStackLayout Grid.Row="1" Grid.Column="1">
-                                            <Label Text="Abstract" FontFamily="CabinBold"  TextColor="#03045E" FontSize="10" TextDecorations="Underline"/>
-                                        <Label Text="{Binding Abstract}" FontFamily="CabinRegular"  TextColor="#03045E" FontSize="12" />
+                                            <Label Text="Abstract" FontFamily="CabinBold"  TextColor="#03045E" FontSize="15"  TextDecorations="Underline"/>
+                                        <Label Text="{Binding Abstract}" FontFamily="CabinRegular"  TextColor="#03045E" FontSize="15"  />
                                         </VerticalStackLayout>
                                         </Grid>
                                     </Frame>
