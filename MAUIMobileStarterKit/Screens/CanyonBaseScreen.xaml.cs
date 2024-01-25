@@ -69,7 +69,7 @@ public partial class CanyonBaseScreen : ContentPage
             case 6:
                 proLabel.FontAttributes = FontAttributes.Bold;
                 proLabel.FontSize = 17;
-                childLayout.Children.Add(new ProCanyonScreen());
+                childLayout.Children.Add(new ProCanyonScreen(viewModel));
                 break;
         }
     }

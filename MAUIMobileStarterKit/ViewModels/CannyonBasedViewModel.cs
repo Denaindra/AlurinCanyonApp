@@ -15,6 +15,7 @@ namespace MAUIMobileStarterKit.ViewModels
         private ObservableCollection<TopographiesModal> topographiesList;
         private ObservableCollection<ReglementationsModal> reglementationsList;
         private ObservableCollection<CommentListModal> commentList;
+        private ObservableCollection<ProCanyonModal> professioanlList;
         public CannyonBasedViewModel()
         {
             
@@ -93,6 +94,20 @@ namespace MAUIMobileStarterKit.ViewModels
                 NotifyPropertyChanged(nameof(CanyonCommentList));
             }
         }
+
+        public ObservableCollection<ProCanyonModal> ProfessioanlList
+        {
+            get
+            {
+                return professioanlList;
+            }
+            set
+            {
+                professioanlList = value;
+                NotifyPropertyChanged(nameof(ProfessioanlList));
+            }
+        }
+
         public void LoadCannoynDetails()
         {
             try
@@ -236,6 +251,33 @@ namespace MAUIMobileStarterKit.ViewModels
 
                     PhotoPath = localFilePath;
                 }
+            }
+        }
+
+        public void LoadPerforssioanlList()
+        {
+            try
+            {
+                // loading.StartIndicator();
+                ProfessioanlList = new ObservableCollection<ProCanyonModal>();
+                for (int i = 0; i < 4; i++)
+                {
+                    ProfessioanlList.Add(new ProCanyonModal()
+                    {
+                        Address = "Sample Address",
+                        Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, ",
+                        Email = "sample Email",
+                        Logo = "sample Logo",
+                        Phone = "sample phone",
+                        Name = "sample Name",
+                        Website = "www.sampleWebsite.com"
+                    });
+                }
+                // loading.EndIndiCator();
+            }
+            catch (Exception ex)
+            {
+                //  loading.EndIndiCator();
             }
         }
     }
