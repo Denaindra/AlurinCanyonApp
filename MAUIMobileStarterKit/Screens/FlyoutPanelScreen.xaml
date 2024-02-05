@@ -8,7 +8,7 @@
                 <VerticalStackLayout  Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                     <Grid> 
                     <Image Aspect="AspectFit" 
-                                Source="backgroundvector2.png"
+                                Source="flyoutmenubackgroundvector.png"
                                />
 
                     <Label TextColor="WhiteSmoke" Padding="5" HorizontalTextAlignment="Center" VerticalOptions="EndAndExpand"  Text="My Canyon Project" FontSize="35" FontFamily="VinaSansRegular" />

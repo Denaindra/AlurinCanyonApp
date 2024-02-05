@@ -98,6 +98,7 @@
 	  <None Remove="Resources\Images\descenteactif.png" />
 	  <None Remove="Resources\Images\desescalade.png" />
 	  <None Remove="Resources\Images\dropwater.png" />
+	  <None Remove="Resources\Images\flyoutmenubackgroundvector.png" />
 	  <None Remove="Resources\Images\home.png" />
 	  <None Remove="Resources\Images\image.png" />
 	  <None Remove="Resources\Images\info.png" />
