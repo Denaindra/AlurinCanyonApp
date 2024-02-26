@@ -1,14 +1,6 @@
 ﻿using Auth0.OidcClient;
-using IdentityModel.OidcClient;
-using Java.Lang;
 using MAUIMobileStarterKit.Screens;
 using MAUIMobileStarterKit.Screens.SettingsScreen;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MAUIMobileStarterKit.ViewModels
 {
