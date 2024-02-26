@@ -1,4 +1,5 @@
-﻿using Controls.UserDialogs.Maui;
+﻿using Auth0.OidcClient;
+using Controls.UserDialogs.Maui;
 using Maui.GoogleMaps.Hosting;
 using MAUIMobileStarterKit.Interface;
 using MAUIMobileStarterKit.Screens;
@@ -47,7 +48,17 @@ public static class MauiProgram
                 fonts.AddFont("VinaSans-Regular.ttf", "VinaSansRegular");
             });
 
+        builder.Services.AddSingleton(new Auth0Client(new Auth0ClientOptions
+        {
+            Domain = "canyonproject.eu.auth0.com",
+            ClientId = "dKayOCy49So27VtmIrJsjdfB3qfVLJWc",
+            RedirectUri = "com.companyname.canyonproject://canyonproject.eu.auth0.com/android/com.companyname.canyonproject/callback",
+            PostLogoutRedirectUri = "com.companyname.canyonproject://canyonproject.eu.auth0.com/android/com.companyname.canyonproject/callback",
+            Scope = "openid profile email"
+        }));
+
         //Views
+        builder.Services.AddTransient<EntryPage>();
         builder.Services.AddTransient<ContactUsPage>();
         builder.Services.AddTransient<InfoPage>();
         builder.Services.AddTransient<SecurityScreen>();
