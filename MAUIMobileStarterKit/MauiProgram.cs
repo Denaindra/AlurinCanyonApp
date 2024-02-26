@@ -9,6 +9,7 @@ using MAUIMobileStarterKit.Screens.SettingsScreen.CreateCannyonModals;
 using MAUIMobileStarterKit.Utilities;
 using MAUIMobileStarterKit.ViewModels;
 using Microsoft.Extensions.Logging;
+using MAUIMobileStarterKit.Constant;
 namespace MAUIMobileStarterKit;
 
 public static class MauiProgram
@@ -50,15 +51,14 @@ public static class MauiProgram
 
         builder.Services.AddSingleton(new Auth0Client(new Auth0ClientOptions
         {
-            Domain = "canyonproject.eu.auth0.com",
-            ClientId = "dKayOCy49So27VtmIrJsjdfB3qfVLJWc",
-            RedirectUri = "com.companyname.canyonproject://canyonproject.eu.auth0.com/android/com.companyname.canyonproject/callback",
-            PostLogoutRedirectUri = "com.companyname.canyonproject://canyonproject.eu.auth0.com/android/com.companyname.canyonproject/callback",
-            Scope = "openid profile email"
+            Domain = Constans.Domain,
+            ClientId = Constans.ClientId,
+            RedirectUri = Constans.RedirectUri,
+            PostLogoutRedirectUri = Constans.PostLogoutRedirectUri,
+            Scope = Constans.Scope
         }));
 
         //Views
-        builder.Services.AddTransient<EntryPage>();
         builder.Services.AddTransient<ContactUsPage>();
         builder.Services.AddTransient<InfoPage>();
         builder.Services.AddTransient<SecurityScreen>();

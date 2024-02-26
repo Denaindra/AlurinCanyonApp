@@ -11,5 +11,12 @@ namespace MAUIMobileStarterKit.Constant
         public static double DeviceHeight;
         public static double DeviceWidth;
         public static FlyoutPage flyoutPage;
+
+        public const string Domain = "canyonproject.eu.auth0.com";
+        public static string ClientId = "dKayOCy49So27VtmIrJsjdfB3qfVLJWc";
+        public static string RedirectUri = "com.companyname.canyonproject://canyonproject.eu.auth0.com/android/com.companyname.canyonproject/callback";
+        public static string PostLogoutRedirectUri = "com.companyname.canyonproject://canyonproject.eu.auth0.com/android/com.companyname.canyonproject/callback";
+        public static string Scope = "openid profile email";
+
     }
 }

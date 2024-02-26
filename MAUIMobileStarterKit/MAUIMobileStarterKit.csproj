@@ -74,6 +74,7 @@
 
 	<ItemGroup>
 	  <None Remove="Interface\" />
+	  <None Remove="Platforms\Android\xml\auto_backup_rules.xml" />
 	  <None Remove="Resources\AppIcon\appIcon.png" />
 	  <None Remove="Resources\Fonts\Cabin-Bold.ttf" />
 	  <None Remove="Resources\Fonts\Cabin-Regular.ttf" />
@@ -125,6 +126,10 @@
 	  <None Remove="Screens\" />
 	  <None Remove="Utilities\" />
 	  <None Remove="ViewModels\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <AndroidResource Include="Platforms\Android\xml\auto_backup_rules.xml" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Interface\" />

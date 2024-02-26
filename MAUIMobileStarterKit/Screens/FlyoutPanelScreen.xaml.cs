@@ -1,4 +1,5 @@
 
+using Auth0.OidcClient;
 using MAUIMobileStarterKit.Constant;
 using MAUIMobileStarterKit.ViewModels;
 
@@ -8,14 +9,23 @@ public partial class FlyoutPanelScreen : FlyoutPage
 {
     private DashBoardViewModel dashBoard;
     private Page homescreen;
-	public FlyoutPanelScreen(DashBoardViewModel dashBoard)
-	{
-		InitializeComponent();
+    public FlyoutPanelScreen(DashBoardViewModel dashBoard)
+    {
+        InitializeComponent();
         this.dashBoard = dashBoard;
         this.homescreen = dashBoard.PageNavigationSteup(0);
         dashBoard.navigation = Navigation;
         Constans.flyoutPage = this;
         LoadInitialPage();
+    }
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        var results = await dashBoard.CheckUserLogin();
+        if (results)
+        {
+            flyoutContentPage.IsVisible = true;
+        }
     }
     private async void DashBoardItemTapped(object sender, TappedEventArgs e)
     {
@@ -24,6 +34,15 @@ public partial class FlyoutPanelScreen : FlyoutPage
         if (parameter == 5)
         {
             bool answer = await DisplayAlert("Logout", "Would you like to Logout from the App ?", "Yes", "No");
+            if (answer)
+            {
+                dashBoard.LogOutTheUser();
+                var results = await dashBoard.CheckUserLogin();
+                if (results)
+                {
+                    LoadInitialPage();
+                }
+            }
         }
         else
         {
