@@ -7,48 +7,39 @@ namespace MAUIMobileStarterKit.Screens;
 
 public partial class FlyoutPanelScreen : FlyoutPage
 {
-    private DashBoardViewModel dashBoard;
+    private DashBoardViewModel dashBoardvm;
     private Page homescreen;
-    public FlyoutPanelScreen(DashBoardViewModel dashBoard)
+    public FlyoutPanelScreen(DashBoardViewModel dashBoardvm)
     {
         InitializeComponent();
-        this.dashBoard = dashBoard;
-        this.homescreen = dashBoard.PageNavigationSteup(0);
-        dashBoard.navigation = Navigation;
+        this.dashBoardvm = dashBoardvm;
+        this.homescreen = dashBoardvm.PageNavigationSteup(0);
+        dashBoardvm.navigation = Navigation;
         Constans.flyoutPage = this;
         LoadInitialPage();
     }
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        var results = await dashBoard.CheckUserLogin();
+        var results = await dashBoardvm.CheckUserLogin();
         if (results)
         {
             flyoutContentPage.IsVisible = true;
         }
     }
-    private async void DashBoardItemTapped(object sender, TappedEventArgs e)
+    private void DashBoardItemTapped(object sender, TappedEventArgs e)
     {
         var tappedParameter = (TappedEventArgs)e;
         var parameter = Convert.ToInt32(tappedParameter.Parameter);
-        if (parameter == 5)
-        {
-            bool answer = await DisplayAlert("Logout", "Would you like to Logout from the App ?", "Yes", "No");
-            if (answer)
-            {
-                dashBoard.LogOutTheUser();
-                var results = await dashBoard.CheckUserLogin();
-                if (results)
-                {
-                    LoadInitialPage();
-                }
-            }
-        }
-        else
-        {
-            Detail = new NavigationPage(dashBoard.PageNavigationSteup(parameter));
-        }
 
+            if(dashBoardvm.PageNavigationSteup(parameter) is LogOutPage)
+            {
+                dashBoardvm.PushModalAsync(dashBoardvm.PageNavigationSteup(parameter));
+            }
+            else
+            {
+                Detail = new NavigationPage(dashBoardvm.PageNavigationSteup(parameter));
+            }
     }
     private void LoadInitialPage()
     {

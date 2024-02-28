@@ -17,6 +17,9 @@ namespace MAUIMobileStarterKit.Constant
         public static string RedirectUri = "com.companyname.canyonproject://canyonproject.eu.auth0.com/android/com.companyname.canyonproject/callback";
         public static string PostLogoutRedirectUri = "com.companyname.canyonproject://canyonproject.eu.auth0.com/android/com.companyname.canyonproject/callback";
         public static string Scope = "openid profile email";
+        public const string LogoutTitle = "LogOut";
+        public const string LogingTitle = "LogIn";
+
 
     }
 }

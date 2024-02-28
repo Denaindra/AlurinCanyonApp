@@ -52,6 +52,9 @@
     <MauiXaml Update="Screens\InfoPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="Screens\LogOutPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="Screens\SecurityScreen.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>

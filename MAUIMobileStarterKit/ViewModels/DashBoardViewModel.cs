@@ -13,8 +13,9 @@ namespace MAUIMobileStarterKit.ViewModels
         private readonly SecurityScreen securityScreen;
         private readonly MainSettingScreen mainSettingScreen;
         private readonly HomeScreen homeScreen;
+        private readonly LogOutPage logOutpage;
         private Auth0Client authClient;
-        public DashBoardViewModel(HomeScreen homeScreen,MainSettingScreen mainSettingScreen, ContactUsPage contactUsPage, InfoPage infoPage, SecurityScreen securityScreen,Auth0Client authClient)
+        public DashBoardViewModel(LogOutPage logOutpage, HomeScreen homeScreen,MainSettingScreen mainSettingScreen, ContactUsPage contactUsPage, InfoPage infoPage, SecurityScreen securityScreen,Auth0Client authClient)
         {
             this.contactUsPage = contactUsPage;
             this.infoPage = infoPage;
@@ -22,6 +23,7 @@ namespace MAUIMobileStarterKit.ViewModels
             this.mainSettingScreen = mainSettingScreen;
             this.homeScreen = homeScreen;
             this.authClient = authClient;
+            this.logOutpage = logOutpage;
         }
         public async Task<bool> CheckUserLogin()
         {
@@ -62,6 +64,17 @@ namespace MAUIMobileStarterKit.ViewModels
         public async void LogOutTheUser()
         {
             var logoutResult =   await authClient.LogoutAsync();
+            SecureStorage.Default.RemoveAll();
+        }
+
+        public async Task<bool> IsUserLogOut()
+        {
+            string oauthToken = await SecureStorage.Default.GetAsync("access_token");
+            if (string.IsNullOrEmpty(oauthToken))
+            {
+                return true;
+            }
+            return false;
         }
         public Page PageNavigationSteup(int index)
         {
@@ -84,6 +97,11 @@ namespace MAUIMobileStarterKit.ViewModels
             else if(index==4)
             {
                 return infoPage;
+            }
+            else if (index == 5)
+            {
+                logOutpage.dashBoardView = this;
+                return logOutpage;
             }
             return homeScreen;
         }

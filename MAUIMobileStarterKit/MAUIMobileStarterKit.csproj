@@ -188,6 +188,9 @@
 	  <MauiXaml Update="Screens\InfoPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Screens\LogOutPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Screens\SecurityScreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

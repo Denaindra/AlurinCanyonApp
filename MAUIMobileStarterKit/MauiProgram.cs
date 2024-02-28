@@ -59,6 +59,7 @@ public static class MauiProgram
         }));
 
         //Views
+        builder.Services.AddTransient<LogOutPage>();
         builder.Services.AddTransient<ContactUsPage>();
         builder.Services.AddTransient<InfoPage>();
         builder.Services.AddTransient<SecurityScreen>();
