@@ -1,11 +1,4 @@
-﻿using Kotlin.Text;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MAUIMobileStarterKit.Models.Service
+﻿namespace MAUIMobileStarterKit.Models.Service
 {
     public class Canyon
     {
