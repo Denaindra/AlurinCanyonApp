@@ -1,13 +1,15 @@
 ﻿using Auth0.OidcClient;
+using MAUIMobileStarterKit.Interface.APIServices;
+using MAUIMobileStarterKit.Models.Service;
 using MAUIMobileStarterKit.Screens;
 using MAUIMobileStarterKit.Screens.SettingsScreen;
 
 namespace MAUIMobileStarterKit.ViewModels
 {
 
-    public class DashBoardViewModel:BaseViewModel
+    public class DashBoardViewModel : BaseViewModel
     {
-  
+
         private readonly ContactUsPage contactUsPage;
         private readonly InfoPage infoPage;
         private readonly SecurityScreen securityScreen;
@@ -15,7 +17,11 @@ namespace MAUIMobileStarterKit.ViewModels
         private readonly HomeScreen homeScreen;
         private readonly LogOutPage logOutpage;
         private Auth0Client authClient;
-        public DashBoardViewModel(LogOutPage logOutpage, HomeScreen homeScreen,MainSettingScreen mainSettingScreen, ContactUsPage contactUsPage, InfoPage infoPage, SecurityScreen securityScreen,Auth0Client authClient)
+
+
+        private readonly ItokenProvider itokenProvider;
+
+        public DashBoardViewModel(LogOutPage logOutpage, HomeScreen homeScreen, MainSettingScreen mainSettingScreen, ContactUsPage contactUsPage, InfoPage infoPage, SecurityScreen securityScreen, Auth0Client authClient)
         {
             this.contactUsPage = contactUsPage;
             this.infoPage = infoPage;
@@ -24,6 +30,8 @@ namespace MAUIMobileStarterKit.ViewModels
             this.homeScreen = homeScreen;
             this.authClient = authClient;
             this.logOutpage = logOutpage;
+            itokenProvider = GetItokenProvider();
+
         }
         public async Task<bool> CheckUserLogin()
         {
@@ -56,6 +64,16 @@ namespace MAUIMobileStarterKit.ViewModels
 
                 var nickName = result.User.FindFirst(c => c.Type == "nickname")?.Value;
                 await SecureStorage.SetAsync("NickName", nickName);
+                var tokenRequest = new AccessTokenRequest()
+                {
+                    client_id = "1MJwNXR7aPSnt3wzDKaEgMk3HThSBOMQ",
+                    client_secret = "27C9JYTVixBHFI4jprZoPKgmLoOZ58ZmfhANaxMaLTtJ11PRDWe7lsEiVIYy4w0y",
+                    audience = "https://api.canyonproject.com",
+                    grant_type = "client_credentials"
+                };
+                  var tokenResponse = await itokenProvider.GetToken(tokenRequest);
+                  await SecureStorage.SetAsync("apiToken", tokenResponse.access_token);
+
 
                 return true;
             }
@@ -63,7 +81,7 @@ namespace MAUIMobileStarterKit.ViewModels
 
         public async void LogOutTheUser()
         {
-            var logoutResult =   await authClient.LogoutAsync();
+            var logoutResult = await authClient.LogoutAsync();
             SecureStorage.Default.RemoveAll();
         }
 
@@ -78,11 +96,11 @@ namespace MAUIMobileStarterKit.ViewModels
         }
         public Page PageNavigationSteup(int index)
         {
-            if(index == 0)
+            if (index == 0)
             {
                 return homeScreen;
             }
-            else if(index == 1)
+            else if (index == 1)
             {
                 return mainSettingScreen;
             }
@@ -90,11 +108,11 @@ namespace MAUIMobileStarterKit.ViewModels
             {
                 return securityScreen;
             }
-            else if (index == 3) 
+            else if (index == 3)
             {
                 return contactUsPage;
             }
-            else if(index==4)
+            else if (index == 4)
             {
                 return infoPage;
             }

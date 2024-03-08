@@ -29,17 +29,14 @@ namespace MAUIMobileStarterKit.Interface.APIServices
         [Get("/api/Canyons/searchbyCountryRegion")]
         Task<List<Canyon>> GetCanyonFromRegion(GetCanyonFromRegionParams parms);
 
-        [Get("api/Canyons/searchNamecanyon")]
-        Task<List<Canyon>> GetCanyonName(string canyonName);
+        [Get("/api/Canyons/searchNamecanyon")]
+        Task<List<Canyon>> GetCanyonName([AliasAs("canyonName")] string canyonName, [Authorize("Bearer")] string token);
 
         [Get("/api/Canyons/UnValidatedCanyon")]
         Task<List<Canyon>> UnvalidatedCanyon();
 
-        [Get("https://canyonproject.eu.auth0.com/oauth/token")]
-        Task<List<Canyon>> GetToken();
-
         [Delete("/api/Canyons")]
-        Task<List<Canyon>> GetToken(string id);
+        Task<List<Canyon>> DeleteCanyon(string id);
 
         [Get("/api/Canyons/listCanyonDays")]
         Task<List<Canyon>> GetCanyonLastDays(int days);

@@ -1,4 +1,5 @@
 ﻿using MAUIMobileStarterKit.Interface;
+using MAUIMobileStarterKit.Interface.APIServices;
 using MAUIMobileStarterKit.Models.UI;
 using MAUIMobileStarterKit.Screens;
 using System;
@@ -17,12 +18,15 @@ namespace MAUIMobileStarterKit.ViewModels
         private ObservableCollection<TophoroGraphyModel> tophoroGraphyList;
 
         private readonly ILoading loading;
-
         private readonly CanyonBaseScreen canyonBaseScreen;
+        private readonly ICanyonProvider recentChatServiceEndPoint;
+
+
         public HomePageViewModel(ILoading loading,CanyonBaseScreen canyonBaseScreen)
         {
             this.loading = loading;
             this.canyonBaseScreen = canyonBaseScreen;
+            recentChatServiceEndPoint = RecentChatServiceEndPoint();
         }
 
         public ObservableCollection<CanyonSearchResultModel> CannyonDetails
@@ -122,7 +126,6 @@ namespace MAUIMobileStarterKit.ViewModels
                 loading.EndIndiCator();
             }
         }
-
         public ILoading GetLoading()
         {
             return loading;
@@ -162,11 +165,16 @@ namespace MAUIMobileStarterKit.ViewModels
                 loading.EndIndiCator();
             }
         }
-
         public void NavigateToCannyonBasePage()
         {
             loading.StartIndicator();
             PushModalAsync(canyonBaseScreen);
+        }
+
+        public async void GetCannyonNamesList(string canynnonSearchText)
+        {
+          //  var results = await recentChatServiceEndPoint.GetCanyonName(canynnonSearchText);
+
         }
     }
 }

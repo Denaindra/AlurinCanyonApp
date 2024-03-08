@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MAUIMobileStarterKit.Interface.APIServices;
+using Refit;
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -9,10 +11,33 @@ namespace MAUIMobileStarterKit.ViewModels
         public INavigation navigation;
         public event PropertyChangedEventHandler PropertyChanged;
 
+
+
+        private static ICanyonProvider iCannyonProvider;
+        private static ItokenProvider itokenProvider;
+
+        public const string BASEDURL = "https://canyonapp.azurewebsites.net";
+        public const string TOKENBASEDURL = "https://canyonproject.eu.auth0.com";
         public BaseViewModel()
 		{
 		}
 
+        public ItokenProvider GetItokenProvider()
+        {
+            if (itokenProvider is null)
+            {
+                itokenProvider = RestService.For<ItokenProvider>(TOKENBASEDURL);
+            }
+            return itokenProvider;
+        }
+        public ICanyonProvider RecentChatServiceEndPoint()
+        {
+            if (iCannyonProvider is null)
+            {
+                iCannyonProvider = RestService.For<ICanyonProvider>(BASEDURL);
+            }
+            return iCannyonProvider;
+        }
         public async void PushModalAsync(Page page)
         {
             await navigation.PushModalAsync(page);  
