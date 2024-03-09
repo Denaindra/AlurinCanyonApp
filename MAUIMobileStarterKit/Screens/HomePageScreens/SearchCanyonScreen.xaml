@@ -12,19 +12,15 @@
                    CancelButtonColor="White" SearchButtonPressed="SearchButtonPressed"/>
             </Frame>
             <Frame Padding="0"  BorderColor="#00B4D8" CornerRadius="5" VerticalOptions="FillAndExpand">
-                <VerticalStackLayout Spacing="20" Padding="10,20,10,10">
-                    <local:FlatingLabel Title="Country" x:Name="contryEntry" />
-                    <local:FlatingLabel Title="Region" x:Name="regionEntry"/>
-                    <Picker x:Name="regionPicker" IsVisible="False" />
-                    <local:FlatingLabel Title="State" x:Name="stateEntry"/>
-                    <Picker x:Name="statePicker" IsVisible="False" />
+                <VerticalStackLayout Spacing="5" Padding="10,20,10,10">
+                    <Picker x:Name="countryPicker" Title="Country" ItemsSource="{Binding CountryList}" TitleColor="#03045E" TextColor="#0077B6" FontFamily="CabinBold" SelectedIndexChanged="CountryPickerSelectedIndexChanged"/>
+                    <Picker x:Name="regionPicker" Title="Region" ItemsSource="{Binding RegionList}" TitleColor="#03045E" TextColor="#0077B6" FontFamily="CabinBold" SelectedIndexChanged="RegionSelectedIndexChanged"/>
+                    <Picker x:Name="statePicker" Title="State" ItemsSource="{Binding StateList}" TitleColor="#03045E" TextColor="#0077B6" FontFamily="CabinBold" SelectedIndexChanged="StateSelectedIndexChanged"/>
                     <Button Text="Search" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15"/>
                 </VerticalStackLayout>
-           </Frame>
-            <Picker x:Name="countryPicker" ItemsSource="{Binding CountryList}" SelectedIndexChanged="CountryPickerSelectedIndexChanged" />
+            </Frame>
             <Button Margin="10,0" Text="Canyons to validate" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" FontFamily="CabinBold"/>
             <Button Margin="10,0" Text="Create Canyon" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" FontFamily="CabinBold"/>
-
             <Frame Padding="5,0" BorderColor="Transparent" BackgroundColor="Transparent" CornerRadius="5" VerticalOptions="FillAndExpand" HeightRequest="300">
                 <ListView ItemsSource="{Binding CannyonDetails}" HasUnevenRows="True" SelectionMode="None" SeparatorVisibility="None" ItemTapped="CannyonItemTapped" >
                     <ListView.ItemTemplate>
@@ -67,9 +63,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </Frame>
-
             <maps:Map MyLocationEnabled="True"  VerticalOptions="FillAndExpand" x:Name="mapView" HeightRequest="400"/>
-            
         </StackLayout>
     </ScrollView>
 </ContentView>

@@ -7,8 +7,6 @@ namespace MAUIMobileStarterKit.Screens.HomePageScreens;
 public partial class SearchCanyonScreen : ContentView
 {
     private readonly HomePageViewModel vm;
-    private Entry countryEntry;
-
     public SearchCanyonScreen(HomePageViewModel viewModel)
 	{
 		InitializeComponent();
@@ -16,25 +14,15 @@ public partial class SearchCanyonScreen : ContentView
         this.vm = viewModel;
         BindingContext = viewModel;
         viewModel.LoadCannoynDetails();
-         viewModel.LoadCanyonCountriesAsync();
+        viewModel.LoadCanyonCountriesAsync();
     }
 
 	private void SetupUI()
 	{
       scrollView.HeightRequest = Constans.DeviceHeight;
       mapView.UiSettings.MyLocationButtonEnabled = true;
-
-      countryEntry = (Entry)contryEntry.FindByName("EntryField");
-      countryEntry.Focused += CountryEntryFocused;
     }
 
-    private void CountryEntryFocused(object sender, FocusEventArgs e)
-    {
-        MainThread.BeginInvokeOnMainThread(() => {
-            countryEntry.Unfocus();
-            countryPicker.Focus();
-        });
-    }
     private void SearchButtonPressed(object sender, EventArgs e)
     {
         var searchBar = (SearchBar)sender;
@@ -50,7 +38,17 @@ public partial class SearchCanyonScreen : ContentView
 
     private void CountryPickerSelectedIndexChanged(object sender, EventArgs e)
     {
+       vm.LoadTheRegionBasedOnSelectedCountry(countryPicker.SelectedItem.ToString());
+    }
+
+    private void RegionSelectedIndexChanged(object sender, EventArgs e)
+    {
+        vm.LoadTheStateBasedOnSelectedCountryAndRegion(countryPicker.SelectedItem.ToString(), regionPicker.SelectedItem.ToString());
+    }
+
+    private void StateSelectedIndexChanged(object sender, EventArgs e)
+    {
         var picker = (Picker)sender;
-        countryEntry.Text = picker.SelectedItem.ToString();
+        // regionEntry.Text = picker.SelectedItem.ToString();
     }
 }

@@ -25,7 +25,9 @@ namespace MAUIMobileStarterKit.ViewModels
         private readonly ICanyonProvider recentChatServiceEndPoint;
         private readonly ICountryProvider countryProvider;
         private readonly ILocalStorage localStorage;
-
+        private string[] countryList;
+        private string[] regionList;
+        private string[] stateList;
 
         public HomePageViewModel(ILocalStorage localStorage,ILoading loading,CanyonBaseScreen canyonBaseScreen)
         {
@@ -81,14 +83,31 @@ namespace MAUIMobileStarterKit.ViewModels
                 NotifyPropertyChanged(nameof(CanyonCountryList));
             }
         }
-
-        private string[] countryList;
-
         public string[] CountryList
         {
             get { return countryList; }
             set { countryList = value;
                 NotifyPropertyChanged(nameof(CountryList));
+            }
+        }
+
+        public string[] RegionList
+        {
+            get { return regionList; }
+            set
+            {
+                regionList = value;
+                NotifyPropertyChanged(nameof(RegionList));
+            }
+        }
+
+        public string[] StateList
+        {
+            get { return stateList; }
+            set
+            {
+                stateList = value;
+                NotifyPropertyChanged(nameof(StateList));
             }
         }
 
@@ -200,7 +219,6 @@ namespace MAUIMobileStarterKit.ViewModels
 
 
         #region service calls
-
         public async void LoadCanyonCountriesAsync()
         {
             loading.StartIndicator();
@@ -237,7 +255,24 @@ namespace MAUIMobileStarterKit.ViewModels
             }
             loading.EndIndiCator();
         }
+        public void LoadTheRegionBasedOnSelectedCountry(string selectedCountry)
+        {
+            var countryselected = CanyonCountryList.Where(c => c.Country.NameFr == selectedCountry).ToList();
+            if (countryselected[0].Country.Regions.Any())
+            {
+                RegionList = countryselected[0].Country.Regions.Select(region => region.Name).ToArray();
+            }
+        }
 
+        public void LoadTheStateBasedOnSelectedCountryAndRegion(string selectedCountry,string selectedRegion)
+        {
+            var countryselected = CanyonCountryList.Where(c => c.Country.NameFr == selectedCountry).ToList();
+            var regionList = countryselected[0].Country.Regions.Where(region => region.Name== selectedRegion).ToArray();
+            if (regionList[0].States.Any())
+            {
+                StateList = regionList[0]?.States.Select(state => state.Name).ToArray();
+            }
+        }
 
         #endregion
     }
