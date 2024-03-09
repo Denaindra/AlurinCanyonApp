@@ -21,11 +21,13 @@ namespace MAUIMobileStarterKit.ViewModels
         private readonly CanyonBaseScreen canyonBaseScreen;
         private readonly ICanyonProvider recentChatServiceEndPoint;
         private readonly ICountryProvider countryProvider;
+        private readonly ILocalStorage localStorage;
 
 
-        public HomePageViewModel(ILoading loading,CanyonBaseScreen canyonBaseScreen)
+        public HomePageViewModel(ILocalStorage localStorage,ILoading loading,CanyonBaseScreen canyonBaseScreen)
         {
             this.loading = loading;
+            this.localStorage = localStorage;
             this.canyonBaseScreen = canyonBaseScreen;
             recentChatServiceEndPoint = RecentChatServiceEndPoint();
             countryProvider = GetICountryProvider();
@@ -194,7 +196,7 @@ namespace MAUIMobileStarterKit.ViewModels
             loading.StartIndicator();
             try
             {
-                var apitoken = await SecureStorage.GetAsync("apiToken");
+                var apitoken = await localStorage.GetAsync("apiToken");
                 var results = await recentChatServiceEndPoint.GetCanyonName(canynnonSearchText, apitoken);
             }
             catch(Exception ex)

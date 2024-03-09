@@ -134,9 +134,6 @@
 	  <AndroidResource Include="Platforms\Android\xml\auto_backup_rules.xml" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Utilities\" />
-	</ItemGroup>
-	<ItemGroup>
 	  <MauiIcon Include="Resources\AppIcon\appIcon.png" />
 	</ItemGroup>
 	<ItemGroup>

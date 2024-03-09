@@ -82,6 +82,8 @@ public static class MauiProgram
 
         //Services
         builder.Services.AddSingleton<ILoading, Loading>();
+        builder.Services.AddSingleton<ILocalStorage, LocalStorage>();
+
 
 #if DEBUG
         builder.Logging.AddDebug();

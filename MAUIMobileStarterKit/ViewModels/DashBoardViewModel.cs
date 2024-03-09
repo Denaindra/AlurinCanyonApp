@@ -1,9 +1,11 @@
 ﻿using Auth0.OidcClient;
 using MAUIMobileStarterKit.Constant;
+using MAUIMobileStarterKit.Interface;
 using MAUIMobileStarterKit.Interface.APIServices;
 using MAUIMobileStarterKit.Models.Service;
 using MAUIMobileStarterKit.Screens;
 using MAUIMobileStarterKit.Screens.SettingsScreen;
+using MAUIMobileStarterKit.Utilities;
 
 namespace MAUIMobileStarterKit.ViewModels
 {
@@ -21,8 +23,9 @@ namespace MAUIMobileStarterKit.ViewModels
 
 
         private readonly ItokenProvider itokenProvider;
+        private readonly ILocalStorage localStorage;
 
-        public DashBoardViewModel(LogOutPage logOutpage, HomeScreen homeScreen, MainSettingScreen mainSettingScreen, ContactUsPage contactUsPage, InfoPage infoPage, SecurityScreen securityScreen, Auth0Client authClient)
+        public DashBoardViewModel(ILocalStorage localStorage,LogOutPage logOutpage, HomeScreen homeScreen, MainSettingScreen mainSettingScreen, ContactUsPage contactUsPage, InfoPage infoPage, SecurityScreen securityScreen, Auth0Client authClient)
         {
             this.contactUsPage = contactUsPage;
             this.infoPage = infoPage;
@@ -31,8 +34,8 @@ namespace MAUIMobileStarterKit.ViewModels
             this.homeScreen = homeScreen;
             this.authClient = authClient;
             this.logOutpage = logOutpage;
+            this.localStorage = localStorage;
             itokenProvider = GetItokenProvider();
-
         }
         public async Task<bool> CheckUserLogin()
         {
@@ -43,28 +46,28 @@ namespace MAUIMobileStarterKit.ViewModels
             }
             else
             {
-                await SecureStorage.Default.SetAsync("access_token", result.AccessToken);
-                await SecureStorage.Default.SetAsync("identity_token", result.IdentityToken);
+                localStorage.SetAsync("access_token", result.AccessToken);
+                localStorage.SetAsync("identity_token", result.IdentityToken);
 
                 var name = result.User.FindFirst(c => c.Type == "name")?.Value;
-                await SecureStorage.SetAsync("Name", name);
+                localStorage.SetAsync("Name", name);
 
                 var email = result.User.FindFirst(c => c.Type == "email")?.Value;
-                await SecureStorage.SetAsync("Email", email);
+                localStorage.SetAsync("Email", email);
 
                 var role = result.User.FindFirst(c => c.Type == "http://canyonAppdeouf.net/roles")?.Value;
                 if (string.IsNullOrEmpty(role))
                 {
                     role = "Free";
-                    await SecureStorage.SetAsync("role", role);
+                    localStorage.SetAsync("role", role);
                 }
                 else
                 {
-                    await SecureStorage.SetAsync("role", role);
+                    localStorage.SetAsync("role", role);
                 }
 
                 var nickName = result.User.FindFirst(c => c.Type == "nickname")?.Value;
-                await SecureStorage.SetAsync("NickName", nickName);
+                localStorage.SetAsync("NickName", nickName);
                 var tokenRequest = new AccessTokenRequest()
                 {
                     client_id = "1MJwNXR7aPSnt3wzDKaEgMk3HThSBOMQ",
@@ -72,8 +75,8 @@ namespace MAUIMobileStarterKit.ViewModels
                     audience = Constans.AccessTokenRequestAudence,
                     grant_type = "client_credentials"
                 };
-                  var tokenResponse = await itokenProvider.GetToken(tokenRequest);
-                  await SecureStorage.SetAsync("apiToken", tokenResponse.access_token);
+                var tokenResponse = await itokenProvider.GetToken(tokenRequest);
+                localStorage.SetAsync("apiToken", tokenResponse.access_token);
 
 
                 return true;
@@ -88,7 +91,7 @@ namespace MAUIMobileStarterKit.ViewModels
 
         public async Task<bool> IsUserLogOut()
         {
-            string oauthToken = await SecureStorage.Default.GetAsync("access_token");
+            string oauthToken = await localStorage.GetAsync("access_token");
             if (string.IsNullOrEmpty(oauthToken))
             {
                 return true;
