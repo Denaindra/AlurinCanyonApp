@@ -1,5 +1,6 @@
 ﻿using MAUIMobileStarterKit.Interface;
 using MAUIMobileStarterKit.Interface.APIServices;
+using MAUIMobileStarterKit.Models.Service;
 using MAUIMobileStarterKit.Models.UI;
 using MAUIMobileStarterKit.Screens;
 using System;
@@ -16,6 +17,8 @@ namespace MAUIMobileStarterKit.ViewModels
         private ObservableCollection<CanyonSearchResultModel> cannyonDetails;
         private ObservableCollection<CommentModel> comments;
         private ObservableCollection<TophoroGraphyModel> tophoroGraphyList;
+        private ObservableCollection<CanyonCountry> canyonCountryList;
+
 
         private readonly ILoading loading;
         private readonly CanyonBaseScreen canyonBaseScreen;
@@ -69,6 +72,26 @@ namespace MAUIMobileStarterKit.ViewModels
                 NotifyPropertyChanged(nameof(Comments));
             }
         }
+        public ObservableCollection<CanyonCountry> CanyonCountryList
+        {
+            get { return canyonCountryList; }
+            set
+            {
+                canyonCountryList = value;
+                NotifyPropertyChanged(nameof(CanyonCountryList));
+            }
+        }
+
+        private string[] countryList;
+
+        public string[] CountryList
+        {
+            get { return countryList; }
+            set { countryList = value;
+                NotifyPropertyChanged(nameof(CountryList));
+            }
+        }
+
         public void LoadCannoynDetails()
         {
             try
@@ -183,7 +206,16 @@ namespace MAUIMobileStarterKit.ViewModels
             loading.StartIndicator();
             try
             {
-                var results = await countryProvider.LoadCanyonCountriesAsync();
+                var countryList = await countryProvider.LoadCanyonCountriesAsync(await localStorage.GetAsync("apiToken"));
+                if (countryList.Any())
+                {
+                    CanyonCountryList = new ObservableCollection<CanyonCountry>();
+                    foreach (var item in countryList)
+                    {
+                        CanyonCountryList.Add(item);
+                    }
+                    CountryList = countryList.Select(country => country.Country.NameFr).ToArray();
+                }
             }
             catch (Exception ex)
             {

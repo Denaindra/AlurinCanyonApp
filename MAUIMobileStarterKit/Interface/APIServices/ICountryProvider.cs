@@ -11,7 +11,7 @@ namespace MAUIMobileStarterKit.Interface.APIServices
     public interface ICountryProvider
     {
         [Get("/api/Canyons/CanyonCountry")]
-        Task <List<CanyonCountry>> LoadCanyonCountriesAsync();
+        Task <List<CanyonCountry>> LoadCanyonCountriesAsync([Authorize("Bearer")] string token);
 
         [Get("/api/Countries")]
         Task LoadCountriesAsync();
