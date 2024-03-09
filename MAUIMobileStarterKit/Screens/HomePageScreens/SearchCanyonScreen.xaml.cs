@@ -1,12 +1,13 @@
 using MAUIMobileStarterKit.Constant;
 using MAUIMobileStarterKit.ViewModels;
+using Microsoft.Maui.Controls;
 
 namespace MAUIMobileStarterKit.Screens.HomePageScreens;
 
 public partial class SearchCanyonScreen : ContentView
 {
     private readonly HomePageViewModel vm;
-    private Entry CountryEntry;
+    private Entry countryEntry;
 
     public SearchCanyonScreen(HomePageViewModel viewModel)
 	{
@@ -23,14 +24,14 @@ public partial class SearchCanyonScreen : ContentView
       scrollView.HeightRequest = Constans.DeviceHeight;
       mapView.UiSettings.MyLocationButtonEnabled = true;
 
-      CountryEntry = (Entry)contryEntry.FindByName("EntryField");
-      CountryEntry.Focused += CountryEntryFocused;
+      countryEntry = (Entry)contryEntry.FindByName("EntryField");
+      countryEntry.Focused += CountryEntryFocused;
     }
 
     private void CountryEntryFocused(object sender, FocusEventArgs e)
     {
         MainThread.BeginInvokeOnMainThread(() => {
-            CountryEntry.Unfocus();
+            countryEntry.Unfocus();
             countryPicker.Focus();
         });
     }
@@ -45,5 +46,11 @@ public partial class SearchCanyonScreen : ContentView
     private void CannyonItemTapped(object sender, ItemTappedEventArgs e)
     {
         vm.NavigateToCannyonBasePage();
+    }
+
+    private void CountryPickerSelectedIndexChanged(object sender, EventArgs e)
+    {
+        var picker = (Picker)sender;
+        countryEntry.Text = picker.SelectedItem.ToString();
     }
 }
