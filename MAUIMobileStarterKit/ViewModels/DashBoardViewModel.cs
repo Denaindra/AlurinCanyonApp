@@ -1,4 +1,5 @@
 ﻿using Auth0.OidcClient;
+using MAUIMobileStarterKit.Constant;
 using MAUIMobileStarterKit.Interface.APIServices;
 using MAUIMobileStarterKit.Models.Service;
 using MAUIMobileStarterKit.Screens;
@@ -68,7 +69,7 @@ namespace MAUIMobileStarterKit.ViewModels
                 {
                     client_id = "1MJwNXR7aPSnt3wzDKaEgMk3HThSBOMQ",
                     client_secret = "27C9JYTVixBHFI4jprZoPKgmLoOZ58ZmfhANaxMaLTtJ11PRDWe7lsEiVIYy4w0y",
-                    audience = "https://api.canyonproject.com",
+                    audience = Constans.AccessTokenRequestAudence,
                     grant_type = "client_credentials"
                 };
                   var tokenResponse = await itokenProvider.GetToken(tokenRequest);

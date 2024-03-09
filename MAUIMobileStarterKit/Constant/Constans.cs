@@ -20,6 +20,10 @@ namespace MAUIMobileStarterKit.Constant
         public const string LogoutTitle = "LogOut";
         public const string LogingTitle = "LogIn";
 
+        public const string BASEDURL = "https://canyonapp.azurewebsites.net";
+        public const string TOKENBASEDURL = "https://canyonproject.eu.auth0.com";
+        public const string AccessTokenRequestAudence = "https://api.canyonproject.com";
+
 
     }
 }

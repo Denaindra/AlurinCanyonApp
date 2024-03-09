@@ -13,9 +13,9 @@
             </Frame>
             <Frame Padding="0"  BorderColor="#00B4D8" CornerRadius="5" VerticalOptions="FillAndExpand">
                 <VerticalStackLayout Spacing="20" Padding="10,20,10,10">
-                    <local:FlatingLabel Title="Country" />
-                    <local:FlatingLabel Title="Region" />
-                    <local:FlatingLabel Title="State" />
+                    <local:FlatingLabel Title="Country" x:Name="contryEntry" />
+                    <local:FlatingLabel Title="Region" x:Name="regionEntry"/>
+                    <local:FlatingLabel Title="State" x:Name="stateEntry"/>
                     <Button Text="Search" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15"/>
                 </VerticalStackLayout>
            </Frame>

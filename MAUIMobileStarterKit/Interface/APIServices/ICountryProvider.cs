@@ -1,4 +1,5 @@
-﻿using Refit;
+﻿using MAUIMobileStarterKit.Models.Service;
+using Refit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace MAUIMobileStarterKit.Interface.APIServices
     public interface ICountryProvider
     {
         [Get("/api/Canyons/CanyonCountry")]
-        Task LoadCanyonCountriesAsync();
+        Task <List<CanyonCountry>> LoadCanyonCountriesAsync();
 
         [Get("/api/Countries")]
         Task LoadCountriesAsync();

@@ -1,4 +1,5 @@
-﻿using MAUIMobileStarterKit.Interface.APIServices;
+﻿using MAUIMobileStarterKit.Constant;
+using MAUIMobileStarterKit.Interface.APIServices;
 using Refit;
 using System;
 using System.ComponentModel;
@@ -10,23 +11,26 @@ namespace MAUIMobileStarterKit.ViewModels
     {
         public INavigation navigation;
         public event PropertyChangedEventHandler PropertyChanged;
-
-
-
         private static ICanyonProvider iCannyonProvider;
         private static ItokenProvider itokenProvider;
-
-        public const string BASEDURL = "https://canyonapp.azurewebsites.net";
-        public const string TOKENBASEDURL = "https://canyonproject.eu.auth0.com";
+        private static ICountryProvider iCountryProvider;
         public BaseViewModel()
 		{
 		}
 
+        public ICountryProvider GetICountryProvider()
+        {
+            if (iCountryProvider is null)
+            {
+                iCountryProvider = RestService.For<ICountryProvider>(Constans.BASEDURL);
+            }
+            return iCountryProvider;
+        }
         public ItokenProvider GetItokenProvider()
         {
             if (itokenProvider is null)
             {
-                itokenProvider = RestService.For<ItokenProvider>(TOKENBASEDURL);
+                itokenProvider = RestService.For<ItokenProvider>(Constans.TOKENBASEDURL);
             }
             return itokenProvider;
         }
@@ -34,7 +38,7 @@ namespace MAUIMobileStarterKit.ViewModels
         {
             if (iCannyonProvider is null)
             {
-                iCannyonProvider = RestService.For<ICanyonProvider>(BASEDURL);
+                iCannyonProvider = RestService.For<ICanyonProvider>(Constans.BASEDURL);
             }
             return iCannyonProvider;
         }

@@ -20,6 +20,7 @@ namespace MAUIMobileStarterKit.ViewModels
         private readonly ILoading loading;
         private readonly CanyonBaseScreen canyonBaseScreen;
         private readonly ICanyonProvider recentChatServiceEndPoint;
+        private readonly ICountryProvider countryProvider;
 
 
         public HomePageViewModel(ILoading loading,CanyonBaseScreen canyonBaseScreen)
@@ -27,6 +28,7 @@ namespace MAUIMobileStarterKit.ViewModels
             this.loading = loading;
             this.canyonBaseScreen = canyonBaseScreen;
             recentChatServiceEndPoint = RecentChatServiceEndPoint();
+            countryProvider = GetICountryProvider();
         }
 
         public ObservableCollection<CanyonSearchResultModel> CannyonDetails
@@ -171,10 +173,38 @@ namespace MAUIMobileStarterKit.ViewModels
             PushModalAsync(canyonBaseScreen);
         }
 
+
+        #region service calls
+
+        public async void LoadCanyonCountriesAsync()
+        {
+            loading.StartIndicator();
+            try
+            {
+                var results = await countryProvider.LoadCanyonCountriesAsync();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            loading.EndIndiCator();
+        }
         public async void GetCannyonNamesList(string canynnonSearchText)
         {
-          //  var results = await recentChatServiceEndPoint.GetCanyonName(canynnonSearchText);
+            loading.StartIndicator();
+            try
+            {
+                var apitoken = await SecureStorage.GetAsync("apiToken");
+                var results = await recentChatServiceEndPoint.GetCanyonName(canynnonSearchText, apitoken);
+            }
+            catch(Exception ex)
+            {
 
+            }
+            loading.EndIndiCator();
         }
+
+
+        #endregion
     }
 }

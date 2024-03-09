@@ -14,6 +14,7 @@ public partial class SearchCanyonScreen : ContentView
         this.vm = viewModel;
         BindingContext = viewModel;
         viewModel.LoadCannoynDetails();
+        viewModel.LoadCanyonCountriesAsync();
     }
 
 	private void SetupUI()
@@ -21,9 +22,6 @@ public partial class SearchCanyonScreen : ContentView
       scrollView.HeightRequest = Constans.DeviceHeight;
       mapView.UiSettings.MyLocationButtonEnabled = true;
     }
-
- 
-
     private void SearchButtonPressed(object sender, EventArgs e)
     {
         var searchBar = (SearchBar)sender;
