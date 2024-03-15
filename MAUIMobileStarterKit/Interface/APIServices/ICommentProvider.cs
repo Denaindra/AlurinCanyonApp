@@ -23,7 +23,6 @@ namespace MAUIMobileStarterKit.Interface.APIServices
         Task ModifyComment([Body] Comment commentModify, DeleteCommentParams comment);
 
         [Get("/api/Comment/listCommentdays")]
-        Task<List<Comment>> GetCommentCanyonLastDays(DeleteCommentParams comment);
-
+        Task<List<Comment>> GetCommentCanyonLastDays([AliasAs("days")] int days, [Authorize("Bearer")] string token);
     }
 }

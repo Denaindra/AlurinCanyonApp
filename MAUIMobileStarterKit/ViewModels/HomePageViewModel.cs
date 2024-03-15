@@ -1,4 +1,5 @@
-﻿using MAUIMobileStarterKit.Interface;
+﻿using IdentityModel.OidcClient;
+using MAUIMobileStarterKit.Interface;
 using MAUIMobileStarterKit.Interface.APIServices;
 using MAUIMobileStarterKit.Models.Service;
 using MAUIMobileStarterKit.Models.UI;
@@ -18,12 +19,16 @@ namespace MAUIMobileStarterKit.ViewModels
         private ObservableCollection<CommentModel> comments;
         private ObservableCollection<TophoroGraphyModel> tophoroGraphyList;
         private ObservableCollection<CanyonCountry> canyonCountryList;
-
+        private ObservableCollection<Canyon> getCanyonFromRegion;
 
         private readonly ILoading loading;
         private readonly CanyonBaseScreen canyonBaseScreen;
-        private readonly ICanyonProvider recentChatServiceEndPoint;
+
+        private readonly ICanyonProvider canyonProvider;
         private readonly ICountryProvider countryProvider;
+        private readonly ICommentProvider commentProvider;
+        private readonly ITopographyProvider topographyProvider;
+
         private readonly ILocalStorage localStorage;
         private string[] countryList;
         private string[] regionList;
@@ -34,8 +39,10 @@ namespace MAUIMobileStarterKit.ViewModels
             this.loading = loading;
             this.localStorage = localStorage;
             this.canyonBaseScreen = canyonBaseScreen;
-            recentChatServiceEndPoint = RecentChatServiceEndPoint();
+            canyonProvider = RecentChatServiceEndPoint();
             countryProvider = GetICountryProvider();
+            commentProvider = GetICommentProvider();
+            topographyProvider = GetITopographyProvider();
         }
 
         public ObservableCollection<CanyonSearchResultModel> CannyonDetails
@@ -83,6 +90,15 @@ namespace MAUIMobileStarterKit.ViewModels
                 NotifyPropertyChanged(nameof(CanyonCountryList));
             }
         }
+        public ObservableCollection<Canyon> GetCanyonFromRegion
+        {
+            get { return getCanyonFromRegion; }
+            set
+            {
+                getCanyonFromRegion = value;
+                NotifyPropertyChanged(nameof(GetCanyonFromRegion));
+            }
+        }
         public string[] CountryList
         {
             get { return countryList; }
@@ -90,7 +106,6 @@ namespace MAUIMobileStarterKit.ViewModels
                 NotifyPropertyChanged(nameof(CountryList));
             }
         }
-
         public string[] RegionList
         {
             get { return regionList; }
@@ -100,7 +115,6 @@ namespace MAUIMobileStarterKit.ViewModels
                 NotifyPropertyChanged(nameof(RegionList));
             }
         }
-
         public string[] StateList
         {
             get { return stateList; }
@@ -110,7 +124,6 @@ namespace MAUIMobileStarterKit.ViewModels
                 NotifyPropertyChanged(nameof(StateList));
             }
         }
-
         public void LoadCannoynDetails()
         {
             try
@@ -247,7 +260,7 @@ namespace MAUIMobileStarterKit.ViewModels
             try
             {
                 var apitoken = await localStorage.GetAsync("apiToken");
-                var results = await recentChatServiceEndPoint.GetCanyonName(canynnonSearchText, apitoken);
+                var results = await canyonProvider.GetCanyonName(canynnonSearchText, apitoken);
             }
             catch(Exception ex)
             {
@@ -263,7 +276,6 @@ namespace MAUIMobileStarterKit.ViewModels
                 RegionList = countryselected[0].Country.Regions.Select(region => region.Name).ToArray();
             }
         }
-
         public void LoadTheStateBasedOnSelectedCountryAndRegion(string selectedCountry,string selectedRegion)
         {
             var countryselected = CanyonCountryList.Where(c => c.Country.NameFr == selectedCountry).ToList();
@@ -273,7 +285,76 @@ namespace MAUIMobileStarterKit.ViewModels
                 StateList = regionList[0]?.States.Select(state => state.Name).ToArray();
             }
         }
+        public async void SearchCannyon(string countrySelectedItem, string regionSelectedItme, string stateSelectedItem)
+        {
+            loading.StartIndicator();
+            try
+            {
+                var recenttoekns = new GetCanyonFromRegionParams()
+                {
+                  country = countrySelectedItem,
+                  region = regionSelectedItme,
+                  state = stateSelectedItem,
+                };
 
+                var canyonList = await canyonProvider.GetCanyonFromRegion(recenttoekns, await localStorage.GetAsync("apiToken"));
+                if (canyonList.Any())
+                {
+                    GetCanyonFromRegion = new ObservableCollection<Canyon>();
+                    foreach (var item in canyonList)
+                    {
+                        GetCanyonFromRegion.Add(item);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            loading.EndIndiCator();
+        }
+
+        public async void GetCommentCanyonLastDays(int days)
+        {
+            try
+            {
+              loading.StartIndicator();
+              var results = await commentProvider.GetCommentCanyonLastDays(days, await localStorage.GetAsync("apiToken"));
+            }
+            catch(Exception ex)
+            {
+                
+            }
+            loading.EndIndiCator();
+        }
+
+        public async void GetTopographyProviderLastDay(int days)
+        {
+            try
+            {
+                loading.StartIndicator();
+                var results = await topographyProvider.GetTopoCanyonLastDays(days, await localStorage.GetAsync("apiToken"));
+            }
+            catch (Exception ex)
+            {
+                
+            }
+            loading.EndIndiCator();
+        }
+
+        public async void GetCannyonProviderLastDay(int days)
+        {
+            try
+            {
+                loading.StartIndicator();
+                var results = await canyonProvider.GetCanyonLastDays(days, await localStorage.GetAsync("apiToken"));
+            }
+            catch (Exception ex)
+            {
+
+            }
+            loading.EndIndiCator();
+        }
         #endregion
     }
 }

@@ -27,7 +27,7 @@ namespace MAUIMobileStarterKit.Interface.APIServices
         Task<Canyon> UpdateCanyon([Body] Canyon canyontoupdate);
 
         [Get("/api/Canyons/searchbyCountryRegion")]
-        Task<List<Canyon>> GetCanyonFromRegion(GetCanyonFromRegionParams parms);
+        Task<List<Canyon>> GetCanyonFromRegion(GetCanyonFromRegionParams parms, [Authorize("Bearer")] string token);
 
         [Get("/api/Canyons/searchNamecanyon")]
         Task<List<Canyon>> GetCanyonName([AliasAs("canyonName")] string canyonName, [Authorize("Bearer")] string token);
@@ -39,7 +39,7 @@ namespace MAUIMobileStarterKit.Interface.APIServices
         Task<List<Canyon>> DeleteCanyon(string id);
 
         [Get("/api/Canyons/listCanyonDays")]
-        Task<List<Canyon>> GetCanyonLastDays(int days);
+        Task<List<Canyon>> GetCanyonLastDays(int days, [Authorize("Bearer")] string token);
     }
 
 }

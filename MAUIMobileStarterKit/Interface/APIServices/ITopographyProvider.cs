@@ -10,22 +10,22 @@ namespace MAUIMobileStarterKit.Interface.APIServices
 {
     public interface ITopographyProvider
     {
-        [Get("api/Topography/canyon/{canyonId}")]
+        [Get("/api/Topography/canyon/{canyonId}")]
         Task<IList<Topography>> GetTopoCanyon([AliasAs("canyonId")] int canyonId);
 
-        [Get("api/Topography/listTopodays")]
-        Task<IList<Topography>> GetTopoCanyonLastDays([AliasAs("days")] int days);
+        [Get("/api/Topography/listTopodays")]
+        Task<IList<Topography>> GetTopoCanyonLastDays([AliasAs("days")] int days, [Authorize("Bearer")] string token);
 
-        [Post("api/Topography/listTopodays")]
+        [Post("/api/Topography/listTopodays")]
         Task<IList<Topography>> PostTopo(Topography topography);
 
         [Put("/api/Topography")]
         Task<IList<Topography>> ModifyTopo([AliasAs("id")] int id);
 
-        [Put("api/Topography/list")]
+        [Put("/api/Topography/list")]
         Task ModifyListTopo(IList<Topography> topographiestoModify);
 
-        [Delete("api/Topography")]
+        [Delete("/api/Topography")]
         Task DeleteTopo([AliasAs("id")] int id);
 
     }

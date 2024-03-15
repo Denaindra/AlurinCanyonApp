@@ -5,12 +5,12 @@ namespace MAUIMobileStarterKit.Screens.HomePageScreens;
 
 public partial class CanyonModificationScreen : ContentView
 {
-    private HomePageViewModel viewModel;
+    private HomePageViewModel vm;
     private int parameter;
     public CanyonModificationScreen(HomePageViewModel viewModel)
     {
         InitializeComponent();
-        this.viewModel = viewModel;
+        this.vm = viewModel;
         BindingContext = viewModel;
         viewModel.LoadCannoynDetails();
         viewModel.LoadCommentDetails();
@@ -34,14 +34,17 @@ public partial class CanyonModificationScreen : ContentView
         if (parameter == 0)
         {
             commentsDays.Text = picker.SelectedItem.ToString();
+            vm.GetCommentCanyonLastDays((int)picker.SelectedItem);
         }
         else if (parameter == 1)
         {
             topographyDays.Text = picker.SelectedItem.ToString();
+            vm.GetTopographyProviderLastDay((int)picker.SelectedItem);
         }
         else if (parameter == 2)
         {
             modifyCannyonDays.Text = picker.SelectedItem.ToString();
+            vm.GetCannyonProviderLastDay((int)picker.SelectedItem);
         }
     }
 }

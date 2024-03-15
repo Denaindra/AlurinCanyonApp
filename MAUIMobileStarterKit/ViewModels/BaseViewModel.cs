@@ -11,13 +11,32 @@ namespace MAUIMobileStarterKit.ViewModels
     {
         public INavigation navigation;
         public event PropertyChangedEventHandler PropertyChanged;
+
         private static ICanyonProvider iCannyonProvider;
         private static ItokenProvider itokenProvider;
         private static ICountryProvider iCountryProvider;
+        private static ICommentProvider iCommentProvider;
+        private static ITopographyProvider iTopographyProvider;
         public BaseViewModel()
 		{
 		}
 
+        public ITopographyProvider GetITopographyProvider()
+        {
+            if (iTopographyProvider is null)
+            {
+                iTopographyProvider = RestService.For<ITopographyProvider>(Constans.BASEDURL);
+            }
+            return iTopographyProvider;
+        }
+        public ICommentProvider GetICommentProvider()
+        {
+            if (iCommentProvider is null)
+            {
+                iCommentProvider = RestService.For<ICommentProvider>(Constans.BASEDURL);
+            }
+            return iCommentProvider;
+        }
         public ICountryProvider GetICountryProvider()
         {
             if (iCountryProvider is null)
