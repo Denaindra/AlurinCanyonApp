@@ -355,6 +355,21 @@ namespace MAUIMobileStarterKit.ViewModels
             }
             loading.EndIndiCator();
         }
+
+        public async void ValidateCanyon()
+        {
+            try
+            {
+                loading.StartIndicator();
+                var results = await canyonProvider.UnvalidatedCanyon(await localStorage.GetAsync("apiToken"));
+            }
+            catch (Exception ex)
+            {
+
+            }
+            loading.EndIndiCator();
+        }
+
         #endregion
     }
 }

@@ -33,7 +33,7 @@ namespace MAUIMobileStarterKit.Interface.APIServices
         Task<List<Canyon>> GetCanyonName([AliasAs("canyonName")] string canyonName, [Authorize("Bearer")] string token);
 
         [Get("/api/Canyons/UnValidatedCanyon")]
-        Task<List<Canyon>> UnvalidatedCanyon();
+        Task<List<Canyon>> UnvalidatedCanyon([Authorize("Bearer")] string token);
 
         [Delete("/api/Canyons")]
         Task<List<Canyon>> DeleteCanyon(string id);

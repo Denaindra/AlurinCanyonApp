@@ -55,4 +55,9 @@ public partial class SearchCanyonScreen : ContentView
             vm.SearchCannyon(countryPicker.SelectedItem.ToString(), statePicker.SelectedItem.ToString(), regionPicker.SelectedItem.ToString());
         }
     }
+
+    private void ValidatecanyonBtnClicked(object sender, EventArgs e)
+    {
+        vm.ValidateCanyon();
+    }
 }
