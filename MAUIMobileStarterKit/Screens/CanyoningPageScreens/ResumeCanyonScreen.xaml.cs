@@ -5,19 +5,19 @@ namespace MAUIMobileStarterKit.Screens.CanyoningPageScreens;
 
 public partial class ResumeCanyonScreen : ContentView
 {
-    private readonly CannyonBasedViewModel viewModel;
+    private readonly CannyonBasedViewModel vm;
     public ResumeCanyonScreen(CannyonBasedViewModel viewModel)
 	{
 		InitializeComponent();
         BindingContext = viewModel;
-        this.viewModel = viewModel;
+        this.vm = viewModel;
         SetupUI();
     }
 
     private void SetupUI()
     {
         scrollView.HeightRequest = Constans.DeviceHeight-122;
-        viewModel.LoadCannoynDetails();
-        viewModel.LoadUserCreators();
+        vm.LoadCannoynDetails();
+        vm.GetCanyonList();
     }
 }

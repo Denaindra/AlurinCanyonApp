@@ -207,8 +207,8 @@
 
             <BoxView HeightRequest=".5" Color="#90E0EF" Margin="8,10"  />
 
-            <Frame Padding="5,0" BorderColor="Transparent" BackgroundColor="Transparent" CornerRadius="5" VerticalOptions="FillAndExpand" HeightRequest="300">
-                <ListView x:Name="sourceUserListView" ItemsSource="{Binding UserCreatorList}" SeparatorVisibility="None" SelectionMode="None" HasUnevenRows="True">
+            <Frame Padding="5,0" BorderColor="Transparent" BackgroundColor="Transparent" CornerRadius="5" VerticalOptions="FillAndExpand" >
+                <ListView x:Name="sourceUserListView" ItemsSource="{Binding CanyonList}" SeparatorVisibility="None" SelectionMode="None" HasUnevenRows="True">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

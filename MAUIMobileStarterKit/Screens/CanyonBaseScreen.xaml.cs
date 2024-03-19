@@ -14,26 +14,26 @@ public partial class CanyonBaseScreen : ContentPage
         viewModel.navigation = Navigation;
 	}
 
-    protected override async void OnAppearing()
+    protected override void OnAppearing()
     {
         base.OnAppearing();
         SteupPage(0);
-        await viewModel.WatteForBackGroundSteup();
+       // await viewModel.WatteForBackGroundSteup();
     }
     private void MenuBtnClicked(object sender, EventArgs e)
     {
 
     }
 
-    private async void OnMenuTapGestureRecognizerTapped(object sender, TappedEventArgs e)
+    private void OnMenuTapGestureRecognizerTapped(object sender, TappedEventArgs e)
     {
-        viewModel.StartIndicator();
+       // viewModel.StartIndicator();
         ResetView();
         RemoveChildView();
         var tappedParameter = (TappedEventArgs)e;
         var parameter = Convert.ToInt32(tappedParameter.Parameter);
         SteupPage(parameter);
-        await viewModel.WatteForBackGroundSteup();
+       // await viewModel.WatteForBackGroundSteup();
     }
 
     private void SteupPage(int parameter)

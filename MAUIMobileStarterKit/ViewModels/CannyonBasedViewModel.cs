@@ -1,4 +1,7 @@
-﻿using MAUIMobileStarterKit.Interface;
+﻿using MAUIMobileStarterKit.Constant;
+using MAUIMobileStarterKit.Interface;
+using MAUIMobileStarterKit.Interface.APIServices;
+using MAUIMobileStarterKit.Models.Service;
 using MAUIMobileStarterKit.Models.UI;
 using System;
 using System.Collections.Generic;
@@ -12,19 +15,23 @@ namespace MAUIMobileStarterKit.ViewModels
     public class CannyonBasedViewModel:BaseViewModel
     {
         private ObservableCollection<ResumeCanyonCommentList> canyonCommentList;
-        private ObservableCollection<UserCreator> userCreatorList;
         private ObservableCollection<TopographiesModal> topographiesList;
         private ObservableCollection<ReglementationsModal> reglementationsList;
         private ObservableCollection<CommentListModal> commentList;
         private ObservableCollection<ProCanyonModal> professioanlList;
+        private string photoPath;
+        private ObservableCollection<Canyon> canyonList;
+
+        private readonly ICanyonProvider canyonProvider;
+        private readonly ILocalStorage localStorage;
 
         private readonly ILoading loading;
-        public CannyonBasedViewModel(ILoading loading)
+        public CannyonBasedViewModel(ILoading loading, ILocalStorage localStorage)
         {
             this.loading = loading;
+            canyonProvider = RecentChatServiceEndPoint();
+            this.localStorage = localStorage;
         }
-
-        private string photoPath;
 
         public string PhotoPath
         {
@@ -73,18 +80,6 @@ namespace MAUIMobileStarterKit.ViewModels
                 NotifyPropertyChanged(nameof(TopographiesList));
             }
         }
-        public ObservableCollection<UserCreator> UserCreatorList
-        {
-            get
-            {
-                return userCreatorList;
-            }
-            set
-            {
-                userCreatorList = value;
-                NotifyPropertyChanged(nameof(UserCreatorList));
-            }
-        }
         public ObservableCollection<ResumeCanyonCommentList> CanyonCommentList
         {
             get
@@ -97,7 +92,6 @@ namespace MAUIMobileStarterKit.ViewModels
                 NotifyPropertyChanged(nameof(CanyonCommentList));
             }
         }
-
         public ObservableCollection<ProCanyonModal> ProfessioanlList
         {
             get
@@ -110,6 +104,16 @@ namespace MAUIMobileStarterKit.ViewModels
                 NotifyPropertyChanged(nameof(ProfessioanlList));
             }
         }
+        public ObservableCollection<Canyon>  CanyonList
+        {
+            get { return canyonList; }
+            set { canyonList = value;
+                NotifyPropertyChanged(nameof(CanyonList));
+            }
+        }
+
+
+
 
         public void LoadCannoynDetails()
         {
@@ -137,27 +141,6 @@ namespace MAUIMobileStarterKit.ViewModels
             catch (Exception ex)
             {
               //  loading.EndIndiCator();
-            }
-        }
-        public void LoadUserCreators()
-        {
-            try
-            {
-                // loading.StartIndicator();
-                UserCreatorList = new ObservableCollection<UserCreator>();
-                for (int i = 0; i < 4; i++)
-                {
-                    UserCreatorList.Add(new UserCreator()
-                    {
-                       UserCreatorName = "Abdre",
-                       Source = "Text We image"
-                    });
-                }
-                // loading.EndIndiCator();
-            }
-            catch (Exception ex)
-            {
-                //  loading.EndIndiCator();
             }
         }
         public void LoadTopographies()
@@ -283,7 +266,6 @@ namespace MAUIMobileStarterKit.ViewModels
                 //  loading.EndIndiCator();
             }
         }
-
         public void StartIndicator()
         {
             loading.StartIndicator();
@@ -292,11 +274,31 @@ namespace MAUIMobileStarterKit.ViewModels
         {
             loading.EndIndiCator();
         }
-
         public async Task WatteForBackGroundSteup()
         {
             await Task.Delay(5000);
             EndIndiCator();
         }
+        #region api calls
+
+        public async void GetCanyonList()
+        {
+            try
+            {
+                CanyonList = new ObservableCollection<Canyon>();
+                loading.StartIndicator();
+                var canyonListresults = await canyonProvider.GetCanyon(Constans.CanyonNumber, await localStorage.GetAsync("apiToken"));
+                if (canyonListresults != null)
+                {
+                    CanyonList.Add(canyonListresults);
+                }     
+            }
+            catch (Exception ex)
+            {
+
+            }
+            loading.EndIndiCator();
+        }
+        #endregion
     }
 }

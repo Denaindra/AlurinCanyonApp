@@ -18,7 +18,7 @@ namespace MAUIMobileStarterKit.Interface.APIServices
         Task<Canyon> PostCanyon([Body] Canyon newcanyon);
 
         [Get("/api/Canyons/{canyonNumber}")]
-        Task<Canyon> GetCanyon([AliasAs("canyonNumber")] int canyonNumber);
+        Task<Canyon> GetCanyon([AliasAs("canyonNumber")] string canyonNumber, [Authorize("Bearer")] string token);
 
         [Get("/api/Canyons/{canyonId}")]
         Task<Canyon> GetCanyonwithId([AliasAs("canyonId")] int canyonNumber);
