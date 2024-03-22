@@ -24,7 +24,7 @@ namespace MAUIMobileStarterKit.Constant
         public const string TOKENBASEDURL = "https://canyonproject.eu.auth0.com";
         public const string AccessTokenRequestAudence = "https://api.canyonproject.com";
 
-        public static string CanyonNumber = "1260";
+        public static string CanyonNumber = "1216";
 
 
 

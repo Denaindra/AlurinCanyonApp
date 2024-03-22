@@ -2,7 +2,7 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <IsFirstTimeProjectOpen>False</IsFirstTimeProjectOpen>
-    <ActiveDebugProfile>Samsung SM-E546B (Android 13.0 - API 33)</ActiveDebugProfile>
+    <ActiveDebugProfile>Xiaomi 22101316G (Android 14.0 - API 34)</ActiveDebugProfile>
     <ActiveDebugFramework>net7.0-android</ActiveDebugFramework>
     <SelectedPlatformGroup>PhysicalDevice</SelectedPlatformGroup>
   </PropertyGroup>

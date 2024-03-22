@@ -3,34 +3,34 @@ using MAUIMobileStarterKit.Interface;
 using MAUIMobileStarterKit.Interface.APIServices;
 using MAUIMobileStarterKit.Models.Service;
 using MAUIMobileStarterKit.Models.UI;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MAUIMobileStarterKit.ViewModels
 {
     public class CannyonBasedViewModel:BaseViewModel
     {
-        private ObservableCollection<ResumeCanyonCommentList> canyonCommentList;
         private ObservableCollection<TopographiesModal> topographiesList;
         private ObservableCollection<ReglementationsModal> reglementationsList;
         private ObservableCollection<CommentListModal> commentList;
         private ObservableCollection<ProCanyonModal> professioanlList;
-        private string photoPath;
         private ObservableCollection<Canyon> canyonList;
 
         private readonly ICanyonProvider canyonProvider;
-        private readonly ILocalStorage localStorage;
+        private readonly ICountryProvider countryProvider;
 
+        private readonly ILocalStorage localStorage;
         private readonly ILoading loading;
+
+        private string photoPath;
+        private ObservableCollection<Country> countries;
+        private ObservableCollection<AccesDescent> commentsList;
+
         public CannyonBasedViewModel(ILoading loading, ILocalStorage localStorage)
         {
             this.loading = loading;
-            canyonProvider = RecentChatServiceEndPoint();
             this.localStorage = localStorage;
+            canyonProvider = RecentChatServiceEndPoint();
+            countryProvider = GetICountryProvider();
         }
 
         public string PhotoPath
@@ -43,7 +43,6 @@ namespace MAUIMobileStarterKit.ViewModels
                 NotifyPropertyChanged(nameof(PhotoPath));
             }
         }
-
         public ObservableCollection<CommentListModal> CommentList
         {
             get
@@ -80,18 +79,6 @@ namespace MAUIMobileStarterKit.ViewModels
                 NotifyPropertyChanged(nameof(TopographiesList));
             }
         }
-        public ObservableCollection<ResumeCanyonCommentList> CanyonCommentList
-        {
-            get
-            {
-                return canyonCommentList;
-            }
-            set
-            {
-                canyonCommentList = value;
-                NotifyPropertyChanged(nameof(CanyonCommentList));
-            }
-        }
         public ObservableCollection<ProCanyonModal> ProfessioanlList
         {
             get
@@ -111,36 +98,21 @@ namespace MAUIMobileStarterKit.ViewModels
                 NotifyPropertyChanged(nameof(CanyonList));
             }
         }
-
-
-
-
-        public void LoadCannoynDetails()
+        public ObservableCollection<Country> CountriesList
         {
-            try
-            {
-               // loading.StartIndicator();
-                CanyonCommentList = new ObservableCollection<ResumeCanyonCommentList>();
-                for (int i = 0; i < 4; i++)
-                {
-                    CanyonCommentList.Add(new ResumeCanyonCommentList()
-                    {
-                        Acces = "Access",
-                        Approche = "Approche",
-                        Descent = "Descent",
-                        Engagement = "Engagement",
-                        Retour = "Retour",
-                        Geologie = "Geologie",
-                        Historique = "Historique",
-                        Periode = "Periode",
-                        Remarque = "Remarque"
-                    });
-                }
-               // loading.EndIndiCator();
+            get { return countries; }
+            set {
+                countries = value;
+                NotifyPropertyChanged(nameof(CountriesList));
             }
-            catch (Exception ex)
+        }
+        public ObservableCollection<AccesDescent> CommentsList
+        {
+            get { return commentsList; }
+            set
             {
-              //  loading.EndIndiCator();
+                commentsList = value;
+                NotifyPropertyChanged(nameof(CommentsList));
             }
         }
         public void LoadTopographies()
@@ -239,7 +211,6 @@ namespace MAUIMobileStarterKit.ViewModels
                 }
             }
         }
-
         public void LoadPerforssioanlList()
         {
             try
@@ -279,25 +250,60 @@ namespace MAUIMobileStarterKit.ViewModels
             await Task.Delay(5000);
             EndIndiCator();
         }
+        
         #region api calls
-
-        public async void GetCanyonList()
+        public async Task<bool> GetCanyonList(string region)
         {
             try
             {
-                CanyonList = new ObservableCollection<Canyon>();
                 loading.StartIndicator();
                 var canyonListresults = await canyonProvider.GetCanyon(Constans.CanyonNumber, await localStorage.GetAsync("apiToken"));
                 if (canyonListresults != null)
                 {
-                    CanyonList.Add(canyonListresults);
-                }     
+                    CanyonList = new ObservableCollection<Canyon>()
+                    {
+                        canyonListresults
+                    };
+                }
+
+                GetCommentsBasedOnTheRegion(region);
+
+            }
+            catch (Exception ex)
+            {
+                loading.EndIndiCator();
+                return false;
+            }
+            loading.EndIndiCator();
+            return true;
+
+        }
+        public async void GetCountriesAsync()
+        {
+            try
+            {
+                loading.StartIndicator();
+                var contriesList = await countryProvider.LoadCountriesAsync(await localStorage.GetAsync("apiToken"));
+                if (contriesList.Any())
+                {
+                    CountriesList = new ObservableCollection<Country>();
+                    foreach (var country in contriesList)
+                    {
+                        CountriesList.Add(country);
+                    }
+                }
             }
             catch (Exception ex)
             {
 
             }
             loading.EndIndiCator();
+        }
+
+        public void GetCommentsBasedOnTheRegion(string region)
+        {
+            var result = CanyonList[0].AccesDescents.Where(a => a.Language == region);
+            CommentsList = new ObservableCollection<AccesDescent>(CanyonList[0].AccesDescents.Where(a => a.Language == region));
         }
         #endregion
     }
