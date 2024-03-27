@@ -4,6 +4,6 @@
              xmlns:maps="clr-namespace:Maui.GoogleMaps;assembly=Maui.GoogleMaps"
              x:Class="MAUIMobileStarterKit.Screens.HomePageScreens.GoogleMapScreen">
     <VerticalStackLayout VerticalOptions="FillAndExpand" >
-        <maps:Map MyLocationEnabled="True"  VerticalOptions="FillAndExpand" x:Name="mapview" />
+        <maps:Map MyLocationEnabled="True" MapType="Street" IsShowingUser="True"   VerticalOptions="FillAndExpand" x:Name="mapview" />
     </VerticalStackLayout>
 </ContentView>

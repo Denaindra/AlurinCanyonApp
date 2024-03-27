@@ -1,9 +1,11 @@
-﻿using IdentityModel.OidcClient;
+﻿using Android.Media.TV;
+using IdentityModel.OidcClient;
 using MAUIMobileStarterKit.Interface;
 using MAUIMobileStarterKit.Interface.APIServices;
 using MAUIMobileStarterKit.Models.Service;
 using MAUIMobileStarterKit.Models.UI;
 using MAUIMobileStarterKit.Screens;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -368,6 +370,24 @@ namespace MAUIMobileStarterKit.ViewModels
 
             }
             loading.EndIndiCator();
+        }
+
+        public async Task<List<CustomPin>> GetAllCoordinates()
+        {
+            List <CustomPin> customPins= new List <CustomPin>();
+
+            try
+            {
+                loading.StartIndicator();
+                customPins = await canyonProvider.GetAllCoordinate(await localStorage.GetAsync("apiToken"));
+            }
+            catch (Exception ex)
+            {
+
+            }
+            loading.EndIndiCator();
+            return customPins;
+     
         }
 
         #endregion

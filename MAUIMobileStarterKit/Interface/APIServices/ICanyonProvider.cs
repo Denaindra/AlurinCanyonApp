@@ -12,7 +12,7 @@ namespace MAUIMobileStarterKit.Interface.APIServices
     public interface ICanyonProvider
     {
         [Get("/api/Canyons/allCoordinates")]
-        Task<List<CustomPin>> GetAllCoordinate();
+        Task<List<CustomPin>> GetAllCoordinate([Authorize("Bearer")] string token);
 
         [Post("/api/Canyons/")]
         Task<Canyon> PostCanyon([Body] Canyon newcanyon);
