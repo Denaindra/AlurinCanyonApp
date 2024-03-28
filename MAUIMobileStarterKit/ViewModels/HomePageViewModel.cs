@@ -1,5 +1,4 @@
-﻿using Android.Media.TV;
-using IdentityModel.OidcClient;
+﻿using IdentityModel.OidcClient;
 using MAUIMobileStarterKit.Interface;
 using MAUIMobileStarterKit.Interface.APIServices;
 using MAUIMobileStarterKit.Models.Service;
@@ -388,6 +387,23 @@ namespace MAUIMobileStarterKit.ViewModels
             loading.EndIndiCator();
             return customPins;
      
+        }
+
+        public async Task<List<Canyon>> UnvalidatedCanyon()
+        {
+           List<Canyon> customPins = new List<Canyon>();
+
+            try
+            {
+                loading.StartIndicator();
+                customPins = await canyonProvider.UnvalidatedCanyon(await localStorage.GetAsync("apiToken"));
+            }
+            catch (Exception ex)
+            {
+
+            }
+            loading.EndIndiCator();
+            return customPins;
         }
 
         #endregion
