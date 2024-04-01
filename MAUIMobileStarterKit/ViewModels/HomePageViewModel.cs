@@ -91,13 +91,13 @@ namespace MAUIMobileStarterKit.ViewModels
                 NotifyPropertyChanged(nameof(CanyonCountryList));
             }
         }
-        public ObservableCollection<Canyon> GetCanyonFromRegion
+        public ObservableCollection<Canyon> CanyonListDetails
         {
             get { return getCanyonFromRegion; }
             set
             {
                 getCanyonFromRegion = value;
-                NotifyPropertyChanged(nameof(GetCanyonFromRegion));
+                NotifyPropertyChanged(nameof(CanyonListDetails));
             }
         }
         public string[] CountryList
@@ -301,10 +301,10 @@ namespace MAUIMobileStarterKit.ViewModels
                 var canyonList = await canyonProvider.GetCanyonFromRegion(recenttoekns, await localStorage.GetAsync("apiToken"));
                 if (canyonList.Any())
                 {
-                    GetCanyonFromRegion = new ObservableCollection<Canyon>();
+                    CanyonListDetails = new ObservableCollection<Canyon>();
                     foreach (var item in canyonList)
                     {
-                        GetCanyonFromRegion.Add(item);
+                        CanyonListDetails.Add(item);
                     }
                 }
             }
@@ -362,7 +362,15 @@ namespace MAUIMobileStarterKit.ViewModels
             try
             {
                 loading.StartIndicator();
-                var results = await canyonProvider.UnvalidatedCanyon(await localStorage.GetAsync("apiToken"));
+                var validateCanyonresults = await canyonProvider.UnvalidatedCanyon(await localStorage.GetAsync("apiToken"));
+                if (validateCanyonresults.Any())
+                {
+                    CanyonListDetails = new ObservableCollection<Canyon>();
+                    foreach (var item in validateCanyonresults)
+                    {
+                        CanyonListDetails.Add(item);
+                    }
+                }
             }
             catch (Exception ex)
             {

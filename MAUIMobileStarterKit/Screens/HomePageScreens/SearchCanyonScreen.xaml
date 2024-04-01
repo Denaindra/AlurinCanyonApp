@@ -22,17 +22,17 @@
             <Button Margin="10,0" Text="Canyons to validate" Clicked="ValidatecanyonBtnClicked" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" FontFamily="CabinBold"/>
             <Button Margin="10,0" Text="Create Canyon" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" FontFamily="CabinBold"/>
             <Frame Padding="5,0" BorderColor="Transparent" BackgroundColor="Transparent" CornerRadius="5" VerticalOptions="FillAndExpand" HeightRequest="300">
-                <ListView ItemsSource="{Binding CannyonDetails}" HasUnevenRows="True" SelectionMode="None" SeparatorVisibility="None" ItemTapped="CannyonItemTapped" >
+                <ListView ItemsSource="{Binding CanyonListDetails}" HasUnevenRows="True" SelectionMode="None" SeparatorVisibility="None" ItemTapped="CannyonItemTapped" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Margin="0,5">
                                     <Frame Padding="0,0,5,0" BorderColor="Transparent" CornerRadius="5" HeightRequest="80" HasShadow="False" BackgroundColor="#90E0EF" >
                                         <Grid RowDefinitions="*,*" ColumnDefinitions="*,Auto,Auto,Auto" ColumnSpacing="10">
-                                            <Label HorizontalTextAlignment="Center" TextColor="#03045E" FontFamily="CabinBold" FontSize="20" VerticalOptions="CenterAndExpand" Text="{Binding CanyonName}" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"/>
+                                            <Label HorizontalTextAlignment="Center" TextColor="#03045E" FontFamily="CabinBold" FontSize="20" VerticalOptions="CenterAndExpand" Text="{Binding Name}" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"/>
                                             <HorizontalStackLayout  Grid.Row="0"  Grid.Column="1" VerticalOptions="CenterAndExpand" Spacing="5">
                                                 <Image Source="starblue.png" Aspect="AspectFit" HeightRequest="15" />
-                                                <Label TextColor="#03045E" Text="{Binding Rate, StringFormat='/{0}'}" FontFamily="CabinRegular" FontSize="15"/>
+                                                <Label TextColor="#03045E" Text="{Binding DcNote, StringFormat='{0:N1}/4'}" FontFamily="CabinRegular" FontSize="15"/>
                                             </HorizontalStackLayout>
                                             <HorizontalStackLayout  Grid.Row="0" Grid.Column="2" VerticalOptions="CenterAndExpand" Spacing="5">
                                                 <Image Source="cotation.png" Aspect="AspectFit" HeightRequest="15" />
@@ -40,19 +40,19 @@
                                             </HorizontalStackLayout>
                                             <HorizontalStackLayout  Grid.Row="0" Grid.Column="3" VerticalOptions="CenterAndExpand" Spacing="5">
                                                 <Image Source="cascade.png" Aspect="AspectFit" HeightRequest="15" />
-                                                <Label TextColor="#03045E"  Text="{Binding CascadeHeight}" FontFamily="CabinRegular" FontSize="15" />
+                                                <Label TextColor="#03045E"  Text="{Binding CasMax, StringFormat='{0:N0}m'}" FontFamily="CabinRegular" FontSize="15" />
                                             </HorizontalStackLayout>
                                             <HorizontalStackLayout Grid.Row="1"  Grid.Column="1" VerticalOptions="CenterAndExpand" Spacing="5">
                                                 <Image Source="descenteactif.png" Aspect="AspectFit" HeightRequest="15" />
-                                                <Label TextColor="#03045E"  Text="{Binding DescenteActif, StringFormat='{0:HH:mm:ss}'}" FontFamily="CabinRegular" FontSize="10"/>
+                                                <Label TextColor="#03045E"  Text="{Binding DescenteTime, StringFormat='{0:HH:mm}'}" FontFamily="CabinRegular" FontSize="10"/>
                                             </HorizontalStackLayout>
                                             <HorizontalStackLayout  Grid.Row="1"  Grid.Column="2" VerticalOptions="CenterAndExpand" Spacing="5">
                                                 <Image Source="corde.png" Aspect="AspectFit" HeightRequest="15" />
-                                                <Label TextColor="#03045E"  Text="{Binding CordeDistance}" FontFamily="CabinRegular" FontSize="15"/>
+                                                <Label TextColor="#03045E" Text="{Binding Corde, StringFormat='{0:N0}m'}" FontFamily="CabinRegular" FontSize="15"/>
                                             </HorizontalStackLayout>
                                             <HorizontalStackLayout  Grid.Row="1"  Grid.Column="3" VerticalOptions="CenterAndExpand" Spacing="5">
                                                 <Image Source="marche.png" Aspect="AspectFit" HeightRequest="15" />
-                                                <Label TextColor="#03045E" Text="{Binding Marche, StringFormat='{0:HH:mm:ss}'}" FontFamily="CabinRegular" FontSize="10"/>
+                                                <Label TextColor="#03045E" Text="{Binding ApprocheTime, StringFormat='{0:HH:mm}'}" FontFamily="CabinRegular" FontSize="10"/>
                                             </HorizontalStackLayout>
 
                                         </Grid>
