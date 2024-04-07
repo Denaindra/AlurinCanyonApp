@@ -99,4 +99,8 @@ public partial class SearchCanyonScreen : ContentView
            await App.Current.MainPage.DisplayActionSheet("Message", "No coordinates found !!!", "OK");
         }
     }
+    private void CreateCanyonBtnClicked(object sender, EventArgs e)
+    {
+        vm.NavigateCreateCanyonScreen();
+    }
 }

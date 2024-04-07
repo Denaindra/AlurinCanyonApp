@@ -286,6 +286,7 @@ namespace MAUIMobileStarterKit.ViewModels
                 var contriesList = await countryProvider.LoadCountriesAsync(await localStorage.GetAsync("apiToken"));
                 if (contriesList.Any())
                 {
+                    Constans.CountriesList = contriesList;
                     CountriesList = new ObservableCollection<Country>();
                     foreach (var country in contriesList)
                     {

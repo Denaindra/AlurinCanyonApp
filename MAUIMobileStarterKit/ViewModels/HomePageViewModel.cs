@@ -4,6 +4,7 @@ using MAUIMobileStarterKit.Interface.APIServices;
 using MAUIMobileStarterKit.Models.Service;
 using MAUIMobileStarterKit.Models.UI;
 using MAUIMobileStarterKit.Screens;
+using MAUIMobileStarterKit.Screens.SettingsScreen;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace MAUIMobileStarterKit.ViewModels
 
         private readonly ILoading loading;
         private readonly CanyonBaseScreen canyonBaseScreen;
+        private readonly CreateCannyonScreen createCannyonScreen;
 
         private readonly ICanyonProvider canyonProvider;
         private readonly ICountryProvider countryProvider;
@@ -35,7 +37,7 @@ namespace MAUIMobileStarterKit.ViewModels
         private string[] regionList;
         private string[] stateList;
 
-        public HomePageViewModel(ILocalStorage localStorage,ILoading loading,CanyonBaseScreen canyonBaseScreen)
+        public HomePageViewModel(ILocalStorage localStorage,ILoading loading,CanyonBaseScreen canyonBaseScreen, CreateCannyonScreen createCannyonScreen)
         {
             this.loading = loading;
             this.localStorage = localStorage;
@@ -44,6 +46,7 @@ namespace MAUIMobileStarterKit.ViewModels
             countryProvider = GetICountryProvider();
             commentProvider = GetICommentProvider();
             topographyProvider = GetITopographyProvider();
+            this.createCannyonScreen = createCannyonScreen;
         }
 
         public ObservableCollection<CanyonSearchResultModel> CannyonDetails
@@ -231,6 +234,10 @@ namespace MAUIMobileStarterKit.ViewModels
             PushModalAsync(canyonBaseScreen);
         }
 
+        public void NavigateCreateCanyonScreen()
+        {
+            PushModalAsync(createCannyonScreen);
+        }
 
         #region service calls
         public async void LoadCanyonCountriesAsync()
