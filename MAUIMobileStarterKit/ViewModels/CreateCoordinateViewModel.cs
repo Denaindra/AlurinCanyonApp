@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace MAUIMobileStarterKit.ViewModels
 {
-    public class CreateCoordinateViewModel: BaseViewModel
+    public class CreateCoordinateViewModel : BaseViewModel
     {
         private readonly AddDescriptionModal addDescriptionModal;
         private readonly AddCoordinatorModal addCoordinatorModal;
@@ -32,11 +32,12 @@ namespace MAUIMobileStarterKit.ViewModels
         private string[] riverList;
 
         private string nikeName;
-
-
         private List<Country> countriesList;
+        public ObservableCollection<Coordonnee> coorddinates;
+        private double latitude;
+        private double longitude;
 
-        public CreateCoordinateViewModel(AddDescriptionModal addDescriptionModal, AddCoordinatorModal addCoordinatorModal, 
+        public CreateCoordinateViewModel(AddDescriptionModal addDescriptionModal, AddCoordinatorModal addCoordinatorModal,
             ILocalStorage localStorage, ILoading loading)
         {
             this.addCoordinatorModal = addCoordinatorModal;
@@ -44,6 +45,35 @@ namespace MAUIMobileStarterKit.ViewModels
             this.localStorage = localStorage;
             countryProvider = GetICountryProvider();
             this.loading = loading;
+        }
+        public double Latitude
+        {
+            get {
+                return latitude; 
+            }
+            set { latitude = value;
+                NotifyPropertyChanged(nameof(Latitude));
+            }
+        }
+
+        public double Longitude
+        {
+            get { 
+                return longitude; 
+            }
+            set { longitude = value;
+                NotifyPropertyChanged(nameof(Longitude));
+            }
+        }
+
+        public ObservableCollection<Coordonnee> Coorddinates
+        {
+            get { return coorddinates; }
+            set
+            {
+                coorddinates = value;
+                NotifyPropertyChanged(nameof(Coorddinates));
+            }
         }
 
         public string[] CountryList
@@ -116,7 +146,9 @@ namespace MAUIMobileStarterKit.ViewModels
         public string NikeName
         {
             get { return nikeName; }
-            set { nikeName = value;
+            set
+            {
+                nikeName = value;
                 NotifyPropertyChanged(nameof(NikeName));
             }
         }
@@ -128,6 +160,7 @@ namespace MAUIMobileStarterKit.ViewModels
 
         public AddCoordinatorModal GetAddCoordinatorModal()
         {
+            addCoordinatorModal.vm = this;
             return addCoordinatorModal;
         }
 
@@ -142,7 +175,7 @@ namespace MAUIMobileStarterKit.ViewModels
                 if (contriesList.Any())
                 {
                     countriesList = contriesList.OrderBy(obj => obj.NameFr).ToList();
-                    CountryList = countriesList.Select(e=>e.NameFr).ToArray();
+                    CountryList = countriesList.Select(e => e.NameFr).ToArray();
                 }
             }
             catch (Exception ex)
@@ -163,31 +196,31 @@ namespace MAUIMobileStarterKit.ViewModels
             var regionList = countryselected.Regions.Where(c => c.Name == selectedRegion).FirstOrDefault();
             StateList = regionList.States.Select(n => n.Name).ToArray();
         }
-        public void LoadMountains(string selectedCountry, string selectedRegion,string selectedStates)
+        public void LoadMountains(string selectedCountry, string selectedRegion, string selectedStates)
         {
             var countryselected = countriesList.Where(c => c.NameFr == selectedCountry).FirstOrDefault();
             var regionList = countryselected.Regions.Where(c => c.Name == selectedRegion).FirstOrDefault();
             var stateList = regionList.States.Where(n => n.Name == selectedStates).FirstOrDefault();
             MountainList = stateList.Mountains.Select(n => n.Name).ToArray();
         }
-        public void LoadBassinList(string selectedCountry, string selectedRegion, string selectedStates,string mountainNames)
+        public void LoadBassinList(string selectedCountry, string selectedRegion, string selectedStates, string mountainNames)
         {
             var countryselected = countriesList.Where(c => c.NameFr == selectedCountry).FirstOrDefault();
             var regionList = countryselected.Regions.Where(c => c.Name == selectedRegion).FirstOrDefault();
             var stateList = regionList.States.Where(n => n.Name == selectedStates).FirstOrDefault();
-            var mountainList = stateList.Mountains.Where(n => n.Name== mountainNames).FirstOrDefault();
+            var mountainList = stateList.Mountains.Where(n => n.Name == mountainNames).FirstOrDefault();
             BassinList = mountainList.Bassins.Select(n => n.Name).ToArray();
         }
-        public void LoadCityList(string selectedCountry, string selectedRegion, string selectedState, string mountainName,string bassingName)
+        public void LoadCityList(string selectedCountry, string selectedRegion, string selectedState, string mountainName, string bassingName)
         {
             var countryselected = countriesList.Where(c => c.NameFr == selectedCountry).FirstOrDefault();
             var regionList = countryselected.Regions.Where(c => c.Name == selectedRegion).FirstOrDefault();
             var stateList = regionList.States.Where(n => n.Name == selectedState).FirstOrDefault();
             var mountainList = stateList.Mountains.Where(n => n.Name == mountainName).FirstOrDefault();
-            var bassin = mountainList.Bassins.Where(n => n.Name== bassingName).FirstOrDefault();
+            var bassin = mountainList.Bassins.Where(n => n.Name == bassingName).FirstOrDefault();
             CityList = bassin.Cities.Select(c => c.Name).ToArray();
         }
-        public void LoadRiverList(string selectedCountry, string selectedRegion, string selectedState, string mountainName, string bassingName,string cityName)
+        public void LoadRiverList(string selectedCountry, string selectedRegion, string selectedState, string mountainName, string bassingName, string cityName)
         {
             var countryselected = countriesList.Where(c => c.NameFr == selectedCountry).FirstOrDefault();
             var regionList = countryselected.Regions.Where(c => c.Name == selectedRegion).FirstOrDefault();
@@ -196,6 +229,23 @@ namespace MAUIMobileStarterKit.ViewModels
             var bassin = mountainList.Bassins.Where(n => n.Name == bassingName).FirstOrDefault();
             var city = bassin.Cities.Where(c => c.Name == cityName).FirstOrDefault();
             RiverList = city.Rivers.Select(r => r.Name).ToArray();
+        }
+
+        public async Task<double[]> GetCachedLocation()
+        {
+            try
+            {
+                Location location = await Geolocation.Default.GetLastKnownLocationAsync();
+                Latitude = location.Latitude;
+                Longitude = location.Longitude;
+                if (location != null)
+                    return new double[] { location.Latitude, location.Longitude };
+            }
+            catch (Exception ex)
+            {
+                // Unable to get location
+            }
+            return new double[0];
         }
 
         #endregion
