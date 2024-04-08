@@ -248,6 +248,21 @@ namespace MAUIMobileStarterKit.ViewModels
             return new double[0];
         }
 
+        public void AddCordinateForCreateCanyon(int pointTypeIndex) 
+        {
+            if(Coorddinates == null)
+            {
+                Coorddinates = new ObservableCollection<Coordonnee>();
+            }
+            var cordinates = new Coordonnee()
+            {
+                Lat = Latitude,
+                Long = Longitude,
+                PointType = (CoordonneTypeEnum)pointTypeIndex
+            };
+            Coorddinates.Add(cordinates);
+        }
+
         #endregion
     }
 }

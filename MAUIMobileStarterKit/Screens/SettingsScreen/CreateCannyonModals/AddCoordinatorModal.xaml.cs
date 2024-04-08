@@ -22,7 +22,7 @@ public partial class AddCoordinatorModal : ContentPage
 
     private void SaveCoordinate(object sender, EventArgs e)
     {
-
+        vm.AddCordinateForCreateCanyon(pinPointpicker.SelectedIndex);
     }
 
     private void BackBtnClicked(object sender, EventArgs e)

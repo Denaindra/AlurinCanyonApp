@@ -46,11 +46,38 @@
             <local:FlatingLabel Title="Source" />
             <local:FlatingLabel Title="Creator" Text="{Binding NikeName}"/>
             <Button Text="Add Coordinate *" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" Clicked="AddCorrdinateClicked"/>
-            <Frame>
-                <StackLayout>
 
-                </StackLayout>
+            <Frame Padding="5,0" BorderColor="Transparent" BackgroundColor="Transparent" CornerRadius="5" VerticalOptions="FillAndExpand" HeightRequest="300">
+                <ListView ItemsSource="{Binding Coorddinates}" HasUnevenRows="True" SelectionMode="None" SeparatorVisibility="None"  >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Margin="0,5">
+                                    <Frame Padding="0,0,5,0" BorderColor="Transparent" CornerRadius="5" HeightRequest="80" HasShadow="False" BackgroundColor="#90E0EF" >
+                                        <Grid RowDefinitions="*,*,*" ColumnDefinitions="*,*" ColumnSpacing="5">
+                                            <Label FontAttributes="Italic" HorizontalTextAlignment="Center" TextColor="#03045E" FontFamily="CabinRegular" FontSize="15" 
+                                                   VerticalOptions="CenterAndExpand" Text="Point Type" Grid.Column="0" Grid.Row="0" />
+                                            <Label Grid.Column="1" Grid.Row="0"  HorizontalTextAlignment="Start" TextColor="#03045E" FontFamily="CabinBold" FontSize="15" VerticalOptions="CenterAndExpand" Text="{Binding PointType}"  />
+
+
+                                            <Label FontAttributes="Italic" HorizontalTextAlignment="Center" TextColor="#03045E" FontFamily="CabinRegular" FontSize="15" 
+                                                   VerticalOptions="CenterAndExpand" Text="Latitude" Grid.Column="0" Grid.Row="1" />
+                                            <Label HorizontalTextAlignment="Start" TextColor="#03045E" FontFamily="CabinBold" FontSize="15" VerticalOptions="CenterAndExpand" Text="{Binding Lat}" Grid.Row="1" Grid.Column="1" />
+
+
+                                            <Label FontAttributes="Italic" HorizontalTextAlignment="Center" TextColor="#03045E" FontFamily="CabinRegular" FontSize="15" 
+                                                   VerticalOptions="CenterAndExpand" Text="Longitude" Grid.Column="0" Grid.Row="2" />
+                                            <Label HorizontalTextAlignment="Start" TextColor="#03045E" FontFamily="CabinBold" FontSize="15" VerticalOptions="CenterAndExpand" Text="{Binding Long}" Grid.Row="2" Grid.Column="1" />
+
+                                        </Grid>
+                                    </Frame>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </Frame>
+            
             <Button Text="Add Description *" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" Clicked="AddDescriptionClicked" />
             <Frame>
                 <StackLayout>
