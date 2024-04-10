@@ -18,7 +18,10 @@ public partial class CreateCannyonScreen : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        vm.GetCountriesAsync();
+        if(!vm.CountryList.Any())
+        {
+            vm.GetCountriesAsync();
+        }
     }
 
     private void SaveCannyoonClicked(object sender, EventArgs e)
