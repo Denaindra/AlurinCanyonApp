@@ -10,16 +10,16 @@
             <ImageButton Clicked="BackBtnClicked" Source="backarrow.png" Aspect="AspectFit" HeightRequest="25" HorizontalOptions="Start" Margin="0,10"/>
             <Frame Padding="2" >
                 <VerticalStackLayout VerticalOptions="CenterAndExpand" Spacing="20" >
-                    <local:FlatingLabel Title="Lanugae*" Margin="0,20,0,0"/>
-                    <local:FlatingLabel Title="Access*" />
-                    <local:FlatingLabel Title="Approach*" />
-                    <local:FlatingLabel Title="Descent*" />
-                    <local:FlatingLabel Title="Return trip*" />
-                    <local:FlatingLabel Title="Engagement*" />
-                    <local:FlatingLabel Title="History" />
-                    <local:FlatingLabel Title="Comment" />
-                    <local:FlatingLabel Title="Geology" />
-                    <local:FlatingLabel Title="Best period" />
+                <local:FlatingLabel Title="Lanugae*" Margin="0,20,0,0" Text="{Binding Lanuage}"/>
+                <local:FlatingLabel Title="Access*" Text="{Binding Access}" />
+                <local:FlatingLabel Title="Approach*" Text="{Binding Approach}"/>
+                <local:FlatingLabel Title="Descent*" Text="{Binding Decent}"/>
+                <local:FlatingLabel Title="Return trip*" Text="{Binding ReturnTrip}"/>
+                <local:FlatingLabel Title="Engagement*" Text="{Binding Engagement}"/>
+                <local:FlatingLabel Title="History" Text="{Binding History}"/>
+                <local:FlatingLabel Title="Comment" Text="{Binding Comment}"/>
+                <local:FlatingLabel Title="Geology" Text="{Binding Geology}"/>
+                <local:FlatingLabel Title="Best period" Text="{Binding Period}"/>
                 </VerticalStackLayout>
             </Frame>
             <Button Text="Save Description" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" Clicked="SaveDescription"/>

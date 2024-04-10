@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace MAUIMobileStarterKit.ViewModels
 {
-    public class CreateCoordinateViewModel : BaseViewModel
+    public class CreateCanyonViewModel : BaseViewModel
     {
         private readonly AddDescriptionModal addDescriptionModal;
         private readonly AddCoordinatorModal addCoordinatorModal;
@@ -30,14 +30,25 @@ namespace MAUIMobileStarterKit.ViewModels
         private string[] bassinList;
         private string[] cityList;
         private string[] riverList;
-
+        private string lanuage;
+        private string access;
+        private string approach;
+        private string decent;
+        private string returntrip;
+        private string engagement;
+        private string history;
+        private string comment;
+        private string geology;
+        private string period;
         private string nikeName;
-        private List<Country> countriesList;
-        public ObservableCollection<Coordonnee> coorddinates;
         private double latitude;
         private double longitude;
 
-        public CreateCoordinateViewModel(AddDescriptionModal addDescriptionModal, AddCoordinatorModal addCoordinatorModal,
+        private List<Country> countriesList;
+        public ObservableCollection<Coordonnee> coorddinates;
+        private ObservableCollection<AccesDescent> description;
+
+        public CreateCanyonViewModel(AddDescriptionModal addDescriptionModal, AddCoordinatorModal addCoordinatorModal,
             ILocalStorage localStorage, ILoading loading)
         {
             this.addCoordinatorModal = addCoordinatorModal;
@@ -153,8 +164,103 @@ namespace MAUIMobileStarterKit.ViewModels
             }
         }
 
+        public string Period
+        {
+            get { return period; }
+            set { period = value;
+                NotifyPropertyChanged(nameof(Period));
+            }
+        }
+
+        public string Geology
+        {
+            get { return geology; }
+            set { geology = value;
+                NotifyPropertyChanged(nameof(Geology));
+            }
+        }
+
+        public string Comment
+        {
+            get { return comment; }
+            set { comment = value;
+                NotifyPropertyChanged(nameof(Comment));
+            }
+        }
+
+        public string History
+        {
+            get { return history; }
+            set { history = value;
+                NotifyPropertyChanged(nameof(History));
+            }
+        }
+
+        public string Engagement
+        {
+            get { return engagement; }
+            set { engagement = value;
+                NotifyPropertyChanged(nameof(Engagement));
+
+            }
+        }
+
+        public string ReturnTrip
+        {
+            get { return returntrip; }
+            set { returntrip = value;
+                NotifyPropertyChanged(nameof(ReturnTrip));
+
+            }
+        }
+
+        public string Decent
+        {
+            get { return decent; }
+            set { decent = value;
+                NotifyPropertyChanged(nameof(Decent));
+
+            }
+        }
+
+        public string Approach
+        {
+            get { return approach; }
+            set { approach = value;
+                NotifyPropertyChanged(nameof(Approach));
+
+            }
+        }
+
+        public string Access
+        {
+            get { return access; }
+            set { access = value;
+                NotifyPropertyChanged(nameof(Access));
+            }
+        }
+
+        public string Lanuage
+        {
+            get { return lanuage; }
+            set { lanuage = value;
+                NotifyPropertyChanged(nameof(Lanuage));
+            }
+        }
+
+        public ObservableCollection<AccesDescent> Description
+        {
+            get { return 
+                    description;
+            }
+            set { description = value;
+                NotifyPropertyChanged(nameof(Description));
+            }
+        }
+
         public AddDescriptionModal GetAddDescriptionModal()
         {
+            addDescriptionModal.vm = this;
             return addDescriptionModal;
         }
 
@@ -263,6 +369,35 @@ namespace MAUIMobileStarterKit.ViewModels
             Coorddinates.Add(cordinates);
         }
 
+
+        public bool SaveDescription()
+        {
+            if (Access != "" && Approach != "" && Decent != "" && ReturnTrip != "" && Engagement != "")
+            {
+                if (Description == null)
+                {
+                    Description = new ObservableCollection<AccesDescent>();
+                }
+                Description.Add(new AccesDescent()
+                {
+                    Acces = Access,
+                    Language = Lanuage,
+                    Approche = Approach,
+                    Descente = Decent,
+                    Retour = ReturnTrip,
+                    Engagement = Engagement,
+                    Historique = History,
+                    Remarque = Comment,
+                    Geologie = Geology,
+                    Periode = Period
+                });
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         #endregion
     }
 }

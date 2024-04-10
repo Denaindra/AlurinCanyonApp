@@ -6,7 +6,7 @@ namespace MAUIMobileStarterKit.Screens.SettingsScreen.CreateCannyonModals;
 public partial class AddCoordinatorModal : ContentPage
 {
 
-    public CreateCoordinateViewModel vm;
+    public CreateCanyonViewModel vm;
 
     public AddCoordinatorModal()
     {

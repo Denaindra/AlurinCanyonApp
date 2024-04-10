@@ -76,7 +76,7 @@ public static class MauiProgram
         builder.Services.AddTransient<DashBoardViewModel>();
         builder.Services.AddTransient<HomePageViewModel>();
         builder.Services.AddTransient<SettingsViewModel>();
-        builder.Services.AddTransient<CreateCoordinateViewModel>();
+        builder.Services.AddTransient<CreateCanyonViewModel>();
         builder.Services.AddTransient<CannyonBasedViewModel>();
 
 

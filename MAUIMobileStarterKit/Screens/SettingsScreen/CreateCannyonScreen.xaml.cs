@@ -5,9 +5,9 @@ namespace MAUIMobileStarterKit.Screens.SettingsScreen;
 
 public partial class CreateCannyonScreen : ContentPage
 {
-    private readonly CreateCoordinateViewModel vm;
+    private readonly CreateCanyonViewModel vm;
 
-    public CreateCannyonScreen(CreateCoordinateViewModel viewModel)
+    public CreateCannyonScreen(CreateCanyonViewModel viewModel)
 	{
 		InitializeComponent();
         this.vm = viewModel;
@@ -18,7 +18,7 @@ public partial class CreateCannyonScreen : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        if(!vm.CountryList.Any())
+        if(vm.CountryList == null)
         {
             vm.GetCountriesAsync();
         }
