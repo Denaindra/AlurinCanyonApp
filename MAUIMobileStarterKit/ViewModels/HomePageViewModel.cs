@@ -269,6 +269,14 @@ namespace MAUIMobileStarterKit.ViewModels
             {
                 var apitoken = await localStorage.GetAsync("apiToken");
                 var results = await canyonProvider.GetCanyonName(canynnonSearchText, apitoken);
+                if (results.Any())
+                {
+                    CanyonListDetails = new ObservableCollection<Canyon>();
+                    foreach (var item in results)
+                    {
+                        CanyonListDetails.Add(item);
+                    }
+                }
             }
             catch(Exception ex)
             {
