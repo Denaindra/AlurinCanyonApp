@@ -55,7 +55,7 @@ public partial class SearchCanyonScreen : ContentView
     {
         if(countryPicker.SelectedItem != null && statePicker.SelectedItem != null && regionPicker.SelectedItem != null)
         {
-            vm.SearchCannyon(countryPicker.SelectedItem.ToString(), statePicker.SelectedItem.ToString(), regionPicker.SelectedItem.ToString());
+            vm.SearchCannyon(countryPicker.SelectedItem.ToString(),regionPicker.SelectedItem.ToString(), statePicker.SelectedItem.ToString());
         }
     }
 

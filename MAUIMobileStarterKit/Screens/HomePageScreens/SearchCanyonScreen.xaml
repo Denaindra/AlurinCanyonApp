@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:MAUIMobileStarterKit.CustomViews"
              x:Class="MAUIMobileStarterKit.Screens.HomePageScreens.SearchCanyonScreen">
     <ScrollView x:Name="scrollView" Padding="0,0,0,100">
-        <StackLayout Spacing="10"  >
+        <StackLayout Spacing="10"  Padding="0,50">
             <Frame Padding="3" BorderColor="Transparent" BackgroundColor="#00B4D8" CornerRadius="20" >
                 <SearchBar Placeholder="Search Canyon by Name"  PlaceholderColor="#CAF0F8"  TextColor="White" FontFamily="CabinRegular" HorizontalOptions="CenterAndExpand"
                    CancelButtonColor="White" SearchButtonPressed="SearchButtonPressed"/>
@@ -63,7 +63,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </Frame>
-            <maps:Map MyLocationEnabled="True"  VerticalOptions="FillAndExpand" x:Name="mapView" HeightRequest="400"/>
+            <maps:Map MyLocationEnabled="True"  VerticalOptions="FillAndExpand" x:Name="mapView" HeightRequest="400" />
         </StackLayout>
     </ScrollView>
 </ContentView>
