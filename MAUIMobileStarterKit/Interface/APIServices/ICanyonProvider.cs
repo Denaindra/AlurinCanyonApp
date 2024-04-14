@@ -14,8 +14,8 @@ namespace MAUIMobileStarterKit.Interface.APIServices
         [Get("/api/Canyons/allCoordinates")]
         Task<List<CustomPin>> GetAllCoordinate([Authorize("Bearer")] string token);
 
-        [Post("/api/Canyons/")]
-        Task<Canyon> PostCanyon([Body] Canyon newcanyon);
+        [Post("/api/Canyons")]
+        Task PostCanyon(Canyon canyon, [Authorize("Bearer")] string token);
 
         [Get("/api/Canyons/{canyonNumber}")]
         Task<Canyon> GetCanyon([AliasAs("canyonNumber")] string canyonNumber, [Authorize("Bearer")] string token);

@@ -29,7 +29,7 @@ namespace MAUIMobileStarterKit.ViewModels
         {
             this.loading = loading;
             this.localStorage = localStorage;
-            canyonProvider = RecentChatServiceEndPoint();
+            canyonProvider = GetICanyonProvider();
             countryProvider = GetICountryProvider();
         }
 

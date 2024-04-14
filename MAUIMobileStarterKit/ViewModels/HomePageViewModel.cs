@@ -42,7 +42,7 @@ namespace MAUIMobileStarterKit.ViewModels
             this.loading = loading;
             this.localStorage = localStorage;
             this.canyonBaseScreen = canyonBaseScreen;
-            canyonProvider = RecentChatServiceEndPoint();
+            canyonProvider = GetICanyonProvider();
             countryProvider = GetICountryProvider();
             commentProvider = GetICommentProvider();
             topographyProvider = GetITopographyProvider();

@@ -53,7 +53,7 @@ namespace MAUIMobileStarterKit.ViewModels
             }
             return itokenProvider;
         }
-        public ICanyonProvider RecentChatServiceEndPoint()
+        public ICanyonProvider GetICanyonProvider()
         {
             if (iCannyonProvider is null)
             {
