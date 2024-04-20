@@ -1,4 +1,5 @@
-﻿using MAUIMobileStarterKit.Interface;
+﻿using MAUIMobileStarterKit.Constant;
+using MAUIMobileStarterKit.Interface;
 using MAUIMobileStarterKit.Interface.APIServices;
 using MAUIMobileStarterKit.Models.Service;
 using MAUIMobileStarterKit.Screens.SettingsScreen.CreateCannyonModals;
@@ -94,7 +95,7 @@ namespace MAUIMobileStarterKit.ViewModels
         {
             get { return source; }
             set { source = value;
-                NotifyPropertyChanged(nameof(River));
+                NotifyPropertyChanged(nameof(Source));
             }
         }
         public string River
@@ -468,6 +469,7 @@ namespace MAUIMobileStarterKit.ViewModels
                 var contriesList = await countryProvider.LoadCountriesAsync(await localStorage.GetAsync("apiToken"));
                 if (contriesList.Any())
                 {
+                    Constans.CountriesList = contriesList;
                     countriesList = contriesList.OrderBy(obj => obj.NameFr).ToList();
                     CountryList = countriesList.Select(e => e.NameFr).ToArray();
                 }
@@ -692,20 +694,20 @@ namespace MAUIMobileStarterKit.ViewModels
 
                     if (!string.IsNullOrEmpty(Source))
                     {
-                        canyon.Source = "";
+                        canyon.Source = Source;
                     }
                     else
                     {
-                        canyon.Source = Source;
+                        canyon.Source = "";
                     }
 
                     if (!string.IsNullOrEmpty(NikeName))
                     {
-                        NikeName = "";
+                        canyon.UserCreatorName = NikeName;
                     }
                     else
                     {
-                        canyon.UserCreatorName = NikeName;
+                        NikeName = "";
                     }
                     //if (entryUseremail.Text == null)
                     //{

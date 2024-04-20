@@ -14,10 +14,10 @@ public partial class ResumeCanyonScreen : ContentView
         SetupUI();
     }
 
-    private void SetupUI()
+    private async void SetupUI()
     {
-       scrollView.HeightRequest = Constans.DeviceHeight-122;
-       vm.GetCountriesAsync();
+       //scrollView.HeightRequest = Constans.DeviceHeight-122;
+       var result = await vm.GetCountriesAsync();
        LoadingComments();
     }
 

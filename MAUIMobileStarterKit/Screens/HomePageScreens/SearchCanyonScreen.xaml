@@ -21,7 +21,7 @@
             </Frame>
             <Button Margin="10,0" Text="Canyons to validate" Clicked="ValidatecanyonBtnClicked" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" FontFamily="CabinBold"/>
             <Button Margin="10,0" Text="Create Canyon" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" FontFamily="CabinBold" Clicked="CreateCanyonBtnClicked"/>
-            <Frame Padding="5,0" BorderColor="Transparent" BackgroundColor="Transparent" CornerRadius="5" VerticalOptions="FillAndExpand" HeightRequest="300">
+            <Frame Padding="5,0" BorderColor="Transparent" BackgroundColor="Transparent" CornerRadius="5" VerticalOptions="FillAndExpand">
                 <ListView ItemsSource="{Binding CanyonListDetails}" HasUnevenRows="True" SelectionMode="None" SeparatorVisibility="None" ItemTapped="CannyonItemTapped" >
                     <ListView.ItemTemplate>
                         <DataTemplate>

@@ -36,6 +36,9 @@ public partial class SearchCanyonScreen : ContentView
     }
     private void CannyonItemTapped(object sender, ItemTappedEventArgs e)
     {
+        var selectedCanyon =  e.Item as Canyon;
+        Constans.SelectedCanyon = selectedCanyon;
+        Constans.CanyonNumber = selectedCanyon.Id.ToString();
         vm.NavigateToCannyonBasePage();
     }
     private void CountryPickerSelectedIndexChanged(object sender, EventArgs e)

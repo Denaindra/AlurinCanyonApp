@@ -8,7 +8,7 @@
                 <Button x:Name="ButtonAskForChange" Text="This canyon need an Update !" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" FontFamily="CabinBold"/>
                 <Grid ColumnDefinitions="Auto,*" RowDefinitions="*,*,*,*,*,*,*,*" HorizontalOptions="CenterAndExpand" >
                     <Label TextColor="#0077B6" Grid.Column="0" Grid.Row="0" VerticalOptions="CenterAndExpand"   FontSize="15" FontAttributes="Bold" TextDecorations="Underline" Text="Name Canyon" />
-                    <Button Grid.Column="1" Grid.Row="0" Text="Modify" HorizontalOptions="CenterAndExpand" BackgroundColor="#00B4D8" CornerRadius="5" TextColor="White" FontSize="15" FontFamily="CabinBold"/>
+                    <Button Grid.Column="1" Grid.Row="0" Text="Modify" IsVisible="false" HorizontalOptions="CenterAndExpand" BackgroundColor="#00B4D8" CornerRadius="5" TextColor="White" FontSize="15" FontFamily="CabinBold"/>
                     <Label Margin="0,20,0,0" Grid.Column="0" Grid.Row="1" Text="Country" FontFamily="CabinRegular" FontAttributes="Bold"  TextColor="#0077B6" FontSize="14"/>
                     <Label Margin="0,20,0,0" Grid.Column="1" Grid.Row="1" x:Name="countryCanyon" TextColor="#00B4D8" VerticalOptions="Center" HorizontalOptions="Start" FontSize="14"/>
 
@@ -142,7 +142,7 @@
                 </HorizontalStackLayout>
             </Frame>
             <BoxView HeightRequest=".5" Color="#90E0EF" Margin="8,10"  />
-            <Frame Padding="5,0" BorderColor="Transparent" BackgroundColor="Transparent" CornerRadius="5" VerticalOptions="FillAndExpand" HeightRequest="300">
+            <Frame Padding="5,0" BorderColor="Transparent" BackgroundColor="Transparent" CornerRadius="5" VerticalOptions="FillAndExpand">
 
                 <ListView x:Name="commentListView" HasUnevenRows="True" SelectionMode="None" SeparatorVisibility="None"  ItemsSource="{Binding CommentsList}">
                     <ListView.ItemTemplate>

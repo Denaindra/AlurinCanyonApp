@@ -25,6 +25,7 @@ namespace MAUIMobileStarterKit.ViewModels
         private ObservableCollection<Country> countries;
         private ObservableCollection<AccesDescent> commentsList;
 
+
         public CannyonBasedViewModel(ILoading loading, ILocalStorage localStorage)
         {
             this.loading = loading;
@@ -278,7 +279,7 @@ namespace MAUIMobileStarterKit.ViewModels
             return true;
 
         }
-        public async void GetCountriesAsync()
+        public async Task<bool> GetCountriesAsync()
         {
             try
             {
@@ -296,9 +297,11 @@ namespace MAUIMobileStarterKit.ViewModels
             }
             catch (Exception ex)
             {
-
+                loading.EndIndiCator();
+                return false;
             }
             loading.EndIndiCator();
+            return true;
         }
 
         public void GetCommentsBasedOnTheRegion(string region)
