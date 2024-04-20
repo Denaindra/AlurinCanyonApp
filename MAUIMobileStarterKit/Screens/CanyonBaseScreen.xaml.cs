@@ -48,7 +48,7 @@ public partial class CanyonBaseScreen : ContentPage
             case 1:
                 mapLabel.FontSize = 12;
                 mapLabel.FontAttributes = FontAttributes.Bold;
-                childLayout.Children.Add(new CanyonMapScreen());
+                childLayout.Children.Add(new CanyonMapScreen(viewModel));
                 break;
             case 2:
                 tcannyonLabel.FontAttributes = FontAttributes.Bold;

@@ -1,4 +1,5 @@
-﻿using MAUIMobileStarterKit.Constant;
+﻿using Maui.GoogleMaps;
+using MAUIMobileStarterKit.Constant;
 using MAUIMobileStarterKit.Interface;
 using MAUIMobileStarterKit.Interface.APIServices;
 using MAUIMobileStarterKit.Models.Service;
@@ -25,6 +26,13 @@ namespace MAUIMobileStarterKit.ViewModels
         private ObservableCollection<Country> countries;
         private ObservableCollection<AccesDescent> commentsList;
 
+        private double meanLat;
+        public double LatMax;
+        private double LatMin;
+        private double meanLong;
+        private double LongMax;
+        private double LongMin;
+        private double PointDistance;
 
         public CannyonBasedViewModel(ILoading loading, ILocalStorage localStorage)
         {
@@ -116,6 +124,8 @@ namespace MAUIMobileStarterKit.ViewModels
                 NotifyPropertyChanged(nameof(CommentsList));
             }
         }
+
+
         public void LoadTopographies()
         {
             try
@@ -308,6 +318,29 @@ namespace MAUIMobileStarterKit.ViewModels
         {
             var result = CanyonList[0].AccesDescents.Where(a => a.Language == region);
             CommentsList = new ObservableCollection<AccesDescent>(CanyonList[0].AccesDescents.Where(a => a.Language == region));
+        }
+
+        public double GetMeanlat()
+        {
+            return meanLat;
+        }
+        public double GetMeanLong()
+        {
+            return meanLong;
+        }
+        public double GetPointDistance()
+        {
+            return PointDistance;
+        }
+        public void SetUpCoordinateDetails()
+        {
+                meanLat = Constans.SelectedCanyon.Coordonnees.Average(c => c.Lat);
+                LatMax = Constans.SelectedCanyon.Coordonnees.Max(c => c.Lat);
+                LatMin = Constans.SelectedCanyon.Coordonnees.Min(c => c.Lat);
+                meanLong = Constans.SelectedCanyon.Coordonnees.Average(c => c.Long);
+                LongMax = Constans.SelectedCanyon.Coordonnees.Max(c => c.Long);
+                LongMin = Constans.SelectedCanyon.Coordonnees.Min(c => c.Long);
+                PointDistance = Location.CalculateDistance(LatMin, LongMin, LatMax, LongMax, 0) + 0.5;
         }
         #endregion
     }
