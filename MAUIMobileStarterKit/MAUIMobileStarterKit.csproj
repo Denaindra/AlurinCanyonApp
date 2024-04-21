@@ -204,4 +204,7 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Screens\AddModifyPages\" />
+	</ItemGroup>
 </Project>

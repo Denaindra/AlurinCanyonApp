@@ -10,7 +10,7 @@ namespace MAUIMobileStarterKit.ViewModels
 {
     public class CannyonBasedViewModel:BaseViewModel
     {
-        private ObservableCollection<TopographiesModal> topographiesList;
+        private ObservableCollection<Topography> topographiesList;
         private ObservableCollection<ReglementationsModal> reglementationsList;
         private ObservableCollection<CommentListModal> commentList;
         private ObservableCollection<ProCanyonModal> professioanlList;
@@ -76,7 +76,7 @@ namespace MAUIMobileStarterKit.ViewModels
                 NotifyPropertyChanged(nameof(ReglementationsList));
             }
         }
-        public ObservableCollection<TopographiesModal> TopographiesList
+        public ObservableCollection<Topography> TopographiesList
         {
             get
             {
@@ -131,18 +131,20 @@ namespace MAUIMobileStarterKit.ViewModels
             try
             {
                 // loading.StartIndicator();
-                TopographiesList = new ObservableCollection<TopographiesModal>();
-                for (int i = 0; i < 4; i++)
+                TopographiesList = new ObservableCollection<Topography>();
+                foreach (var topoItem in Constans.SelectedCanyon.Topographies)
                 {
-                    TopographiesList.Add(new TopographiesModal()
-                    {
-                        PositionPoint = "89.003434",
-                        TailleObstacle = "sample TailleObstacle",
-                        TopoComment= "sample topocomment",
-                        TypeDanger = "sample typedanger",
-                        TypeObstacle = "sample typo obstavle"
-                    });
+                    //if (App.userApp.Role == "Administrator")
+                    //{
+                    //    topo.IsAuthorize = true;
+                    //}
+                    //else
+                    //{
+                    topoItem.IsAuthorize = false;
+                    //}
+                    TopographiesList.Add(topoItem);
                 }
+                
                 // loading.EndIndiCator();
             }
             catch (Exception ex)
