@@ -67,6 +67,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Auth0.OidcClient.MAUI" Version="1.0.0" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="5.2.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 		<PackageReference Include="Controls.UserDialogs.Maui" Version="1.3.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
@@ -84,6 +85,7 @@
 	  <None Remove="Resources\Images\address.png" />
 	  <None Remove="Resources\Images\appIconimg.png" />
 	  <None Remove="Resources\Images\backarrow.png" />
+	  <None Remove="Resources\Images\backbutton.png" />
 	  <None Remove="Resources\Images\backgroundvector2.png" />
 	  <None Remove="Resources\Images\beautifulcanyonvert.png" />
 	  <None Remove="Resources\Images\burgerbar.png" />
@@ -138,6 +140,9 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="CustomViews\FlatingLabel.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Screens\AddNewItem\AddTopoCanyon.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Screens\CanyonBaseScreen.xaml">
@@ -203,8 +208,5 @@
 	  <MauiXaml Update="Screens\SettingsScreen\MainSettingScreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Screens\AddModifyPages\" />
 	</ItemGroup>
 </Project>

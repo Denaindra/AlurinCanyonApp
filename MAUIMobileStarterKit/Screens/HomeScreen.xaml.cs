@@ -20,6 +20,7 @@ public partial class HomeScreen : ContentPage
     protected override async void OnSizeAllocated(double width, double height)
     {
         Constans.DeviceHeight = height;
+        Constans.DeviceWidth = width;   
         base.OnSizeAllocated(width, height);
         var results = await viewModel.CheckAndRequestLocationPermission();
         if (results)

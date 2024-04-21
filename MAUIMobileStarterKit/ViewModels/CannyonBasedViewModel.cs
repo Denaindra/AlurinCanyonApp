@@ -1,9 +1,9 @@
-﻿using Maui.GoogleMaps;
-using MAUIMobileStarterKit.Constant;
+﻿using MAUIMobileStarterKit.Constant;
 using MAUIMobileStarterKit.Interface;
 using MAUIMobileStarterKit.Interface.APIServices;
 using MAUIMobileStarterKit.Models.Service;
 using MAUIMobileStarterKit.Models.UI;
+using MAUIMobileStarterKit.Screens.AddNewItem;
 using System.Collections.ObjectModel;
 
 namespace MAUIMobileStarterKit.ViewModels
@@ -21,6 +21,7 @@ namespace MAUIMobileStarterKit.ViewModels
 
         private readonly ILocalStorage localStorage;
         private readonly ILoading loading;
+        private readonly IPopupService popupService;
 
         private string photoPath;
         private ObservableCollection<Country> countries;
@@ -34,12 +35,13 @@ namespace MAUIMobileStarterKit.ViewModels
         private double LongMin;
         private double PointDistance;
 
-        public CannyonBasedViewModel(ILoading loading, ILocalStorage localStorage)
+        public CannyonBasedViewModel(ILoading loading, ILocalStorage localStorage, IPopupService popupService)
         {
             this.loading = loading;
             this.localStorage = localStorage;
             canyonProvider = GetICanyonProvider();
             countryProvider = GetICountryProvider();
+            this.popupService = popupService;
         }
 
         public string PhotoPath
@@ -125,6 +127,10 @@ namespace MAUIMobileStarterKit.ViewModels
             }
         }
 
+        public void OpenPopup()
+        {  
+            popupService.ShowPopup(new AddTopoCanyon(this));
+        }
 
         public void LoadTopographies()
         {

@@ -10,6 +10,8 @@ using MAUIMobileStarterKit.Utilities;
 using MAUIMobileStarterKit.ViewModels;
 using Microsoft.Extensions.Logging;
 using MAUIMobileStarterKit.Constant;
+using CommunityToolkit.Maui;
+using MAUIMobileStarterKit.Screens.AddNewItem;
 namespace MAUIMobileStarterKit;
 
 public static class MauiProgram
@@ -19,6 +21,7 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
+            .UseMauiCommunityToolkit()
             .UseUserDialogs(true, () =>
             {
 #if ANDROID
@@ -79,10 +82,11 @@ public static class MauiProgram
         builder.Services.AddTransient<CreateCanyonViewModel>();
         builder.Services.AddTransient<CannyonBasedViewModel>();
 
-
         //Services
         builder.Services.AddSingleton<ILoading, Loading>();
         builder.Services.AddSingleton<ILocalStorage, LocalStorage>();
+        builder.Services.AddSingleton<IPopupService, PopupService>();
+
 
 
 #if DEBUG

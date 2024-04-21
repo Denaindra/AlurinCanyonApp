@@ -60,7 +60,7 @@
             </StackLayout>
 
             <VerticalStackLayout HorizontalOptions="FillAndExpand" Spacing="10" Margin="0,10,0,0">
-                <Button Text="Add Obstacle" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15"/>
+                <Button Text="Add Obstacle" Clicked="AddObestacleClicked" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15"/>
                 <Button x:Name="saveButton" Text="Save" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15"/>
             </VerticalStackLayout>
         </StackLayout>

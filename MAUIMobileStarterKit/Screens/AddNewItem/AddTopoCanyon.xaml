@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="MAUIMobileStarterKit.Screens.AddNewItem.AddTopoCanyon"
+             xmlns:local="clr-namespace:MAUIMobileStarterKit.CustomViews"
+             CanBeDismissedByTappingOutsideOfPopup = "False"
+             Color="#CAF0F8">
+    <StackLayout x:Name="popUpLayout" Orientation="Vertical" Spacing="15" Padding="10" VerticalOptions="CenterAndExpand">
+
+        <Image Source="backbutton.png" HeightRequest="10" WidthRequest="10" HorizontalOptions="Start" >
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="BackIconTapped" />
+            </Image.GestureRecognizers>
+        </Image>
+        <Label x:Name="nameCanyon" Text="gayan123abc" Margin="10" VerticalOptions="Center" FontFamily="CabinBold"  TextColor="#03045E" FontSize="30"  FontAttributes="Bold" TextDecorations="Underline"/>
+        <Picker  x:Name="obstaclePicker" Title="Obstacle Type"  TitleColor="#03045E" TextColor="#0077B6" FontFamily="CabinBold" />
+
+        <StackLayout x:Name="stackSwitchRive" Orientation="Horizontal" HorizontalOptions="Start" IsVisible="False" >
+            <Label Text="Left bank" x:Name="RiveGauche" HorizontalOptions="Start" VerticalOptions="Center" FontFamily="CabinBold"  TextColor="#03045E" FontSize="15"  FontAttributes="Bold" TextDecorations="Underline"/>
+            <Switch x:Name="Postionpoint"  IsToggled="False" OnColor="#03045E"/>
+            <Label x:Name="Rivedoirte" Text="Right bank"  HorizontalOptions="Start" VerticalOptions="Center" FontFamily="CabinBold"  TextColor="#03045E" FontSize="15"  FontAttributes="Bold" TextDecorations="Underline"/>
+        </StackLayout>
+
+        <Picker  x:Name="typeDangerPicker" Title="Danger Type:"  TitleColor="#03045E" TextColor="#0077B6" FontFamily="CabinBold" />
+        <local:FlatingLabel x:Name="obstacleSize"  Title="Size of obstacle ( m)" Keyboard="Numeric" IsVisible="False" />
+
+        <VerticalStackLayout>
+
+            <Frame Margin="5,5,5,5" BorderColor="#03045E"
+                  CornerRadius="5" HeightRequest="150"
+                  Padding="8" HasShadow="True">
+                <Editor Placeholder="Your Comment*:" x:Name="Commentoftheuser" TextColor="#03045E" FontSize="15"  PlaceholderColor="Gray" />
+            </Frame>
+        </VerticalStackLayout>
+
+        <Button Text="Add Topo"   FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15"/>
+
+    </StackLayout>
+</toolkit:Popup>

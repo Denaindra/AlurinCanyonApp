@@ -1,3 +1,4 @@
+using CommunityToolkit.Maui.Views;
 using MAUIMobileStarterKit.Constant;
 using MAUIMobileStarterKit.ViewModels;
 
@@ -5,12 +6,12 @@ namespace MAUIMobileStarterKit.Screens.CanyoningPageScreens;
 
 public partial class TopoCanyonScreen : ContentView
 {
-	private readonly CannyonBasedViewModel viewModel;
+	private readonly CannyonBasedViewModel vm;
 
     public TopoCanyonScreen(CannyonBasedViewModel vm)
 	{
 		InitializeComponent();
-		this.viewModel = vm;
+		this.vm = vm;
 		BindingContext = vm;
 		SteupUI();
     }
@@ -19,7 +20,7 @@ public partial class TopoCanyonScreen : ContentView
 	{
         scrollView.HeightRequest = Constans.DeviceHeight-122;
         TopoListView.HeightRequest = Constans.DeviceHeight - 100;
-        viewModel.LoadTopographies();
+        vm.LoadTopographies();
         if (Constans.SelectedCanyon.Topographies != null)
         {
             if (Constans.SelectedCanyon.Topographies.Any())
@@ -28,5 +29,10 @@ public partial class TopoCanyonScreen : ContentView
             }
         }
 
+    }
+
+    private void AddObestacleClicked(object sender, EventArgs e)
+    {
+        vm.OpenPopup();
     }
 }
