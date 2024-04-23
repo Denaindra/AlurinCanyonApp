@@ -16,8 +16,8 @@ namespace MAUIMobileStarterKit.Interface.APIServices
         [Get("/api/Topography/listTopodays")]
         Task<IList<Topography>> GetTopoCanyonLastDays([AliasAs("days")] int days, [Authorize("Bearer")] string token);
 
-        [Post("/api/Topography/listTopodays")]
-        Task<IList<Topography>> PostTopo(Topography topography);
+        [Post("/api/Topography")]
+        Task PostTopo(Topography topography);
 
         [Put("/api/Topography")]
         Task<IList<Topography>> ModifyTopo([AliasAs("id")] int id);

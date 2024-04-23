@@ -14,7 +14,7 @@
             </Image.GestureRecognizers>
         </Image>
         <Label x:Name="nameCanyon" Text="gayan123abc" Margin="10" VerticalOptions="Center" FontFamily="CabinBold"  TextColor="#03045E" FontSize="30"  FontAttributes="Bold" TextDecorations="Underline"/>
-        <Picker  x:Name="obstaclePicker" Title="Obstacle Type"  TitleColor="#03045E" TextColor="#0077B6" FontFamily="CabinBold" />
+        <Picker  x:Name="obstaclePicker" SelectedIndexChanged="ObstaclePickerSelectedIndexChanged" Title="Obstacle Type"  TitleColor="#03045E" TextColor="#0077B6" FontFamily="CabinBold" />
 
         <StackLayout x:Name="stackSwitchRive" Orientation="Horizontal" HorizontalOptions="Start" IsVisible="False" >
             <Label Text="Left bank" x:Name="RiveGauche" HorizontalOptions="Start" VerticalOptions="Center" FontFamily="CabinBold"  TextColor="#03045E" FontSize="15"  FontAttributes="Bold" TextDecorations="Underline"/>
@@ -22,19 +22,15 @@
             <Label x:Name="Rivedoirte" Text="Right bank"  HorizontalOptions="Start" VerticalOptions="Center" FontFamily="CabinBold"  TextColor="#03045E" FontSize="15"  FontAttributes="Bold" TextDecorations="Underline"/>
         </StackLayout>
 
-        <Picker  x:Name="typeDangerPicker" Title="Danger Type:"  TitleColor="#03045E" TextColor="#0077B6" FontFamily="CabinBold" />
+        <Picker  x:Name="typeDangerPicker" Title="Danger Type:"  TitleColor="#03045E" TextColor="#0077B6" FontFamily="CabinBold" IsVisible="False" />
         <local:FlatingLabel x:Name="obstacleSize"  Title="Size of obstacle ( m)" Keyboard="Numeric" IsVisible="False" />
-
-        <VerticalStackLayout>
-
-            <Frame Margin="5,5,5,5" BorderColor="#03045E"
+        <Frame Margin="5,5,5,5" BorderColor="#03045E"
                   CornerRadius="5" HeightRequest="150"
                   Padding="8" HasShadow="True">
                 <Editor Placeholder="Your Comment*:" x:Name="Commentoftheuser" TextColor="#03045E" FontSize="15"  PlaceholderColor="Gray" />
             </Frame>
-        </VerticalStackLayout>
 
-        <Button Text="Add Topo"   FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15"/>
+        <Button Text="Add Topo" Clicked="AddTopoBtnClicked" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15"/>
 
     </StackLayout>
 </toolkit:Popup>
