@@ -230,4 +230,11 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
+  <PropertyGroup Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">
+    <AndroidKeyStore>True</AndroidKeyStore>
+    <AndroidSigningKeyStore>..\key.keystore</AndroidSigningKeyStore>
+    <AndroidSigningStorePass>aaaaaa</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>canyonproject</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>aaaaaa</AndroidSigningKeyPass>
+  </PropertyGroup>
 </Project>

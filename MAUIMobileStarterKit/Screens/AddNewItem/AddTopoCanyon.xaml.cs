@@ -88,6 +88,10 @@ public partial class AddTopoCanyon : Popup
 
     private async void AddTopoBtnClicked(object sender, EventArgs e)
     {
-     var rsult =  await vm.AddTopoCanyon(obstaclePicker.SelectedIndex, stackSwitchRive.IsVisible, Postionpoint.IsToggled, Commentoftheuser.Text, numswithSize, obstacleSize.Text, typeDangerPicker.SelectedIndex);
+     var isTopoAdded =  await vm.AddTopoCanyon(obstaclePicker.SelectedIndex, stackSwitchRive.IsVisible, Postionpoint.IsToggled, Commentoftheuser.Text, numswithSize, obstacleSize.Text, typeDangerPicker.SelectedIndex);
+        if (isTopoAdded)
+        {
+            this.Close();
+        }
     }
 }

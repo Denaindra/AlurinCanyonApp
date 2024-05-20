@@ -6,10 +6,11 @@ using MAUIMobileStarterKit.Models.UI;
 using MAUIMobileStarterKit.Screens.AddNewItem;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
+using System.Xml.Linq;
 
 namespace MAUIMobileStarterKit.ViewModels
 {
-    public class CannyonBasedViewModel:BaseViewModel
+    public class CannyonBasedViewModel : BaseViewModel
     {
         private ObservableCollection<Topography> topographiesList;
         private ObservableCollection<ReglementationsModal> reglementationsList;
@@ -49,10 +50,12 @@ namespace MAUIMobileStarterKit.ViewModels
 
         public string PhotoPath
         {
-            get { 
-                return photoPath; 
+            get
+            {
+                return photoPath;
             }
-            set { 
+            set
+            {
                 photoPath = value;
                 NotifyPropertyChanged(nameof(PhotoPath));
             }
@@ -105,17 +108,20 @@ namespace MAUIMobileStarterKit.ViewModels
                 NotifyPropertyChanged(nameof(ProfessioanlList));
             }
         }
-        public ObservableCollection<Canyon>  CanyonList
+        public ObservableCollection<Canyon> CanyonList
         {
             get { return canyonList; }
-            set { canyonList = value;
+            set
+            {
+                canyonList = value;
                 NotifyPropertyChanged(nameof(CanyonList));
             }
         }
         public ObservableCollection<Country> CountriesList
         {
             get { return countries; }
-            set {
+            set
+            {
                 countries = value;
                 NotifyPropertyChanged(nameof(CountriesList));
             }
@@ -129,38 +135,38 @@ namespace MAUIMobileStarterKit.ViewModels
                 NotifyPropertyChanged(nameof(CommentsList));
             }
         }
-        public void OpenPopup()
-        {  
+        public void OpenAddTopoCanyonPopup()
+        {
             popupService.ShowPopup(new AddTopoCanyon(this));
         }
-        public void LoadTopographies()
+        public async Task<bool> LoadTopographies()
         {
             try
             {
-                // loading.StartIndicator();
+                loading.StartIndicator();
                 TopographiesList = new ObservableCollection<Topography>();
-                foreach (var topoItem in Constans.SelectedCanyon.Topographies)
-                {
-                    topoItem.ImageDanger = topoItem.ImageDanger != null ? Regex.Replace(topoItem.ImageDanger.ToLower(), @"(\s+|@|&|'|\(|\)|<|>|#)", "") : "";
-                    topoItem.ImageObstacle = topoItem.ImageDanger != null ? Regex.Replace(topoItem.ImageObstacle?.ToLower(), @"(\s+|@|&|'|\(|\)|<|>|#)", "") : "";
+                var topoCanyonResuelts = await topoProvider.GetTopoCanyon(Constans.SelectedCanyon.Id);
 
-                    //if (App.userApp.Role == "Administrator")
-                    //{
-                    //    topo.IsAuthorize = true;
-                    //}
-                    //else
-                    //{
+                foreach (var topoItem in topoCanyonResuelts)
+                {
                     topoItem.IsAuthorize = false;
-                    //}
+                    topoItem.IsValidTopo = false;
                     TopographiesList.Add(topoItem);
                 }
-                
-                // loading.EndIndiCator();
+                Constans.SelectedCanyon.Topographies = topoCanyonResuelts;
+                loading.EndIndiCator();
+
             }
             catch (Exception ex)
             {
-                //  loading.EndIndiCator();
+                loading.EndIndiCator();
+                return false;
             }
+            finally
+            {
+                loading.EndIndiCator();
+            }
+            return true;
         }
         public void LoadReglementation()
         {
@@ -172,11 +178,11 @@ namespace MAUIMobileStarterKit.ViewModels
                 {
                     ReglementationsList.Add(new ReglementationsModal()
                     {
-                        Abstract="Sample Abstract",
-                        Action="Sample action",
-                        LawTextName="sample law text name",
-                        SetupDate="2023/08/23",
-                        Status="sample status"
+                        Abstract = "Sample Abstract",
+                        Action = "Sample action",
+                        LawTextName = "sample law text name",
+                        SetupDate = "2023/08/23",
+                        Status = "sample status"
                     });
                 }
                 // loading.EndIndiCator();
@@ -273,7 +279,7 @@ namespace MAUIMobileStarterKit.ViewModels
             await Task.Delay(5000);
             EndIndiCator();
         }
-        
+
         #region api calls
         public async Task<bool> GetCanyonList(string region)
         {
@@ -344,13 +350,13 @@ namespace MAUIMobileStarterKit.ViewModels
         }
         public void SetUpCoordinateDetails()
         {
-                meanLat = Constans.SelectedCanyon.Coordonnees.Average(c => c.Lat);
-                LatMax = Constans.SelectedCanyon.Coordonnees.Max(c => c.Lat);
-                LatMin = Constans.SelectedCanyon.Coordonnees.Min(c => c.Lat);
-                meanLong = Constans.SelectedCanyon.Coordonnees.Average(c => c.Long);
-                LongMax = Constans.SelectedCanyon.Coordonnees.Max(c => c.Long);
-                LongMin = Constans.SelectedCanyon.Coordonnees.Min(c => c.Long);
-                PointDistance = Location.CalculateDistance(LatMin, LongMin, LatMax, LongMax, 0) + 0.5;
+            meanLat = Constans.SelectedCanyon.Coordonnees.Average(c => c.Lat);
+            LatMax = Constans.SelectedCanyon.Coordonnees.Max(c => c.Lat);
+            LatMin = Constans.SelectedCanyon.Coordonnees.Min(c => c.Lat);
+            meanLong = Constans.SelectedCanyon.Coordonnees.Average(c => c.Long);
+            LongMax = Constans.SelectedCanyon.Coordonnees.Max(c => c.Long);
+            LongMin = Constans.SelectedCanyon.Coordonnees.Min(c => c.Long);
+            PointDistance = Location.CalculateDistance(LatMin, LongMin, LatMax, LongMax, 0) + 0.5;
         }
         public async Task<bool> AddTopoCanyon(int seletedtedIndex, bool stackSwitchRiveIsVisible, bool isToggeled, string commentoftheuser, List<int> numswithSize, string obstacleSize, int typeDangerSelectedIndex)
         {
@@ -392,7 +398,7 @@ namespace MAUIMobileStarterKit.ViewModels
                 }
                 else
                 {
-                  //  DisplayAlert(AppResources.AppResources.MessageError, AppResources.AppResources.MessageEnterAllValues, "OK");
+                    //  DisplayAlert(AppResources.AppResources.MessageError, AppResources.AppResources.MessageEnterAllValues, "OK");
                     return false;
                 }
                 if (numswithSize.Contains(seletedtedIndex))
@@ -403,7 +409,7 @@ namespace MAUIMobileStarterKit.ViewModels
                     }
                     else
                     {
-                       // DisplayAlert(AppResources.AppResources.MessageError, AppResources.AppResources.MessageEnterAllValues, "OK");
+                        // DisplayAlert(AppResources.AppResources.MessageError, AppResources.AppResources.MessageEnterAllValues, "OK");
                         return false;
                     }
                 }
@@ -524,19 +530,20 @@ namespace MAUIMobileStarterKit.ViewModels
                 }
 
                 userTopo.CreationDate = DateTime.Now;
-                userTopo.UserName = Constans.SelectedCanyon.Name;
+                userTopo.UserName = await localStorage.GetAsync("Name");
                 await topoProvider.PostTopo(userTopo);
-
-                return true;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return false;
             }
             finally
             {
-               loading.EndIndiCator();
+
+                loading.EndIndiCator();
+
             }
+            return true;
         }
         #endregion
     }

@@ -13,8 +13,8 @@
                 <TapGestureRecognizer Tapped="BackIconTapped" />
             </Image.GestureRecognizers>
         </Image>
-        <Label x:Name="nameCanyon" Text="gayan123abc" Margin="10" VerticalOptions="Center" FontFamily="CabinBold"  TextColor="#03045E" FontSize="30"  FontAttributes="Bold" TextDecorations="Underline"/>
-        <Picker  x:Name="obstaclePicker" SelectedIndexChanged="ObstaclePickerSelectedIndexChanged" Title="Obstacle Type"  TitleColor="#03045E" TextColor="#0077B6" FontFamily="CabinBold" />
+        <Label x:Name="nameCanyon" Text="Obstacle Type:" Margin="10" VerticalOptions="Center" FontFamily="CabinBold"  TextColor="#03045E" FontSize="30"  FontAttributes="Bold" TextDecorations="Underline"/>
+        <Picker x:Name="obstaclePicker" SelectedIndexChanged="ObstaclePickerSelectedIndexChanged" Title="Obstacle Type"  TitleColor="#03045E" TextColor="#0077B6" FontFamily="CabinBold" />
 
         <StackLayout x:Name="stackSwitchRive" Orientation="Horizontal" HorizontalOptions="Start" IsVisible="False" >
             <Label Text="Left bank" x:Name="RiveGauche" HorizontalOptions="Start" VerticalOptions="Center" FontFamily="CabinBold"  TextColor="#03045E" FontSize="15"  FontAttributes="Bold" TextDecorations="Underline"/>

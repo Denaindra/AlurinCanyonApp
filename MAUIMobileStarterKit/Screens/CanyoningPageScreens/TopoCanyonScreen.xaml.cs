@@ -16,16 +16,19 @@ public partial class TopoCanyonScreen : ContentView
 		SteupUI();
     }
 
-	private void SteupUI()
-	{
-        scrollView.HeightRequest = Constans.DeviceHeight-122;
-        TopoListView.HeightRequest = Constans.DeviceHeight - 100;
-        vm.LoadTopographies();
-        if (Constans.SelectedCanyon.Topographies != null)
+    private async void SteupUI()
+    {
+        var istopoLoaded = await vm.LoadTopographies();
+        if (istopoLoaded)
         {
-            if (Constans.SelectedCanyon.Topographies.Any())
+            if (Constans.SelectedCanyon.Topographies != null)
             {
-                EmptyTopography.IsVisible = false;
+                if (Constans.SelectedCanyon.Topographies.Any())
+                {
+                    EmptyTopography.IsVisible = false;
+                    scrollView.HeightRequest = Constans.DeviceHeight - 122;
+                    TopoListView.HeightRequest = Constans.DeviceHeight - 100;
+                }
             }
         }
 
@@ -33,6 +36,11 @@ public partial class TopoCanyonScreen : ContentView
 
     private void AddObestacleClicked(object sender, EventArgs e)
     {
-        vm.OpenPopup();
+        vm.OpenAddTopoCanyonPopup();
+    }
+
+    private void SaveObstacleClicked(object sender, EventArgs e)
+    {
+
     }
 }
