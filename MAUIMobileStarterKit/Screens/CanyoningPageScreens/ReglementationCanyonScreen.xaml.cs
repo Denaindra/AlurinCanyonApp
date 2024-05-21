@@ -5,11 +5,11 @@ namespace MAUIMobileStarterKit.Screens.CanyoningPageScreens;
 
 public partial class ReglementationCanyonScreen : ContentView
 {
-	private CannyonBasedViewModel viewModel;
+	private CannyonBasedViewModel vm;
 	public ReglementationCanyonScreen(CannyonBasedViewModel viewModel)
 	{
 		InitializeComponent();
-		this.viewModel = viewModel;
+		this.vm = viewModel;
         BindingContext = viewModel;
         SteupUI();
 
@@ -17,6 +17,11 @@ public partial class ReglementationCanyonScreen : ContentView
     private void SteupUI()
     {
         stackLayout.HeightRequest = Constans.DeviceHeight - 122;
-        viewModel.LoadReglementation();
+        vm.LoadReglementation();
+    }
+
+    private void AddRelementationClicked(object sender, EventArgs e)
+    {
+        vm.OpenReglementationAddPagePopup();
     }
 }

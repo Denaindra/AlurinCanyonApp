@@ -13,7 +13,7 @@ namespace MAUIMobileStarterKit.ViewModels
     public class CannyonBasedViewModel : BaseViewModel
     {
         private ObservableCollection<Topography> topographiesList;
-        private ObservableCollection<ReglementationsModal> reglementationsList;
+        private ObservableCollection<Reglementation> reglementationsList;
         private ObservableCollection<CommentListModal> commentList;
         private ObservableCollection<ProCanyonModal> professioanlList;
         private ObservableCollection<Canyon> canyonList;
@@ -72,7 +72,7 @@ namespace MAUIMobileStarterKit.ViewModels
                 NotifyPropertyChanged(nameof(CommentList));
             }
         }
-        public ObservableCollection<ReglementationsModal> ReglementationsList
+        public ObservableCollection<Reglementation> ReglementationsList
         {
             get
             {
@@ -139,6 +139,10 @@ namespace MAUIMobileStarterKit.ViewModels
         {
             popupService.ShowPopup(new AddTopoCanyon(this));
         }
+        public void OpenReglementationAddPagePopup()
+        {
+            popupService.ShowPopup(new ReglementationAddPage(this));
+        }
         public async Task<bool> LoadTopographies()
         {
             try
@@ -172,24 +176,14 @@ namespace MAUIMobileStarterKit.ViewModels
         {
             try
             {
-                // loading.StartIndicator();
-                ReglementationsList = new ObservableCollection<ReglementationsModal>();
-                for (int i = 0; i < 4; i++)
+                ReglementationsList = new ObservableCollection<Reglementation>();
+                foreach (var regle in Constans.SelectedCanyon.Reglementations.OrderByDescending(r => r.SetUpDate))
                 {
-                    ReglementationsList.Add(new ReglementationsModal()
-                    {
-                        Abstract = "Sample Abstract",
-                        Action = "Sample action",
-                        LawTextName = "sample law text name",
-                        SetupDate = "2023/08/23",
-                        Status = "sample status"
-                    });
+                    ReglementationsList.Add(regle);
                 }
-                // loading.EndIndiCator();
             }
             catch (Exception ex)
             {
-                //  loading.EndIndiCator();
             }
         }
         public void LoadCommentList()

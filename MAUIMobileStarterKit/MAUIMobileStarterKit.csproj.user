@@ -13,6 +13,9 @@
     <MauiXaml Update="Screens\AddNewItem\AddTopoCanyon.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="Screens\AddNewItem\ReglementationAddPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="Screens\CanyonBaseScreen.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>

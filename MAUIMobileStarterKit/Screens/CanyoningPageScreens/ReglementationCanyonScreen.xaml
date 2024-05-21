@@ -50,7 +50,7 @@
                 </ListView>
             </VerticalStackLayout>
         </VerticalStackLayout>
-        <Button Text="Add reglementation" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15"/>
+        <Button Text="Add reglementation" Clicked="AddRelementationClicked" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15"/>
         </StackLayout>
     </ScrollView>
 </ContentView>
