@@ -163,6 +163,9 @@
 	  <MauiXaml Update="CustomViews\FlatingLabel.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Screens\AddNewItem\AddCommentPopup.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Screens\AddNewItem\AddTopoCanyon.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

@@ -10,6 +10,9 @@
     <MauiXaml Update="CustomViews\FlatingLabel.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="Screens\AddNewItem\AddCommentPopup.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="Screens\AddNewItem\AddTopoCanyon.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>

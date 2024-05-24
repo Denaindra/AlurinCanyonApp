@@ -60,7 +60,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button VerticalOptions= "EndAndExpand" Text="Add comment"  FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15"/>
+            <Button VerticalOptions= "EndAndExpand" Clicked="AddCommentBtnClicked" Text="Add comment"  FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15"/>
         </StackLayout>
     </ScrollView>
 </ContentView>

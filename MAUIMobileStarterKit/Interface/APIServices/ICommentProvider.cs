@@ -11,10 +11,10 @@ namespace MAUIMobileStarterKit.Interface.APIServices
     public interface ICommentProvider
     {
         [Get("/api/Comment/canyon/{canyonId}")]
-        Task<List<Comment>> GetCommentCanyon([AliasAs("canyonId")] int canyonId);
+        Task<List<Comment>> GetCommentCanyon([AliasAs("canyonId")] int canyonId, [Authorize("Bearer")] string token);
 
-        [Post("/api/Comment}")]
-        Task<List<Comment>> PostComment([Body] Comment usercomment);
+        [Post("/api/Comment")]
+        Task PostComment([Body] Comment usercomment,[Authorize("Bearer")] string token);
 
         [Put("/api/Comment")]
         Task DeleteComment(DeleteCommentParams comment);

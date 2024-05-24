@@ -1,4 +1,5 @@
-﻿using MAUIMobileStarterKit.Constant;
+﻿
+using MAUIMobileStarterKit.Constant;
 using MAUIMobileStarterKit.Interface;
 using MAUIMobileStarterKit.Interface.APIServices;
 using MAUIMobileStarterKit.Models.Service;
@@ -14,13 +15,14 @@ namespace MAUIMobileStarterKit.ViewModels
     {
         private ObservableCollection<Topography> topographiesList;
         private ObservableCollection<Reglementation> reglementationsList;
-        private ObservableCollection<CommentListModal> commentList;
+        private ObservableCollection<Comment> commentList;
         private ObservableCollection<ProCanyonModal> professioanlList;
         private ObservableCollection<Canyon> canyonList;
 
         private readonly ICanyonProvider canyonProvider;
         private readonly ICountryProvider countryProvider;
         private readonly ITopographyProvider topoProvider;
+        private readonly ICommentProvider commentProvider;
 
         private readonly ILocalStorage localStorage;
         private readonly ILoading loading;
@@ -45,9 +47,9 @@ namespace MAUIMobileStarterKit.ViewModels
             canyonProvider = GetICanyonProvider();
             countryProvider = GetICountryProvider();
             topoProvider = GetITopographyProvider();
+            commentProvider = GetICommentProvider();
             this.popupService = popupService;
         }
-
         public string PhotoPath
         {
             get
@@ -60,7 +62,7 @@ namespace MAUIMobileStarterKit.ViewModels
                 NotifyPropertyChanged(nameof(PhotoPath));
             }
         }
-        public ObservableCollection<CommentListModal> CommentList
+        public ObservableCollection<Comment> CommentList
         {
             get
             {
@@ -139,6 +141,10 @@ namespace MAUIMobileStarterKit.ViewModels
         {
             popupService.ShowPopup(new AddTopoCanyon(this));
         }
+        public void OpenAddCommentCanyonPopup()
+        {
+            popupService.ShowPopup(new AddCommentPopup(this));
+        }
         public void OpenReglementationAddPagePopup()
         {
             popupService.ShowPopup(new ReglementationAddPage(this));
@@ -191,20 +197,10 @@ namespace MAUIMobileStarterKit.ViewModels
             try
             {
                 // loading.StartIndicator();
-                CommentList = new ObservableCollection<CommentListModal>();
-                for (int i = 0; i < 4; i++)
+                CommentList = new ObservableCollection<Comment>();
+                foreach (var regle in Constans.SelectedCanyon.Comments.OrderByDescending(r => r.CreationDate.Date))
                 {
-                    CommentList.Add(new CommentListModal()
-                    {
-                        AirFeeling = "sample aire feeling",
-                        CreationDate = "2023/3/23",
-                        Debit = "Sample debit",
-                        DoneOrView = "Done",
-                        Id = "12",
-                        UserComment = "test comment",
-                        UserName = "abc123",
-                        WaterFeeling = "Good"
-                    });
+                    CommentList.Add(regle);
                 }
                 // loading.EndIndiCator();
             }
@@ -272,6 +268,23 @@ namespace MAUIMobileStarterKit.ViewModels
         {
             await Task.Delay(5000);
             EndIndiCator();
+        }
+        public async Task<string> GetLocalStorageProeprties(string key)
+        {
+            if (String.Equals("NickName", key))
+            {
+                return await localStorage.GetAsync("NickName");
+            }
+            else if (string.Equals("UserName", key))
+            {
+                return await localStorage.GetAsync("Name");
+            }
+            else if (string.Equals("Email", key))
+            {
+                return await localStorage.GetAsync("Email");
+            }
+
+            return string.Empty;
         }
 
         #region api calls
@@ -539,6 +552,85 @@ namespace MAUIMobileStarterKit.ViewModels
             }
             return true;
         }
+
+        public async Task<bool> SendComments(int flowPickerIndex, int airTempPickerIndex, int waterTempPickerIndex, string commentoftheuser, bool nickNameswith, bool seeorDone,
+            DateTime dateTime)
+        {
+
+            Comment usercomment = new Comment();
+            loading.StartIndicator();
+            try
+            {
+                if (dateTime <= DateTime.Today)
+                {
+                    usercomment.CreationDate = dateTime;
+                }
+                else
+                {
+                    //DisplayAlert(AppResources.AppResources.MessageError, AppResources.AppResources.MessageDateProblem, "OK");
+                    return false;
+                }
+                if (flowPickerIndex >= 0 && airTempPickerIndex >= 0 && waterTempPickerIndex >= 0 && !string.IsNullOrEmpty(commentoftheuser))
+                {
+                    if (nickNameswith)
+                    {
+                        usercomment.UserName = await GetLocalStorageProeprties("NickName");
+                    }
+                    else
+                    {
+                        usercomment.UserName = await GetLocalStorageProeprties("UserName");
+                    }
+
+                    usercomment.Useremail = await GetLocalStorageProeprties("Email");
+                    usercomment.CanyonId = Constans.SelectedCanyon.Id;
+                    if (seeorDone)
+                    {
+                        usercomment.DoneOrView = "Done";
+                    }
+                    else
+                    {
+                        usercomment.DoneOrView = "View";
+                    }
+                    usercomment.Debit = (DebitEnum)flowPickerIndex;
+                    usercomment.AirFeeling = (AirFeeling)airTempPickerIndex;
+                    usercomment.WaterFeeling = (WaterFeeling)waterTempPickerIndex;
+                    usercomment.UserComment = commentoftheuser;
+
+                    await commentProvider.PostComment(usercomment, await localStorage.GetAsync("apiToken"));
+                    var isUpdateComments = await GetComments(Constans.SelectedCanyon.Id);
+                    return true;
+                }
+                else
+                {
+                    // DisplayAlert(AppResources.AppResources.MessageError, AppResources.AppResources.MessageEnterAllValues, "OK");
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+
+                loading.EndIndiCator();
+                return true;
+            }
+            finally
+            {
+                loading.EndIndiCator();
+            }
+        }
+
+        public async Task<bool> GetComments(int selectedCanyonId)
+        {
+            try
+            {
+              Constans.SelectedCanyon.Comments = await commentProvider.GetCommentCanyon(selectedCanyonId, await localStorage.GetAsync("apiToken"));
+                return true;
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+        }
+
         #endregion
     }
 }

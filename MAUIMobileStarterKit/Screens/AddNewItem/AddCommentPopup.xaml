@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             CanBeDismissedByTappingOutsideOfPopup = "False"
+               Color="#CAF0F8"
+             x:Class="MAUIMobileStarterKit.Screens.AddNewItem.AddCommentPopup">
+    <StackLayout x:Name="popUpLayout" Orientation="Vertical" Spacing="15" Padding="10" VerticalOptions="FillAndExpand">
+
+        <ScrollView x:Name="scrolling" VerticalOptions="FillAndExpand">
+            <StackLayout>
+                <Image Source="backbutton.png" HeightRequest="10" WidthRequest="10" HorizontalOptions="Start" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="BackTapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="Please add your comment of this canyon :" TextColor="#03045E" FontSize="20"  FontFamily="CabinBold" />
+                <Label x:Name="nameCanyon" VerticalOptions="Center" FontFamily="CabinBold" TextColor="#03045E" FontSize="28"  FontAttributes="Bold" TextDecorations="Underline"/>
+                <StackLayout VerticalOptions="Center">
+                    <HorizontalStackLayout>
+                        <Label Text="User Name:" FontSize="15" FontFamily="CabinBold"  TextColor="#03045E"/>
+                        <Label x:Name="userNameText" FontSize="15" TextColor="#03045E"/>
+                    </HorizontalStackLayout>
+                    <Switch x:Name="NickNameswith"  IsToggled="False"/>
+                    <HorizontalStackLayout>
+                        <Label Text="User NickName:" FontSize="15" FontFamily="CabinBold"  TextColor="#03045E"/>
+                        <Label  x:Name="userNickNameText" FontSize="15"  TextColor="#03045E"/>
+                    </HorizontalStackLayout>
+
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Select the date:*" FontSize="15" FontFamily="CabinBold"  TextColor="#03045E" VerticalOptions="Center"/>
+                    <DatePicker x:Name="DatePicker"  VerticalOptions="CenterAndExpand" TextColor="#03045E" Format="D" FontSize="15" WidthRequest="300" Margin="10, 10, 10, 10"  />
+                </StackLayout>
+                <StackLayout>
+                    <VerticalStackLayout>
+                        <Label Text="Did you do this canyon or just seen it ?" FontSize="15" VerticalOptions="Center" FontFamily="CabinBold"  TextColor="#03045E"/>
+                        <Label Text="No I just check" FontSize="15" VerticalOptions="Center" TextColor="#03045E"/>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout>
+                        <Switch x:Name="SeeorDone" VerticalOptions="Center" HorizontalOptions="Start" IsToggled="true"/>
+                        <Label Text="Yes I did !!" FontSize="15" VerticalOptions="Center" TextColor="#03045E"/>
+                    </VerticalStackLayout>
+
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="How was the Water flow ?*" FontSize="15" FontFamily="CabinBold" TextColor="#03045E"  VerticalOptions="Center"/>
+                    <Picker x:Name="FlowPicker"  VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" TextColor="#03045E" FontSize="15" Margin="10, 10, 10, 10"          />
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Air Temperature*" FontSize="15" VerticalOptions="Center"  HorizontalOptions="Start" FontFamily="CabinBold" TextColor="#03045E"/>
+                    <Picker x:Name="AirTempPicker"  HorizontalOptions="FillAndExpand" FontSize="15" TextColor="#03045E"  />
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Water Temperature*" FontSize="15" VerticalOptions="Center"  HorizontalOptions="Start" FontFamily="CabinBold" TextColor="#03045E"/>
+                    <Picker  x:Name="WaterTempPicker"  HorizontalOptions="FillAndExpand" FontSize="15" TextColor="#03045E" />
+                </StackLayout>
+
+                <Label Text="Your Comment*:" FontSize="15" FontFamily="CabinBold" TextColor="#03045E"/>
+                <Frame Margin="5,5,5,5" BorderColor="#03045E"
+                    CornerRadius="5" HeightRequest="200"
+                    Padding="8" HasShadow="True">
+                    <Editor x:Name="Commentoftheuser" Placeholder="Enter text here" PlaceholderColor="Gray" TextColor="#03045E" />
+                </Frame>
+                <Button Text="Save Comment" Clicked="SaveBtnClicked" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15"/>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</toolkit:Popup>
