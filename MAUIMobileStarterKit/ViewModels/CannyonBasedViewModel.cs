@@ -196,17 +196,14 @@ namespace MAUIMobileStarterKit.ViewModels
         {
             try
             {
-                // loading.StartIndicator();
                 CommentList = new ObservableCollection<Comment>();
                 foreach (var regle in Constans.SelectedCanyon.Comments.OrderByDescending(r => r.CreationDate.Date))
                 {
                     CommentList.Add(regle);
                 }
-                // loading.EndIndiCator();
             }
             catch (Exception ex)
             {
-                //  loading.EndIndiCator();
             }
         }
         public async void TakePhoto()
