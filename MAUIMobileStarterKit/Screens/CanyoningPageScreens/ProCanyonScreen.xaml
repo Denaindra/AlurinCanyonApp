@@ -6,7 +6,7 @@
         <ScrollView  x:Name="scrolllayout" Padding="10">
             <StackLayout Spacing="20">
                 <Label x:Name="EmptyProfessionnal" IsVisible="True" Text="There is no professionnal guide who propose this canyon. If you are a professionnal, please contact us if you want appear in this section." HorizontalTextAlignment="Center" FontFamily="CabinBold"  TextColor="#03045E" FontSize="15" TextDecorations="Underline"/>
-                <Button x:Name="AddProButton" Text="Add Pro"  FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15"/>
+                <Button x:Name="AddProButton" Text="Add Pro" Clicked="AddProButtonClicked"  FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15"/>
     
                     <ListView x:Name="ProListView" ItemsSource="{Binding ProfessioanlList}" SelectionMode="None" 
          HasUnevenRows="True">
@@ -16,7 +16,7 @@
                                 <StackLayout Margin="0,5">
                                     <Frame Padding="0,0,5,0" BorderColor="Transparent" CornerRadius="5"  HasShadow="False" BackgroundColor="#90E0EF" >
                                         <Grid RowDefinitions="Auto,*,*,*,*" ColumnDefinitions="*,*" Padding="10">
-                                            <Image Grid.Row="0" Grid.Column="0" Source="https://fastly.picsum.photos/id/56/2880/1920.jpg?hmac=BIplhYgNZ9bsjPXYhD0xx6M1yPgmg4HtthKkCeJp6Fk" HeightRequest="100" WidthRequest="100" Aspect="AspectFill" BackgroundColor="Green"/>
+                                            <Image Grid.Row="0" Grid.Column="0" Source="{Binding Logo}" HeightRequest="100" WidthRequest="100" Aspect="AspectFill" BackgroundColor="Green"/>
                                             <VerticalStackLayout Grid.Row="0" Grid.Column="1">
                                                 <Label Text="Name" FontFamily="CabinBold"  TextColor="#03045E" FontSize="15" TextDecorations="Underline"/>
                                                 <Label Text="{Binding Name}" FontFamily="CabinRegular"  TextColor="#03045E" FontSize="15" />
@@ -35,7 +35,7 @@
                                                 <Label Text="Description" FontFamily="CabinBold"  TextColor="#03045E" FontSize="15" TextDecorations="Underline"/>
                                                 <Label Text="{Binding Description}" FontFamily="CabinRegular"  TextColor="#03045E" FontSize="15" />
                                             </VerticalStackLayout>
-                                            <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" x:Name="Urlwebsitepro" Text="{Binding Website,StringFormat='Website http:\\ {0}'}" FontAttributes="Italic" FontSize="12" BackgroundColor="Transparent" TextColor="#03045E" HorizontalOptions="End"/>
+                                            <Button Clicked="BrowsUrlClicked" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" x:Name="Urlwebsitepro" Text="{Binding Website,StringFormat='Website http:\\ {0}'}" FontAttributes="Italic" FontSize="12" BackgroundColor="Transparent" TextColor="#03045E" HorizontalOptions="End"/>
                                         </Grid>
                                     </Frame>
                                 </StackLayout>

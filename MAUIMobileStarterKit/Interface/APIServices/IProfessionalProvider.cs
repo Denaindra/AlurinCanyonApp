@@ -10,11 +10,11 @@ namespace MAUIMobileStarterKit.Interface.APIServices
 {
     public interface IProfessionalProvider
     {
-        [Get("/api/Professionnal/canyon/")]
-        Task <IList<Professionnal>> GetProsCanyon(int canyonId);
+        [Get("/api/Professionnal/canyon/{canyonId}")]
+        Task <IList<Professionnal>> GetProsCanyon([Authorize("Bearer")] string token, [AliasAs("canyonId")] int canyonId);
 
         [Post("/api/Professionnal")]
-        Task<IList<Professionnal>> PostPro(int numcanyon, Professionnal professionnal);
+        Task PostPro([Authorize("Bearer")] string token, Professionnal professionnal);
 
         [Put("/api/Professionnal")]
         Task ModifyPro([AliasAs("id")] int id, Professionnal professionelModify);

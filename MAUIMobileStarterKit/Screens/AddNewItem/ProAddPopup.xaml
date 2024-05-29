@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:local="clr-namespace:MAUIMobileStarterKit.CustomViews"
+             x:Class="MAUIMobileStarterKit.Screens.AddNewItem.ProAddPopup">
+    <StackLayout x:Name="popUpLayout" Orientation="Vertical" Spacing="15" Padding="10" VerticalOptions="FillAndExpand">
+        <ScrollView x:Name="scrolling" VerticalOptions="FillAndExpand">
+            <VerticalStackLayout Spacing="20">
+                <Image Source="backbutton.png" HeightRequest="10" WidthRequest="10" HorizontalOptions="Start" Margin="0,0,0,5">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="BackTapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <local:FlatingLabel x:Name="entryLogo"  Title="Entry URL logo"/>
+                <local:FlatingLabel x:Name="entryName"  Title="Provide Name" />
+                <local:FlatingLabel x:Name="entryAdress"  Title="Add Pro Adress" />
+                <local:FlatingLabel x:Name="entryPhone"  Title="Add Phone number" />
+                <local:FlatingLabel x:Name="entryEmail"  Title="Add email Adress" />
+                <local:FlatingLabel x:Name="entryUrlwebsitepro"  Title="Add Website" />
+                <local:FlatingLabel x:Name="entryDescription"  Title="Description" />
+                <VerticalStackLayout>
+                    <Label Text="Date" VerticalOptions="Center" TextColor="Black" FontSize="20"/>
+                    <DatePicker x:Name="entryDatePro" TextColor="Black" FontSize="24" />
+                </VerticalStackLayout>
+                <VerticalStackLayout Spacing="10">
+                    <Button Text="Save Pro" Clicked="SaveBtnClicked" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15"/>
+                    <Button Text="Delete Pro" x:Name="deleteButtonpro" IsVisible="False" Clicked="DeleteBtnClicked" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15"/>
+                </VerticalStackLayout>
+         
+            </VerticalStackLayout>
+        </ScrollView>
+    </StackLayout>
+
+</toolkit:Popup>

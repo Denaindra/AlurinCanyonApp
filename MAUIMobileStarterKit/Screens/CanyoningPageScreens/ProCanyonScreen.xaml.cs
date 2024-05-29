@@ -5,18 +5,30 @@ namespace MAUIMobileStarterKit.Screens.CanyoningPageScreens;
 
 public partial class ProCanyonScreen : ContentView
 {
-    private CannyonBasedViewModel viewModel;
-	public ProCanyonScreen(CannyonBasedViewModel viewModel)
+    private CannyonBasedViewModel vm;
+	public ProCanyonScreen(CannyonBasedViewModel vm)
 	{
 		InitializeComponent();
-        this.viewModel = viewModel;
-        BindingContext = viewModel;
+        this.vm = vm;
+        BindingContext = vm;
         SteupUI();
 	}
 
     private void SteupUI()
     {
         scrolllayout.HeightRequest = Constans.DeviceHeight - 122;
-        viewModel.LoadPerforssioanlList();
+        vm.LoadPerforssioanlList();
+    }
+
+    private void AddProButtonClicked(object sender, EventArgs e)
+    {
+        vm.OpenProPopup();
+    }
+
+    private void BrowsUrlClicked(object sender, EventArgs e)
+    {
+        Button button = (Button)sender;
+        string Urlwebsitepro = button.Text;
+        Browser.OpenAsync(new Uri(Urlwebsitepro), BrowserLaunchMode.SystemPreferred);
     }
 }

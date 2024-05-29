@@ -17,10 +17,19 @@ namespace MAUIMobileStarterKit.ViewModels
         private static ICountryProvider iCountryProvider;
         private static ICommentProvider iCommentProvider;
         private static ITopographyProvider iTopographyProvider;
+        private static IProfessionalProvider iProfessionalProvider;
         public BaseViewModel()
 		{
 		}
 
+        public IProfessionalProvider GetIProfessionalProvider()
+        {
+            if (iProfessionalProvider is null)
+            {
+                iProfessionalProvider = RestService.For<IProfessionalProvider>(Constans.BASEDURL);
+            }
+            return iProfessionalProvider;
+        }
         public ITopographyProvider GetITopographyProvider()
         {
             if (iTopographyProvider is null)

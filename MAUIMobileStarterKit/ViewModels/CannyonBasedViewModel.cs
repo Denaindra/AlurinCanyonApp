@@ -16,13 +16,14 @@ namespace MAUIMobileStarterKit.ViewModels
         private ObservableCollection<Topography> topographiesList;
         private ObservableCollection<Reglementation> reglementationsList;
         private ObservableCollection<Comment> commentList;
-        private ObservableCollection<ProCanyonModal> professioanlList;
+        private ObservableCollection<Professionnal> professioanlList;
         private ObservableCollection<Canyon> canyonList;
 
         private readonly ICanyonProvider canyonProvider;
         private readonly ICountryProvider countryProvider;
         private readonly ITopographyProvider topoProvider;
         private readonly ICommentProvider commentProvider;
+        private readonly IProfessionalProvider professionalProvider;
 
         private readonly ILocalStorage localStorage;
         private readonly ILoading loading;
@@ -48,6 +49,7 @@ namespace MAUIMobileStarterKit.ViewModels
             countryProvider = GetICountryProvider();
             topoProvider = GetITopographyProvider();
             commentProvider = GetICommentProvider();
+            professionalProvider = GetIProfessionalProvider();
             this.popupService = popupService;
         }
         public string PhotoPath
@@ -98,7 +100,7 @@ namespace MAUIMobileStarterKit.ViewModels
                 NotifyPropertyChanged(nameof(TopographiesList));
             }
         }
-        public ObservableCollection<ProCanyonModal> ProfessioanlList
+        public ObservableCollection<Professionnal> ProfessioanlList
         {
             get
             {
@@ -144,6 +146,10 @@ namespace MAUIMobileStarterKit.ViewModels
         public void OpenAddCommentCanyonPopup()
         {
             popupService.ShowPopup(new AddCommentPopup(this));
+        }
+        public void OpenProPopup()
+        {
+            popupService.ShowPopup(new ProAddPopup(this));
         }
         public void OpenReglementationAddPagePopup()
         {
@@ -232,19 +238,10 @@ namespace MAUIMobileStarterKit.ViewModels
             try
             {
                 // loading.StartIndicator();
-                ProfessioanlList = new ObservableCollection<ProCanyonModal>();
-                for (int i = 0; i < 4; i++)
+                ProfessioanlList = new ObservableCollection<Professionnal>();
+                foreach (var pro in Constans.SelectedCanyon.Professionnals.OrderByDescending(p => p.Id))
                 {
-                    ProfessioanlList.Add(new ProCanyonModal()
-                    {
-                        Address = "Sample Address",
-                        Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, ",
-                        Email = "sample Email",
-                        Logo = "sample Logo",
-                        Phone = "sample phone",
-                        Name = "sample Name",
-                        Website = "www.sampleWebsite.com"
-                    });
+                    ProfessioanlList.Add(pro);
                 }
                 // loading.EndIndiCator();
             }
@@ -253,6 +250,7 @@ namespace MAUIMobileStarterKit.ViewModels
                 //  loading.EndIndiCator();
             }
         }
+
         public void StartIndicator()
         {
             loading.StartIndicator();
@@ -549,7 +547,6 @@ namespace MAUIMobileStarterKit.ViewModels
             }
             return true;
         }
-
         public async Task<bool> SendComments(int flowPickerIndex, int airTempPickerIndex, int waterTempPickerIndex, string commentoftheuser, bool nickNameswith, bool seeorDone,
             DateTime dateTime)
         {
@@ -614,7 +611,6 @@ namespace MAUIMobileStarterKit.ViewModels
                 loading.EndIndiCator();
             }
         }
-
         public async Task<bool> GetComments(int selectedCanyonId)
         {
             try
@@ -627,7 +623,72 @@ namespace MAUIMobileStarterKit.ViewModels
                 return false;
             }
         }
+        public async Task<bool> SavePro(string entryLogoText, string entryNameText, string entryAdressText, string entryPhoneText, string entryEmailText, string entryUrlwebsiteproText, string entryDescriptionText, DateTime date)
+        {
+            try
+            {
+                loading.StartIndicator();
+                Professionnal proAddbyAdmin = new Professionnal();
 
+                if (entryNameText != null && entryPhoneText != null && entryDescriptionText != null)
+                {
+                    proAddbyAdmin.CanyonId = Constans.SelectedCanyon.Id;
+                    proAddbyAdmin.Name = entryNameText;
+                    proAddbyAdmin.Description = entryDescriptionText;
+                    proAddbyAdmin.Phone = entryPhoneText;
+                    if (entryAdressText != null || entryAdressText != "")
+                    {
+                        proAddbyAdmin.Adress = entryAdressText;
+                    }
+                    if (entryLogoText != null || entryLogoText != "")
+                    {
+                        proAddbyAdmin.Logo = entryLogoText;
+                    }
+                    if (entryEmailText != null || entryEmailText != "")
+                    {
+                        proAddbyAdmin.Email = entryEmailText;
+                    }
+                    if (entryUrlwebsiteproText != null || entryUrlwebsiteproText != "")
+                    {
+                        proAddbyAdmin.Website = entryUrlwebsiteproText;
+                    }
+                    proAddbyAdmin.CreationDate = date;
+
+                    await professionalProvider.PostPro(await localStorage.GetAsync("apiToken"), proAddbyAdmin);
+                    loading.EndIndiCator();
+                    return true;
+                }
+                else
+                {
+                    loading.EndIndiCator();
+                    return false;
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                loading.EndIndiCator();
+                return false;
+            }
+
+
+        }
+
+        public async void GetPro()
+        {
+            try
+            {
+                loading.StartIndicator();
+                var results = await professionalProvider.GetProsCanyon(await localStorage.GetAsync("apiToken"), Constans.SelectedCanyon.Id);
+                Constans.SelectedCanyon.Professionnals = results;
+                loading.EndIndiCator();
+            }
+            catch(Exception ex)
+            {
+                loading.EndIndiCator();
+            }
+        }
         #endregion
     }
 }
