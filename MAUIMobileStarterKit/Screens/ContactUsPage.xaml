@@ -5,24 +5,16 @@
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="#CAF0F8"
              x:Class="MAUIMobileStarterKit.Screens.ContactUsPage">
-    <AbsoluteLayout>
-        <StackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="SizeProportional" Padding="10,10,10,30" >
-            <HorizontalStackLayout VerticalOptions="Center" >
-                <ImageButton Source="burgerbar.png" Aspect="AspectFit" HeightRequest="30" VerticalOptions="Center" Clicked="MenuBtnClicked" />
-                <Label Text="Contact Us" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontFamily="VinaSansRegular" FontSize="35" />
-            </HorizontalStackLayout>
+    <StackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="SizeProportional" Padding="10,10,10,30" >
+        <HorizontalStackLayout VerticalOptions="Center" >
+            <ImageButton Source="burgerbar.png" Aspect="AspectFit" HeightRequest="30" VerticalOptions="Center" Clicked="MenuBtnClicked" />
+            <Label Text="Contact Us" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontFamily="VinaSansRegular" FontSize="35" />
+        </HorizontalStackLayout>
 
-            <VerticalStackLayout Spacing="50" VerticalOptions="Start" Margin="0,60,0,0"> 
-            <local:FlatingLabel Title="Name" />
-                <local:FlatingLabel Title="Phone" Keyboard="Numeric"/>
-            <local:FlatingLabel Title="Email" />
-            </VerticalStackLayout>
-
-            <VerticalStackLayout VerticalOptions="EndAndExpand" Spacing="40">
-                <local:FlatingLabel Title="Message" />
-                <Button Margin="10,0" Text="Create Canyon" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15"/>
-            </VerticalStackLayout>
+        <StackLayout Spacing="20" VerticalOptions="StartAndExpand">
+            <Picker Margin="0,60,0,0" x:Name="purposeRequest" Title="Purpose of request" TitleColor="#03045E" TextColor="#0077B6"  FontFamily="CabinRegular"  HorizontalOptions="FillAndExpand" FontSize="15"   />
+            <local:FlatingLabel x:Name="message" Title="Enter your Message" Margin="0,60,0,0" />
+        <Button Margin="10,0" Clicked="SendMsgClicked" Text="Send Message" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15"/>
         </StackLayout>
-
-    </AbsoluteLayout>
+    </StackLayout>
 </ContentPage>

@@ -81,7 +81,7 @@ public static class MauiProgram
         builder.Services.AddTransient<SettingsViewModel>();
         builder.Services.AddTransient<CreateCanyonViewModel>();
         builder.Services.AddTransient<CannyonBasedViewModel>();
-
+        builder.Services.AddTransient<ContactUsViewModel>();
         //Services
         builder.Services.AddSingleton<ILoading, Loading>();
         builder.Services.AddSingleton<ILocalStorage, LocalStorage>();
