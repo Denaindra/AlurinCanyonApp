@@ -39,47 +39,56 @@ namespace MAUIMobileStarterKit.ViewModels
         }
         public async Task<bool> CheckUserLogin()
         {
-            var result = await authClient.LoginAsync();
-            if (result.IsError)
+            var oauthToken = await localStorage.GetAsync("access_token");
+            if (!string.IsNullOrEmpty(oauthToken))
             {
-                return false;
+                var result = await authClient.RefreshTokenAsync(oauthToken);
+                return true;
             }
             else
             {
-                localStorage.SetAsync("access_token", result.AccessToken);
-                localStorage.SetAsync("identity_token", result.IdentityToken);
-
-                var name = result.User.FindFirst(c => c.Type == "name")?.Value;
-                localStorage.SetAsync("Name", name);
-
-                var email = result.User.FindFirst(c => c.Type == "email")?.Value;
-                localStorage.SetAsync("Email", email);
-
-                var role = result.User.FindFirst(c => c.Type == "http://canyonAppdeouf.net/roles")?.Value;
-                if (string.IsNullOrEmpty(role))
+                var result = await authClient.LoginAsync();
+                if (result.IsError)
                 {
-                    role = "Free";
-                    localStorage.SetAsync("role", role);
+                    return false;
                 }
                 else
                 {
-                    localStorage.SetAsync("role", role);
+                    localStorage.SetAsync("access_token", result.AccessToken);
+                    localStorage.SetAsync("identity_token", result.IdentityToken);
+
+                    var name = result.User.FindFirst(c => c.Type == "name")?.Value;
+                    localStorage.SetAsync("Name", name);
+
+                    var email = result.User.FindFirst(c => c.Type == "email")?.Value;
+                    localStorage.SetAsync("Email", email);
+
+                    var role = result.User.FindFirst(c => c.Type == "http://canyonAppdeouf.net/roles")?.Value;
+                    if (string.IsNullOrEmpty(role))
+                    {
+                        role = "Free";
+                        localStorage.SetAsync("role", role);
+                    }
+                    else
+                    {
+                        localStorage.SetAsync("role", role);
+                    }
+
+                    var nickName = result.User.FindFirst(c => c.Type == "nickname")?.Value;
+                    localStorage.SetAsync("NickName", nickName);
+                    var tokenRequest = new AccessTokenRequest()
+                    {
+                        client_id = "1MJwNXR7aPSnt3wzDKaEgMk3HThSBOMQ",
+                        client_secret = "27C9JYTVixBHFI4jprZoPKgmLoOZ58ZmfhANaxMaLTtJ11PRDWe7lsEiVIYy4w0y",
+                        audience = Constans.AccessTokenRequestAudence,
+                        grant_type = "client_credentials"
+                    };
+                    var tokenResponse = await itokenProvider.GetToken(tokenRequest);
+                    localStorage.SetAsync("apiToken", tokenResponse.access_token);
+
+
+                    return true;
                 }
-
-                var nickName = result.User.FindFirst(c => c.Type == "nickname")?.Value;
-                localStorage.SetAsync("NickName", nickName);
-                var tokenRequest = new AccessTokenRequest()
-                {
-                    client_id = "1MJwNXR7aPSnt3wzDKaEgMk3HThSBOMQ",
-                    client_secret = "27C9JYTVixBHFI4jprZoPKgmLoOZ58ZmfhANaxMaLTtJ11PRDWe7lsEiVIYy4w0y",
-                    audience = Constans.AccessTokenRequestAudence,
-                    grant_type = "client_credentials"
-                };
-                var tokenResponse = await itokenProvider.GetToken(tokenRequest);
-                localStorage.SetAsync("apiToken", tokenResponse.access_token);
-
-
-                return true;
             }
         }
 
