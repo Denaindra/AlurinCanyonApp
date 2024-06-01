@@ -17,8 +17,9 @@ public partial class CanyonBaseScreen : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
+        ResetView();
+        RemoveChildView();
         SteupPage(0);
-       // await viewModel.WatteForBackGroundSteup();
     }
     private void MenuBtnClicked(object sender, EventArgs e)
     {
@@ -27,13 +28,11 @@ public partial class CanyonBaseScreen : ContentPage
 
     private void OnMenuTapGestureRecognizerTapped(object sender, TappedEventArgs e)
     {
-       // viewModel.StartIndicator();
         ResetView();
         RemoveChildView();
         var tappedParameter = (TappedEventArgs)e;
         var parameter = Convert.ToInt32(tappedParameter.Parameter);
         SteupPage(parameter);
-       // await viewModel.WatteForBackGroundSteup();
     }
 
     private void SteupPage(int parameter)
@@ -96,7 +95,7 @@ public partial class CanyonBaseScreen : ContentPage
     }
     private void RemoveChildView()
     {
-        childLayout.Children.Clear();
+        childLayout?.Children.Clear();
     }
 
     private void ClickBtnTapped(object sender, TappedEventArgs e)
