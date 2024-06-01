@@ -1,4 +1,5 @@
-﻿using MAUIMobileStarterKit.Interface;
+﻿using MAUIMobileStarterKit.Constant;
+using MAUIMobileStarterKit.Interface;
 
 namespace MAUIMobileStarterKit.ViewModels
 {
@@ -11,7 +12,6 @@ namespace MAUIMobileStarterKit.ViewModels
             this.localStorage = localStorage;
             this.loading = loading;
         }
-
         public async Task<bool> SendMail(string selectedItem,string messageBody)
         {
             try

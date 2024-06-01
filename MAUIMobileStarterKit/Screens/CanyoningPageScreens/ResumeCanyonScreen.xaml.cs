@@ -16,9 +16,13 @@ public partial class ResumeCanyonScreen : ContentView
 
     private async void SetupUI()
     {
-       //scrollView.HeightRequest = Constans.DeviceHeight-122;
-       var result = await vm.GetCountriesAsync();
-       LoadingComments();
+        if (string.Equals(Constans.UserRole,"Administrator"))
+        {
+            modifyCanyonBtn.IsVisible = true;
+        }
+
+        var result = await vm.GetCountriesAsync();
+        LoadingComments();
     }
 
     private async void LoadingComments()
@@ -173,5 +177,9 @@ public partial class ResumeCanyonScreen : ContentView
                 obstacleCanyon.Text = "-";
             }
         }
+    }
+    private void ButtonAskForChangeClicked(object sender, EventArgs e)
+    {
+        vm.AskingForChnaged();
     }
 }

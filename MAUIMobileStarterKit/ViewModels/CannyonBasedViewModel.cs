@@ -4,6 +4,7 @@ using MAUIMobileStarterKit.Interface;
 using MAUIMobileStarterKit.Interface.APIServices;
 using MAUIMobileStarterKit.Models.Service;
 using MAUIMobileStarterKit.Models.UI;
+using MAUIMobileStarterKit.Screens;
 using MAUIMobileStarterKit.Screens.AddNewItem;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
@@ -41,7 +42,9 @@ namespace MAUIMobileStarterKit.ViewModels
         private double LongMin;
         private double PointDistance;
 
-        public CannyonBasedViewModel(ILoading loading, ILocalStorage localStorage, IPopupService popupService)
+        private ContactUsPage contactUsPage;
+
+        public CannyonBasedViewModel(ILoading loading, ILocalStorage localStorage, IPopupService popupService, ContactUsPage contactUsPage )
         {
             this.loading = loading;
             this.localStorage = localStorage;
@@ -51,6 +54,7 @@ namespace MAUIMobileStarterKit.ViewModels
             commentProvider = GetICommentProvider();
             professionalProvider = GetIProfessionalProvider();
             this.popupService = popupService;
+            this.contactUsPage = contactUsPage;
         }
         public string PhotoPath
         {
@@ -250,7 +254,6 @@ namespace MAUIMobileStarterKit.ViewModels
                 //  loading.EndIndiCator();
             }
         }
-
         public void StartIndicator()
         {
             loading.StartIndicator();
@@ -280,6 +283,11 @@ namespace MAUIMobileStarterKit.ViewModels
             }
 
             return string.Empty;
+        }
+        public void AskingForChnaged()
+        {
+            contactUsPage.propblumemsg = Constans.SelectedCanyon.Name;
+            PushAsyncPage(contactUsPage);
         }
 
         #region api calls
@@ -674,7 +682,6 @@ namespace MAUIMobileStarterKit.ViewModels
 
 
         }
-
         public async void GetPro()
         {
             try

@@ -73,6 +73,7 @@ namespace MAUIMobileStarterKit.ViewModels
                     {
                         localStorage.SetAsync("role", role);
                     }
+                    Constans.UserRole = role;
 
                     var nickName = result.User.FindFirst(c => c.Type == "nickname")?.Value;
                     localStorage.SetAsync("NickName", nickName);

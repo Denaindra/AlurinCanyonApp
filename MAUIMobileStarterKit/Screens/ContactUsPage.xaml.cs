@@ -6,6 +6,8 @@ namespace MAUIMobileStarterKit.Screens;
 public partial class ContactUsPage : ContentPage
 {
     private ContactUsViewModel vm;
+    private Entry entry;
+    public string propblumemsg;
     public ContactUsPage(ContactUsViewModel vm)
 	{
 		InitializeComponent();
@@ -22,12 +24,14 @@ public partial class ContactUsPage : ContentPage
         purposeRequest.Items.Add("App Problem");
         purposeRequest.Items.Add("Canyon Problem");
 
-        //if (Namecanyon != "")
-        //{
-        //    purposeRequest.SelectedItem = AppResources.AppResources.CanyonProblem;
-        //    bodyuserMessage.Text = AppResources.AppResources.CanyonProblemMessageStart + Namecanyon + AppResources.AppResources.CanyonProblemMessageEnd;
-        //}
+        entry = ((Entry)message.FindByName("EntryField"));
+        if( string.IsNullOrEmpty(propblumemsg))
+        {
+            purposeRequest.SelectedIndex = 4;
+            entry.Text = "There is mistake(s) in informations of this canyon: " + propblumemsg + " , please can you correct this information:";
+        }
     }
+
     private void MenuBtnClicked(object sender, EventArgs e)
     {
         if (!Constans.flyoutPage.IsPresented)
@@ -43,6 +47,7 @@ public partial class ContactUsPage : ContentPage
         if (results)
         {
             await DisplayAlert("Error !!!!", "Please provide all data values. Thanks !", "OK");
+            propblumemsg = string.Empty;
         }
 
     }
