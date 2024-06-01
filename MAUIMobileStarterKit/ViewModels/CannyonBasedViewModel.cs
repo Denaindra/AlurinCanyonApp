@@ -287,7 +287,8 @@ namespace MAUIMobileStarterKit.ViewModels
         public void AskingForChnaged()
         {
             contactUsPage.propblumemsg = Constans.SelectedCanyon.Name;
-            PushAsyncPage(contactUsPage);
+            contactUsPage.IsbackBtnEnable = true;   
+            PushModalAsync(contactUsPage);
         }
 
         #region api calls

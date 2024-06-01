@@ -8,11 +8,12 @@ public partial class ContactUsPage : ContentPage
     private ContactUsViewModel vm;
     private Entry entry;
     public string propblumemsg;
+    public bool IsbackBtnEnable;
     public ContactUsPage(ContactUsViewModel vm)
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         this.vm = vm;
-	}
+    }
 
     protected override void OnAppearing()
     {
@@ -25,21 +26,34 @@ public partial class ContactUsPage : ContentPage
         purposeRequest.Items.Add("Canyon Problem");
 
         entry = ((Entry)message.FindByName("EntryField"));
-        if( string.IsNullOrEmpty(propblumemsg))
+        if (string.IsNullOrEmpty(propblumemsg))
         {
             purposeRequest.SelectedIndex = 4;
             entry.Text = "There is mistake(s) in informations of this canyon: " + propblumemsg + " , please can you correct this information:";
         }
-    }
 
-    private void MenuBtnClicked(object sender, EventArgs e)
-    {
-        if (!Constans.flyoutPage.IsPresented)
+        if (IsbackBtnEnable)
         {
-            Constans.flyoutPage.IsPresented = true;
+            naviBtn.Source = ImageSource.FromFile("backarrow.png");
         }
     }
-
+    private void MenuBtnClicked(object sender, EventArgs e)
+    {
+        if (IsbackBtnEnable)
+        {
+            vm.navigation = Navigation;
+            IsbackBtnEnable = false;
+            propblumemsg = string.Empty;
+            vm.navigation.PopModalAsync();
+        }
+        else
+        {
+            if (!Constans.flyoutPage.IsPresented)
+            {
+                Constans.flyoutPage.IsPresented = true;
+            }
+        }
+    }
     private async void SendMsgClicked(object sender, EventArgs e)
     {
         var mesagebody = ((Entry)message.FindByName("EntryField")).Text;
