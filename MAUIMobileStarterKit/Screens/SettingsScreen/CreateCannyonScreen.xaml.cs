@@ -6,7 +6,7 @@ namespace MAUIMobileStarterKit.Screens.SettingsScreen;
 public partial class CreateCannyonScreen : ContentPage
 {
     private readonly CreateCanyonViewModel vm;
-
+    public bool IscanyonModify;
     public CreateCannyonScreen(CreateCanyonViewModel viewModel)
 	{
 		InitializeComponent();
@@ -21,6 +21,20 @@ public partial class CreateCannyonScreen : ContentPage
         if(vm.CountryList == null)
         {
             vm.GetCountriesAsync();
+        }
+
+        if (Constans.UserRole == "Administrator")
+        {
+            //entryUseremail.IsVisible = true;
+            //Labelemail.IsVisible = true;
+            //buttonAddStates.IsVisible = true;
+            //buttonAddCities.IsVisible = true;
+            //buttonAddMountain.IsVisible = true;
+            //buttonAddBassin.IsVisible = true;
+            //buttonAddRiver.IsVisible = true;
+            //DeleteCanyonButton.IsVisible = true;
+            //switchvalidationcanyon.IsVisible = true;
+
         }
     }
 
@@ -83,5 +97,14 @@ public partial class CreateCannyonScreen : ContentPage
     private void RiverPickerSelectedIndexChanged(object sender, EventArgs e)
     {
         vm.River = riverPicker.SelectedItem.ToString(); 
+    }
+
+    private async void DeleteClicked(object sender, EventArgs e)
+    {
+        var results = await vm.DeleteCanyon(Constans.SelectedCanyon.Id);
+        if (results)
+        {
+            var action = await DisplayAlert("Alert !!!!!!!", "Are you sure you want to delete the data ?", "OK","Delete");
+        }
     }
 }

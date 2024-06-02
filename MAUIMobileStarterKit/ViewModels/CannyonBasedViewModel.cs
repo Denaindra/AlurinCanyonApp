@@ -6,6 +6,7 @@ using MAUIMobileStarterKit.Models.Service;
 using MAUIMobileStarterKit.Models.UI;
 using MAUIMobileStarterKit.Screens;
 using MAUIMobileStarterKit.Screens.AddNewItem;
+using MAUIMobileStarterKit.Screens.SettingsScreen;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
@@ -43,8 +44,9 @@ namespace MAUIMobileStarterKit.ViewModels
         private double PointDistance;
 
         private ContactUsPage contactUsPage;
+        private CreateCannyonScreen careateCannyonScreen;
 
-        public CannyonBasedViewModel(ILoading loading, ILocalStorage localStorage, IPopupService popupService, ContactUsPage contactUsPage )
+        public CannyonBasedViewModel(ILoading loading, ILocalStorage localStorage, IPopupService popupService, ContactUsPage contactUsPage, CreateCannyonScreen cannyonScreen)
         {
             this.loading = loading;
             this.localStorage = localStorage;
@@ -55,6 +57,7 @@ namespace MAUIMobileStarterKit.ViewModels
             professionalProvider = GetIProfessionalProvider();
             this.popupService = popupService;
             this.contactUsPage = contactUsPage;
+            this.careateCannyonScreen = cannyonScreen;
         }
         public string PhotoPath
         {
@@ -290,7 +293,11 @@ namespace MAUIMobileStarterKit.ViewModels
             contactUsPage.IsbackBtnEnable = true;   
             PushModalAsync(contactUsPage);
         }
-
+        public void ModifyCanyon()
+        {
+            careateCannyonScreen.IscanyonModify = true;
+            PushModalAsync(careateCannyonScreen);
+        }
         #region api calls
         public async Task<bool> GetCanyonList(string region)
         {

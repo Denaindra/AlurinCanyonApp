@@ -745,6 +745,21 @@ namespace MAUIMobileStarterKit.ViewModels
                 return true;
             }
         }
+
+        public async Task<bool> DeleteCanyon(long canyonId)
+        {
+            try
+            {
+                loading.StartIndicator();
+                await canyonProvider.DeleteCanyon(canyonId.ToString(), await localStorage.GetAsync("apiToken"));
+                return true;
+            }
+            catch(Exception ex)
+            {
+                loading.StartIndicator();
+                return false;
+            }
+        }
         #endregion
     }
 }

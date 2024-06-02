@@ -182,4 +182,9 @@ public partial class ResumeCanyonScreen : ContentView
     {
         vm.AskingForChnaged();
     }
+
+    private void modifyCanyonBtnClicked(object sender, EventArgs e)
+    {
+        vm.ModifyCanyon();
+    }
 }

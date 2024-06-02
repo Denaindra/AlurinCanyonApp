@@ -36,7 +36,7 @@ namespace MAUIMobileStarterKit.Interface.APIServices
         Task<List<Canyon>> UnvalidatedCanyon([Authorize("Bearer")] string token);
 
         [Delete("/api/Canyons")]
-        Task<List<Canyon>> DeleteCanyon(string id);
+        Task DeleteCanyon([AliasAs("id")] string id, [Authorize("Bearer")] string token);
 
         [Get("/api/Canyons/listCanyonDays")]
         Task<List<Canyon>> GetCanyonLastDays(int days, [Authorize("Bearer")] string token);
