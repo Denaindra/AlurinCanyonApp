@@ -11,7 +11,7 @@
     </NavigationPage.TitleView>
     <ScrollView>
         <VerticalStackLayout Spacing="20" Padding="10,20,10,0">
-            <local:FlatingLabel Title="Name*" Text="{Binding Name}" />
+            <local:FlatingLabel x:Name="entryName" Title="Name*" Text="{Binding Name}" />
             <Picker x:Name="countryPicker" Title="Country*" ItemsSource="{Binding CountryList}" TitleColor="#03045E" TextColor="#0077B6" FontFamily="CabinBold" SelectedIndexChanged="CountryPickerSelectedIndexChanged"/>
             <Picker x:Name="regionPicker" Title="Region*" ItemsSource="{Binding RegionList}" TitleColor="#03045E" TextColor="#0077B6" FontFamily="CabinBold" SelectedIndexChanged="RegionPickerSelectedIndexChanged"/>
             <Picker x:Name="statePicker" Title="State" ItemsSource="{Binding StateList}" TitleColor="#03045E" TextColor="#0077B6" FontFamily="CabinBold" SelectedIndexChanged="StatePickerSelectedIndexChanged"/>
@@ -19,13 +19,13 @@
             <Picker x:Name="basinPicker" Title="Basin" ItemsSource="{Binding BassinList}" TitleColor="#03045E" TextColor="#0077B6" FontFamily="CabinBold" SelectedIndexChanged="BasinPickerSelectedIndexChanged"/>
             <Picker x:Name="cityPicker" Title="City" ItemsSource="{Binding CityList}" TitleColor="#03045E" TextColor="#0077B6" FontFamily="CabinBold" SelectedIndexChanged="CityPickerSelectedIndexChanged"/>
             <Picker x:Name="riverPicker" Title="River" ItemsSource="{Binding RiverList}" TitleColor="#03045E" TextColor="#0077B6" FontFamily="CabinBold" SelectedIndexChanged="RiverPickerSelectedIndexChanged"/>
-            <local:FlatingLabel Title="Rating (/4*)" Text="{Binding EntryDcNote}" Keyboard="Numeric"/>
-            <local:FlatingLabel Title="Start Altitude (m*)" Text="{Binding EntryAltDepart}" Keyboard="Numeric"/>
-            <local:FlatingLabel Title="Elevation (m*)" Keyboard="Numeric" Text="{Binding EntryDeniv}"/>
-            <local:FlatingLabel Title="Canyon Length" Keyboard="Numeric" Text="{Binding EntryLongueur}"/>
-            <local:FlatingLabel Title="Max Waterfall (m*)" Keyboard="Numeric" Text="{Binding EntryCasMax}"/>
-            <local:FlatingLabel Title="Difficulty Scale*" Text="{Binding EntryCotation}" />
-            <local:FlatingLabel Title="Rope (m*)" Keyboard="Numeric" Text="{Binding EntryCorde}"/>
+            <local:FlatingLabel x:Name="entryDcNote" Title="Rating (/4*)" Text="{Binding EntryDcNote}" Keyboard="Numeric"/>
+            <local:FlatingLabel x:Name="entryAltDepart" Title="Start Altitude (m*)" Text="{Binding EntryAltDepart}" Keyboard="Numeric"/>
+            <local:FlatingLabel x:Name="entryDeniv" Title="Elevation (m*)" Keyboard="Numeric" Text="{Binding EntryDeniv}"/>
+            <local:FlatingLabel x:Name="entryLongueur" Title="Canyon Length" Keyboard="Numeric" Text="{Binding EntryLongueur}"/>
+            <local:FlatingLabel x:Name="entryCasMax" Title="Max Waterfall (m*)" Keyboard="Numeric" Text="{Binding EntryCasMax}"/>
+            <local:FlatingLabel x:Name="entryCotation" Title="Difficulty Scale*" Text="{Binding EntryCotation}" />
+            <local:FlatingLabel x:Name="entryCorde" Title="Rope (m*)" Keyboard="Numeric" Text="{Binding EntryCorde}"/>
 
             <VerticalStackLayout>
                 <Label FontSize="14" FontFamily="CabinBold" Text="Approach" TextColor="#03045E"/>
@@ -42,9 +42,17 @@
                 <TimePicker x:Name="Retourtemps" Time="{Binding Retourtemps}" TextColor="#0077B6" FontFamily="CabinBold" />
             </VerticalStackLayout>
 
-            <local:FlatingLabel Title="Shuttle (km)" Keyboard="Numeric" Text="{Binding NavetteDistance}"/>
-            <local:FlatingLabel Title="Source" Text="{Binding Source}" />
-            <local:FlatingLabel Title="Creator" Text="{Binding NikeName}"/>
+            <local:FlatingLabel x:Name="NavetteDistance" Title="Shuttle (km)" Keyboard="Numeric" Text="{Binding NavetteDistance}"/>
+            <local:FlatingLabel x:Name="entrySource" Title="Source" Text="{Binding Source}" />
+            <local:FlatingLabel x:Name="entryUserCreatorName" Title="Creator" Text="{Binding NikeName}"/>
+
+            <local:FlatingLabel x:Name="entryUseremail" IsVisible="false" Title="User Mail" Text="{Binding UserMail}"/>
+
+            <VerticalStackLayout x:Name="switchvalidationcanyon" IsVisible="False">
+                <Label FontSize="15" FontFamily="CabinBold" Text="Is Validated" TextColor="#03045E"/>
+                <Switch x:Name="swithIsValidated"  IsToggled="{Binding IsValidated}" OnColor="#03045E"/>
+            </VerticalStackLayout>
+
             <Button Text="Add Coordinate *" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" Clicked="AddCorrdinateClicked"/>
 
             <Frame Padding="5,0" BorderColor="Transparent" BackgroundColor="Transparent" CornerRadius="5" VerticalOptions="FillAndExpand">
@@ -101,7 +109,7 @@
                 </ListView>
             </Frame>
             <Button Text="Save Canyon" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" Clicked="SaveCannyoonClicked"/>
-            <Button x:Name="DeleteCanyonButton" Text="Delete Canyon" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" Clicked="DeleteClicked"/>
+            <Button x:Name="DeleteCanyonButton" IsVisible="false" Text="Delete Canyon" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" Clicked="DeleteClicked"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

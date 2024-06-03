@@ -69,9 +69,12 @@ namespace MAUIMobileStarterKit.ViewModels
         private string entryDeniv;
         private string entryCotation;
         private string entryCorde;
+        private string userMail;
         private TimeSpan approchetemps;
         private TimeSpan descentetemps;
         private TimeSpan retourtemps;
+
+        private bool isValidated;
 
         public CreateCanyonViewModel(AddDescriptionModal addDescriptionModal, AddCoordinatorModal addCoordinatorModal,
             ILocalStorage localStorage, ILoading loading)
@@ -84,6 +87,24 @@ namespace MAUIMobileStarterKit.ViewModels
             this.loading = loading;
         }
 
+        public bool IsValidated
+        {
+            get { return isValidated; }
+            set
+            {
+                isValidated = value;
+                NotifyPropertyChanged(nameof(IsValidated));
+            }
+        }
+        public string UserMail
+        {
+            get { return userMail; }
+            set
+            {
+                userMail = value;
+                NotifyPropertyChanged(nameof(UserMail));
+            }
+        }
         public string NavetteDistance
         {
             get { return navetteDistance; }
@@ -460,7 +481,12 @@ namespace MAUIMobileStarterKit.ViewModels
             return addCoordinatorModal;
         }
         #region
-        public async void GetCountriesAsync()
+        public int GetIndexValue(string value, string[] dateValue)
+        {
+            var index = Array.FindIndex(dateValue, x => x == value);
+            return index;
+        }
+        public async Task<bool> GetCountriesAsync()
         {
             try
             {
@@ -476,9 +502,11 @@ namespace MAUIMobileStarterKit.ViewModels
             }
             catch (Exception ex)
             {
-
+                loading.EndIndiCator();
+                return false;
             }
             loading.EndIndiCator();
+            return true;
         }
         public void LoadRegionList(string selectedCountry)
         {
@@ -590,10 +618,13 @@ namespace MAUIMobileStarterKit.ViewModels
                 return false;
             }
         }
-        public async Task<bool> SaveCanyon()
+        public async Task<bool> SaveCanyon(bool iscanyonModify)
         {
             loading.StartIndicator();
-            var canyon = new Canyon();
+            var canyon = iscanyonModify ? Constans.SelectedCanyon : new Canyon();
+            AccessDescription = AccessDescription == null ? new ObservableCollection<AccesDescent>() : AccessDescription; 
+            Coorddinates = Coorddinates == null ? new ObservableCollection<Coordonnee>() : Coorddinates;
+
             canyon.AccesDescents = AccessDescription;
             canyon.Coordonnees = Coorddinates;
 
@@ -609,7 +640,7 @@ namespace MAUIMobileStarterKit.ViewModels
                    !string.IsNullOrEmpty(Retourtemps.ToString()) && !string.IsNullOrEmpty(NikeName))
                 {
 
-                    // if (App.canyon.Id == 0)
+                    if (canyon.Id == 0)
                     {
                         canyon.Comments = new List<Comment>();
                         canyon.Reglementations = new List<Reglementation>();
@@ -664,10 +695,10 @@ namespace MAUIMobileStarterKit.ViewModels
                     canyon.CountryId = countriesList.Where(c => c.NameFr == Country).Select(n => n.Id).FirstOrDefault();
                     canyon.RegionId = regionsList.Where(c => c.Name == Region).Select(n => n.Id).FirstOrDefault();
                     canyon.StateId = statesList.Where(c => c.Name == State).Select(n => n.Id).FirstOrDefault();
-                    canyon.MountainId = mountainsList.Where(c => c.Name == Mountain).Select(n => n.Id).FirstOrDefault();
-                    canyon.BassinId = bassinsList.Where(c => c.Name == Basin).Select(n => n.Id).FirstOrDefault();
-                    canyon.CityId = citiesList.Where(c => c.Name == City).Select(n => n.Id).FirstOrDefault();
-                    canyon.RiverId = riversList.Where(c => c.Name == River).Select(n => n.Id).FirstOrDefault();
+                    canyon.MountainId = string.IsNullOrEmpty(Mountain) ? 0 : mountainsList.Where(c => c.Name == Mountain).Select(n => n.Id).FirstOrDefault();
+                    canyon.BassinId = string.IsNullOrEmpty(Basin) ? 0 : bassinsList.Where(c => c.Name == Basin).Select(n => n.Id).FirstOrDefault();
+                    canyon.CityId = string.IsNullOrEmpty(City) ? 0 : citiesList.Where(c => c.Name == City).Select(n => n.Id).FirstOrDefault();
+                    canyon.RiverId = string.IsNullOrEmpty(River) ? 0 : riversList.Where(c => c.Name == River).Select(n => n.Id).FirstOrDefault();
                     canyon.DcNote = float.Parse(EntryDcNote);
                     canyon.AltDepart = float.Parse(EntryAltDepart);
                     canyon.Deniv = int.Parse(EntryDeniv);
@@ -681,15 +712,15 @@ namespace MAUIMobileStarterKit.ViewModels
                     canyon.Approchetemps = Approchetemps.ToString();
                     canyon.Descentetemps = Descentetemps.ToString();
                     canyon.Retourtemps = Retourtemps.ToString();
-                    canyon.IsValid = true; //swithIsValidated.IsToggled;
+                    canyon.IsValid = IsValidated;
 
                     if (!string.IsNullOrEmpty(NavetteDistance))
                     {
-                        canyon.NavetteDistance = null;
+                       canyon.NavetteDistance = float.Parse(NavetteDistance);
                     }
                     else
                     {
-                        canyon.NavetteDistance = float.Parse(NavetteDistance);
+                        canyon.NavetteDistance = null;
                     }
 
                     if (!string.IsNullOrEmpty(Source))
@@ -709,26 +740,29 @@ namespace MAUIMobileStarterKit.ViewModels
                     {
                         NikeName = "";
                     }
-                    //if (entryUseremail.Text == null)
-                    //{
-                    canyon.Useremail = "";
-                    //}
-                    //else
-                    //{
-                    //    App.canyon.Useremail = entryUseremail.Text;
-                    //}
 
-                    //if (canyon.Id != 0)
-                    //{
-                    //    canyon.CreationDate = DateTime.Now;
-                    //    var result = await canyonProvider.UpdateCanyon(canyon);
-                    //}
-                    //else
+                    if (!string.IsNullOrEmpty(UserMail))
+                    {
+                        canyon.Useremail = "";
+                    }
+                    else
+                    {
+                        canyon.Useremail = UserMail;
+                    }
+
+                    if (canyon.Id != 0)
+                    {
+                        canyon.CreationDate = DateTime.Now;
+                        var result = await canyonProvider.UpdateCanyon(canyon, await localStorage.GetAsync("apiToken"));
+                        loading.EndIndiCator();
+                        return true;
+                    }
+                    else
                     {
                         canyon.CreationDate = DateTime.Now;
                         var apitoken = await localStorage.GetAsync("apiToken");
                         string output = JsonConvert.SerializeObject(canyon);
-                        await  canyonProvider.PostCanyon(canyon, apitoken);
+                        await  canyonProvider.PostCanyon(canyon, await localStorage.GetAsync("apiToken"));
                         loading.EndIndiCator();
                         return true;
                     }
@@ -739,7 +773,7 @@ namespace MAUIMobileStarterKit.ViewModels
                     return false;
                 }
             }
-            catch(Exception)
+            catch(Exception ex)
             {
                 loading.EndIndiCator();
                 return true;

@@ -23,8 +23,8 @@ namespace MAUIMobileStarterKit.Interface.APIServices
         [Get("/api/Canyons/{canyonId}")]
         Task<Canyon> GetCanyonwithId([AliasAs("canyonId")] int canyonNumber);
 
-        [Put("/api/Canyons/")]
-        Task<Canyon> UpdateCanyon([Body] Canyon canyontoupdate);
+        [Put("/api/Canyons")]
+        Task<Canyon> UpdateCanyon([Body] Canyon canyontoupdate, [Authorize("Bearer")] string token);
 
         [Get("/api/Canyons/searchbyCountryRegion")]
         Task<List<Canyon>> GetCanyonFromRegion(GetCanyonFromRegionParams parms, [Authorize("Bearer")] string token);
