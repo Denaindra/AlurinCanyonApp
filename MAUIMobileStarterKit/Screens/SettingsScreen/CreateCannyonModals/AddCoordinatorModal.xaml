@@ -5,6 +5,7 @@
              BackgroundColor="#CAF0F8"
              x:Class="MAUIMobileStarterKit.Screens.SettingsScreen.CreateCannyonModals.AddCoordinatorModal"
              xmlns:local="clr-namespace:MAUIMobileStarterKit.CustomViews">
+    <ScrollView> 
     <StackLayout Padding="5" VerticalOptions="FillAndExpand" Spacing="10" >
         <ImageButton Clicked="BackBtnClicked" Source="backarrow.png" Aspect="AspectFit" HeightRequest="25" HorizontalOptions="Start" Margin="0,10"/>
         <Frame Padding="10">
@@ -23,14 +24,15 @@
                         </x:Array>
                     </Picker.ItemsSource>
                 </Picker>
-                <local:FlatingLabel Title="Longitude*" Text="{Binding Longitude}" />
-                <local:FlatingLabel Title="Latitude*" Text="{Binding Latitude}"/>
+                <local:FlatingLabel x:Name="longitude" Title="Longitude*" Text="{Binding Longitude}" />
+                <local:FlatingLabel x:Name="latitude" Title="Latitude*" Text="{Binding Latitude}"/>
             </VerticalStackLayout>
         </Frame>
-        <Button Text="Save Coordinate" Margin="0,20,0,0" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" Clicked="SaveCoordinate"/>
+        <Button x:Name="savebtn" Text="Save Coordinate" Margin="0,20,0,0" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" Clicked="SaveCoordinate"/>
+        <Button x:Name="deleteBtn" IsVisible="false" Text="Delete Coordinate" Margin="0,20,0,0" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" Clicked="DeleteBtnClicked"/>
+        <Button x:Name="modifyBtn" Clicked="ModifyBtnClicked" IsVisible="false" Text="Modify Coordinate" Margin="0,20,0,0" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" />
         <maps:Map MyLocationEnabled="True" MapType="Hybrid"  VerticalOptions="FillAndExpand" x:Name="mapView" HeightRequest="380"/>
-
-        <Button Text="Get Coordinate" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" Clicked="GetCurrentGEOCoordinates" />
-
-    </StackLayout>
+            <Button x:Name="getCoordinates" Text="Get Coordinate" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" Clicked="GetCurrentGEOCoordinates" />
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

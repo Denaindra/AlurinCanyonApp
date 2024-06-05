@@ -1,5 +1,6 @@
 using CommunityToolkit.Maui.Core.Extensions;
 using MAUIMobileStarterKit.Constant;
+using MAUIMobileStarterKit.Screens.SettingsScreen.CreateCannyonModals;
 using MAUIMobileStarterKit.ViewModels;
 using Microsoft.Maui.Controls.Compatibility;
 
@@ -42,48 +43,47 @@ public partial class CreateCannyonScreen : ContentPage
             SetupModifyData();
         }
     }
-
     public void SetupModifyData()
     {
         if (IscanyonModify)
         {
-            countryPicker.SelectedIndex = vm.GetIndexValue(Constans.SelectedCanyon.PaysFr, vm.CountryList);
+                countryPicker.SelectedIndex = vm.GetIndexValue(Constans.SelectedCanyon.PaysFr, vm.CountryList);
 
-            if (!string.Equals(Constans.SelectedCanyon.RegionString, "undefined"))
-            {
-                vm.LoadRegionList(countryPicker.SelectedItem.ToString());
-                regionPicker.SelectedIndex = vm.GetIndexValue(Constans.SelectedCanyon.RegionString, vm.RegionList);
-            }
+                if (!string.Equals(Constans.SelectedCanyon.RegionString, "undefined"))
+                {
+                    vm.LoadRegionList(countryPicker.SelectedItem.ToString());
+                    regionPicker.SelectedIndex = vm.GetIndexValue(Constans.SelectedCanyon.RegionString, vm.RegionList);
+                }
 
-            if (!string.Equals(Constans.SelectedCanyon.Departement, "undefined"))
-            {
-                vm.LoadStateList(countryPicker.SelectedItem.ToString(), regionPicker.SelectedItem.ToString());
-                statePicker.SelectedIndex = vm.GetIndexValue(Constans.SelectedCanyon.Departement, vm.StateList);
-            }
+                if (!string.Equals(Constans.SelectedCanyon.Departement, "undefined"))
+                {
+                    vm.LoadStateList(countryPicker.SelectedItem.ToString(), regionPicker.SelectedItem.ToString());
+                    statePicker.SelectedIndex = vm.GetIndexValue(Constans.SelectedCanyon.Departement, vm.StateList);
+                }
 
-            if (!string.Equals(Constans.SelectedCanyon.Massif, "undefined"))
-            {
-                vm.LoadMountains(countryPicker.SelectedItem.ToString(), regionPicker.SelectedItem.ToString(), statePicker.SelectedItem.ToString());
-                mountainPicker.SelectedIndex = vm.GetIndexValue(Constans.SelectedCanyon.Massif, vm.MountainList);
-            }
+                if (!string.Equals(Constans.SelectedCanyon.Massif, "undefined"))
+                {
+                    vm.LoadMountains(countryPicker.SelectedItem.ToString(), regionPicker.SelectedItem.ToString(), statePicker.SelectedItem.ToString());
+                    mountainPicker.SelectedIndex = vm.GetIndexValue(Constans.SelectedCanyon.Massif, vm.MountainList);
+                }
 
-            if(!string.Equals(Constans.SelectedCanyon.BassinString, "undefined"))
-            {
-                vm.LoadBassinList(countryPicker.SelectedItem.ToString(), regionPicker.SelectedItem.ToString(), statePicker.SelectedItem.ToString(), mountainPicker.SelectedItem.ToString());
-                basinPicker.SelectedIndex = vm.GetIndexValue(Constans.SelectedCanyon.BassinString, vm.BassinList);
-            }
+                if (!string.Equals(Constans.SelectedCanyon.BassinString, "undefined"))
+                {
+                    vm.LoadBassinList(countryPicker.SelectedItem.ToString(), regionPicker.SelectedItem.ToString(), statePicker.SelectedItem.ToString(), mountainPicker.SelectedItem.ToString());
+                    basinPicker.SelectedIndex = vm.GetIndexValue(Constans.SelectedCanyon.BassinString, vm.BassinList);
+                }
 
-            if (!string.Equals(Constans.SelectedCanyon.Commune, "undefined"))
-            {
-                vm.LoadCityList(countryPicker.SelectedItem.ToString(), regionPicker.SelectedItem.ToString(), statePicker.SelectedItem.ToString(), mountainPicker.SelectedItem.ToString(), basinPicker.SelectedItem.ToString());
-                cityPicker.SelectedIndex = vm.GetIndexValue(Constans.SelectedCanyon.Commune, vm.CityList);
-            }
+                if (!string.Equals(Constans.SelectedCanyon.Commune, "undefined"))
+                {
+                    vm.LoadCityList(countryPicker.SelectedItem.ToString(), regionPicker.SelectedItem.ToString(), statePicker.SelectedItem.ToString(), mountainPicker.SelectedItem.ToString(), basinPicker.SelectedItem.ToString());
+                    cityPicker.SelectedIndex = vm.GetIndexValue(Constans.SelectedCanyon.Commune, vm.CityList);
+                }
 
-            if (!string.Equals(Constans.SelectedCanyon.Courseau, "undefined"))
-            {
-                vm.LoadRiverList(countryPicker.SelectedItem.ToString(), regionPicker.SelectedItem.ToString(), statePicker.SelectedItem.ToString(), mountainPicker.SelectedItem.ToString(), basinPicker.SelectedItem.ToString(), cityPicker.SelectedItem.ToString());
-                riverPicker.SelectedIndex = vm.GetIndexValue(Constans.SelectedCanyon.Courseau, vm.RiverList);
-            }
+                if (!string.Equals(Constans.SelectedCanyon.Courseau, "undefined"))
+                {
+                    vm.LoadRiverList(countryPicker.SelectedItem.ToString(), regionPicker.SelectedItem.ToString(), statePicker.SelectedItem.ToString(), mountainPicker.SelectedItem.ToString(), basinPicker.SelectedItem.ToString(), cityPicker.SelectedItem.ToString());
+                    riverPicker.SelectedIndex = vm.GetIndexValue(Constans.SelectedCanyon.Courseau, vm.RiverList);
+                }
 
 
 
@@ -106,6 +106,7 @@ public partial class CreateCannyonScreen : ContentPage
 
             vm.AccessDescription = Constans.SelectedCanyon.AccesDescents?.ToObservableCollection();
             vm.Coorddinates = Constans.SelectedCanyon.Coordonnees?.ToObservableCollection();
+            IscanyonModify = false;
         }
     }
 
@@ -132,44 +133,63 @@ public partial class CreateCannyonScreen : ContentPage
 
     private void AddCorrdinateClicked(object sender, EventArgs e)
     {
-        vm.PushModalAsync(vm.GetAddCoordinatorModal());
+        vm.PushModalAsync(vm.GetAddCoordinatorModal(false));
     }
 
     private void CountryPickerSelectedIndexChanged(object sender, EventArgs e)
     {
-        vm.Country = countryPicker.SelectedItem.ToString();
-        vm.LoadRegionList(countryPicker.SelectedItem.ToString());
+        if (!IscanyonModify)
+        {
+            vm.Country = countryPicker.SelectedItem.ToString();
+            vm.LoadRegionList(countryPicker.SelectedItem.ToString());
+        }
     }
-
     private void RegionPickerSelectedIndexChanged(object sender, EventArgs e)
     {
-        vm.Region = regionPicker.SelectedItem.ToString();
-        vm.LoadStateList(countryPicker.SelectedItem.ToString(), regionPicker.SelectedItem.ToString());
+        if (!IscanyonModify)
+        {
+            vm.Region = regionPicker.SelectedItem.ToString();
+            vm.LoadStateList(countryPicker.SelectedItem.ToString(), regionPicker.SelectedItem.ToString());
+        }
     }
-
     private void StatePickerSelectedIndexChanged(object sender, EventArgs e)
     {
-        vm.State = statePicker.SelectedItem.ToString();
-        vm.LoadMountains(countryPicker.SelectedItem.ToString(), regionPicker.SelectedItem.ToString(), statePicker.SelectedItem.ToString());
+        if (!IscanyonModify)
+        {
+            vm.State = statePicker.SelectedItem.ToString();
+            vm.LoadMountains(countryPicker.SelectedItem.ToString(), regionPicker.SelectedItem.ToString(), statePicker.SelectedItem.ToString());
+        }
     }
     private void MountainPickerSelectedIndexChanged(object sender, EventArgs e)
     {
-        vm.Mountain = mountainPicker.SelectedItem.ToString();
-        vm.LoadBassinList(countryPicker.SelectedItem.ToString(), regionPicker.SelectedItem.ToString(), statePicker.SelectedItem.ToString(), mountainPicker.SelectedItem.ToString());
+        if (!IscanyonModify)
+        {
+            vm.Mountain = mountainPicker.SelectedItem.ToString();
+            vm.LoadBassinList(countryPicker.SelectedItem.ToString(), regionPicker.SelectedItem.ToString(), statePicker.SelectedItem.ToString(), mountainPicker.SelectedItem.ToString());
+        }
     }
     private void BasinPickerSelectedIndexChanged(object sender, EventArgs e)
     {
-        vm.Basin = basinPicker.SelectedItem.ToString();
-        vm.LoadCityList(countryPicker.SelectedItem.ToString(), regionPicker.SelectedItem.ToString(), statePicker.SelectedItem.ToString(), mountainPicker.SelectedItem.ToString(), basinPicker.SelectedItem.ToString());
+        if (!IscanyonModify)
+        {
+            vm.Basin = basinPicker.SelectedItem.ToString();
+            vm.LoadCityList(countryPicker.SelectedItem.ToString(), regionPicker.SelectedItem.ToString(), statePicker.SelectedItem.ToString(), mountainPicker.SelectedItem.ToString(), basinPicker.SelectedItem.ToString());
+        }
     }
     private void CityPickerSelectedIndexChanged(object sender, EventArgs e)
     {
-        vm.City = cityPicker.SelectedItem.ToString();
-        vm.LoadRiverList(countryPicker.SelectedItem.ToString(), regionPicker.SelectedItem.ToString(), statePicker.SelectedItem.ToString(), mountainPicker.SelectedItem.ToString(), basinPicker.SelectedItem.ToString(), cityPicker.SelectedItem.ToString());
+        if (!IscanyonModify)
+        {
+            vm.City = cityPicker.SelectedItem.ToString();
+            vm.LoadRiverList(countryPicker.SelectedItem.ToString(), regionPicker.SelectedItem.ToString(), statePicker.SelectedItem.ToString(), mountainPicker.SelectedItem.ToString(), basinPicker.SelectedItem.ToString(), cityPicker.SelectedItem.ToString());
+        }
     }
     private void RiverPickerSelectedIndexChanged(object sender, EventArgs e)
     {
-        vm.River = riverPicker.SelectedItem.ToString();
+        if (!IscanyonModify)
+        {
+            vm.River = riverPicker.SelectedItem.ToString();
+        }
     }
     private async void DeleteClicked(object sender, EventArgs e)
     {
@@ -178,5 +198,27 @@ public partial class CreateCannyonScreen : ContentPage
         {
             var action = await DisplayAlert("Alert !!!!!!!", "Are you sure you want to delete the data ?", "OK", "Delete");
         }
+    }
+
+    private async void CoordinatesItemTapped(object sender, ItemTappedEventArgs e)
+    {
+        vm.SetTheSelecteCoordonnedModal(e.Item);
+        var action = await DisplayAlert("Coordinates", vm.GetTheSelecteCoordonnedModal().PointType + ", Long: " + vm.GetTheSelecteCoordonnedModal().Long + ", Lat: " + vm.GetTheSelecteCoordonnedModal().Lat, "OK", "Modify");
+        if (!action)
+        {
+            if (Constans.UserRole == "Administrator" || Constans.UserRole == "Premium")
+            {
+                vm.PushModalAsync(vm.GetAddCoordinatorModal(true));
+            }
+            else
+            {
+                await DisplayAlert("Error !!!!", "You have to be administrator to do this operation !!", "OK");
+            }
+        }
+    }
+
+    private void AccessDescriptionItemTapped(object sender, ItemTappedEventArgs e)
+    {
+
     }
 }

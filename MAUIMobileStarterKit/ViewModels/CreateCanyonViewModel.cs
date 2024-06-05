@@ -10,8 +10,8 @@ namespace MAUIMobileStarterKit.ViewModels
 {
     public class CreateCanyonViewModel : BaseViewModel
     {
-        private readonly AddDescriptionModal addDescriptionModal;
-        private readonly AddCoordinatorModal addCoordinatorModal;
+        private readonly AddDescriptionModal addDescriptionPopup;
+        private readonly AddCoordinatorModal addCoordinatorPopUp;
 
         private readonly ICountryProvider countryProvider;
         private readonly ILocalStorage localStorage;
@@ -75,18 +75,20 @@ namespace MAUIMobileStarterKit.ViewModels
         private TimeSpan retourtemps;
 
         private bool isValidated;
+        private Coordonnee selectedCoordenee;
 
         public CreateCanyonViewModel(AddDescriptionModal addDescriptionModal, AddCoordinatorModal addCoordinatorModal,
             ILocalStorage localStorage, ILoading loading)
         {
-            this.addCoordinatorModal = addCoordinatorModal;
-            this.addDescriptionModal = addDescriptionModal;
+            this.addCoordinatorPopUp = addCoordinatorModal;
+            this.addDescriptionPopup = addDescriptionModal;
             this.localStorage = localStorage;
             countryProvider = GetICountryProvider();
             canyonProvider = GetICanyonProvider();
             this.loading = loading;
         }
 
+        #region properties
         public bool IsValidated
         {
             get { return isValidated; }
@@ -470,15 +472,34 @@ namespace MAUIMobileStarterKit.ViewModels
                 NotifyPropertyChanged(nameof(AccessDescription));
             }
         }
+
+        #endregion
         public AddDescriptionModal GetAddDescriptionModal()
         {
-            addDescriptionModal.vm = this;
-            return addDescriptionModal;
+            addDescriptionPopup.vm = this;
+            return addDescriptionPopup;
         }
-        public AddCoordinatorModal GetAddCoordinatorModal()
+        public AddCoordinatorModal GetAddCoordinatorModal(bool ismodify, Coordonnee coordonnee = null)
         {
-            addCoordinatorModal.vm = this;
-            return addCoordinatorModal;
+            if (ismodify)
+            {
+                addCoordinatorPopUp.isModifyAddCoordinatiorModal = true;
+            }
+            else
+            {
+                addCoordinatorPopUp.isModifyAddCoordinatiorModal = false;
+            }
+            addCoordinatorPopUp.vm = this;
+            return addCoordinatorPopUp;
+        }
+        public Coordonnee GetTheSelecteCoordonnedModal()
+        {
+            return selectedCoordenee;
+        }
+
+        public void SetTheSelecteCoordonnedModal(object item)
+        {
+            selectedCoordenee = item as Coordonnee;
         }
         #region
         public int GetIndexValue(string value, string[] dateValue)
@@ -564,7 +585,7 @@ namespace MAUIMobileStarterKit.ViewModels
         {
             try
             {
-                Location location = await Geolocation.Default.GetLastKnownLocationAsync();
+                Location location = await Geolocation.Default.GetLocationAsync();
                 Latitude = location.Latitude;
                 Longitude = location.Longitude;
                 if (location != null)
@@ -590,6 +611,25 @@ namespace MAUIMobileStarterKit.ViewModels
             };
             Coorddinates.Add(cordinates);
         }
+
+        public CoordonneTypeEnum GetSelectedPointTypeIndex(int pointTypeIndex)
+        {
+             return (CoordonneTypeEnum)pointTypeIndex;
+        }
+
+        public void ModifyCordinateForCreateCanyon(Coordonnee coordonnee)
+        {
+            var oldCoordonne = Coorddinates.FirstOrDefault(id => id.Id == coordonnee.Id);
+            var oldItemIndex = Coorddinates.IndexOf(oldCoordonne);
+            Coorddinates[oldItemIndex] = coordonnee;
+        }
+
+        public void DeleteCordinateForCreateCanyon(Coordonnee coordonnee)
+        {
+            var oldCoordonne = Coorddinates.FirstOrDefault(id => id.Id == coordonnee.Id);
+            var oldItemIndex = Coorddinates.Remove(oldCoordonne);
+        }
+
         public bool SaveDescription()
         {
             if (Access != "" && Approach != "" && Decent != "" && ReturnTrip != "" && Engagement != "")

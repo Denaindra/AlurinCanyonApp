@@ -12,7 +12,7 @@
     <ScrollView>
         <VerticalStackLayout Spacing="20" Padding="10,20,10,0">
             <local:FlatingLabel x:Name="entryName" Title="Name*" Text="{Binding Name}" />
-            <Picker x:Name="countryPicker" Title="Country*" ItemsSource="{Binding CountryList}" TitleColor="#03045E" TextColor="#0077B6" FontFamily="CabinBold" SelectedIndexChanged="CountryPickerSelectedIndexChanged"/>
+            <Picker x:Name="countryPicker" Title="Country*" ItemsSource="{Binding CountryList}" TitleColor="#03045E" TextColor="#0077B6" FontFamily="CabinBold" SelectedIndexChanged="CountryPickerSelectedIndexChanged" />
             <Picker x:Name="regionPicker" Title="Region*" ItemsSource="{Binding RegionList}" TitleColor="#03045E" TextColor="#0077B6" FontFamily="CabinBold" SelectedIndexChanged="RegionPickerSelectedIndexChanged"/>
             <Picker x:Name="statePicker" Title="State" ItemsSource="{Binding StateList}" TitleColor="#03045E" TextColor="#0077B6" FontFamily="CabinBold" SelectedIndexChanged="StatePickerSelectedIndexChanged"/>
             <Picker x:Name="mountainPicker" Title="Mountain" ItemsSource="{Binding MountainList}" TitleColor="#03045E" TextColor="#0077B6" FontFamily="CabinBold" SelectedIndexChanged="MountainPickerSelectedIndexChanged"/>
@@ -56,7 +56,7 @@
             <Button Text="Add Coordinate *" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" Clicked="AddCorrdinateClicked"/>
 
             <Frame Padding="5,0" BorderColor="Transparent" BackgroundColor="Transparent" CornerRadius="5" VerticalOptions="FillAndExpand">
-                <ListView ItemsSource="{Binding Coorddinates}" HasUnevenRows="True" SelectionMode="None" SeparatorVisibility="None"  >
+                <ListView ItemsSource="{Binding Coorddinates}" ItemTapped="CoordinatesItemTapped" HasUnevenRows="True" SelectionMode="None" SeparatorVisibility="None"  >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -83,7 +83,7 @@
             
             <Button Text="Add Description *" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" Clicked="AddDescriptionClicked" />
             <Frame Padding="5,0" BorderColor="Transparent" BackgroundColor="Transparent" CornerRadius="5" VerticalOptions="FillAndExpand">
-                <ListView ItemsSource="{Binding AccessDescription}" HasUnevenRows="True" SelectionMode="None" SeparatorVisibility="None"  >
+                <ListView ItemsSource="{Binding AccessDescription}" ItemTapped="AccessDescriptionItemTapped"  HasUnevenRows="True" SelectionMode="None" SeparatorVisibility="None"  >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
