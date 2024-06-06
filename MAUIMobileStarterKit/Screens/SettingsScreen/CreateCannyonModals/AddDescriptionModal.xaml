@@ -9,8 +9,18 @@
         <StackLayout Padding="10" VerticalOptions="FillAndExpand" Spacing="10" >
             <ImageButton Clicked="BackBtnClicked" Source="backarrow.png" Aspect="AspectFit" HeightRequest="25" HorizontalOptions="Start" Margin="0,10"/>
             <Frame Padding="2" >
-                <VerticalStackLayout VerticalOptions="CenterAndExpand" Spacing="20" >
-                <local:FlatingLabel Title="Lanugae*" Margin="0,20,0,0" Text="{Binding Lanuage}"/>
+            <VerticalStackLayout VerticalOptions="CenterAndExpand" Spacing="20" >
+                <Picker x:Name="pickerLanguage" Title="Lanugae*" TitleColor="#03045E" TextColor="#0077B6" FontFamily="CabinBold">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>fr</x:String>
+                            <x:String>en</x:String>
+                            <x:String>es</x:String>
+                            <x:String>it</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+                    
                 <local:FlatingLabel Title="Access*" Text="{Binding Access}" />
                 <local:FlatingLabel Title="Approach*" Text="{Binding Approach}"/>
                 <local:FlatingLabel Title="Descent*" Text="{Binding Decent}"/>
@@ -22,8 +32,10 @@
                 <local:FlatingLabel Title="Best period" Text="{Binding Period}"/>
                 </VerticalStackLayout>
             </Frame>
-            <Button Text="Save Description" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" Clicked="SaveDescription"/>
+            <Button Text="Save Description" x:Name="savebtn" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" Clicked="SaveDescription"/>
+        <Button Text="Modify Description" x:Name="modifyBtn" IsVisible="false" FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" Clicked="ModifyBtnClicked"/>
+        <Button Text="Delete Description" x:Name="deleteBtn" IsVisible="false"  FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15" Clicked="DeleteBtnClicked"/>
 
-        </StackLayout>
+    </StackLayout>
 
 </ContentPage>

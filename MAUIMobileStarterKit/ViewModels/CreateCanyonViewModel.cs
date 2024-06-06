@@ -76,7 +76,7 @@ namespace MAUIMobileStarterKit.ViewModels
 
         private bool isValidated;
         private Coordonnee selectedCoordenee;
-
+        private AccesDescent selectedAccesDescent;
         public CreateCanyonViewModel(AddDescriptionModal addDescriptionModal, AddCoordinatorModal addCoordinatorModal,
             ILocalStorage localStorage, ILoading loading)
         {
@@ -474,20 +474,29 @@ namespace MAUIMobileStarterKit.ViewModels
         }
 
         #endregion
-        public AddDescriptionModal GetAddDescriptionModal()
-        {
-            addDescriptionPopup.vm = this;
-            return addDescriptionPopup;
-        }
-        public AddCoordinatorModal GetAddCoordinatorModal(bool ismodify, Coordonnee coordonnee = null)
+        public AddDescriptionModal GetAddDescriptionModal(bool ismodify)
         {
             if (ismodify)
             {
-                addCoordinatorPopUp.isModifyAddCoordinatiorModal = true;
+                addDescriptionPopup.isModifyAddDescriptionModal = ismodify;
             }
             else
             {
-                addCoordinatorPopUp.isModifyAddCoordinatiorModal = false;
+                addDescriptionPopup.isModifyAddDescriptionModal = ismodify;
+            }
+
+            addDescriptionPopup.vm = this;
+            return addDescriptionPopup;
+        }
+        public AddCoordinatorModal GetAddCoordinatorModal(bool ismodify)
+        {
+            if (ismodify)
+            {
+                addCoordinatorPopUp.isModifyAddCoordinatiorModal = ismodify;
+            }
+            else
+            {
+                addCoordinatorPopUp.isModifyAddCoordinatiorModal = ismodify;
             }
             addCoordinatorPopUp.vm = this;
             return addCoordinatorPopUp;
@@ -497,9 +506,19 @@ namespace MAUIMobileStarterKit.ViewModels
             return selectedCoordenee;
         }
 
+        public AccesDescent GetTheSelectedAccessDescriptionModal()
+        {
+            return selectedAccesDescent;
+        }
+
         public void SetTheSelecteCoordonnedModal(object item)
         {
             selectedCoordenee = item as Coordonnee;
+        }
+
+        public void SetTheSelecteAccessDescriptioModal(object item)
+        {
+            selectedAccesDescent = item as AccesDescent;
         }
         #region
         public int GetIndexValue(string value, string[] dateValue)
@@ -657,6 +676,19 @@ namespace MAUIMobileStarterKit.ViewModels
             {
                 return false;
             }
+        }
+
+        public void ModifyDescription(AccesDescent accesDescent)
+        {
+            var oldCoordonne = AccessDescription.FirstOrDefault(id => id.Id == accesDescent.Id);
+            var oldItemIndex = AccessDescription.IndexOf(oldCoordonne);
+            AccessDescription[oldItemIndex] = accesDescent;
+        }
+
+        public void DeleteDescription(AccesDescent accesDescent)
+        {
+            var oldCoordonne = AccessDescription.FirstOrDefault(id => id.Id == accesDescent.Id);
+            var oldItemIndex = AccessDescription.Remove(oldCoordonne);
         }
         public async Task<bool> SaveCanyon(bool iscanyonModify)
         {
@@ -819,7 +851,6 @@ namespace MAUIMobileStarterKit.ViewModels
                 return true;
             }
         }
-
         public async Task<bool> DeleteCanyon(long canyonId)
         {
             try

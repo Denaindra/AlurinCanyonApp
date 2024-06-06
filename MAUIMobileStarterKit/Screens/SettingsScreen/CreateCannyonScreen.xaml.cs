@@ -2,7 +2,6 @@ using CommunityToolkit.Maui.Core.Extensions;
 using MAUIMobileStarterKit.Constant;
 using MAUIMobileStarterKit.Screens.SettingsScreen.CreateCannyonModals;
 using MAUIMobileStarterKit.ViewModels;
-using Microsoft.Maui.Controls.Compatibility;
 
 namespace MAUIMobileStarterKit.Screens.SettingsScreen;
 
@@ -128,7 +127,7 @@ public partial class CreateCannyonScreen : ContentPage
 
     private void AddDescriptionClicked(object sender, EventArgs e)
     {
-        vm.PushModalAsync(vm.GetAddDescriptionModal());
+        vm.PushModalAsync(vm.GetAddDescriptionModal(false));
     }
 
     private void AddCorrdinateClicked(object sender, EventArgs e)
@@ -217,8 +216,20 @@ public partial class CreateCannyonScreen : ContentPage
         }
     }
 
-    private void AccessDescriptionItemTapped(object sender, ItemTappedEventArgs e)
+    private async void AccessDescriptionItemTapped(object sender, ItemTappedEventArgs e)
     {
-
+        vm.SetTheSelecteAccessDescriptioModal(e.Item);
+        var action = await DisplayAlert("Description", vm.GetTheSelectedAccessDescriptionModal().Acces + "... ", "OK", "Modify");
+        if (!action)
+        {
+            if (Constans.UserRole == "Administrator" || Constans.UserRole == "Premium")
+            {
+                  vm.PushModalAsync(vm.GetAddDescriptionModal(true));
+            }
+            else
+            {
+                await DisplayAlert("Error !!!!", "You have to be administrator to do this operation !!", "OK");
+            }
+        }
     }
 }
