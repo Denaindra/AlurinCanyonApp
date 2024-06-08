@@ -43,9 +43,14 @@ public partial class ProAddPopup : Popup
         }
     }
 
-    private void DeleteBtnClicked(object sender, EventArgs e)
+    private async void DeleteBtnClicked(object sender, EventArgs e)
     {
-        
+        var results = await vm.DeletePro(SeletetdProfessionnal);
+        if (results)
+        {
+            vm.GetPro();
+        }
+        this.Close();
     }
 
     private async void SaveBtnClicked(object sender, EventArgs e)

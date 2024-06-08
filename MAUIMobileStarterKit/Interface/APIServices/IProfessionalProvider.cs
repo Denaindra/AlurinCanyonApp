@@ -20,7 +20,7 @@ namespace MAUIMobileStarterKit.Interface.APIServices
         Task ModifyPro([Authorize("Bearer")] string token, [AliasAs("id")] int id, Professionnal professionelModify);
 
         [Delete("/api/Professionnal")]
-        Task DeletePro([AliasAs("id")] int id);
+        Task DeletePro([Authorize("Bearer")] string token, [AliasAs("id")] int id);
 
 
 

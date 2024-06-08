@@ -724,6 +724,22 @@ namespace MAUIMobileStarterKit.ViewModels
                 return false;
             }
         }
+
+        public async Task<bool> DeletePro(Professionnal professionnal)
+        {
+            try
+            {
+                loading.StartIndicator();
+                await professionalProvider.DeletePro(await localStorage.GetAsync("apiToken"), professionnal.Id);
+                loading.EndIndiCator();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                loading.EndIndiCator();
+                return false;
+            }
+        }
         public async void GetPro()
         {
             try
@@ -731,6 +747,7 @@ namespace MAUIMobileStarterKit.ViewModels
                 loading.StartIndicator();
                 var results = await professionalProvider.GetProsCanyon(await localStorage.GetAsync("apiToken"), Constans.SelectedCanyon.Id);
                 Constans.SelectedCanyon.Professionnals = results;
+                LoadPerforssioanlList();
                 loading.EndIndiCator();
             }
             catch (Exception ex)
