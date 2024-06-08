@@ -6,9 +6,9 @@
         <ScrollView  x:Name="scrolllayout" Padding="10">
             <StackLayout Spacing="20">
                 <Label x:Name="EmptyProfessionnal" IsVisible="True" Text="There is no professionnal guide who propose this canyon. If you are a professionnal, please contact us if you want appear in this section." HorizontalTextAlignment="Center" FontFamily="CabinBold"  TextColor="#03045E" FontSize="15" TextDecorations="Underline"/>
-                <Button x:Name="AddProButton" Text="Add Pro" Clicked="AddProButtonClicked"  FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15"/>
+                <Button x:Name="AddProButton" IsVisible="false" Text="Add Pro" Clicked="AddProButtonClicked"  FontFamily="CabinBold" BackgroundColor="#00B4D8" CornerRadius="20" TextColor="White" FontSize="15"/>
     
-                    <ListView x:Name="ProListView" ItemsSource="{Binding ProfessioanlList}" SelectionMode="None" 
+                    <ListView x:Name="ProListView" ItemsSource="{Binding ProfessioanlList}" SelectionMode="None" ItemTapped="ProListViewItemTapped"
          HasUnevenRows="True">
                         <ListView.ItemTemplate>
                             <DataTemplate>

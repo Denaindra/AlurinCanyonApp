@@ -45,7 +45,7 @@ namespace MAUIMobileStarterKit.ViewModels
 
         private ContactUsPage contactUsPage;
         private CreateCannyonScreen careateCannyonScreen;
-
+        private Professionnal selectedProfessionnalItem;
         public CannyonBasedViewModel(ILoading loading, ILocalStorage localStorage, IPopupService popupService, ContactUsPage contactUsPage, CreateCannyonScreen cannyonScreen)
         {
             this.loading = loading;
@@ -154,9 +154,17 @@ namespace MAUIMobileStarterKit.ViewModels
         {
             popupService.ShowPopup(new AddCommentPopup(this));
         }
-        public void OpenProPopup()
+        public void OpenProPopup(bool ismodify)
         {
-            popupService.ShowPopup(new ProAddPopup(this));
+            if (ismodify)
+            {
+                popupService.ShowPopup(new ProAddPopup(this, ismodify));
+            }
+            else
+            {
+                popupService.ShowPopup(new ProAddPopup(this, ismodify));
+            }
+
         }
         public void OpenReglementationAddPagePopup()
         {
@@ -290,7 +298,7 @@ namespace MAUIMobileStarterKit.ViewModels
         public void AskingForChnaged()
         {
             contactUsPage.propblumemsg = Constans.SelectedCanyon.Name;
-            contactUsPage.IsbackBtnEnable = true;   
+            contactUsPage.IsbackBtnEnable = true;
             PushModalAsync(contactUsPage);
         }
         public void ModifyCanyon()
@@ -298,6 +306,17 @@ namespace MAUIMobileStarterKit.ViewModels
             careateCannyonScreen.IscanyonModify = true;
             PushModalAsync(careateCannyonScreen);
         }
+
+        public void SetSelectedProfessionnalItem(object professionnal)
+        {
+            selectedProfessionnalItem = (Professionnal)professionnal;
+        }
+
+        public Professionnal GetSelectedProfessionnalItem()
+        {
+            return selectedProfessionnalItem;
+        }
+
         #region api calls
         public async Task<bool> GetCanyonList(string region)
         {
@@ -631,10 +650,10 @@ namespace MAUIMobileStarterKit.ViewModels
         {
             try
             {
-              Constans.SelectedCanyon.Comments = await commentProvider.GetCommentCanyon(selectedCanyonId, await localStorage.GetAsync("apiToken"));
+                Constans.SelectedCanyon.Comments = await commentProvider.GetCommentCanyon(selectedCanyonId, await localStorage.GetAsync("apiToken"));
                 return true;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return false;
             }
@@ -690,6 +709,21 @@ namespace MAUIMobileStarterKit.ViewModels
 
 
         }
+        public async Task<bool> ModifyPro(Professionnal professionnal)
+        {
+            try
+            {
+                loading.StartIndicator();
+                await professionalProvider.ModifyPro(await localStorage.GetAsync("apiToken"), professionnal.Id, professionnal);
+                loading.EndIndiCator();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                loading.EndIndiCator();
+                return false;
+            }
+        }
         public async void GetPro()
         {
             try
@@ -699,7 +733,7 @@ namespace MAUIMobileStarterKit.ViewModels
                 Constans.SelectedCanyon.Professionnals = results;
                 loading.EndIndiCator();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 loading.EndIndiCator();
             }

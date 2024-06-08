@@ -8,46 +8,34 @@ namespace MAUIMobileStarterKit.Screens.AddNewItem;
 public partial class ProAddPopup : Popup
 {
     private CannyonBasedViewModel vm;
-    private Professionnal professionnal;
+    private Professionnal SeletetdProfessionnal;
     public int idprofessionnal;
-    public ProAddPopup(CannyonBasedViewModel vm)
+    private bool ismodify;
+    public ProAddPopup(CannyonBasedViewModel vm,bool ismodify)
     {
         InitializeComponent();
         this.vm = vm;
         popUpLayout.WidthRequest = Constans.DeviceWidth * 0.8;
-        SteupUI();
-    }
-    public ProAddPopup(CannyonBasedViewModel vm, Professionnal professionnal)
-	{
-		InitializeComponent();
-        this.vm = vm;
-        popUpLayout.WidthRequest = Constans.DeviceWidth * 0.8;
-        this.professionnal = professionnal;
+        this.ismodify = ismodify;
         SteupUI();
     }
 
     private void SteupUI()
     {
-        if (professionnal.Id != 0)
+        if (ismodify)
         {
-            var entryLogoText = ((Entry)entryLogo.FindByName("EntryField")).Text;
-            var entryNameText = ((Entry)entryName.FindByName("EntryField")).Text;
-            var entryAdressText = ((Entry)entryAdress.FindByName("EntryField")).Text;
-            var entryPhoneText = ((Entry)entryPhone.FindByName("EntryField")).Text;
-            var entryEmailText = ((Entry)entryEmail.FindByName("EntryField")).Text;
-            var entryUrlwebsiteproText = ((Entry)entryUrlwebsitepro.FindByName("EntryField")).Text;
-            var entryDescriptionText = ((Entry)entryDescription.FindByName("EntryField")).Text;
+            SeletetdProfessionnal = vm.GetSelectedProfessionnalItem();
 
-            idprofessionnal = professionnal.Id;
+            idprofessionnal = SeletetdProfessionnal.Id;
             deleteButtonpro.IsVisible = true;
-            entryLogoText = professionnal.Logo;
-            entryNameText = professionnal.Name;
-            entryAdressText = professionnal.Adress;
-            entryPhoneText = professionnal.Phone;
-            entryEmailText = professionnal.Email;
-            entryUrlwebsiteproText = professionnal.Website;
-            entryDescriptionText = professionnal.Description;
-            entryDatePro.Date = professionnal.CreationDate;
+            entryLogo.Text = SeletetdProfessionnal.Logo;
+            entryName.Text = SeletetdProfessionnal.Name;
+            entryAdress.Text = SeletetdProfessionnal.Adress;
+            entryPhone.Text = SeletetdProfessionnal.Phone;
+            entryEmail.Text = SeletetdProfessionnal.Email;
+            entryUrlwebsitepro.Text = SeletetdProfessionnal.Website;
+            entryDescription.Text = SeletetdProfessionnal.Description;
+            entryDatePro.Date = SeletetdProfessionnal.CreationDate;
         }
         else
         {
@@ -62,21 +50,27 @@ public partial class ProAddPopup : Popup
 
     private async void SaveBtnClicked(object sender, EventArgs e)
     {
-        var entryLogoText = ((Entry)entryLogo.FindByName("EntryField")).Text;
-        var entryNameText = ((Entry)entryName.FindByName("EntryField")).Text;
-        var entryAdressText = ((Entry)entryAdress.FindByName("EntryField")).Text;
-        var entryPhoneText = ((Entry)entryPhone.FindByName("EntryField")).Text;
-        var entryEmailText = ((Entry)entryEmail.FindByName("EntryField")).Text;
-        var entryUrlwebsiteproText = ((Entry)entryUrlwebsitepro.FindByName("EntryField")).Text;
-        var entryDescriptionText = ((Entry)entryDescription.FindByName("EntryField")).Text;
-
-        if (idprofessionnal != 0)
+        if (ismodify)
         {
+            SeletetdProfessionnal.Logo = entryLogo.Text;
+            SeletetdProfessionnal.Name = entryName.Text;
+            SeletetdProfessionnal.Adress = entryAdress.Text;
+            SeletetdProfessionnal.Phone = entryPhone.Text;
+            SeletetdProfessionnal.Email = entryEmail.Text;
+            SeletetdProfessionnal.Website = entryUrlwebsitepro.Text;
+            SeletetdProfessionnal.Description = entryDescription.Text;
+            SeletetdProfessionnal.CreationDate = entryDatePro.Date;
 
+            var results = await vm.ModifyPro(SeletetdProfessionnal);
+            if (results)
+            {
+                vm.GetPro();
+            }
+            this.Close();
         }
         else
         {
-            var results = await vm.SavePro(entryLogoText, entryNameText, entryAdressText, entryPhoneText, entryEmailText, entryUrlwebsiteproText, entryDescriptionText, entryDatePro.Date);
+            var results = await vm.SavePro(entryLogo.Text, entryName.Text, entryAdress.Text, entryPhone.Text, entryEmail.Text, entryUrlwebsitepro.Text, entryDescription.Text, entryDatePro.Date);
             if (results)
             {
               vm.GetPro();
