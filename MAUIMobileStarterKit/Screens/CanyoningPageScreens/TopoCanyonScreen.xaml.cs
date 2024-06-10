@@ -41,6 +41,31 @@ public partial class TopoCanyonScreen : ContentView
 
     private void SaveObstacleClicked(object sender, EventArgs e)
     {
+        vm.SaveObstropyObsacle();
+    }
 
+    private async void TopoListViewItemTapped(object sender, ItemTappedEventArgs e)
+    {
+        vm.SeletedTOPOCanyon(e.Item);
+        var action = await App.Current.MainPage.DisplayAlert(vm.GetSeletedTOPOCanyon().TypeObstacle + ", " + vm.GetSeletedTOPOCanyon().TypeDanger, vm.GetSeletedTOPOCanyon().TopoComment, "OK", "Modify");
+        if (!action)
+        {
+            if (!vm.GetSeletedTOPOCanyon().IsValidTopo || Constans.UserRole == "Administrator" || Constans.UserRole == "Premium")
+            {
+               // await Navigation.PushAsync(new ModifyTopoPage(item));
+            }
+            else
+            {
+               await App.Current.MainPage.DisplayAlert("Error !!!!", "You have to be administrator to do this operation !!", "OK");
+            }
+        }
+    }
+
+    private void CheckBoxCheckedChanged(object sender, CheckedChangedEventArgs e)
+    {
+        if (Constans.UserRole == "Administrator")
+        {
+            saveButton.IsVisible = true;
+        }
     }
 }

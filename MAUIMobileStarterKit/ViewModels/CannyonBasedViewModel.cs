@@ -46,6 +46,7 @@ namespace MAUIMobileStarterKit.ViewModels
         private ContactUsPage contactUsPage;
         private CreateCannyonScreen careateCannyonScreen;
         private Professionnal selectedProfessionnalItem;
+        private Topography selectedTopoItem;
         public CannyonBasedViewModel(ILoading loading, ILocalStorage localStorage, IPopupService popupService, ContactUsPage contactUsPage, CreateCannyonScreen cannyonScreen)
         {
             this.loading = loading;
@@ -180,7 +181,14 @@ namespace MAUIMobileStarterKit.ViewModels
 
                 foreach (var topoItem in topoCanyonResuelts)
                 {
-                    topoItem.IsAuthorize = false;
+                    if(Constans.UserRole == "Administrator")
+                    {
+                        topoItem.IsAuthorize = true;
+                    }
+                    else
+                    {
+                        topoItem.IsAuthorize = false;
+                    }
                     topoItem.IsValidTopo = false;
                     TopographiesList.Add(topoItem);
                 }
@@ -317,7 +325,21 @@ namespace MAUIMobileStarterKit.ViewModels
             return selectedProfessionnalItem;
         }
 
+        public void SeletedTOPOCanyon(object selectedTopo)
+        {
+            selectedTopoItem = (Topography)selectedTopo;
+        }
+
+        public Topography GetSeletedTOPOCanyon()
+        {
+            return selectedTopoItem;
+        }
+
         #region api calls
+        public void SaveObstropyObsacle()
+        {
+            topoProvider.ModifyListTopo(TopographiesList.ToList());
+        }
         public async Task<bool> GetCanyonList(string region)
         {
             try
