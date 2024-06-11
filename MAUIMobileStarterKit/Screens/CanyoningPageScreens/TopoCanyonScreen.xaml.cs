@@ -31,12 +31,11 @@ public partial class TopoCanyonScreen : ContentView
                 }
             }
         }
-
     }
 
     private void AddObestacleClicked(object sender, EventArgs e)
     {
-        vm.OpenAddTopoCanyonPopup();
+        vm.OpenAddTopoCanyonPopup(false);
     }
 
     private void SaveObstacleClicked(object sender, EventArgs e)
@@ -52,7 +51,7 @@ public partial class TopoCanyonScreen : ContentView
         {
             if (!vm.GetSeletedTOPOCanyon().IsValidTopo || Constans.UserRole == "Administrator" || Constans.UserRole == "Premium")
             {
-               // await Navigation.PushAsync(new ModifyTopoPage(item));
+                vm.OpenAddTopoCanyonPopup(true);
             }
             else
             {

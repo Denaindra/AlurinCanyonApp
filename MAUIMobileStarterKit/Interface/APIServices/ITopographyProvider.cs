@@ -20,7 +20,7 @@ namespace MAUIMobileStarterKit.Interface.APIServices
         Task PostTopo(Topography topography);
 
         [Put("/api/Topography")]
-        Task<IList<Topography>> ModifyTopo([AliasAs("id")] int id);
+        Task ModifyTopo([AliasAs("id")] int id, Topography topography);
 
         [Put("/api/Topography/list")]
         Task ModifyListTopo(IList<Topography> topographiestoModify);

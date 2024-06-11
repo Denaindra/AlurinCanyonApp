@@ -147,9 +147,9 @@ namespace MAUIMobileStarterKit.ViewModels
                 NotifyPropertyChanged(nameof(CommentsList));
             }
         }
-        public void OpenAddTopoCanyonPopup()
+        public void OpenAddTopoCanyonPopup(bool isModify)
         {
-            popupService.ShowPopup(new AddTopoCanyon(this));
+            popupService.ShowPopup(new AddTopoCanyon(this,isModify));
         }
         public void OpenAddCommentCanyonPopup()
         {
@@ -441,23 +441,18 @@ namespace MAUIMobileStarterKit.ViewModels
                             userTopo.PositionPoint = PositionPoint.RiveGauche;
                         }
                     }
-                    else
-                    {
-
-                    }
                     userTopo.TopoComment = commentoftheuser;
-                    //if (App.userApp.Role == "Administrator")
-                    //{
-                    //    userTopo.IsValidTopo = true;
-                    //}
-                    //else
+                    if (Constans.UserRole == "Administrator")
+                    {
+                        userTopo.IsValidTopo = true;
+                    }
+                    else
                     {
                         userTopo.IsValidTopo = false;
                     }
                 }
                 else
                 {
-                    //  DisplayAlert(AppResources.AppResources.MessageError, AppResources.AppResources.MessageEnterAllValues, "OK");
                     return false;
                 }
                 if (numswithSize.Contains(seletedtedIndex))
@@ -468,7 +463,6 @@ namespace MAUIMobileStarterKit.ViewModels
                     }
                     else
                     {
-                        // DisplayAlert(AppResources.AppResources.MessageError, AppResources.AppResources.MessageEnterAllValues, "OK");
                         return false;
                     }
                 }
@@ -481,113 +475,11 @@ namespace MAUIMobileStarterKit.ViewModels
                     }
                     else
                     {
-                        //DisplayAlert(AppResources.AppResources.MessageError, AppResources.AppResources.MessageEnterAllValues, "OK");
                         return false;
                     }
                 }
 
-                if (userTopo.TypeDanger == DangerTypeEnum.Drossage)
-                {
-                    userTopo.ImageDanger = "watercycle.png";
-                }
-                if (userTopo.TypeDanger == DangerTypeEnum.RockFall)
-                {
-                    userTopo.ImageDanger = "ChutePierre.png";
-                }
-                if (userTopo.TypeDanger == DangerTypeEnum.RopeBlocking)
-                {
-                    userTopo.ImageDanger = "Coincement.png";
-                }
-                if (userTopo.TypeDanger == DangerTypeEnum.RopeFriction)
-                {
-                    userTopo.ImageDanger = "Coupe.png";
-                }
-                if (userTopo.TypeDanger == DangerTypeEnum.Slippery)
-                {
-                    userTopo.ImageDanger = "slippery.png";
-                }
-                if (userTopo.TypeDanger == DangerTypeEnum.Syphon)
-                {
-                    userTopo.ImageDanger = "Syphon.png";
-                }
-
-                if (userTopo.TypeObstacle == ObstacleTypeEnum.Barrage)
-                {
-                    userTopo.ImageObstacle = "Barrage.png";
-                }
-                if (userTopo.TypeObstacle == ObstacleTypeEnum.Danger)
-                {
-                    userTopo.ImageObstacle = "Desescalade.png";
-                }
-                if (userTopo.TypeObstacle == ObstacleTypeEnum.Escape)
-                {
-                    userTopo.ImageObstacle = "Echap.png";
-                }
-                if (userTopo.TypeObstacle == ObstacleTypeEnum.Road)
-                {
-                    userTopo.ImageObstacle = "road.png";
-                }
-                if (userTopo.TypeObstacle == ObstacleTypeEnum.RocksChaos)
-                {
-                    userTopo.ImageObstacle = "Desescalade_1.png";
-                }
-                if (userTopo.TypeObstacle == ObstacleTypeEnum.RunningHand)
-                {
-                    userTopo.ImageObstacle = "Maincourante.png";
-                }
-                if (userTopo.TypeObstacle == ObstacleTypeEnum.Siphon)
-                {
-                    userTopo.ImageObstacle = "Syphon.png";
-                }
-                if (userTopo.TypeObstacle == ObstacleTypeEnum.Toboggan)
-                {
-                    userTopo.ImageObstacle = "Toboggan.png";
-                }
-                if (userTopo.TypeObstacle == ObstacleTypeEnum.Trees)
-                {
-                    userTopo.ImageObstacle = "AmarrageNaturel.png";
-                }
-                if (userTopo.TypeObstacle == ObstacleTypeEnum.Tributary)
-                {
-                    userTopo.ImageObstacle = "tributary.png";
-                }
-                if (userTopo.TypeObstacle == ObstacleTypeEnum.Tunnel)
-                {
-                    userTopo.ImageObstacle = "cave.png";
-                }
-                if (userTopo.TypeObstacle == ObstacleTypeEnum.Walking)
-                {
-                    userTopo.ImageObstacle = "Marche.png";
-                }
-                if (userTopo.TypeObstacle == ObstacleTypeEnum.Waterfall)
-                {
-                    userTopo.ImageObstacle = "Cascade.png";
-                }
-                if (userTopo.TypeObstacle == ObstacleTypeEnum.jump)
-                {
-                    userTopo.ImageObstacle = "Saut.png";
-                }
-                if (userTopo.TypeObstacle == ObstacleTypeEnum.swimming)
-                {
-                    userTopo.ImageObstacle = "Nage.png";
-                }
-                if (userTopo.TypeObstacle == ObstacleTypeEnum.relais)
-                {
-                    userTopo.ImageObstacle = "Relais.png";
-                }
-                if (userTopo.TypeObstacle == ObstacleTypeEnum.monopoint)
-                {
-                    userTopo.ImageObstacle = "Monopoint.png";
-                }
-                if (userTopo.TypeObstacle == ObstacleTypeEnum.Exit)
-                {
-                    userTopo.ImageObstacle = "Exit.png";
-                }
-                if (userTopo.TypeObstacle == ObstacleTypeEnum.Bridge)
-                {
-                    userTopo.ImageObstacle = "bridge.png";
-                }
-
+                SetToPoImage(userTopo);
                 userTopo.CreationDate = DateTime.Now;
                 userTopo.UserName = await localStorage.GetAsync("Name");
                 await topoProvider.PostTopo(userTopo);
@@ -603,6 +495,185 @@ namespace MAUIMobileStarterKit.ViewModels
 
             }
             return true;
+        }
+        public async Task<bool> DeleteTopoCanyon(int topoId)
+        {
+            await topoProvider.DeleteTopo(topoId);
+            return true;
+        }
+        public async Task<bool> ModifyTopoGraphy(int obstaclePickerSelectedIndex, bool stackSwitchRiveIsVisible, bool PostionpointIsToggled, int typeDangerPickerSelectedIndex, List<int> numswithSize, string obstacleSize, string Commentoftheuser)
+        {
+            Topography userTopo = new Topography();
+
+            userTopo.CanyonId = Constans.SelectedCanyon.Id;
+            userTopo.Id = GetSeletedTOPOCanyon().Id;
+            userTopo.TypeDanger = DangerTypeEnum.None;
+            userTopo.PositionPoint = PositionPoint.None;
+
+            if (obstaclePickerSelectedIndex >= 0)
+            {
+                userTopo.TypeObstacle = (ObstacleTypeEnum)obstaclePickerSelectedIndex;
+                if (stackSwitchRiveIsVisible)
+                {
+                    if (PostionpointIsToggled)
+                    {
+                        userTopo.PositionPoint = PositionPoint.RiveDroite;
+                    }
+                    else
+                    {
+                        userTopo.PositionPoint = PositionPoint.RiveGauche;
+                    }
+                }
+                userTopo.TopoComment = Commentoftheuser;
+
+                if (Constans.UserRole == "Administrator")
+                {
+                    userTopo.IsValidTopo = true;
+                    userTopo.ValidationDate = DateTime.Now;
+                }
+                else
+                {
+                    userTopo.IsValidTopo = false;
+                }
+
+            }
+            else
+            {
+                return false;
+            }
+            if (numswithSize.Contains(obstaclePickerSelectedIndex))
+            {
+                if (!string.IsNullOrEmpty(obstacleSize))
+                {
+                    userTopo.TailleObstacle = obstacleSize;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            if (obstaclePickerSelectedIndex == 0)
+            {
+                if (typeDangerPickerSelectedIndex >= 0)
+                {
+                    userTopo.TypeDanger = (DangerTypeEnum)typeDangerPickerSelectedIndex;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            userTopo.CreationDate = DateTime.Now;
+            SetToPoImage(userTopo);
+            userTopo.UserName = await localStorage.GetAsync("Name");
+            await topoProvider.ModifyTopo(userTopo.Id, userTopo);
+            return true;
+        }
+        public void SetToPoImage(Topography userTopo)
+        {
+            if (userTopo.TypeDanger == DangerTypeEnum.Drossage)
+            {
+                userTopo.ImageDanger = "watercycle.png";
+            }
+            if (userTopo.TypeDanger == DangerTypeEnum.RockFall)
+            {
+                userTopo.ImageDanger = "ChutePierre.png";
+            }
+            if (userTopo.TypeDanger == DangerTypeEnum.RopeBlocking)
+            {
+                userTopo.ImageDanger = "Coincement.png";
+            }
+            if (userTopo.TypeDanger == DangerTypeEnum.RopeFriction)
+            {
+                userTopo.ImageDanger = "Coupe.png";
+            }
+            if (userTopo.TypeDanger == DangerTypeEnum.Slippery)
+            {
+                userTopo.ImageDanger = "slippery.png";
+            }
+            if (userTopo.TypeDanger == DangerTypeEnum.Syphon)
+            {
+                userTopo.ImageDanger = "Syphon.png";
+            }
+
+            if (userTopo.TypeObstacle == ObstacleTypeEnum.Barrage)
+            {
+                userTopo.ImageObstacle = "Barrage.png";
+            }
+            if (userTopo.TypeObstacle == ObstacleTypeEnum.Danger)
+            {
+                userTopo.ImageObstacle = "Desescalade.png";
+            }
+            if (userTopo.TypeObstacle == ObstacleTypeEnum.Escape)
+            {
+                userTopo.ImageObstacle = "Echap.png";
+            }
+            if (userTopo.TypeObstacle == ObstacleTypeEnum.Road)
+            {
+                userTopo.ImageObstacle = "road.png";
+            }
+            if (userTopo.TypeObstacle == ObstacleTypeEnum.RocksChaos)
+            {
+                userTopo.ImageObstacle = "Desescalade_1.png";
+            }
+            if (userTopo.TypeObstacle == ObstacleTypeEnum.RunningHand)
+            {
+                userTopo.ImageObstacle = "Maincourante.png";
+            }
+            if (userTopo.TypeObstacle == ObstacleTypeEnum.Siphon)
+            {
+                userTopo.ImageObstacle = "Syphon.png";
+            }
+            if (userTopo.TypeObstacle == ObstacleTypeEnum.Toboggan)
+            {
+                userTopo.ImageObstacle = "Toboggan.png";
+            }
+            if (userTopo.TypeObstacle == ObstacleTypeEnum.Trees)
+            {
+                userTopo.ImageObstacle = "AmarrageNaturel.png";
+            }
+            if (userTopo.TypeObstacle == ObstacleTypeEnum.Tributary)
+            {
+                userTopo.ImageObstacle = "tributary.png";
+            }
+            if (userTopo.TypeObstacle == ObstacleTypeEnum.Tunnel)
+            {
+                userTopo.ImageObstacle = "cave.png";
+            }
+            if (userTopo.TypeObstacle == ObstacleTypeEnum.Walking)
+            {
+                userTopo.ImageObstacle = "Marche.png";
+            }
+            if (userTopo.TypeObstacle == ObstacleTypeEnum.Waterfall)
+            {
+                userTopo.ImageObstacle = "Cascade.png";
+            }
+            if (userTopo.TypeObstacle == ObstacleTypeEnum.jump)
+            {
+                userTopo.ImageObstacle = "Saut.png";
+            }
+            if (userTopo.TypeObstacle == ObstacleTypeEnum.swimming)
+            {
+                userTopo.ImageObstacle = "Nage.png";
+            }
+            if (userTopo.TypeObstacle == ObstacleTypeEnum.relais)
+            {
+                userTopo.ImageObstacle = "Relais.png";
+            }
+            if (userTopo.TypeObstacle == ObstacleTypeEnum.monopoint)
+            {
+                userTopo.ImageObstacle = "Monopoint.png";
+            }
+            if (userTopo.TypeObstacle == ObstacleTypeEnum.Exit)
+            {
+                userTopo.ImageObstacle = "Exit.png";
+            }
+            if (userTopo.TypeObstacle == ObstacleTypeEnum.Bridge)
+            {
+                userTopo.ImageObstacle = "bridge.png";
+            }
         }
         public async Task<bool> SendComments(int flowPickerIndex, int airTempPickerIndex, int waterTempPickerIndex, string commentoftheuser, bool nickNameswith, bool seeorDone,
             DateTime dateTime)
