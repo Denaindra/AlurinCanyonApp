@@ -483,6 +483,7 @@ namespace MAUIMobileStarterKit.ViewModels
                 userTopo.CreationDate = DateTime.Now;
                 userTopo.UserName = await localStorage.GetAsync("Name");
                 await topoProvider.PostTopo(userTopo);
+                await  LoadTopographies();
             }
             catch (Exception e)
             {
@@ -499,6 +500,7 @@ namespace MAUIMobileStarterKit.ViewModels
         public async Task<bool> DeleteTopoCanyon(int topoId)
         {
             await topoProvider.DeleteTopo(topoId);
+            await LoadTopographies();
             return true;
         }
         public async Task<bool> ModifyTopoGraphy(int obstaclePickerSelectedIndex, bool stackSwitchRiveIsVisible, bool PostionpointIsToggled, int typeDangerPickerSelectedIndex, List<int> numswithSize, string obstacleSize, string Commentoftheuser)
@@ -569,6 +571,7 @@ namespace MAUIMobileStarterKit.ViewModels
             SetToPoImage(userTopo);
             userTopo.UserName = await localStorage.GetAsync("Name");
             await topoProvider.ModifyTopo(userTopo.Id, userTopo);
+            await LoadTopographies();
             return true;
         }
         public void SetToPoImage(Topography userTopo)
