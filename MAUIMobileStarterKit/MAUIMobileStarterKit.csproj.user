@@ -19,6 +19,9 @@
     <MauiXaml Update="Screens\AddNewItem\AddTopoCanyon.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="Screens\AddNewItem\CommentModifyPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="Screens\AddNewItem\ProAddPopup.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>

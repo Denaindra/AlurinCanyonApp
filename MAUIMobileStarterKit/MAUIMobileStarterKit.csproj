@@ -169,6 +169,9 @@
 	  <MauiXaml Update="Screens\AddNewItem\AddTopoCanyon.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Screens\AddNewItem\CommentModifyPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Screens\AddNewItem\ProAddPopup.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

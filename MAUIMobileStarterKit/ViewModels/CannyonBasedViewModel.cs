@@ -47,6 +47,7 @@ namespace MAUIMobileStarterKit.ViewModels
         private CreateCannyonScreen careateCannyonScreen;
         private Professionnal selectedProfessionnalItem;
         private Topography selectedTopoItem;
+        private Comment selectedComment;
         public CannyonBasedViewModel(ILoading loading, ILocalStorage localStorage, IPopupService popupService, ContactUsPage contactUsPage, CreateCannyonScreen cannyonScreen)
         {
             this.loading = loading;
@@ -155,6 +156,12 @@ namespace MAUIMobileStarterKit.ViewModels
         {
             popupService.ShowPopup(new AddCommentPopup(this));
         }
+
+        public void OpenModifyCommentCanyonPopup()
+        {
+            popupService.ShowPopup(new CommentModifyPage(this,GetSelectedComment().Id.ToString()));
+        }
+
         public void OpenProPopup(bool ismodify)
         {
             if (ismodify)
@@ -314,28 +321,57 @@ namespace MAUIMobileStarterKit.ViewModels
             careateCannyonScreen.IscanyonModify = true;
             PushModalAsync(careateCannyonScreen);
         }
-
         public void SetSelectedProfessionnalItem(object professionnal)
         {
             selectedProfessionnalItem = (Professionnal)professionnal;
         }
-
         public Professionnal GetSelectedProfessionnalItem()
         {
             return selectedProfessionnalItem;
         }
-
         public void SeletedTOPOCanyon(object selectedTopo)
         {
             selectedTopoItem = (Topography)selectedTopo;
         }
-
         public Topography GetSeletedTOPOCanyon()
         {
             return selectedTopoItem;
         }
-
+        public void SetSelectedComment(object obj)
+        {
+            selectedComment = (Comment)obj;
+        }
+        public Comment GetSelectedComment()
+        {
+            return selectedComment;
+        }
         #region api calls
+        public async void CommentModify(Comment comment, int id)
+        {
+            try
+            {
+                await commentProvider.ModifyComment(await localStorage.GetAsync("apiToken"), comment, id);
+                await GetComments(Constans.SelectedCanyon.Id);
+                LoadCommentList();
+            }
+            catch(Exception e)
+            {
+
+            }
+        }
+        public async void CommentDelete(int id)
+        {
+            try
+            {
+                await commentProvider.DeleteComment(await localStorage.GetAsync("apiToken"), id);
+                await GetComments(Constans.SelectedCanyon.Id);
+                LoadCommentList();
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
         public void SaveObstropyObsacle()
         {
             topoProvider.ModifyListTopo(TopographiesList.ToList());
@@ -692,7 +728,6 @@ namespace MAUIMobileStarterKit.ViewModels
                 }
                 else
                 {
-                    //DisplayAlert(AppResources.AppResources.MessageError, AppResources.AppResources.MessageDateProblem, "OK");
                     return false;
                 }
                 if (flowPickerIndex >= 0 && airTempPickerIndex >= 0 && waterTempPickerIndex >= 0 && !string.IsNullOrEmpty(commentoftheuser))
@@ -727,7 +762,6 @@ namespace MAUIMobileStarterKit.ViewModels
                 }
                 else
                 {
-                    // DisplayAlert(AppResources.AppResources.MessageError, AppResources.AppResources.MessageEnterAllValues, "OK");
                     return false;
                 }
             }
@@ -820,7 +854,6 @@ namespace MAUIMobileStarterKit.ViewModels
                 return false;
             }
         }
-
         public async Task<bool> DeletePro(Professionnal professionnal)
         {
             try

@@ -16,11 +16,11 @@ namespace MAUIMobileStarterKit.Interface.APIServices
         [Post("/api/Comment")]
         Task PostComment([Body] Comment usercomment,[Authorize("Bearer")] string token);
 
-        [Put("/api/Comment")]
-        Task DeleteComment(DeleteCommentParams comment);
+        [Delete("/api/Comment")]
+        Task DeleteComment([Authorize("Bearer")] string token,[AliasAs("id")] int id);
 
         [Put("/api/Comment")]
-        Task ModifyComment([Body] Comment commentModify, DeleteCommentParams comment);
+        Task ModifyComment([Authorize("Bearer")] string token, [Body] Comment commentModify, [AliasAs("id")] int canyonId);
 
         [Get("/api/Comment/listCommentdays")]
         Task<List<Comment>> GetCommentCanyonLastDays([AliasAs("days")] int days, [Authorize("Bearer")] string token);

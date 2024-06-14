@@ -5,7 +5,7 @@
     <ScrollView  x:Name="stackLayout" Padding="10">
         <StackLayout Spacing="10">
             <Label x:Name="EmptyListComment" Text="No comment, if you did this canyon feel free to add a comment for other canyoneer !!!" HorizontalTextAlignment="Center" FontFamily="CabinBold"  TextColor="#03045E" FontSize="15" TextDecorations="Underline"/>
-            <ListView x:Name="CommentListView" VerticalOptions="CenterAndExpand" SelectionMode="None" ItemsSource="{Binding CommentList}" HasUnevenRows="True">
+            <ListView ItemTapped="CommentListViewItemTapped" x:Name="CommentListView" VerticalOptions="CenterAndExpand" SelectionMode="None" ItemsSource="{Binding CommentList}" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
