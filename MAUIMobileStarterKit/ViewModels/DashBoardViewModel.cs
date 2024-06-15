@@ -39,10 +39,11 @@ namespace MAUIMobileStarterKit.ViewModels
         }
         public async Task<bool> CheckUserLogin()
         {
-            var oauthToken = await localStorage.GetAsync("access_token");
-            if (!string.IsNullOrEmpty(oauthToken))
+            /// var oauthToken = await localStorage.GetAsync("apiToken");
+            var isLoginTimeOut = await IsLoginMoreThanSixHoures();
+            if (isLoginTimeOut)
             {
-                var result = await authClient.RefreshTokenAsync(oauthToken);
+                //var result = await authClient.RefreshTokenAsync(oauthToken);
                 return true;
             }
             else
@@ -54,6 +55,7 @@ namespace MAUIMobileStarterKit.ViewModels
                 }
                 else
                 {
+                    localStorage.SetAsync("lastLoginDateTime", DateTime.Now.ToString());
                     localStorage.SetAsync("access_token", result.AccessToken);
                     localStorage.SetAsync("identity_token", result.IdentityToken);
 
@@ -86,13 +88,25 @@ namespace MAUIMobileStarterKit.ViewModels
                     };
                     var tokenResponse = await itokenProvider.GetToken(tokenRequest);
                     localStorage.SetAsync("apiToken", tokenResponse.access_token);
-
-
                     return true;
                 }
             }
         }
 
+        public async Task<bool> IsLoginMoreThanSixHoures()
+        {
+            var lastLogin = await localStorage.GetAsync("lastLoginDateTime");
+            if (!string.IsNullOrEmpty(lastLogin))
+            {
+                DateTime enteredDate = DateTime.Parse(lastLogin);
+                var hours = (DateTime.Now - DateTime.Parse(lastLogin)).TotalHours;
+                if (hours > 6)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         public async void LogOutTheUser()
         {
             var logoutResult = await authClient.LogoutAsync();
