@@ -24,6 +24,11 @@ public partial class SearchCanyonScreen : ContentView
 	{
       scrollView.HeightRequest = Constans.DeviceHeight;
       mapView.UiSettings.MyLocationButtonEnabled = true;
+        if (Constans.UserRole == "Administrator" || Constans.UserRole == "Premium")
+        {
+            buttonNonValidatedCanyon.IsVisible = true;
+        }
+
     }
 
     private void SearchButtonPressed(object sender, EventArgs e)
