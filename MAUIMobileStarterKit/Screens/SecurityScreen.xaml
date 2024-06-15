@@ -9,7 +9,7 @@
         <StackLayout Padding="10" Spacing="10" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="SizeProportional" >
             <HorizontalStackLayout VerticalOptions="Center" >
                 <ImageButton Source="burgerbar.png" Aspect="AspectFit" HeightRequest="30" VerticalOptions="Center" Clicked="MenuBtnClicked"  />
-                <Label Text="Security" HorizontalTextAlignment="Start" FontFamily="VinaSansRegular" FontSize="35" />
+                <Label Text="Security" TextColor="White" HorizontalTextAlignment="Start" FontFamily="VinaSansRegular" FontSize="35" />
             </HorizontalStackLayout>
 
             <Frame CornerRadius="5" BorderColor="#0077B6" Padding="20" Margin="0" BackgroundColor="Transparent">

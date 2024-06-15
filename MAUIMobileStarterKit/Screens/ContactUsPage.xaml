@@ -8,7 +8,7 @@
     <StackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="SizeProportional" Padding="10,10,10,30" >
         <HorizontalStackLayout VerticalOptions="Center" >
             <ImageButton x:Name="naviBtn" Source="burgerbar.png" Aspect="AspectFit" HeightRequest="30" VerticalOptions="Center" Clicked="MenuBtnClicked" />
-            <Label Text="Contact Us" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontFamily="VinaSansRegular" FontSize="35" />
+            <Label Text="Contact Us" TextColor="White" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontFamily="VinaSansRegular" FontSize="35" />
         </HorizontalStackLayout>
 
         <StackLayout Spacing="20" VerticalOptions="StartAndExpand">

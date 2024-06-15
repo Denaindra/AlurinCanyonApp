@@ -9,7 +9,7 @@
         <StackLayout Padding="10" Spacing="10" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="SizeProportional" >
             <StackLayout VerticalOptions="Center" HorizontalOptions="StartAndExpand"  Orientation="Horizontal">
                 <ImageButton Source="burgerbar.png" Aspect="AspectFit" HeightRequest="30" VerticalOptions="Center" Clicked="MenuBtnClicked"/>
-                <Label Text="Legend of the Canyons Map"  FontFamily="VinaSansRegular" FontSize="35" WidthRequest="300" />
+                <Label Text="Legend of the Canyons Map" TextColor="White"  FontFamily="VinaSansRegular" FontSize="35" WidthRequest="300" />
             </StackLayout>
 
             <Grid RowDefinitions="*,*,*,*,*" ColumnDefinitions="*,Auto" RowSpacing="10" Margin="0,50,0,0">

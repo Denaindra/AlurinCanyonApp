@@ -9,7 +9,7 @@
         <StackLayout x:Name="childLayout"  AbsoluteLayout.LayoutBounds="0,125,1,1" AbsoluteLayout.LayoutFlags="SizeProportional" />
         <HorizontalStackLayout Padding="10,0,0,0"  AbsoluteLayout.LayoutBounds="0, 0, 70,70"  AbsoluteLayout.LayoutFlags="PositionProportional" >
             <ImageButton Source="burgerbar.png" Aspect="AspectFit" HeightRequest="30" VerticalOptions="Center" Clicked="ImageButton_Clicked" />
-            <Label Text="Home" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontFamily="VinaSansRegular" FontSize="35" />
+            <Label Text="Home" TextColor="White" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontFamily="VinaSansRegular" FontSize="35" />
 
         </HorizontalStackLayout>
         <Frame Padding="0"  HeightRequest="70" BorderColor="Transparent" CornerRadius="5" 
@@ -18,7 +18,7 @@
             <Grid RowDefinitions="*" ColumnDefinitions="*,*,*" HorizontalOptions="FillAndExpand"  >
                 <VerticalStackLayout VerticalOptions="Center" Grid.Row="0" Grid.Column="0" Spacing="0">
                     <Image x:Name="search" Source="loupe.png" Aspect="AspectFit" HeightRequest="20" />
-                    <Label x:Name="searchLabel" Text="Search" FontFamily="CabinRegular" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="10"/>
+                    <Label x:Name="searchLabel" TextColor="White" Text="Search" FontFamily="CabinRegular" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="10"/>
                     <VerticalStackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnTapGestureRecognizerTapped" CommandParameter="0" />
                     </VerticalStackLayout.GestureRecognizers>
@@ -26,7 +26,7 @@
 
                 <VerticalStackLayout Grid.Row="0" Grid.Column="1" VerticalOptions="CenterAndExpand">
                     <Image x:Name="map"  Source="address.png" Aspect="AspectFit" HeightRequest="20" />
-                    <Label x:Name="mapLabel" Text="Map" FontFamily="CabinRegular" FontSize="10" HorizontalTextAlignment="Center"/>
+                    <Label x:Name="mapLabel" TextColor="White" Text="Map" FontFamily="CabinRegular" FontSize="10" HorizontalTextAlignment="Center"/>
                     <VerticalStackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnTapGestureRecognizerTapped" CommandParameter="1" />
                     </VerticalStackLayout.GestureRecognizers>
@@ -34,7 +34,7 @@
 
                 <VerticalStackLayout Grid.Row="0" Grid.Column="2" VerticalOptions="CenterAndExpand">
                     <Image x:Name="clock"  Source="clock.png" Aspect="AspectFit" HeightRequest="20" />
-                    <Label x:Name="clockLabel" Text="Modify" FontFamily="CabinRegular" FontSize="10" HorizontalTextAlignment="Center"/>
+                    <Label x:Name="clockLabel" TextColor="White" Text="Modify" FontFamily="CabinRegular" FontSize="10" HorizontalTextAlignment="Center"/>
                     <VerticalStackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnTapGestureRecognizerTapped" CommandParameter="2" />
                     </VerticalStackLayout.GestureRecognizers>

@@ -7,7 +7,7 @@
     <StackLayout>
         <HorizontalStackLayout Padding="10,10,0,0"  AbsoluteLayout.LayoutBounds="0, 0, 70,70"  AbsoluteLayout.LayoutFlags="PositionProportional" >
             <ImageButton Source="burgerbar.png" Aspect="AspectFit" HeightRequest="30" VerticalOptions="Center" Clicked="MenueClicked" />
-            <Label Text="Settings" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontFamily="VinaSansRegular" FontSize="35" />
+            <Label Text="Settings" TextColor="White" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontFamily="VinaSansRegular" FontSize="35" />
 
         </HorizontalStackLayout>
         <VerticalStackLayout Spacing="10" VerticalOptions="CenterAndExpand">
@@ -15,7 +15,7 @@
             <Frame Padding="0" BorderColor="#CAF0F8" HasShadow="False" BackgroundColor="#00B4D8" HeightRequest="60" WidthRequest="200">
             <Grid Padding="20,0,0,0"  RowDefinitions="*" ColumnDefinitions="Auto,*" HorizontalOptions="FillAndExpand" ColumnSpacing="10">
                 <Image Grid.Row="0"  Grid.Column="0" Aspect="AspectFit" Source="language.png" HeightRequest="30"/>
-                <Label Grid.Row="0"  Grid.Column="1" Text="Lanugae" FontSize="20" FontFamily="CabinBold" VerticalTextAlignment="Center"/>
+                    <Label Grid.Row="0"  Grid.Column="1" Text="Lanugae" TextColor="White" FontSize="20" FontFamily="CabinBold" VerticalTextAlignment="Center"/>
             </Grid>
             <Frame.GestureRecognizers>
                 <TapGestureRecognizer Tapped="SettingItemtapped" CommandParameter="0" />
@@ -25,7 +25,7 @@
             <Frame Padding="0" BorderColor="#CAF0F8" HasShadow="False" BackgroundColor="#00B4D8" HeightRequest="60" WidthRequest="200">
                 <Grid Padding="20,0,0,0" RowDefinitions="*" ColumnDefinitions="Auto,*"  HorizontalOptions="FillAndExpand" ColumnSpacing="10">
                     <Image Grid.Row="0"  Grid.Column="0" Aspect="AspectFit" Source="createcannyon.png" HeightRequest="30"/>
-                    <Label Grid.Row="0" Grid.Column="1" Text="Create Canyon" FontSize="20" FontFamily="CabinBold" VerticalTextAlignment="Center"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="Create Canyon" TextColor="White" FontSize="20" FontFamily="CabinBold" VerticalTextAlignment="Center"/>
                 </Grid>
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="SettingItemtapped" CommandParameter="1" />

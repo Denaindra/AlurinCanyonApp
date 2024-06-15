@@ -13,7 +13,7 @@
             <Grid RowDefinitions="*" ColumnDefinitions="*,*,*,*,*,*,*" HorizontalOptions="FillAndExpand"  >
                 <VerticalStackLayout VerticalOptions="Center" Grid.Row="0" Grid.Column="0" Spacing="0">
                     <Image x:Name="recannyon" Source="resume_canyon.png" Aspect="AspectFit" HeightRequest="20" />
-                    <Label x:Name="recannyonLabel" Text="Resume Canyon" FontFamily="CabinRegular" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="10"/>
+                    <Label x:Name="recannyonLabel" Text="Resume Canyon" TextColor="White" FontFamily="CabinRegular" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="10"/>
                     <VerticalStackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnMenuTapGestureRecognizerTapped" CommandParameter="0" />
                     </VerticalStackLayout.GestureRecognizers>
@@ -21,7 +21,7 @@
 
                 <VerticalStackLayout Grid.Row="0" Grid.Column="1" VerticalOptions="CenterAndExpand">
                     <Image x:Name="map"  Source="address.png" Aspect="AspectFit" HeightRequest="20" />
-                    <Label x:Name="mapLabel" Text="Canyon Map" FontFamily="CabinRegular" FontSize="10" HorizontalTextAlignment="Center"/>
+                    <Label x:Name="mapLabel" Text="Canyon Map" TextColor="White" FontFamily="CabinRegular" FontSize="10" HorizontalTextAlignment="Center"/>
                     <VerticalStackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnMenuTapGestureRecognizerTapped" CommandParameter="1" />
                     </VerticalStackLayout.GestureRecognizers>
@@ -29,7 +29,7 @@
 
                 <VerticalStackLayout Grid.Row="0" Grid.Column="2" VerticalOptions="CenterAndExpand">
                     <Image x:Name="tcannyon"  Source="topo_canyon.png" Aspect="AspectFit" HeightRequest="20" />
-                    <Label  x:Name="tcannyonLabel" Text="Topo Canyon" FontFamily="CabinRegular" FontSize="10" HorizontalTextAlignment="Center"/>
+                    <Label  x:Name="tcannyonLabel" Text="Topo Canyon" TextColor="White" FontFamily="CabinRegular" FontSize="10" HorizontalTextAlignment="Center"/>
                     <VerticalStackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnMenuTapGestureRecognizerTapped" CommandParameter="2" />
                     </VerticalStackLayout.GestureRecognizers>
@@ -37,7 +37,7 @@
 
                 <VerticalStackLayout Grid.Row="0" Grid.Column="3" VerticalOptions="CenterAndExpand">
                     <Image x:Name="reglement"  Source="law.png" Aspect="AspectFit" HeightRequest="20" />
-                    <Label x:Name="reglementLabel"  Text="Reglementation Canyon" FontFamily="CabinRegular" FontSize="10" HorizontalTextAlignment="Center"/>
+                    <Label x:Name="reglementLabel" TextColor="White" Text="Reglementation Canyon" FontFamily="CabinRegular" FontSize="10" HorizontalTextAlignment="Center"/>
                     <VerticalStackLayout.GestureRecognizers>
            <TapGestureRecognizer Tapped="OnMenuTapGestureRecognizerTapped" CommandParameter="3" />
        </VerticalStackLayout.GestureRecognizers>
@@ -45,7 +45,7 @@
 
                 <VerticalStackLayout Grid.Row="0" Grid.Column="4" VerticalOptions="CenterAndExpand">
                     <Image x:Name="chat"   Source="chat.png" Aspect="AspectFit" HeightRequest="20" />
-                    <Label x:Name="chatLabel"   Text="Comment Canyon" FontFamily="CabinRegular" FontSize="10" HorizontalTextAlignment="Center"/>
+                    <Label x:Name="chatLabel" TextColor="White"  Text="Comment Canyon" FontFamily="CabinRegular" FontSize="10" HorizontalTextAlignment="Center"/>
                     <VerticalStackLayout.GestureRecognizers>
            <TapGestureRecognizer Tapped="OnMenuTapGestureRecognizerTapped" CommandParameter="4" />
        </VerticalStackLayout.GestureRecognizers>
@@ -53,14 +53,14 @@
 
                 <VerticalStackLayout Grid.Row="0" Grid.Column="5" VerticalOptions="CenterAndExpand">
                     <Image x:Name="Image"  Source="image.png" Aspect="AspectFit" HeightRequest="20" />
-                    <Label x:Name="ImageLabel"  Text="Tabbed Pictures Canyon" FontFamily="CabinRegular" FontSize="10" HorizontalTextAlignment="Center"/>
+                    <Label x:Name="ImageLabel" TextColor="White" Text="Tabbed Pictures Canyon" FontFamily="CabinRegular" FontSize="10" HorizontalTextAlignment="Center"/>
                     <VerticalStackLayout.GestureRecognizers>
            <TapGestureRecognizer Tapped="OnMenuTapGestureRecognizerTapped" CommandParameter="5" />
        </VerticalStackLayout.GestureRecognizers>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Grid.Row="0" Grid.Column="6" VerticalOptions="CenterAndExpand">
-                    <Label x:Name="proLabel"  Text="Pro" FontFamily="CabinRegular" FontSize="15" HorizontalTextAlignment="Center"/>
+                    <Label x:Name="proLabel" TextColor="White" Text="Pro" FontFamily="CabinRegular" FontSize="15" HorizontalTextAlignment="Center"/>
                     <VerticalStackLayout.GestureRecognizers>
            <TapGestureRecognizer Tapped="OnMenuTapGestureRecognizerTapped" CommandParameter="6" />
        </VerticalStackLayout.GestureRecognizers>
@@ -70,7 +70,7 @@
         <HorizontalStackLayout HeightRequest="50" VerticalOptions="CenterAndExpand"  WidthRequest="100" AbsoluteLayout.LayoutBounds="0, 0, -1,-1" 
             AbsoluteLayout.LayoutFlags="PositionProportional">
             <Image Source="backarrow.png" HeightRequest="30" Aspect="AspectFit" />
-            <Label VerticalOptions="CenterAndExpand" Text="Back" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontFamily="VinaSansRegular" FontSize="35" />
+            <Label VerticalOptions="CenterAndExpand" TextColor="White" Text="Back" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontFamily="VinaSansRegular" FontSize="35" />
             <HorizontalStackLayout.GestureRecognizers>
                 <TapGestureRecognizer
                 Tapped="ClickBtnTapped"/>
