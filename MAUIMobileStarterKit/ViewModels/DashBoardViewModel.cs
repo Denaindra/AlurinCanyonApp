@@ -43,24 +43,25 @@ namespace MAUIMobileStarterKit.ViewModels
             var isUserLogout = await IsUserLogOut();
             if (isUserLogout)
             {
-                AuthLogin();
+                var reslt = await AuthLogin();
+                return reslt;
             }
             else
             {
                 if (isLoginTimeOut)
                 {
-                    AuthLogin();
+                    var reslt = await AuthLogin();
+                    return reslt;
                 }
             }
-          
             return true;
         }
-        private async void AuthLogin()
+        private async Task<bool> AuthLogin()
         {
             var result = await authClient.LoginAsync();
             if (result.IsError)
             {
-                // return false;
+                 return false;
             }
             else
             {
@@ -97,6 +98,7 @@ namespace MAUIMobileStarterKit.ViewModels
                 };
                 var tokenResponse = await itokenProvider.GetToken(tokenRequest);
                 localStorage.SetAsync("apiToken", tokenResponse.access_token);
+                return true;
             }
         }
         public async Task<bool> IsLoginMoreThanSixHoures()
