@@ -50,6 +50,7 @@ public partial class LogOutPage : ContentPage
             {
                 dashBoardView.LogOutTheUser();
                 loginLogoutbtn.Text = Constans.LogingTitle;
+                dashBoardView.PopModalAsyncy();
             }
         }
 
