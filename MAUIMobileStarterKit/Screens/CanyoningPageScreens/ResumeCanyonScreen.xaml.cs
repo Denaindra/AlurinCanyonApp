@@ -20,7 +20,7 @@ public partial class ResumeCanyonScreen : ContentView
         {
             modifyCanyonBtn.IsVisible = true;
         }
-
+        nameofCanyon.Text = Constans.SelectedCanyon.Name;
         var result = await vm.GetCountriesAsync();
         LoadingComments();
     }
