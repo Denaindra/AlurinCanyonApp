@@ -28,7 +28,7 @@ public partial class CanyonMapScreen : ContentView
                     Type = PinType.Place,
                     Label = Convert.ToString(elt.PointType),
                     Position = new Position(elt.Lat, elt.Long),
-                    Tag = Convert.ToString(elt.PointType)
+                    Icon = BitmapDescriptorFactory.FromBundle(vm.GetMapPins(Convert.ToString(elt.PointType)))
                 };
                 mapView.Pins.Add(pin);
             }

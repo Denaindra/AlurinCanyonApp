@@ -63,7 +63,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </Frame>
-            <maps:Map MyLocationEnabled="True"  VerticalOptions="FillAndExpand" x:Name="mapView" HeightRequest="400" />
+            <maps:Map MyLocationEnabled="True"  InfoWindowClicked="mapViewInfoWindowClicked"  VerticalOptions="FillAndExpand" x:Name="mapView" HeightRequest="400" />
         </StackLayout>
     </ScrollView>
 </ContentView>

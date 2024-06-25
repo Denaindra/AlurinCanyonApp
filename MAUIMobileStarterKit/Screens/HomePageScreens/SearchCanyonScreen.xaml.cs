@@ -81,12 +81,16 @@ public partial class SearchCanyonScreen : ContentView
             if (canyon.Coordonnees.Any())
             {
                 CoordList.Add(canyon.Coordonnees.FirstOrDefault());
-                var mapping = new Pin()
+                var mapping = new CustomPin()
                 {
                     Type = PinType.Place,
                     Label = canyon.Name,
                     Position = new Position(canyon.Coordonnees.FirstOrDefault().Lat, canyon.Coordonnees.FirstOrDefault().Long),
                     Address = "Note :" + canyon.DcNote.ToString() + "/4",
+                    Icon = BitmapDescriptorFactory.FromBundle(vm.GetMapPinName(canyon.DcNote)),
+                    SelectedCanyon = canyon,
+                    CanyonId = canyon.Id,
+
                 };
                 mapView.Pins.Add(mapping);
             }
@@ -110,5 +114,13 @@ public partial class SearchCanyonScreen : ContentView
     private void CreateCanyonBtnClicked(object sender, EventArgs e)
     {
         vm.NavigateCreateCanyonScreen();
+    }
+
+    private void mapViewInfoWindowClicked(object sender, InfoWindowClickedEventArgs e)
+    {
+        var canyon = e.Pin as CustomPin;
+        Constans.SelectedCanyon = canyon.SelectedCanyon;
+        Constans.CanyonNumber = canyon.CanyonId.ToString();
+        vm.NavigateToCannyonBasePage();
     }
 }

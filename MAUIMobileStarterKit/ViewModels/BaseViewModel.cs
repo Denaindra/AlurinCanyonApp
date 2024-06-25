@@ -86,6 +86,74 @@ namespace MAUIMobileStarterKit.ViewModels
         {
             await navigation.PopModalAsync();
         }
+
+        public string GetMapPinName(float? sealId)
+        {
+            if (sealId==0)
+            {
+                return "canyonnull";
+            }
+            if (sealId >= 3)
+            {
+                return "canyonbleu";
+            }
+            if (sealId >= 2 && sealId < 3)
+            {
+                return "beautifulcanyonvert";
+            }
+            if (sealId >= 1 && sealId < 2)
+            {
+                return "canyonjaune";
+            }
+            if (sealId >= 0 && sealId < 1)
+            {
+                return "canyonbrun";
+            }
+            else
+            {
+                return "canyonnull";
+            }
+        }
+
+        public string GetMapPins(string sealId)
+        {
+            if (sealId == "ParkingAmont")
+            {
+                return "parking";
+            }
+            if (sealId == "ParkingAval")
+            {
+                return "parking";
+            }
+            if (sealId == "Parking")
+            {
+                return "parking";
+            }
+            if (sealId == "StartCanyon")
+            {
+                return "depart";
+            }
+            if (sealId == "EndCanyon")
+            {
+                return "arrivee";
+            }
+            if (sealId == "ExternalPoint")
+            {
+                return "pin";
+            }
+            if (sealId == "InternalPoint")
+            {
+                return "pin";
+            }
+            if (sealId == "ExtraPoint")
+            {
+                return "pin";
+            }
+            else
+            {
+                return "pin";
+            }
+        }
         public async Task<bool> CheckAndRequestLocationPermission()
         {
             PermissionStatus status = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>();

@@ -23,15 +23,27 @@ public partial class GoogleMapScreen : ContentView
         {
             foreach (var map in resultsOfCustomPings.Where(x => x.Coordonnee != null))
             {
-                Pin pin = new Pin()
+                Pin pin = new CustomPin()
                 {
                     Type = PinType.Place,
                     Label = map.Name,
                     Position = new Position(map.Coordonnee.Lat, map.Coordonnee.Long),
-                    Address = map.DcNoteText
+                    Address = map.DcNoteText,
+                    InfoWindowAnchor = new Point(1, 1),
+                    Icon = BitmapDescriptorFactory.FromBundle(vm.GetMapPinName(map.DcNote)),
+                    CanyonId = map.CanyonId,
                 };
+               
                 mapview.Pins.Add(pin);
             }
         }
+    }
+
+    private void mapviewInfoWindowClicked(object sender, InfoWindowClickedEventArgs e)
+    {
+        var canyon = e.Pin as CustomPin;
+        vm.GetCanyon(canyon.CanyonId.ToString());
+        Constans.CanyonNumber = canyon.CanyonId.ToString();
+        vm.NavigateToCannyonBasePage();
     }
 }

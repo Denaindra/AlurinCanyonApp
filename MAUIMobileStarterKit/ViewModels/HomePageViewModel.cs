@@ -1,4 +1,5 @@
 ﻿using IdentityModel.OidcClient;
+using MAUIMobileStarterKit.Constant;
 using MAUIMobileStarterKit.Interface;
 using MAUIMobileStarterKit.Interface.APIServices;
 using MAUIMobileStarterKit.Models.Service;
@@ -427,6 +428,20 @@ namespace MAUIMobileStarterKit.ViewModels
             }
             loading.EndIndiCator();
             return customPins;
+        }
+
+        public async void GetCanyon(string canyonNumber)
+        {
+            try
+            {
+                loading.StartIndicator();
+                Constans.SelectedCanyon = await canyonProvider.GetCanyon(canyonNumber, await localStorage.GetAsync("apiToken"));
+            }
+            catch (Exception ex)
+            {
+
+            }
+            loading.EndIndiCator();
         }
 
         #endregion

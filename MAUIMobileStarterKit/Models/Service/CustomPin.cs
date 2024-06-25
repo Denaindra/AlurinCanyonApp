@@ -17,5 +17,6 @@ namespace MAUIMobileStarterKit.Models.Service
         public int PointType { get; set; }
         public string DcNoteText { get { return "Note: " + DcNote; } }
         public Pin MapPin { get; set; }
+        public Canyon SelectedCanyon { get; set; }
     }
 }
