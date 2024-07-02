@@ -430,7 +430,7 @@ namespace MAUIMobileStarterKit.ViewModels
             return customPins;
         }
 
-        public async void GetCanyon(string canyonNumber)
+        public async Task GetCanyon(string canyonNumber)
         {
             try
             {

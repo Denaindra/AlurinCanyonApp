@@ -39,10 +39,10 @@ public partial class GoogleMapScreen : ContentView
         }
     }
 
-    private void mapviewInfoWindowClicked(object sender, InfoWindowClickedEventArgs e)
+    private async void mapviewInfoWindowClicked(object sender, InfoWindowClickedEventArgs e)
     {
         var canyon = e.Pin as CustomPin;
-        vm.GetCanyon(canyon.CanyonId.ToString());
+        await vm.GetCanyon(canyon.CanyonId.ToString());
         Constans.CanyonNumber = canyon.CanyonId.ToString();
         vm.NavigateToCannyonBasePage();
     }
